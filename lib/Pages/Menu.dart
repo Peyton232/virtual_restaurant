@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../CustomWidgets/CustomMenuCard.dart';
 
 class MenuPage extends StatelessWidget {
   @override
@@ -12,59 +13,23 @@ class MenuPage extends StatelessWidget {
         mainAxisSpacing: 10,
         crossAxisCount: 3,
         children: <Widget>[
-          Container(
-            child: Center(
-              child: Text(
-                "Appetizers",
-                textAlign: TextAlign.center,
-              ),
-            ),
-            color: Colors.grey,
+        MenuCard(
+          label: "Appetizers",
+        ),
+          MenuCard(
+            label: "Entrees",
           ),
-          Container(
-            child: Center(
-              child: Text(
-                "Entrees",
-                textAlign: TextAlign.center,
-              ),
-            ),
-            color: Colors.grey,
+          MenuCard(
+            label: "Sides",
           ),
-          Container(
-            child: Center(
-              child: Text(
-                "Sides",
-                textAlign: TextAlign.center,
-              ),
-            ),
-            color: Colors.grey,
+          MenuCard(
+            label: "Drinks",
           ),
-          Container(
-            child: Center(
-              child: Text(
-                "Drinks",
-                textAlign: TextAlign.center,
-              ),
-            ),
-            color: Colors.grey,
+          MenuCard(
+            label: "Kid's Meal",
           ),
-          Container(
-            child: Center(
-              child: Text(
-                "Kid's Meal",
-                textAlign: TextAlign.center,
-              ),
-            ),
-            color: Colors.grey,
-          ),
-          Container(
-            child: Center(
-              child: Text(
-                "Dessert",
-                textAlign: TextAlign.center,
-              ),
-            ),
-            color: Colors.grey,
+          MenuCard(
+            label: "Dessert",
           ),
         ],
       ),
