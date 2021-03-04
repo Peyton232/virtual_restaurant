@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'Pages/welcomeScreen.dart';
 import 'Data/constants.dart';
+import 'Pages/Menu.dart';
+
 
 void main() {
   runApp(MyApp());
@@ -14,7 +16,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       //theme: ThemeData(buttonColor: kOffWhite),
       title: 'Virtual Restaurant',
-      home: WelcomePage(),
+      home: MenuPage(),
     );
   }
 }
+
+
