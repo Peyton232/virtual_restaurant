@@ -12,8 +12,6 @@ class CustomLoginCard extends StatefulWidget {
 }
 
 class _CustomLoginCardState extends State<CustomLoginCard> {
-  bool cardPressed = true;
-
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -21,6 +19,7 @@ class _CustomLoginCardState extends State<CustomLoginCard> {
       child: ElevatedButton(
         onPressed: () {
           print("${widget.label} has been tapped");
+          widget.cardTapped();
         },
         style: ButtonStyle(
           backgroundColor: MaterialStateProperty.all<Color>(kOffWhite),
