@@ -7,6 +7,7 @@ const kGreen = Color(0xff2a9134);
 const kSemiLightGreen = Color(0xff3fa34d);
 const kLightGreen = Color(0xff5bba6f);
 const kOffWhite = Color(0xfff5f5f5);
+const kSemiBlack = Color(0xff121212);
 
 //Welcome Screen Constants
-const kLoginCardTextStyle = TextStyle(fontSize: 30.0, color: Color(0xff121212));
+const kLoginCardTextStyle = TextStyle(fontSize: 30.0, color: kSemiBlack);
