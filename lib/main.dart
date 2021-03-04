@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'Pages/welcomeScreen.dart';
+import 'Pages/Menu.dart';
 
 void main() {
   runApp(MyApp());
@@ -11,7 +12,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Virtual Restaurant',
-      home: WelcomePage(),
+      home: MenuPage(),
     );
   }
 }
