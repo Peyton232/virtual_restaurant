@@ -6,9 +6,7 @@ class WelcomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: kOffWhite,
       appBar: AppBar(
-        backgroundColor: kDarkGreen,
         title: Text(
           "(RestaurantLogo)",
           style: TextStyle(fontSize: 30.0),

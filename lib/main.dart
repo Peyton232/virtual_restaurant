@@ -4,6 +4,7 @@ import 'package:virtual_restaurant/Pages/ManagerVersion/ManagerLoginScreen.dart'
 import 'package:virtual_restaurant/Pages/WaiterVersion/WaiterLoginScreen.dart';
 import 'Pages/welcomeScreen.dart';
 import 'Data/constants.dart';
+import 'Pages/Menu.dart';
 
 void main() {
   runApp(MyApp());
@@ -15,9 +16,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      //theme: ThemeData(buttonColor: kOffWhite),
+      theme: ThemeData(
+        primaryColor: kDarkGreen,
+        scaffoldBackgroundColor: kOffWhite,
+      ),
       title: 'Virtual Restaurant',
       initialRoute: "/WelcomeScreen",
+      //This is where you will put the different pages we can navigate to
       routes: {
         "/WelcomeScreen": (context) => WelcomePage(),
         "/GuestHomeScreen": (context) => GuestHomeScreen(),
