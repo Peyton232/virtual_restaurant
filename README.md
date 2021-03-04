@@ -4,7 +4,7 @@ Description
 <insert>
 
 How to Run
-<insetrt steps>
+<insert steps>
 
 ## Workflow
 
