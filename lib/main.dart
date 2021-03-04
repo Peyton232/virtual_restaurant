@@ -28,6 +28,7 @@ class MyApp extends StatelessWidget {
         "/GuestHomeScreen": (context) => GuestHomeScreen(),
         "/ManagerLoginScreen": (context) => ManagerLoginScreen(),
         "/WaiterLoginScreen": (context) => WaiterLoginScreen(),
+        "/MenuPage": (context) => MenuPage(),
       },
     );
   }
