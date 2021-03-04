@@ -10,7 +10,7 @@ class WelcomePage extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: kDarkGreen,
         title: Text(
-          "RestaurantLogo",
+          "(RestaurantLogo)",
           style: TextStyle(fontSize: 30.0),
         ),
       ),
@@ -20,12 +20,21 @@ class WelcomePage extends StatelessWidget {
           children: <Widget>[
             CustomLoginCard(
               label: "Manager Login",
+              cardTapped: () {
+                Navigator.pushNamed(context, "/ManagerLoginScreen");
+              },
             ),
             CustomLoginCard(
               label: "Waiter Login",
+              cardTapped: () {
+                Navigator.pushNamed(context, "/WaiterLoginScreen");
+              },
             ),
             CustomLoginCard(
               label: "Tabletop Mode",
+              cardTapped: () {
+                Navigator.pushNamed(context, "/GuestHomeScreen");
+              },
             ),
           ],
         ),
@@ -33,32 +42,3 @@ class WelcomePage extends StatelessWidget {
     );
   }
 }
-
-// GestureDetector(
-// onTap: () {
-// setState(() {
-// cardPressed = !cardPressed;
-// });
-//
-// print("${widget.label} has been pressed");
-// //widget.cardTapped();
-// },
-// child: Container(
-// height: 100,
-// decoration: BoxDecoration(
-// boxShadow: [
-// BoxShadow(
-// color: Colors.grey[700],
-// blurRadius: 6.0,
-// offset: Offset(3.0, 3.0))
-// ],
-// color: cardPressed ? kOffWhite : Colors.grey[200],
-// ),
-// child: Center(
-// child: Text(
-// widget.label,
-// style: kLoginCardTextStyle,
-// ),
-// ),
-// ),
-// ),
