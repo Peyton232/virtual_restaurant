@@ -29,7 +29,7 @@ class _KidsModeButtonState extends State<KidsModeButton> {
           height: 70,
           width: 180,
           decoration: BoxDecoration(
-            color: kidsModeSelected ? kOffWhite : kLightGreen,
+            color: kidsModeSelected ? kOffWhite : kMintGreen,
             boxShadow: [
               BoxShadow(
                   color: Colors.grey[500], blurRadius: 3, offset: Offset(2, 2))

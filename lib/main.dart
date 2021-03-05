@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:virtual_restaurant/Pages/GuestVersion/FreeDessertPage.dart';
+import 'package:virtual_restaurant/Pages/GuestVersion/GamesPage.dart';
 import 'package:virtual_restaurant/Pages/GuestVersion/GuestHomeScreen.dart';
+import 'package:virtual_restaurant/Pages/GuestVersion/ManagersChoicePage.dart';
 import 'package:virtual_restaurant/Pages/GuestVersion/MyOrderPage.dart';
 import 'package:virtual_restaurant/Pages/GuestVersion/PayBillPage.dart';
 import 'package:virtual_restaurant/Pages/GuestVersion/SettingsPage.dart';
@@ -31,10 +34,13 @@ class MyApp extends StatelessWidget {
         "/GuestHomeScreen": (context) => GuestHomeScreen(),
         "/ManagerLoginScreen": (context) => ManagerLoginScreen(),
         "/WaiterLoginScreen": (context) => WaiterLoginScreen(),
-        "/MenuPage": (context) => MenuPage(),
+        "/MenuPage": (context) => MenuScreen(),
         "/SettingsPage": (context) => SettingsPage(),
         "/MyOrderPage": (context) => MyOrderPage(),
         "/PayBillPage": (context) => PayBillPage(),
+        "/ManagersChoicePage": (context) => ManagersChoicePage(),
+        "/FreeDessertPage": (context) => FreeDessertPage(),
+        "/GamesPage": (context) => GamesPage(),
       },
     );
   }
