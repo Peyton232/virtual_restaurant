@@ -15,14 +15,7 @@ class _GuestHomeScreenState extends State<GuestHomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Container(
-          width: 100,
-          child: Image(
-            fit: BoxFit.fill,
-            image: NetworkImage(
-                "https://cdn.discordapp.com/attachments/671498605764280321/817213483354423386/Scrappy_logo-1.png"),
-          ),
-        ),
+        title: Text("(RestaurantLogo)"),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
