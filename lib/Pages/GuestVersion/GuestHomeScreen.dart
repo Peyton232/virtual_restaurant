@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:virtual_restaurant/Data/constants.dart';
 import 'package:virtual_restaurant/CustomWidgets/CustomButton.dart';
+import 'package:virtual_restaurant/CustomWidgets/KidsModeButton.dart';
+import 'package:virtual_restaurant/CustomWidgets/BottomNavBarItems.dart';
 
 class GuestHomeScreen extends StatefulWidget {
   @override
@@ -8,30 +10,7 @@ class GuestHomeScreen extends StatefulWidget {
 }
 
 class _GuestHomeScreenState extends State<GuestHomeScreen> {
-  int _selectedIndex = 0;
-  static const TextStyle optionStyle =
-      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
-  static const List<Widget> _widgetOptions = <Widget>[
-    Text(
-      'Index 0: Home',
-      style: optionStyle,
-    ),
-    Text(
-      'Index 1: Business',
-      style: optionStyle,
-    ),
-    Text(
-      'Index 2: School',
-      style: optionStyle,
-    ),
-  ];
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
-
+  //TODO: Don't let guest access welcome page
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,11 +18,13 @@ class _GuestHomeScreenState extends State<GuestHomeScreen> {
         title: Text("Guest Home Screen"),
       ),
       body: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
+          KidsModeButton(),
           Row(
             children: <Widget>[
               CustomButton(
+                //TODO: maybe add another property -> kid's mode true/false
                 label: "Manager's Choice",
               ),
               CustomButton(
@@ -53,7 +34,7 @@ class _GuestHomeScreenState extends State<GuestHomeScreen> {
                 },
               ),
               CustomButton(
-                label: "Manager's Choice",
+                label: "Call Waiter",
               ),
             ],
           ),
@@ -70,26 +51,33 @@ class _GuestHomeScreenState extends State<GuestHomeScreen> {
               ),
             ],
           ),
+          Expanded(
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: <Widget>[
+                BottomNavBarItems(
+                  label: "Settings",
+                  buttonTapped: () {
+                    Navigator.pushNamed(context, "/SettingsPage");
+                  },
+                ),
+                BottomNavBarItems(
+                  label: "My Order",
+                  buttonTapped: () {
+                    Navigator.pushNamed(context, "/MyOrderPage");
+                  },
+                ),
+                BottomNavBarItems(
+                  label: "Pay Bill",
+                  buttonTapped: () {
+                    Navigator.pushNamed(context, "/PayBillPage");
+                  },
+                ),
+              ],
+            ),
+          ),
         ],
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.business),
-            label: 'Business',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.school),
-            label: 'School',
-          ),
-        ],
-        currentIndex: _selectedIndex,
-        selectedItemColor: Colors.amber[800],
-        onTap: _onItemTapped,
       ),
     );
   }

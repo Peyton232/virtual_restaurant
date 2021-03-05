@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:virtual_restaurant/Pages/GuestVersion/GuestHomeScreen.dart';
+import 'package:virtual_restaurant/Pages/GuestVersion/MyOrderPage.dart';
+import 'package:virtual_restaurant/Pages/GuestVersion/PayBillPage.dart';
+import 'package:virtual_restaurant/Pages/GuestVersion/SettingsPage.dart';
 import 'package:virtual_restaurant/Pages/ManagerVersion/ManagerLoginScreen.dart';
 import 'package:virtual_restaurant/Pages/WaiterVersion/WaiterLoginScreen.dart';
 import 'Pages/welcomeScreen.dart';
@@ -29,6 +32,9 @@ class MyApp extends StatelessWidget {
         "/ManagerLoginScreen": (context) => ManagerLoginScreen(),
         "/WaiterLoginScreen": (context) => WaiterLoginScreen(),
         "/MenuPage": (context) => MenuPage(),
+        "/SettingsPage": (context) => SettingsPage(),
+        "/MyOrderPage": (context) => MyOrderPage(),
+        "/PayBillPage": (context) => PayBillPage(),
       },
     );
   }

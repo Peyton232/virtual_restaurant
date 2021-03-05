@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:virtual_restaurant/Data/constants.dart';
 
-class SettingsPage extends StatefulWidget {
+class MyOrderPage extends StatefulWidget {
   @override
-  _SettingsPageState createState() => _SettingsPageState();
+  _MyOrderPageState createState() => _MyOrderPageState();
 }
 
-class _SettingsPageState extends State<SettingsPage> {
+class _MyOrderPageState extends State<MyOrderPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Settings"),
+        title: Text("My Order"),
       ),
     );
   }
