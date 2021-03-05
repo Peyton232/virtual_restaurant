@@ -98,6 +98,7 @@ class MenuItem extends StatelessWidget {
                         "Add to Order",
                         style: TextStyle(
                           fontSize: 20,
+                          //TODO: Have text adapt to container size when changing screen orientation
                         ),
                       ),
                     ),

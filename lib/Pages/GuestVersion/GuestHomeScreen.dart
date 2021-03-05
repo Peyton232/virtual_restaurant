@@ -63,8 +63,7 @@ class _GuestHomeScreenState extends State<GuestHomeScreen> {
               CustomButton(
                 label: "Request Drink Refills",
                 buttonTapped: () {
-                  print("Requesting drink refills now..");
-                  //TODO: Add request drink functionality here
+                  Navigator.pushNamed(context, "/RequestRefillPage");
                 },
               ),
             ],
