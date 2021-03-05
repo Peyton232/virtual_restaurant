@@ -5,6 +5,7 @@ import 'package:virtual_restaurant/Pages/GuestVersion/GuestHomeScreen.dart';
 import 'package:virtual_restaurant/Pages/GuestVersion/ManagersChoicePage.dart';
 import 'package:virtual_restaurant/Pages/GuestVersion/MyOrderPage.dart';
 import 'package:virtual_restaurant/Pages/GuestVersion/PayBillPage.dart';
+import 'package:virtual_restaurant/Pages/GuestVersion/RequestRefillPage.dart';
 import 'package:virtual_restaurant/Pages/GuestVersion/SettingsPage.dart';
 import 'package:virtual_restaurant/Pages/ManagerVersion/ManagerLoginScreen.dart';
 import 'package:virtual_restaurant/Pages/WaiterVersion/WaiterLoginScreen.dart';
@@ -41,6 +42,7 @@ class MyApp extends StatelessWidget {
         "/ManagersChoicePage": (context) => ManagersChoicePage(),
         "/FreeDessertPage": (context) => FreeDessertPage(),
         "/GamesPage": (context) => GamesPage(),
+        "/RequestRefillPage": (context) => RequestRefillPage(),
       },
     );
   }
