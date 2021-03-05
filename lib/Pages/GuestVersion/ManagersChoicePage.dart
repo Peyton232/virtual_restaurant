@@ -40,7 +40,7 @@ class _ManagersChoicePageState extends State<ManagersChoicePage> {
               ),
             ),
             Padding(
-              padding: EdgeInsets.only(bottom: 80.0),
+              padding: EdgeInsets.only(bottom: 60.0),
               child: ElevatedButton(
                 onPressed: () {
                   print("Order button pressed");

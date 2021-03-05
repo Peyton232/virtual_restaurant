@@ -16,6 +16,7 @@ class _GuestHomeScreenState extends State<GuestHomeScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text("(RestaurantLogo)"),
+        //TODO: Redo Logo to where it's more rectangular
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
