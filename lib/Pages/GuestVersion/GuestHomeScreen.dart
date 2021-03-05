@@ -14,9 +14,17 @@ class _GuestHomeScreenState extends State<GuestHomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("(RestaurantLogo)"),
-        //TODO: Redo Logo to where it's more rectangular
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(70.0),
+        child: AppBar(
+          title: Container(
+            height: 90,
+            child: Image.asset(
+              "images/scrappyLogo1.png",
+              fit: BoxFit.contain,
+            ),
+          ),
+        ),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
