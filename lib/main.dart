@@ -10,7 +10,7 @@ import 'package:virtual_restaurant/Pages/ManagerVersion/ManagerLoginScreen.dart'
 import 'package:virtual_restaurant/Pages/WaiterVersion/WaiterLoginScreen.dart';
 import 'Pages/welcomeScreen.dart';
 import 'Data/constants.dart';
-import 'Pages/Menu.dart';
+import 'Pages/MenuPage.dart';
 
 void main() {
   runApp(MyApp());
