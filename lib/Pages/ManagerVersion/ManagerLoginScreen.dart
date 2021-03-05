@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class ManagerLoginScreen extends StatelessWidget {
@@ -21,34 +22,41 @@ class ManagerLoginScreen extends StatelessWidget {
             Container(
               //color: Colors.teal,
               padding: EdgeInsets.symmetric(vertical: 20, horizontal: 100),
-              child: Center(
-                child: TextField(
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                    labelText: 'User Name',
-                    hintText: 'Enter Your Name',
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Text("Username: ", style: TextStyle(fontSize: 17,),),
+                  Padding(padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),),
+                  TextField(
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      hintText: 'Enter Your Name',
+                    ),
+                    onChanged: (text){
+                      username = text;
+                    },
                   ),
-                  onChanged: (text){
-                    username = text;
-                  },
-                ),
+                ],
               ),
             ),
             Container(
               //color: Colors.teal,
               padding: EdgeInsets.symmetric(vertical: 20, horizontal: 100),
-              child: Center(
-                child: TextField(
-                  obscureText: true,
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                    labelText: 'Password',
-                    hintText: 'Enter Password',
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Text("Password: ", style: TextStyle(fontSize: 17,),),
+                  Padding(padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),),
+                  TextField(
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      hintText: 'Enter Your Password',
+                    ),
+                    onChanged: (text){
+                      password = text;
+                    },
                   ),
-                  onChanged: (text){
-                    password = text;
-                  },
-                ),
+                ],
               ),
             ),
             ElevatedButton(
