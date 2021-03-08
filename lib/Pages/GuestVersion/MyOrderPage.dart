@@ -158,6 +158,25 @@ class _MyOrderPageState extends State<MyOrderPage> {
               ),
             ),
             Padding(
+              padding: const EdgeInsets.only(right: 170.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: <Widget>[
+                  Text(
+                    "Total: ",
+                    style: kOrderDetailsTextStyle,
+                  ),
+                  SizedBox(
+                    width: 30.0,
+                  ),
+                  Text(
+                    "\$38.03",
+                    style: kOrderDetailsTextStyle,
+                  ),
+                ],
+              ),
+            ),
+            Padding(
               padding: const EdgeInsets.symmetric(vertical: 20.0),
               child: Divider(
                 height: 1.0,
