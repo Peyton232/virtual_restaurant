@@ -1,22 +1,18 @@
-import 'package:flutter/material.dart';
 import 'package:virtual_restaurant/Data/constants.dart';
+import 'package:flutter/material.dart';
 import 'package:virtual_restaurant/CustomWidgets/CustomButton.dart';
 
-class ManagerHomeScreen extends StatelessWidget {
+class ManagerReportPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(70.0),
         child: AppBar(
-          title: Container(
-            height: 90,
-            child: Image.asset(
-              "images/scrappyLogo1.png",
-              fit: BoxFit.contain,
-            ),
-          ),
-        ),
+            title: Text(
+          "Reports",
+          style: kAppBarTextStyle,
+        )),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -24,15 +20,15 @@ class ManagerHomeScreen extends StatelessWidget {
           Row(
             children: <Widget>[
               CustomButton(
-                label: "Waiter Mode",
+                label: "Items Sold",
                 buttonTapped: () {
                   //Navigator.pushNamed(context, "/ManagersChoicePage");
                 },
               ),
               CustomButton(
-                label: "See Reports",
+                label: "Meals Comped",
                 buttonTapped: () {
-                  Navigator.pushNamed(context, "/ManagerReportPage");
+                  //Navigator.pushNamed(context, "/MenuPage");
                 },
               ),
             ],
@@ -40,13 +36,13 @@ class ManagerHomeScreen extends StatelessWidget {
           Row(
             children: <Widget>[
               CustomButton(
-                label: "Change Meal of the Day",
+                label: "Tips Gained",
                 buttonTapped: () {
                   //Navigator.pushNamed(context, "/FreeDessertPage");
                 },
               ),
               CustomButton(
-                label: "Change Menu",
+                label: "View Revenue",
                 buttonTapped: () {
                   //Navigator.pushNamed(context, "/GamesPage");
                 },
