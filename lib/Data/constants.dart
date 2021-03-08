@@ -13,3 +13,12 @@ const kSemiBlack = Color(0xff121212);
 //Welcome Screen Constants
 const kLoginCardTextStyle = TextStyle(fontSize: 30.0, color: kSemiBlack);
 const kAppBarTextStyle = TextStyle(fontSize: 25.0);
+const kOrderColumnHeaderTextStyle = TextStyle(
+  fontSize: 35.0,
+  fontWeight: FontWeight.bold,
+  color: kSemiBlack,
+);
+
+const kOrderDetailsTextStyle = TextStyle(fontSize: 30.0, color: kSemiBlack);
+
+const kRowSpacing = 30.0;

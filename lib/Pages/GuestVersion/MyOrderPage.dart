@@ -1,19 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:virtual_restaurant/Data/constants.dart';
 
-const kOrderColumnHeaderTextStyle = TextStyle(
-  fontSize: 35.0,
-  fontWeight: FontWeight.bold,
-  color: kSemiBlack,
-);
-
-const kOrderDetailsTextStyle = TextStyle(
-  fontSize: 30.0,
-  color: kSemiBlack,
-);
-
-const kRowSpacing = 30.0;
-
 enum DineOption {
   dineIn,
   toGo,
