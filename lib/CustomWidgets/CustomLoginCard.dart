@@ -18,7 +18,6 @@ class _CustomLoginCardState extends State<CustomLoginCard> {
       padding: EdgeInsets.only(top: 50, left: 60, right: 60),
       child: ElevatedButton(
         onPressed: () {
-          print("${widget.label} has been tapped");
           widget.cardTapped();
         },
         style: ButtonStyle(

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:virtual_restaurant/Data/constants.dart';
 import 'package:virtual_restaurant/CustomWidgets/CustomButton.dart';
+import 'package:virtual_restaurant/CustomWidgets/KidsModeButton.dart';
+import 'package:virtual_restaurant/CustomWidgets/BottomNavBarItems.dart';
+import 'package:virtual_restaurant/Pages/GuestVersion/MyOrderPage.dart';
 
 class GuestHomeScreen extends StatefulWidget {
   @override
@@ -8,43 +11,34 @@ class GuestHomeScreen extends StatefulWidget {
 }
 
 class _GuestHomeScreenState extends State<GuestHomeScreen> {
-  int _selectedIndex = 0;
-  static const TextStyle optionStyle =
-      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
-  static const List<Widget> _widgetOptions = <Widget>[
-    Text(
-      'Index 0: Home',
-      style: optionStyle,
-    ),
-    Text(
-      'Index 1: Business',
-      style: optionStyle,
-    ),
-    Text(
-      'Index 2: School',
-      style: optionStyle,
-    ),
-  ];
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
-
+  //TODO: Don't let guest access welcome page
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Guest Home Screen"),
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(70.0),
+        child: AppBar(
+          title: Container(
+            height: 90,
+            child: Image.asset(
+              "images/scrappyLogo1.png",
+              fit: BoxFit.contain,
+            ),
+          ),
+        ),
       ),
       body: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
+          KidsModeButton(),
           Row(
             children: <Widget>[
               CustomButton(
+                //TODO: maybe add another property -> kid's mode true/false
                 label: "Manager's Choice",
+                buttonTapped: () {
+                  Navigator.pushNamed(context, "/ManagersChoicePage");
+                },
               ),
               CustomButton(
                 label: "Menu",
@@ -53,7 +47,11 @@ class _GuestHomeScreenState extends State<GuestHomeScreen> {
                 },
               ),
               CustomButton(
-                label: "Manager's Choice",
+                label: "Call Waiter",
+                buttonTapped: () {
+                  print("Calling waiter now..");
+                  //TODO: Add call waiter functionality here
+                },
               ),
             ],
           ),
@@ -61,35 +59,62 @@ class _GuestHomeScreenState extends State<GuestHomeScreen> {
             children: <Widget>[
               CustomButton(
                 label: "Earn Chance to Win Free Dessert",
+                buttonTapped: () {
+                  Navigator.pushNamed(context, "/FreeDessertPage");
+                },
               ),
               CustomButton(
                 label: "Games",
+                buttonTapped: () {
+                  Navigator.pushNamed(context, "/GamesPage");
+                },
               ),
               CustomButton(
                 label: "Request Drink Refills",
+                buttonTapped: () {
+                  Navigator.pushNamed(context, "/RequestRefillPage");
+                },
               ),
             ],
           ),
+          Expanded(
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: <Widget>[
+                BottomNavBarItems(
+                  label: "Settings",
+                  buttonTapped: () {
+                    Navigator.pushNamed(context, "/SettingsPage");
+                  },
+                ),
+                BottomNavBarItems(
+                  label: "My Order",
+                  buttonTapped: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return MyOrderPage(
+                            orderID: "Order I-7845",
+                            //TODO: Add order ID here
+                            //TODO: Pass current list of order here
+                          );
+                        },
+                      ),
+                    );
+                  },
+                ),
+                BottomNavBarItems(
+                  label: "Pay Bill",
+                  buttonTapped: () {
+                    Navigator.pushNamed(context, "/PayBillPage");
+                  },
+                ),
+              ],
+            ),
+          ),
         ],
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.business),
-            label: 'Business',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.school),
-            label: 'School',
-          ),
-        ],
-        currentIndex: _selectedIndex,
-        selectedItemColor: Colors.amber[800],
-        onTap: _onItemTapped,
       ),
     );
   }

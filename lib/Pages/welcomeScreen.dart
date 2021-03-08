@@ -6,10 +6,16 @@ class WelcomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          "(RestaurantLogo)",
-          style: TextStyle(fontSize: 30.0),
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(70.0),
+        child: AppBar(
+          title: Container(
+            height: 90,
+            child: Image.asset(
+              "images/scrappyLogo1.png",
+              fit: BoxFit.contain,
+            ),
+          ),
         ),
       ),
       body: SingleChildScrollView(

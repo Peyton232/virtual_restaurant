@@ -20,12 +20,11 @@ class _CustomButtonState extends State<CustomButton> {
     return Expanded(
       child: Padding(
         padding: EdgeInsets.symmetric(
-          vertical: 20,
+          vertical: 30,
           horizontal: 30,
         ),
         child: ElevatedButton(
           onPressed: () {
-            print("${widget.label} has been tapped");
             widget.buttonTapped();
           },
           style: ButtonStyle(
