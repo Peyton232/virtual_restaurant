@@ -233,7 +233,9 @@ class _PayBillPageState extends State<PayBillPage> {
                   style: ElevatedButton.styleFrom(
                     primary: kGreen,
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushNamed(context, "/SplitBillPage");
+                  },
                   child: Container(
                     height: 100.0,
                     width: 300.0,
