@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
         "/WaiterLoginScreen": (context) => WaiterLoginScreen(),
         "/MenuPage": (context) => MenuScreen(),
         "/SettingsPage": (context) => SettingsPage(),
-        "/MyOrderPage": (context) => MyOrderPage(),
+        //"/MyOrderPage": (context) => MyOrderPage(),
         "/PayBillPage": (context) => PayBillPage(),
         "/ManagersChoicePage": (context) => ManagersChoicePage(),
         "/FreeDessertPage": (context) => FreeDessertPage(),

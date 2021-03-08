@@ -3,6 +3,7 @@ import 'package:virtual_restaurant/Data/constants.dart';
 import 'package:virtual_restaurant/CustomWidgets/CustomButton.dart';
 import 'package:virtual_restaurant/CustomWidgets/KidsModeButton.dart';
 import 'package:virtual_restaurant/CustomWidgets/BottomNavBarItems.dart';
+import 'package:virtual_restaurant/Pages/GuestVersion/MyOrderPage.dart';
 
 class GuestHomeScreen extends StatefulWidget {
   @override
@@ -90,7 +91,18 @@ class _GuestHomeScreenState extends State<GuestHomeScreen> {
                 BottomNavBarItems(
                   label: "My Order",
                   buttonTapped: () {
-                    Navigator.pushNamed(context, "/MyOrderPage");
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return MyOrderPage(
+                            orderID: "Order I-7845",
+                            //TODO: Add order ID here
+                            //TODO: Pass current list of order here
+                          );
+                        },
+                      ),
+                    );
                   },
                 ),
                 BottomNavBarItems(

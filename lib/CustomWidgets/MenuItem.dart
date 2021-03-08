@@ -81,6 +81,10 @@ class MenuItem extends StatelessWidget {
                 padding: EdgeInsets.only(right: 15.0),
                 child: ElevatedButton(
                   onPressed: () {
+                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                      duration: Duration(seconds: 1),
+                      content: Text("$name added to order!"),
+                    ));
                     print("Add to Order pressed");
                     //TODO: Add to order functionality
                   },

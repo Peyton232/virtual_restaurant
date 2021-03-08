@@ -12,3 +12,4 @@ const kSemiBlack = Color(0xff121212);
 
 //Welcome Screen Constants
 const kLoginCardTextStyle = TextStyle(fontSize: 30.0, color: kSemiBlack);
+const kAppBarTextStyle = TextStyle(fontSize: 25.0);
