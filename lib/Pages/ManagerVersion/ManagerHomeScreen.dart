@@ -48,7 +48,7 @@ class ManagerHomeScreen extends StatelessWidget {
               CustomButton(
                 label: "Change Menu",
                 buttonTapped: () {
-                  //Navigator.pushNamed(context, "/GamesPage");
+                  Navigator.pushNamed(context, "/ChangeMenuPage");
                 },
               ),
             ],
