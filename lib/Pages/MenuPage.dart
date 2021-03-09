@@ -13,6 +13,7 @@ class _MenuScreenState extends State<MenuScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      //TODO: Add "View Order" Button
       appBar: AppBar(
         title: Text("Menu"),
       ),

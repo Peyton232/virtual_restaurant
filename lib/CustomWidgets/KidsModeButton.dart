@@ -23,6 +23,7 @@ class _KidsModeButtonState extends State<KidsModeButton> {
           setState(() {
             kidsModeSelected = !kidsModeSelected;
             //TODO: Takes user to another page to set up a passcode
+            //TODO: OR take to the games page
           });
         },
         child: Container(
@@ -38,7 +39,11 @@ class _KidsModeButtonState extends State<KidsModeButton> {
           child: Center(
             child: Text(
               "Kid's Mode",
-              style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.w500),
+              style: TextStyle(
+                fontSize: 24.0,
+                fontWeight: FontWeight.w500,
+                color: kidsModeSelected ? Colors.grey[400] : kSemiBlack,
+              ),
             ),
           ),
         ),

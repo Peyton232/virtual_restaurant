@@ -3,6 +3,7 @@ import 'package:virtual_restaurant/Data/constants.dart';
 import 'package:virtual_restaurant/CustomWidgets/CustomButton.dart';
 import 'package:virtual_restaurant/CustomWidgets/KidsModeButton.dart';
 import 'package:virtual_restaurant/CustomWidgets/BottomNavBarItems.dart';
+import 'package:virtual_restaurant/Pages/GuestVersion/MyOrderPage.dart';
 
 class GuestHomeScreen extends StatefulWidget {
   @override
@@ -14,13 +15,15 @@ class _GuestHomeScreenState extends State<GuestHomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Container(
-          width: 100,
-          child: Image(
-            fit: BoxFit.fill,
-            image: NetworkImage(
-                "https://cdn.discordapp.com/attachments/671498605764280321/817213483354423386/Scrappy_logo-1.png"),
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(70.0),
+        child: AppBar(
+          title: Container(
+            height: 90,
+            child: Image.asset(
+              "images/scrappyLogo1.png",
+              fit: BoxFit.contain,
+            ),
           ),
         ),
       ),
@@ -69,8 +72,7 @@ class _GuestHomeScreenState extends State<GuestHomeScreen> {
               CustomButton(
                 label: "Request Drink Refills",
                 buttonTapped: () {
-                  print("Requesting drink refills now..");
-                  //TODO: Add request drink functionality here
+                  Navigator.pushNamed(context, "/RequestRefillPage");
                 },
               ),
             ],
@@ -89,7 +91,18 @@ class _GuestHomeScreenState extends State<GuestHomeScreen> {
                 BottomNavBarItems(
                   label: "My Order",
                   buttonTapped: () {
-                    Navigator.pushNamed(context, "/MyOrderPage");
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return MyOrderPage(
+                            orderID: "Order I-7845",
+                            //TODO: Add order ID here
+                            //TODO: Pass current list of order here
+                          );
+                        },
+                      ),
+                    );
                   },
                 ),
                 BottomNavBarItems(
