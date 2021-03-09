@@ -8,6 +8,7 @@ import 'package:virtual_restaurant/Pages/GuestVersion/PayBillPage.dart';
 import 'package:virtual_restaurant/Pages/GuestVersion/RequestRefillPage.dart';
 import 'package:virtual_restaurant/Pages/GuestVersion/SettingsPage.dart';
 import 'package:virtual_restaurant/Pages/GuestVersion/SplitBillPage.dart';
+import 'package:virtual_restaurant/Pages/ManagerVersion/ChangeMenuPage.dart';
 import 'package:virtual_restaurant/Pages/ManagerVersion/ManagerHomeScreen.dart';
 import 'package:virtual_restaurant/Pages/ManagerVersion/ManagerLoginScreen.dart';
 import 'package:virtual_restaurant/Pages/ManagerVersion/ManagerReportPage.dart';
@@ -39,6 +40,7 @@ class MyApp extends StatelessWidget {
         "/ManagerHomeScreen": (context) => ManagerHomeScreen(),
         "/ManagerReportPage": (context) => ManagerReportPage(),
         "/ManagerLoginScreen": (context) => ManagerLoginScreen(),
+        "/ChangeMenuPage": (context) => ChangeMenuPage(),
         "/WaiterLoginScreen": (context) => WaiterLoginScreen(),
         "/MenuPage": (context) => MenuScreen(),
         "/SettingsPage": (context) => SettingsPage(),
