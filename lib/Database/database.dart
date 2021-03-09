@@ -9,6 +9,8 @@ final databaseReference = FirebaseDatabase.instance.reference();
 //reference
 //https://medium.com/flutterdevs/explore-realtime-database-in-flutter-c5870c2b231f
 
+//NOTE - make sure waiter deletes order form database when done, otherwise there could be possible overlap
+
 Map<String, dynamic> toJson(menuItem orderItem){
   return {
     'name': orderItem.name,
