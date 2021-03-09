@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "310764147897",
+    "project_id": "virtual-restaurant-99ee5",
+    "storage_bucket": "virtual-restaurant-99ee5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:310764147897:android:3e0a82839daa43e447b768",
+        "android_client_info": {
+          "package_name": "u3444.virtual_restaurant"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "310764147897-a4g3qd7pspke650keks66qq4akqtjhse.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBiylkIrzb_T-XFoiARZ6cms2Lu8FiaddI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "310764147897-a4g3qd7pspke650keks66qq4akqtjhse.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
