@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:virtual_restaurant/Data/constants.dart';
+import 'package:virtual_restaurant/classes/menuItem.dart';
+import 'package:virtual_restaurant/Data/globals.dart' as globals;
 
 class MenuItem extends StatelessWidget {
   final Image image;
   final String name;
-  final double price;
+  final String price;
   final int calories;
   final String description;
   final String allergens;
@@ -55,7 +57,7 @@ class MenuItem extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  "\$$price",
+                  price,
                   style: TextStyle(
                     fontSize: 25,
                   ),
@@ -81,8 +83,23 @@ class MenuItem extends StatelessWidget {
                 padding: EdgeInsets.only(right: 15.0),
                 child: ElevatedButton(
                   onPressed: () {
+                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                      duration: Duration(seconds: 1),
+                      content: Text("$name added to order!"),
+                    ));
                     print("Add to Order pressed");
+
                     //TODO: Add to order functionality
+                    globals.order.add(
+                      menuItem(
+                        name: name,
+                        description: description,
+                        price: price,
+                        calories: calories.toString(),
+                        allergens: allergens,
+                        //image: "https://browseyou.com/media/img/src/no-item.jpg",
+                      ),
+                    );
                   },
                   style: ButtonStyle(
                     backgroundColor:

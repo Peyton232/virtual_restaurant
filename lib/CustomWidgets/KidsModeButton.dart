@@ -23,6 +23,7 @@ class _KidsModeButtonState extends State<KidsModeButton> {
           setState(() {
             kidsModeSelected = !kidsModeSelected;
             //TODO: Takes user to another page to set up a passcode
+            //TODO: OR take to the games page
           });
         },
         child: Container(
