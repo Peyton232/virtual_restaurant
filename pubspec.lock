@@ -97,6 +97,20 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_fortune_wheel:
+    dependency: "direct main"
+    description:
+      name: flutter_fortune_wheel
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.4.2"
+  flutter_hooks:
+    dependency: transitive
+    description:
+      name: flutter_hooks
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.16.0"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -107,27 +121,6 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-  google_sign_in:
-    dependency: "direct main"
-    description:
-      name: google_sign_in
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "4.5.9"
-  google_sign_in_platform_interface:
-    dependency: transitive
-    description:
-      name: google_sign_in_platform_interface
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.1.2"
-  google_sign_in_web:
-    dependency: transitive
-    description:
-      name: google_sign_in_web
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.9.2"
   js:
     dependency: transitive
     description:
@@ -169,7 +162,7 @@ packages:
       name: quiver
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.1.5"
+    version: "3.0.0"
   sky_engine:
     dependency: transitive
     description: flutter
@@ -232,5 +225,5 @@ packages:
     source: hosted
     version: "2.1.0"
 sdks:
-  dart: ">=2.12.0-0.0 <3.0.0"
-  flutter: ">=1.12.13+hotfix.5"
+  dart: ">=2.12.0 <3.0.0"
+  flutter: ">=1.20.0"
