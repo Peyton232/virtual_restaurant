@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:virtual_restaurant/CustomWidgets/MenuItem.dart';
 import 'package:virtual_restaurant/Data/MenuClass.dart';
 import 'package:virtual_restaurant/Data/constants.dart';
+import 'package:virtual_restaurant/classes/menuItem.dart';
 
 class MenuSubpageTemplate extends StatelessWidget {
   final String menuCategory;
-  final List<Menu> listOfMenuItems;
+  //final List<Menu> listOfMenuItems;
+  final List<menuItem> listOfMenuItems;
 
   MenuSubpageTemplate({
     this.menuCategory,
@@ -56,8 +58,8 @@ class MenuSubpageTemplate extends StatelessWidget {
           itemBuilder: (BuildContext context, int index) {
             return MenuItem(
               name: listOfMenuItems[index].name,
-              allergens: listOfMenuItems[index].allergens,
-              calories: listOfMenuItems[index].calories,
+              //allergens: listOfMenuItems[index].allergens,
+              calories: int.parse(listOfMenuItems[index].calories),
               description: listOfMenuItems[index].description,
               price: listOfMenuItems[index].price,
             );
