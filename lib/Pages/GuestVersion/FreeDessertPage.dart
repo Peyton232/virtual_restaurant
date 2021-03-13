@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:virtual_restaurant/Data/constants.dart';
 import 'package:flutter_fortune_wheel/flutter_fortune_wheel.dart';
 import 'dart:math';
+import 'package:virtual_restaurant/CustomWidgets/CustomButton.dart';
 
 // class RandomDessertItem {
 //   bool currentSelection;
@@ -137,30 +138,55 @@ class _SpinningWheelState extends State<SpinningWheel>
     
     
     return Scaffold(
-      
+
       appBar: AppBar(
          title: Text("Free Dessert"),
       ),
       body: GestureDetector(
         onTap: () {
           setState(() {
+
             selected = Random().nextInt(items.length);
+            if (selected == 0)
+              {
+                print("Free Dessert!");
+              }
           });
         },
         child: Column(
           children: [
             Expanded(
+                flex:2,
                 child: FortuneWheel(
                   selected: selected,
                   items: [
                     for (var it in items ) FortuneItem(child: Text(it))
                   ],
-                  
-                )),
+                )
+            ),
           ],
         )
       ),
     );
+
+    // return Scaffold(
+    //   appBar: AppBar(
+    //     title: Text("Free Dessert"),
+    //   ),
+    //   body: Column(
+    //       crossAxisAlignment: CrossAxisAlignment.start,
+    //       children: <Widget> [
+    //         CustomButton(
+    //           label: "Claim!";
+    //
+    //        ),
+    //       ],
+    //   ),
+    // );
+
+
+
+
   }
 }
 
