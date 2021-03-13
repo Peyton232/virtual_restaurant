@@ -3,6 +3,7 @@ import 'package:virtual_restaurant/Data/constants.dart';
 import 'package:flutter_fortune_wheel/flutter_fortune_wheel.dart';
 import 'dart:math';
 import 'package:virtual_restaurant/CustomWidgets/CustomButton.dart';
+import 'package:virtual_restaurant/Pages/GuestVersion/QRPage.dart';
 
 // class RandomDessertItem {
 //   bool currentSelection;
@@ -122,8 +123,47 @@ class SpinningWheel extends StatefulWidget {
   _SpinningWheelState createState() => _SpinningWheelState();
 }
 
+
+
+
+
+
 class _SpinningWheelState extends State<SpinningWheel>
 {
+  
+  createAlertDialog(BuildContext context)
+  {
+
+    TextEditingController customController = TextEditingController();
+
+    return showDialog(context: context, builder: (context)
+    {
+      return AlertDialog(
+        title: Text("You won a dessert!"),
+        actions: <Widget>[
+          MaterialButton(
+              elevation: 5.0,
+              child: Text('Claim'),
+              onPressed: (){
+                Navigator.of(context).pop(customController.text.toString());
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => QR(),
+                  ),
+                );
+              }
+              )
+        ],
+      );
+    });
+  }
+  
+  
+  
+  
+  
+  
   int selected = 0;
   @override
   Widget build(BuildContext context) {
@@ -150,6 +190,8 @@ class _SpinningWheelState extends State<SpinningWheel>
             if (selected == 0)
               {
                 print("Free Dessert!");
+                createAlertDialog(context);
+
               }
           });
         },
