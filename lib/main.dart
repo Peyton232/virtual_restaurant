@@ -13,6 +13,7 @@ import 'package:virtual_restaurant/Pages/ManagerVersion/ManagerHomeScreen.dart';
 import 'package:virtual_restaurant/Pages/ManagerVersion/ManagerLoginScreen.dart';
 import 'package:virtual_restaurant/Pages/ManagerVersion/ManagerReportPage.dart';
 import 'package:virtual_restaurant/Pages/WaiterVersion/WaiterLoginScreen.dart';
+import 'Pages/GuestVersion/QRPage.dart';
 import 'Pages/welcomeScreen.dart';
 import 'Data/constants.dart';
 import 'Pages/MenuPage.dart';
@@ -47,7 +48,9 @@ class MyApp extends StatelessWidget {
         //"/MyOrderPage": (context) => MyOrderPage(),
         "/PayBillPage": (context) => PayBillPage(),
         "/ManagersChoicePage": (context) => ManagersChoicePage(),
-        "/FreeDessertPage": (context) => FreeDessertPage(),
+        // "/FreeDessertPage": (context) => FreeDessertPage(),
+        "/FreeDessertPage": (context) => SpinningWheel(),
+        "/QRPage": (context) => QR(),
         "/GamesPage": (context) => GamesPage(),
         "/RequestRefillPage": (context) => RequestRefillPage(),
         "/SplitBillPage": (context) => SplitBillPage(),
