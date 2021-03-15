@@ -67,7 +67,9 @@ class _SplitBillPageState extends State<SplitBillPage> {
                 GestureDetector(
                   onTap: () {
                     setState(() {
-                      _amountOfPeople = _subPeople(_amountOfPeople);
+                      if (_amountOfPeople > 0) {
+                        _amountOfPeople = _subPeople(_amountOfPeople);
+                      } else {}
                     });
                   },
                   child: Container(
