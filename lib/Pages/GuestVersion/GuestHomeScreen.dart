@@ -12,6 +12,8 @@ class GuestHomeScreen extends StatefulWidget {
 }
 
 class _GuestHomeScreenState extends State<GuestHomeScreen> {
+  final snackBar = SnackBar(content: Text("Waiter is coming soon..."));
+
   //TODO: Don't let guest access welcome page
   @override
   Widget build(BuildContext context) {
@@ -50,7 +52,8 @@ class _GuestHomeScreenState extends State<GuestHomeScreen> {
               CustomButton(
                 label: "Call Waiter",
                 buttonTapped: () {
-                  print("Calling waiter now..");
+                  //print("Calling waiter now..");
+                  ScaffoldMessenger.of(context).showSnackBar(snackBar);
                   //TODO: Add call waiter functionality here
                 },
               ),
