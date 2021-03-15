@@ -26,7 +26,8 @@ class _MenuCardState extends State<MenuCard> {
           overlayColor: MaterialStateProperty.all<Color>(Colors.grey[300]),
         ),
         child: Container(
-          height: 100,
+          height: 200,
+          width: 300,
           child: Center(
             child: Text(
               widget.label,
