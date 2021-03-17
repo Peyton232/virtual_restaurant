@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:virtual_restaurant/Pages/GuestVersion/FreeDessertPage.dart';
 import 'package:virtual_restaurant/Pages/GuestVersion/GamesPage.dart';
 import 'package:virtual_restaurant/Pages/GuestVersion/GuestHomeScreen.dart';
+import 'package:virtual_restaurant/Pages/GuestVersion/KidsModeEntrancePage.dart';
+import 'package:virtual_restaurant/Pages/GuestVersion/KidsModeExitPage.dart';
 import 'package:virtual_restaurant/Pages/GuestVersion/ManagersChoicePage.dart';
 import 'package:virtual_restaurant/Pages/GuestVersion/MyOrderPage.dart';
 import 'package:virtual_restaurant/Pages/GuestVersion/PayBillPage.dart';
@@ -45,7 +47,6 @@ class MyApp extends StatelessWidget {
         "/WaiterLoginScreen": (context) => WaiterLoginScreen(),
         "/MenuPage": (context) => MenuScreen(),
         "/SettingsPage": (context) => SettingsPage(),
-        //"/MyOrderPage": (context) => MyOrderPage(),
         "/PayBillPage": (context) => PayBillPage(),
         "/ManagersChoicePage": (context) => ManagersChoicePage(),
         // "/FreeDessertPage": (context) => FreeDessertPage(),
@@ -54,6 +55,8 @@ class MyApp extends StatelessWidget {
         "/GamesPage": (context) => GamesPage(),
         "/RequestRefillPage": (context) => RequestRefillPage(),
         "/SplitBillPage": (context) => SplitBillPage(),
+        "/KidsModeEntrancePage": (context) => KidsModeEntrancePage(),
+        "/KidsModeExitPage": (context) => KidsModeExitPage(),
       },
     );
   }
