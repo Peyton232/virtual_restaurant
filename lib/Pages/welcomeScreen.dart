@@ -40,6 +40,12 @@ class WelcomePage extends StatelessWidget {
                 Navigator.pushNamed(context, "/GuestHomeScreen");
               },
             ),
+            CustomLoginCard(
+              label: "Kitchen Mode",
+              cardTapped: () {
+                Navigator.pushNamed(context, "/KitchenHomeScreen");
+              },
+            ),
           ],
         ),
       ),
