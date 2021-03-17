@@ -82,40 +82,43 @@ class _GuestHomeScreenState extends State<GuestHomeScreen> {
             ],
           ),
           Expanded(
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: <Widget>[
-                BottomNavBarItems(
-                  label: "Settings",
-                  buttonTapped: () {
-                    Navigator.pushNamed(context, "/SettingsPage");
-                  },
-                ),
-                BottomNavBarItems(
-                  label: "My Order",
-                  buttonTapped: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) {
-                          return MyOrderPage(
-                            orderID: "Order I-7845",
-                            //TODO: Add order ID here
-                            //TODO: Pass current list of order here
-                          );
-                        },
-                      ),
-                    );
-                  },
-                ),
-                BottomNavBarItems(
-                  label: "Pay Bill",
-                  buttonTapped: () {
-                    Navigator.pushNamed(context, "/PayBillPage");
-                  },
-                ),
-              ],
+            child: Container(
+              height: 100,
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: <Widget>[
+                  BottomNavBarItems(
+                    label: "Settings",
+                    buttonTapped: () {
+                      Navigator.pushNamed(context, "/SettingsPage");
+                    },
+                  ),
+                  BottomNavBarItems(
+                    label: "My Order",
+                    buttonTapped: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return MyOrderPage(
+                              orderID: "Order I-7845",
+                              //TODO: Add order ID here
+                              //TODO: Pass current list of order here
+                            );
+                          },
+                        ),
+                      );
+                    },
+                  ),
+                  BottomNavBarItems(
+                    label: "Pay Bill",
+                    buttonTapped: () {
+                      Navigator.pushNamed(context, "/PayBillPage");
+                    },
+                  ),
+                ],
+              ),
             ),
           ),
         ],
