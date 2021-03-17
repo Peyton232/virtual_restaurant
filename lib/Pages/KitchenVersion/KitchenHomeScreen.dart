@@ -36,7 +36,6 @@ class _KitchenHomeScreenState extends State<KitchenHomeScreen> {
                 //key: orders[index],
                 key: UniqueKey(),
                 child: Card(
-
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(16)
                     ),
