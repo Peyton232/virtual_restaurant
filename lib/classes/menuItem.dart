@@ -1,12 +1,14 @@
 import 'dart:io';
 import 'package:flutter/cupertino.dart';
-
+//TODO: refactor MenuItem name to UpperCamelCase for types
 class menuItem {
   String name;
+  String allergens;//list
+  bool available;
+  String calories;//rounded int calories
   String description;
-  String price;
-  String calories;
-  String allergens;
+  String price;//float price
+
   AssetImage image;
 
   menuItem({

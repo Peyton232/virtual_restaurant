@@ -58,7 +58,7 @@ class MenuSubpageTemplate extends StatelessWidget {
           itemBuilder: (BuildContext context, int index) {
             return MenuItem(
               name: listOfMenuItems[index].name,
-              //allergens: listOfMenuItems[index].allergens,
+              allergens: listOfMenuItems[index].allergens,
               calories: int.parse(listOfMenuItems[index].calories),
               description: listOfMenuItems[index].description,
               price: listOfMenuItems[index].price,

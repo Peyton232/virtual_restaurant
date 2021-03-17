@@ -5,7 +5,7 @@ class RequestRefillPage extends StatefulWidget {
   @override
   _RequestRefillPageState createState() => _RequestRefillPageState();
 }
-
+//TODO: Should not work until an order containing drinks is sent
 class _RequestRefillPageState extends State<RequestRefillPage> {
   @override
   Widget build(BuildContext context) {

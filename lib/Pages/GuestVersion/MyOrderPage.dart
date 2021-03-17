@@ -46,7 +46,7 @@ class _MyOrderPageState extends State<MyOrderPage> {
                 shrinkWrap: true,
                 itemCount: globals.order.length,
                 itemBuilder: (BuildContext context, int index) {
-                  return MenuItem(
+                  return MenuItem(//Are we building another object here??
                     name: globals.order[index].name,
                     //allergens: listOfMenuItems[index].allergens,
                     calories: int.parse(globals.order[index].calories),

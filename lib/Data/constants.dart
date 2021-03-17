@@ -22,3 +22,8 @@ const kOrderColumnHeaderTextStyle = TextStyle(
 const kOrderDetailsTextStyle = TextStyle(fontSize: 30.0, color: kSemiBlack);
 
 const kRowSpacing = 30.0;
+
+//Database Constants
+const FirebaseMenuDatabase = "https://virtual-restraurant-menu-database.firebaseio.com/";
+const FirebaseOrdersDatabase = "https://virtual-restaurant-orders.firebaseio.com/";
+const FirebaseEmployeeDatabase = "https://virtual-restaurant-employee-database.firebaseio.com/";

@@ -14,7 +14,7 @@ final databaseReference = FirebaseDatabase.instance.reference();
 Map<String, dynamic> toJson(menuItem orderItem){
   return {
     'name': orderItem.name,
-    'price': orderItem.price,
+    'price': orderItem.price,//do not need for kitchen, useful for manager reports
   };
 }
 
@@ -35,3 +35,4 @@ Future<String> readData() async {
   //databaseReference.child('toPython').remove();
   return(result);
 }
+
