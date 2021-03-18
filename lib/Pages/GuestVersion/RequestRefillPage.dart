@@ -101,6 +101,7 @@ class _RequestRefillPageState extends State<RequestRefillPage> {
               child: ElevatedButton(
                 onPressed: () {
                   print("Request Drink has been pressed");
+                  Navigator.pop(context);
                 },
                 style: ButtonStyle(
                   backgroundColor:

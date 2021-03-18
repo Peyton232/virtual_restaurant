@@ -37,6 +37,14 @@ class _MyOrderPageState extends State<MyOrderPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.home),
+            onPressed: () {
+              Navigator.popAndPushNamed(context, "/GuestHomeScreen");
+            },
+          ),
+        ],
         title: Text(
           widget.orderID,
           style: kAppBarTextStyle,
@@ -49,33 +57,7 @@ class _MyOrderPageState extends State<MyOrderPage> {
         child: Column(
           //TODO: Redo UI
           children: <Widget>[
-            Card(
-              color: kOffWhite,
-              elevation: 0,
-              margin: EdgeInsets.symmetric(
-                horizontal: 200.0,
-                vertical: 5.0,
-              ),
-              child: Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 20.0,
-                  vertical: 10.0,
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    Text(
-                      "Items:",
-                      style: kOrderHeaderTextStyle,
-                    ),
-                    Text(
-                      "Price:",
-                      style: kOrderHeaderTextStyle,
-                    ),
-                  ],
-                ),
-              ),
-            ),
+            globals.order.isEmpty ? _NoOrder() : _header(),
             Expanded(
               child: Container(
                 child: ListView.builder(
@@ -110,13 +92,6 @@ class _MyOrderPageState extends State<MyOrderPage> {
                         ),
                       ),
                     );
-                    // return MenuItem(
-                    //   name: globals.order[index].name,
-                    //   //allergens: listOfMenuItems[index].allergens,
-                    //   calories: int.parse(globals.order[index].calories),
-                    //   description: globals.order[index].description,
-                    //   price: globals.order[index].price,
-                    // );
                   },
                 ),
               ),
@@ -297,6 +272,49 @@ class _MyOrderPageState extends State<MyOrderPage> {
               ],
             ),
           ],
+        ),
+      ),
+    );
+  }
+
+  Widget _header() {
+    return Card(
+      color: kOffWhite,
+      elevation: 0,
+      margin: EdgeInsets.symmetric(
+        horizontal: 200.0,
+        vertical: 5.0,
+      ),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(
+          horizontal: 20.0,
+          vertical: 10.0,
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            Text(
+              "Items:",
+              style: kOrderHeaderTextStyle,
+            ),
+            Text(
+              "Price:",
+              style: kOrderHeaderTextStyle,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _NoOrder() {
+    return Expanded(
+      child: Center(
+        child: Text(
+          "No Orders Added Yet",
+          style: TextStyle(
+            fontSize: 30.0,
+          ),
         ),
       ),
     );
