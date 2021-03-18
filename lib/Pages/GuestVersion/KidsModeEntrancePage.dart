@@ -1,16 +1,15 @@
 import 'dart:ui';
-
+import 'package:virtual_restaurant/Data/globals.dart';
 import 'package:flutter/material.dart';
 
-class WaiterLoginScreen extends StatelessWidget {
+class KidsModeEntrancePage extends StatelessWidget {
   String password = "";
-  String username = "";
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Waiter Login Screen"),
+        title: Text("Kid\'s Mode Password Setup"),
       ),
       body: Padding(
         padding: EdgeInsets.all(20),
@@ -24,34 +23,13 @@ class WaiterLoginScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  Text("Username: ", style: TextStyle(fontSize: 17,),),
-                  Padding(padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),),
-                  TextField(
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(),
-                      hintText: 'Enter Your Name',
-                    ),
-                    onChanged: (text){
-                      username = text;
-                    },
-                  ),
-                ],
-              ),
-            ),
-            Container(
-              //color: Colors.teal,
-              padding: EdgeInsets.symmetric(vertical: 20, horizontal: 100),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
                   Text("Password: ", style: TextStyle(fontSize: 17,),),
                   Padding(padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),),
                   TextField(
                     decoration: InputDecoration(
                       border: OutlineInputBorder(),
-                      hintText: 'Enter Your Password',
+                      hintText: 'Enter a Password for Kid\'s Mode',
                     ),
-                    obscureText: true,
                     onChanged: (text){
                       password = text;
                     },
@@ -65,9 +43,11 @@ class WaiterLoginScreen extends StatelessWidget {
                   minimumSize: Size(150,50),
                 ),
                 onPressed: (){
-                  print(["username = ",username]);
                   print(["password = ",password]);
-                }, child: Text("Login"))
+                  kidsModePassword = password;
+                  Navigator.popAndPushNamed(context, "/KidsModeExitPage");
+                  Navigator.pushNamed(context, "/GamesPage");
+                }, child: Text("Enter Kid's Mode"))
           ],
         ),
       ),

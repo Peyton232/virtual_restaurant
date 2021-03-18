@@ -66,6 +66,7 @@ class ManagerLoginScreen extends StatelessWidget {
                       border: OutlineInputBorder(),
                       hintText: 'Enter Your Password',
                     ),
+                    obscureText: true,
                     onChanged: (text) {
                       password = text;
                     },

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:virtual_restaurant/CustomWidgets/MenuItem.dart';
-import 'package:virtual_restaurant/Data/MenuClass.dart';
+import 'package:virtual_restaurant/Pages/GuestVersion/MyOrderPage.dart';
 import 'package:virtual_restaurant/Data/constants.dart';
 import 'package:virtual_restaurant/classes/menuItem.dart';
 
@@ -25,7 +25,18 @@ class MenuSubpageTemplate extends StatelessWidget {
         actions: <Widget>[
           InkWell(
             onTap: () {
-              Navigator.pushNamed(context, "/MyOrderPage");
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) {
+                    return MyOrderPage(
+                      orderID: "Order I-7845",
+                      //TODO: Add order ID here
+                      //TODO: Pass current list of order here
+                    );
+                  },
+                ),
+              );
             },
             child: Container(
               padding: EdgeInsets.symmetric(

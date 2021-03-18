@@ -4,6 +4,7 @@ import '../classes/menuItem.dart';
 
 bool kidsMode = false;
 String tableID = 'T2';
+String kidsModePassword = '';
 
 //list of entrees
 List<menuItem> entrees = [
