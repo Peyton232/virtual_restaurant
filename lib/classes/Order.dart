@@ -1,3 +1,4 @@
+import 'package:virtual_restaurant/CustomWidgets/MenuItem.dart';
 import 'package:virtual_restaurant/Data/constants.dart';
 import 'package:virtual_restaurant/classes/menuItem.dart';
 
@@ -8,11 +9,13 @@ class Order {
   int _orderNumber;
   List<OrderItem> _orderContents;
   double _orderTotal;
+  bool _isReadyFromKitchen;
 
   Order() {
     _orderContents = [];
     _orderTotal = 0.0;
     //TODO: Get order number from Database or locally.
+    _isReadyFromKitchen = false;
   }
 
   //Runs at O(n) since I do not want to account for list manipulation and identifying new items in the orderContents.
@@ -26,32 +29,72 @@ class Order {
 
   int get getOrderNumber => this._orderNumber;
 
-  //This is used to prevent corrupting the original orderContents List object
+  /*
+   *  This should be used to prevent corrupting the original orderContents List object.
+   *  Currently, it is unclear as to whether or not Dart actually returns a reference or
+   *  a new object with the List<>.from() function.
+   */
   List<OrderItem> get getOrderItem{
     return new List<OrderItem>.from(_orderContents);
   }
 
   void addItem(OrderItem passedOrderItem) {
-    this._orderContents.add(passedOrderItem);
+    this._orderContents.add(OrderItem.clone(passedOrderItem));
     this._orderTotal += passedOrderItem.getItemPrice;
   }
-  //TODO: have solid plan as to how we should remove an item from an order. Just flat remove it at a location or should the list be organized in any fashion?
-  void removeItem(int i){
-
+  //Just flat remove it at a location or should the list be organized in any fashion?
+  void removeItemAt(int index){
+    this._orderContents.removeAt(index);
   }
+  /*
+   * Corporate Naming Convention awww yisss
+   *  This method creates and returns a list of OrderItem objects which
+   *  have the same FoodCategory variable we are passing in as an argument
+   *  to the method. This does not remove those items from the original List<
+   * @returns: List<OrderItem>
+   */
+  List<OrderItem> getItemsOfCategoryFromOrder(FoodCategory categoryFilter) {
+    List<OrderItem> filteredOutOrderItemsList = [];
+    for( OrderItem obj in this._orderContents ) {
+      if(obj.itemFoodCategory == categoryFilter)
+        filteredOutOrderItemsList.add(OrderItem.clone(obj));
+    }
+
+    return filteredOutOrderItemsList;
+  }
+
+
 }
 
 
 
 
 
-
+/*
+ * OrderItem inherits from the abstract class Item and the mixin ModifyItem.
+ * It is the item that are relevant to the kitchen, table, waiter, and
+ * statistics for the manager. Only the menu and menu UI are concerned with
+ */
 class OrderItem extends Item with ModifyItem {
 
   OrderItem(String passedName, double passedPrice, FoodCategory passedCategory){
     super.itemName = passedName;
     super.price = passedPrice;
     super.itemFoodCategory = passedCategory;
+  }
+
+  /*
+   * This is a copy method to perform a Deep Copy so we do not end up changing
+   * the objects passed by reference.
+   */
+  OrderItem.clone(OrderItem objectToClone) {
+    this.itemName = objectToClone.getItemName;
+    this.price = objectToClone.price;
+    this.itemFoodCategory = objectToClone.itemFoodCategory;
+  }
+
+  OrderItem.MenuItemClone(MenuItem MenuItemToClone){
+    this.itemName = MenuItemToClone.name;
   }
 
   @override
