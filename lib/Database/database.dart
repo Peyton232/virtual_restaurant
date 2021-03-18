@@ -10,7 +10,7 @@ final databaseReference = FirebaseDatabase.instance.reference();
 //https://medium.com/flutterdevs/explore-realtime-database-in-flutter-c5870c2b231f
 
 //NOTE - make sure waiter deletes order form database when done, otherwise there could be possible overlap
-
+//This should
 Map<String, dynamic> toJson(menuItem orderItem){
   return {
     'name': orderItem.name,
@@ -18,6 +18,9 @@ Map<String, dynamic> toJson(menuItem orderItem){
   };
 }
 
+/*
+ * Change the format of the JSON hierarchy sent to tableOrderDB
+ */
 DatabaseReference sendData(List<menuItem> order) {
   var id = databaseReference.child('order/${globals.tableID}/');
   for (int i  = 0; i < order.length; i++) {

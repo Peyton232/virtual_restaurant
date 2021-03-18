@@ -1,9 +1,14 @@
 library my_prj.globals;
 
+import 'dart:collection';
+
+import 'package:virtual_restaurant/classes/CustomerTable.dart';
+import 'package:virtual_restaurant/classes/Order.dart';
+
 import '../classes/menuItem.dart';
 
 bool kidsMode = false;
-String tableID = 'T2';
+String tableID = 'T2';//To be phased out with the CustomerTable object
 
 //list of entrees
 List<menuItem> entrees = [
@@ -173,5 +178,7 @@ List<menuItem> drinks = [
   ),
 ];
 
+CustomerTable thisDevicesTable;
+ListQueue<Order> kitchenOrders;
 //order, initially empty
 List<menuItem> order = [];

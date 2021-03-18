@@ -1,6 +1,13 @@
 import 'dart:io';
 import 'package:flutter/cupertino.dart';
+import 'package:virtual_restaurant/Data/constants.dart';
 //TODO: refactor MenuItem name to UpperCamelCase for types
+
+class Item {
+  String itemName;
+  FoodCategory itemFoodCategory;
+}
+
 class menuItem {
   String name;
   String allergens;//list
@@ -17,6 +24,13 @@ class menuItem {
     @required this.price,
     @required this.calories,
     @required this.allergens,
-    //@required this.image,
+    //TODO: @required this.image, image files for menu.
   });
+}
+
+abstract class ModifyItem {
+  String modifications;
+
+  set makeModifications(String modInfo);
+  String get getModifications;
 }

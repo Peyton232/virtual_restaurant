@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:virtual_restaurant/Data/constants.dart';
 import 'package:virtual_restaurant/classes/menuItem.dart';
 import 'package:virtual_restaurant/Data/globals.dart' as globals;
-
+//This MenuItem is the Widget that is displayed to the UI
 class MenuItem extends StatelessWidget {
   final Image image;
   final String name;
@@ -89,7 +89,7 @@ class MenuItem extends StatelessWidget {
                     ));
                     print("Add to Order pressed");
 
-                    //TODO: Add to order functionality
+                    //TODO: Add to order functionality: change so this supports Table>Order>item format
                     globals.order.add(
                       menuItem(
                         name: name,
