@@ -10,6 +10,7 @@ abstract class Item {
 
   double get getItemPrice;
   String get getItemName;
+  FoodCategory get getItemCategory;
 }
 
 class menuItem {

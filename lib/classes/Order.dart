@@ -12,6 +12,7 @@ class Order {
   bool _isReadyFromKitchen;
 
   Order() {
+    _orderNumber = 100000;
     _orderContents = [];
     _orderTotal = 0.0;
     //TODO: Get order number from Database or locally.
@@ -27,14 +28,17 @@ class Order {
     }
   }
 
-  int get getOrderNumber => this._orderNumber;
+  int get orderNumber => this._orderNumber;
 
+  set orderNumber(int newOrderNum) {
+    _orderNumber = newOrderNum;
+  }
   /*
    *  This should be used to prevent corrupting the original orderContents List object.
    *  Currently, it is unclear as to whether or not Dart actually returns a reference or
    *  a new object with the List<>.from() function.
    */
-  List<OrderItem> get getOrderItem{
+  List<OrderItem> get getOrderContents{
     return new List<OrderItem>.from(_orderContents);
   }
 
@@ -78,9 +82,9 @@ class Order {
 class OrderItem extends Item with ModifyItem {
 
   OrderItem(String passedName, double passedPrice, FoodCategory passedCategory){
-    super.itemName = passedName;
-    super.price = passedPrice;
-    super.itemFoodCategory = passedCategory;
+    this.itemName = passedName;
+    this.price = passedPrice;
+    this.itemFoodCategory = passedCategory;
   }
 
   /*
@@ -98,15 +102,19 @@ class OrderItem extends Item with ModifyItem {
   }
 
   @override
-  set makeModifications(String updateModInfo) => super.modifications = updateModInfo;
+  set makeModifications(String updateModInfo) => this.modifications = updateModInfo;
 
   //Retrieval of modifications made on an item the customer may make.
   @override
-  String get getModifications => super.modifications;
+  String get getModifications => this.modifications;
 
   @override
   double get getItemPrice => super.price;
 
   @override
-  String get getItemName => super.itemName;
+  String get getItemName => this.itemName;
+
+  @override
+  // TODO: implement getItemCategory
+  FoodCategory get getItemCategory => this.itemFoodCategory;
 }
