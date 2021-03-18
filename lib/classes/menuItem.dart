@@ -3,9 +3,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:virtual_restaurant/Data/constants.dart';
 //TODO: refactor MenuItem name to UpperCamelCase for types
 
-class Item {
+abstract class Item {
   String itemName;
+  double price;
   FoodCategory itemFoodCategory;
+
+  double get getItemPrice;
+  String get getItemName;
 }
 
 class menuItem {
@@ -28,7 +32,7 @@ class menuItem {
   });
 }
 
-abstract class ModifyItem {
+mixin ModifyItem {
   String modifications;
 
   set makeModifications(String modInfo);
