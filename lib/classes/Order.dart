@@ -43,7 +43,7 @@ class Order {
   }
 
   void addItem(OrderItem passedOrderItem) {
-    this._orderContents.add(OrderItem.clone(passedOrderItem));
+    this._orderContents.add(passedOrderItem);
     this._orderTotal += passedOrderItem.getItemPrice;
   }
   //Just flat remove it at a location or should the list be organized in any fashion?
@@ -61,7 +61,7 @@ class Order {
     List<OrderItem> filteredOutOrderItemsList = [];
     for( OrderItem obj in this._orderContents ) {
       if(obj.itemFoodCategory == categoryFilter)
-        filteredOutOrderItemsList.add(OrderItem.clone(obj));
+        filteredOutOrderItemsList.add(new OrderItem.clone(obj));
     }
 
     return filteredOutOrderItemsList;

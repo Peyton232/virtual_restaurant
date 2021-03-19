@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-
-
+import 'package:virtual_restaurant/Data/constants.dart';
+import 'package:virtual_restaurant/classes/Order.dart';
+import 'package:virtual_restaurant/classes/menuItem.dart';
+import 'package:virtual_restaurant/Database/database.dart';
 
 class test extends StatefulWidget {
   @override
@@ -17,9 +19,11 @@ class _testState extends State<test> {
       body: const Center(child: Text("Press the button kronk!")),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          showDialog(
-              context: context,
-          );
+
+          OrderItem oneItem = OrderItem('Scrappy Burger',6.77, FoodCategory.Entree);
+          Order newOrder;
+          newOrder.addItem(oneItem);
+          sendOrderToFirebase(newOrder);
         },
         child: const Icon(Icons.navigation),
         backgroundColor: Colors.red,

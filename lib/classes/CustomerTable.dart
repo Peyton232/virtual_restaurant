@@ -19,7 +19,7 @@ class CustomerTable {
     this._tableNumber = tableNum;
     this.tableBillTotal = 0.0;
     _ordersFromTable = [];
-    this._tableID = 'T'.toString() + tableNum.toString();//jank as hell but probably works
+    this._tableID = 'T' + tableNum.toString();//jank as hell but probably works
   }
   //getter for tableID
   String get tableID => this._tableID;

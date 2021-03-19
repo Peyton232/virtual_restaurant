@@ -178,7 +178,7 @@ List<menuItem> drinks = [
   ),
 ];
 
-CustomerTable thisDevicesTable;
+CustomerTable thisDevicesTable = CustomerTable(tableNum:1);
 ListQueue<Order> kitchenOrders;
 //order, initially empty
 List<menuItem> order = [];

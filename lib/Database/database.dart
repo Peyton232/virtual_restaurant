@@ -8,7 +8,7 @@ import 'package:virtual_restaurant/Data/globals.dart' as globals;
 import 'package:virtual_restaurant/classes/Order.dart';
 
 final databaseReference = FirebaseDatabase.instance.reference();
-final customerTableDatabaseReference = FirebaseDatabase.instance.reference().child('Tables');//.push().child(path).set().asStream()
+final customerTableDatabaseReference = FirebaseDatabase.instance.reference().child('tables');//.push().child(path).set().asStream()
 //reference
 //https://medium.com/flutterdevs/explore-realtime-database-in-flutter-c5870c2b231f
 
