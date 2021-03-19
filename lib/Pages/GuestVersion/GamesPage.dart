@@ -15,7 +15,10 @@ class _GamesPageState extends State<GamesPage> {
         title: Text("Games"),
       ),
       body: Container(
-        padding: EdgeInsets.all(12),
+        padding: EdgeInsets.symmetric(
+          horizontal: 50,
+          vertical: 25.0,
+        ),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
@@ -23,7 +26,7 @@ class _GamesPageState extends State<GamesPage> {
               child: Container(
                 margin: EdgeInsets.all(12),
                 decoration: BoxDecoration(
-                  color: Colors.white,
+                  color: kOffWhite,
                   borderRadius: BorderRadius.circular(8.0),
                   boxShadow: [
                     BoxShadow(
@@ -106,7 +109,7 @@ class _GamesPageState extends State<GamesPage> {
               child: Container(
                 margin: EdgeInsets.all(12),
                 decoration: BoxDecoration(
-                  color: Colors.white,
+                  color: kOffWhite,
                   borderRadius: BorderRadius.circular(8.0),
                   boxShadow: [
                     BoxShadow(
@@ -183,7 +186,7 @@ class _GamesPageState extends State<GamesPage> {
               child: Container(
                 margin: EdgeInsets.all(12),
                 decoration: BoxDecoration(
-                  color: Colors.white,
+                  color: kOffWhite,
                   borderRadius: BorderRadius.circular(8.0),
                   boxShadow: [
                     BoxShadow(
@@ -218,7 +221,7 @@ class _GamesPageState extends State<GamesPage> {
                       child: Container(
                         padding: EdgeInsets.all(12),
                         child: Text(
-                          "Snake",
+                          "Pong",
                           style: TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 40),
                         ),

@@ -52,8 +52,8 @@ class _GuestHomeScreenState extends State<GuestHomeScreen> {
               CustomButton(
                 label: "Call Waiter",
                 buttonTapped: () {
-                  //print("Calling waiter now..");
-                  ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                  createAlertDialog(context);
+                  //ScaffoldMessenger.of(context).showSnackBar(snackBar);
                   //TODO: Add call waiter functionality here
                 },
               ),
@@ -123,6 +123,33 @@ class _GuestHomeScreenState extends State<GuestHomeScreen> {
           ),
         ],
       ),
+    );
+  }
+
+  createAlertDialog(BuildContext context) {
+    TextEditingController customController = TextEditingController();
+    return showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text("Waiter is coming soon"),
+          actions: <Widget>[
+            MaterialButton(
+              elevation: 5.0,
+              child: Text(
+                'OK',
+                style: TextStyle(
+                  fontSize: 18.0,
+                  color: kSemiDarkGreen,
+                ),
+              ),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            ),
+          ],
+        );
+      },
     );
   }
 }
