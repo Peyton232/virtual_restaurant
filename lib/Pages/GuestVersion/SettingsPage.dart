@@ -112,44 +112,6 @@ class _SettingsPageState extends State<SettingsPage> {
               children: <Widget>[
                 Expanded(
                   child: Text(
-                    "High Contrast Mode:",
-                    style: kSettingsHeaderTextStyle,
-                    textAlign: TextAlign.left,
-                  ),
-                ),
-                //TODO: Redo look of Switch. It looks weird
-                Expanded(
-                  flex: 2,
-                  child: Switch.adaptive(
-                      activeColor: kGreen,
-                      value: _highContrastToggle,
-                      onChanged: (bool newValue) {
-                        setState(() {
-                          _highContrastToggle = newValue;
-                        });
-                      }),
-                ),
-
-                // CustomSwitch(
-                //   activeColor: kGreen,
-                //   value: _highContrastToggle,
-                //   onChanged: (value) {
-                //     print("VALUE : $value");
-                //     setState(() {
-                //       _highContrastToggle = value;
-                //     });
-                //   },
-                // ),
-              ],
-            ),
-            SizedBox(
-              height: 20.0,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: <Widget>[
-                Expanded(
-                  child: Text(
                     "Font Size:",
                     style: kSettingsHeaderTextStyle,
                     textAlign: TextAlign.left,
@@ -176,7 +138,7 @@ class _SettingsPageState extends State<SettingsPage> {
                   ),
                 ),
                 Text(
-                  " 30",
+                  " 30 ",
                   style: TextStyle(fontSize: 25.0),
                 ),
               ],
@@ -215,8 +177,33 @@ class _SettingsPageState extends State<SettingsPage> {
                   ),
                 ),
                 Text(
-                  " 30",
+                  " 30 ",
                   style: TextStyle(fontSize: 25.0),
+                ),
+              ],
+            ),
+            SizedBox(
+              height: 20.0,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: <Widget>[
+                Text(
+                  "High Contrast Mode:",
+                  style: kSettingsHeaderTextStyle,
+                  textAlign: TextAlign.left,
+                ),
+                //TODO: Redo look of Switch. It looks weird
+                Padding(
+                  padding: const EdgeInsets.only(left: 100.0),
+                  child: Switch.adaptive(
+                      activeColor: kGreen,
+                      value: _highContrastToggle,
+                      onChanged: (bool newValue) {
+                        setState(() {
+                          _highContrastToggle = newValue;
+                        });
+                      }),
                 ),
               ],
             ),
