@@ -15,6 +15,7 @@ import 'package:virtual_restaurant/Pages/ManagerVersion/ManagerHomeScreen.dart';
 import 'package:virtual_restaurant/Pages/ManagerVersion/ManagerLoginScreen.dart';
 import 'package:virtual_restaurant/Pages/ManagerVersion/ManagerReportPage.dart';
 import 'package:virtual_restaurant/Pages/WaiterVersion/WaiterLoginScreen.dart';
+import 'package:virtual_restaurant/Pages/KitchenVersion/KitchenHomeScreen.dart';
 import 'Pages/GuestVersion/QRPage.dart';
 import 'Pages/welcomeScreen.dart';
 import 'Data/constants.dart';
@@ -40,6 +41,7 @@ class MyApp extends StatelessWidget {
       routes: {
         "/WelcomeScreen": (context) => WelcomePage(),
         "/GuestHomeScreen": (context) => GuestHomeScreen(),
+        "/KitchenHomeScreen": (context) => KitchenHomeScreen(),
         "/ManagerHomeScreen": (context) => ManagerHomeScreen(),
         "/ManagerReportPage": (context) => ManagerReportPage(),
         "/ManagerLoginScreen": (context) => ManagerLoginScreen(),
