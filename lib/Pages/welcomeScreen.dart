@@ -37,7 +37,7 @@ class WelcomePage extends StatelessWidget {
             CustomLoginCard(
               label: "Tabletop Mode",
               cardTapped: () {
-                Navigator.pushNamed(context, "/GuestHomeScreen");
+                Navigator.pushReplacementNamed(context, "/GuestHomeScreen");
               },
             ),
             CustomLoginCard(

@@ -37,6 +37,13 @@ class _SpinningWheelState extends State<SpinningWheel> {
               child: FortuneWheel(
                 animateFirst: animateWheel,
                 selected: selected,
+                onAnimationEnd: () {
+                  if (selected == 0) {
+                    createAlertDialog(context);
+                  } else {
+                    animateWheel = false;
+                  }
+                },
                 items: [
                   FortuneItem(
                     style: FortuneItemStyle(
@@ -82,37 +89,22 @@ class _SpinningWheelState extends State<SpinningWheel> {
             onPressed: () {
               setState(() {
                 animateWheel = true;
-
                 selected = Random().nextInt(items.length);
-                if (selected == 0) {
-                  print("Free Dessert!");
-                  createAlertDialog(context);
-                } else {
-                  animateWheel = false;
-                }
               });
             },
-            child: selected == 0
-                ? Padding(
-                    padding: const EdgeInsets.symmetric(
-                      vertical: 5.0,
-                      horizontal: 20.0,
-                    ),
-                    child: Text(
-                      "Claim!",
-                      style: TextStyle(fontSize: 25.0),
-                    ),
-                  )
-                : Padding(
-                    padding: const EdgeInsets.symmetric(
-                      vertical: 5.0,
-                      horizontal: 20.0,
-                    ),
-                    child: Text(
-                      "Spin",
-                      style: TextStyle(fontSize: 25.0),
-                    ),
-                  ),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(
+                vertical: 5.0,
+                horizontal: 20.0,
+              ),
+              child: Text(
+                "Spin",
+                style: TextStyle(fontSize: 25.0),
+              ),
+            ),
+          ),
+          SizedBox(
+            height: 10.0,
           ),
         ],
       ),
@@ -125,11 +117,17 @@ class _SpinningWheelState extends State<SpinningWheel> {
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: Text("You won a dessert!"),
+          title: Text("You won a free dessert!"),
           actions: <Widget>[
             MaterialButton(
               elevation: 5.0,
-              child: Text('Claim'),
+              child: Text(
+                'Claim',
+                style: TextStyle(
+                  fontSize: 18.0,
+                  color: kSemiDarkGreen,
+                ),
+              ),
               onPressed: () {
                 Navigator.of(context).pop(customController.text.toString());
                 Navigator.push(
