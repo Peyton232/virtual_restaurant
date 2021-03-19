@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:virtual_restaurant/Data/constants.dart';
-import 'package:virtual_restaurant/classes/menuItem.dart';
 import 'package:virtual_restaurant/CustomWidgets/MenuItem.dart';
 import 'package:virtual_restaurant/Database/database.dart';
 import 'package:virtual_restaurant/Data/globals.dart' as globals;
+
+//TODO: Add comments to where the customer can request modifiers in their order
 
 enum DineOption {
   dineIn,
@@ -322,7 +323,7 @@ class _MyOrderPageState extends State<MyOrderPage> {
 }
 
 //helper functions
-double getTotal(List<menuItem> order) {
+double getTotal(List<MenuItem> order) {
   double total = 0;
   //parse through and get total
   for (int i = 0; i < order.length; i++) {

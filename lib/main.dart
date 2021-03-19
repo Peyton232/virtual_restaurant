@@ -19,7 +19,12 @@ import 'package:virtual_restaurant/Pages/KitchenVersion/KitchenHomeScreen.dart';
 import 'Pages/GuestVersion/QRPage.dart';
 import 'Pages/welcomeScreen.dart';
 import 'Data/constants.dart';
-import 'Pages/MenuPage.dart';
+import 'Pages/GuestVersion/MenuPage.dart';
+
+/*
+This is the starting point of the application. This handles the overall theme
+of the app and the navigation between pages.
+ */
 
 void main() {
   runApp(MyApp());

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:virtual_restaurant/Data/constants.dart';
 import 'package:virtual_restaurant/CustomWidgets/CustomButton.dart';
 import 'package:virtual_restaurant/Pages/GuestVersion/MenuSubpageTemplate.dart';
-import 'package:virtual_restaurant/Data/MenuClass.dart';
 import 'package:virtual_restaurant/Data/globals.dart' as globals;
 
 class MenuScreen extends StatefulWidget {
@@ -35,8 +34,8 @@ class _MenuScreenState extends State<MenuScreen> {
                       builder: (context) => MenuSubpageTemplate(
                         //TODO: This will take in a list of the menu class
                         menuCategory: "Appetizers",
-                        listOfMenuItems:
-                            globals.appetizers, //TODO: How to pass list to another class
+                        listOfMenuItems: globals
+                            .appetizers, //TODO: How to pass list to another class
                       ),
                     ),
                   );
@@ -51,8 +50,8 @@ class _MenuScreenState extends State<MenuScreen> {
                       builder: (context) => MenuSubpageTemplate(
                         //TODO: This will take in a list of the menu class
                         menuCategory: "Entrees",
-                        listOfMenuItems:
-                        globals.entrees, //TODO: How to pass list to another class
+                        listOfMenuItems: globals
+                            .entrees, //TODO: How to pass list to another class
                       ),
                     ),
                   );
@@ -67,8 +66,8 @@ class _MenuScreenState extends State<MenuScreen> {
                       builder: (context) => MenuSubpageTemplate(
                         //TODO: This will take in a list of the menu class
                         menuCategory: "Sides",
-                        listOfMenuItems:
-                        globals.sides, //TODO: How to pass list to another class
+                        listOfMenuItems: globals
+                            .sides, //TODO: How to pass list to another class
                       ),
                     ),
                   );
@@ -103,8 +102,8 @@ class _MenuScreenState extends State<MenuScreen> {
                       builder: (context) => MenuSubpageTemplate(
                         //TODO: This will take in a list of the menu class
                         menuCategory: "Kid's Meal",
-                        listOfMenuItems:
-                        globals.kidsMeals, //TODO: How to pass list to another class
+                        listOfMenuItems: globals
+                            .kidsMeals, //TODO: How to pass list to another class
                       ),
                     ),
                   );
@@ -119,8 +118,8 @@ class _MenuScreenState extends State<MenuScreen> {
                       builder: (context) => MenuSubpageTemplate(
                         //TODO: This will take in a list of the menu class
                         menuCategory: "Dessert",
-                        listOfMenuItems:
-                        globals.desserts, //TODO: How to pass list to another class
+                        listOfMenuItems: globals
+                            .desserts, //TODO: How to pass list to another class
                       ),
                     ),
                   );

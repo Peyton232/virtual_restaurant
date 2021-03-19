@@ -37,7 +37,10 @@ class WelcomePage extends StatelessWidget {
             CustomLoginCard(
               label: "Tabletop Mode",
               cardTapped: () {
+                //Disables back button when going to the guest home page
                 Navigator.pushReplacementNamed(context, "/GuestHomeScreen");
+                //Enables back button when going to the guest home page
+                //Navigator.pushNamed(context, "/GuestHomeScreen");
               },
             ),
             CustomLoginCard(
