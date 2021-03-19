@@ -17,7 +17,7 @@ import 'Pages/GuestVersion/QRPage.dart';
 import 'Pages/welcomeScreen.dart';
 import 'Data/constants.dart';
 import 'Pages/MenuPage.dart';
-
+import 'package:virtual_restaurant/Pages/GuestVersion/test.dart';
 void main() {
   runApp(MyApp());
 }
@@ -38,7 +38,7 @@ class MyApp extends StatelessWidget {
       routes: {
         "/WelcomeScreen": (context) => WelcomePage(),
         "/GuestHomeScreen": (context) => GuestHomeScreen(),
-        "/ManagerHomeScreen": (context) => ManagerHomeScreen(),
+        "/ManagerHomeScreen": (context) => test(),     // need to change this back
         "/ManagerReportPage": (context) => ManagerReportPage(),
         "/ManagerLoginScreen": (context) => ManagerLoginScreen(),
         "/ChangeMenuPage": (context) => ChangeMenuPage(),
