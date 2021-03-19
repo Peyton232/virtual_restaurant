@@ -4,6 +4,7 @@ import 'package:virtual_restaurant/CustomWidgets/CustomButton.dart';
 import 'package:virtual_restaurant/CustomWidgets/KidsModeButton.dart';
 import 'package:virtual_restaurant/CustomWidgets/BottomNavBarItems.dart';
 import 'package:virtual_restaurant/Pages/GuestVersion/MyOrderPage.dart';
+import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:virtual_restaurant/Data/globals.dart' as globals;
 
 /*
@@ -130,6 +131,36 @@ class _GuestHomeScreenState extends State<GuestHomeScreen> {
             ),
           ],
         ),
+        // bottomNavigationBar: ConvexAppBar(
+        //   style: TabStyle.fixed,
+        //   backgroundColor: kGreen,
+        //   initialActiveIndex: 1,
+        //   items: [
+        //     TabItem(icon: Icons.build, title: "Setting"),
+        //     TabItem(icon: Icons.assignment, title: "My Orders"),
+        //     TabItem(icon: Icons.receipt, title: "Pay Bill"),
+        //   ],
+        //   onTap: (int index) {
+        //     if (index == 0) {
+        //       Navigator.pushNamed(context, "/SettingsPage");
+        //     } else if (index == 1) {
+        //       Navigator.push(
+        //         context,
+        //         MaterialPageRoute(
+        //           builder: (context) {
+        //             return MyOrderPage(
+        //               orderID: "Order I-7845",
+        //               //TODO: Add order ID here
+        //               //TODO: Pass current list of order here
+        //             );
+        //           },
+        //         ),
+        //       );
+        //     } else {
+        //       Navigator.pushNamed(context, "/PayBillPage");
+        //     }
+        //   },
+        // ),
       ),
     );
   }

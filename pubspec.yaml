@@ -28,6 +28,7 @@ dependencies:
   firebase_database: ^6.1.0
   flutter_fortune_wheel: ^0.4.2 # <-- This breaks with google_sign_in <= 4.5.0
   qr_flutter: ^3.2.0
+  convex_bottom_bar: ^3.0.0
 
 
   # The following adds the Cupertino Icons font to your application.
