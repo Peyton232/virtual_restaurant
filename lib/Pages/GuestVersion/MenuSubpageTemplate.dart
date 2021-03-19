@@ -2,12 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:virtual_restaurant/CustomWidgets/MenuItem.dart';
 import 'package:virtual_restaurant/Pages/GuestVersion/MyOrderPage.dart';
 import 'package:virtual_restaurant/Data/constants.dart';
-import 'package:virtual_restaurant/classes/menuItem.dart';
+
+/*
+This is the file used to create all the menu items for each category. This will take in a list
+of menu items from MenuPage.dart and the UI will be created using the class in MenuItem.dart
+ */
 
 class MenuSubpageTemplate extends StatelessWidget {
   final String menuCategory;
   //final List<Menu> listOfMenuItems;
-  final List<menuItem> listOfMenuItems;
+  final List<MenuItem> listOfMenuItems;
 
   MenuSubpageTemplate({
     this.menuCategory,
@@ -62,6 +66,8 @@ class MenuSubpageTemplate extends StatelessWidget {
         ],
       ),
       body: Container(
+        //ListView.builder makes the UI for the menu items. The amount of items displayed in each category
+        //will depend on the amount of items in the list
         child: ListView.builder(
           physics: ClampingScrollPhysics(),
           shrinkWrap: true,
@@ -70,7 +76,7 @@ class MenuSubpageTemplate extends StatelessWidget {
             return MenuItem(
               name: listOfMenuItems[index].name,
               //allergens: listOfMenuItems[index].allergens,
-              calories: int.parse(listOfMenuItems[index].calories),
+              calories: listOfMenuItems[index].calories,
               description: listOfMenuItems[index].description,
               price: listOfMenuItems[index].price,
             );

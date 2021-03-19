@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:virtual_restaurant/Data/constants.dart';
 import 'package:custom_switch/custom_switch.dart';
 
+/*
+This is the page where the customer can change the settings of the app
+ */
+
 const kSettingsHeaderTextStyle = TextStyle(
   fontSize: 30.0,
 );

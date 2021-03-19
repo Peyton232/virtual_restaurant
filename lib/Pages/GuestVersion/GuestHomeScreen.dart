@@ -6,6 +6,10 @@ import 'package:virtual_restaurant/CustomWidgets/BottomNavBarItems.dart';
 import 'package:virtual_restaurant/Pages/GuestVersion/MyOrderPage.dart';
 import 'package:virtual_restaurant/Data/globals.dart' as globals;
 
+/*
+This is the screen page that the user will see on the table.
+ */
+
 class GuestHomeScreen extends StatefulWidget {
   @override
   _GuestHomeScreenState createState() => _GuestHomeScreenState();
@@ -18,6 +22,7 @@ class _GuestHomeScreenState extends State<GuestHomeScreen> {
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
+      //Disables back button in software and hardware
       onWillPop: () async => false,
       child: Scaffold(
         appBar: PreferredSize(

@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 
+/*
+This file is used for the theme of the app. This can make the UI consistent throughout
+the app
+ */
+
 //Colors used throughout the application
 const kDarkGreen = Color(0xff054a29);
 const kSemiDarkGreen = Color(0xff137547);

@@ -1,6 +1,9 @@
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
+
+/*
+This is where the waiter can input their credentials and access the waiter home screen
+ */
 
 class WaiterLoginScreen extends StatelessWidget {
   String password = "";
@@ -14,7 +17,7 @@ class WaiterLoginScreen extends StatelessWidget {
       ),
       body: Padding(
         padding: EdgeInsets.all(20),
-        child:  Column(
+        child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
@@ -24,14 +27,21 @@ class WaiterLoginScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  Text("Username: ", style: TextStyle(fontSize: 17,),),
-                  Padding(padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),),
+                  Text(
+                    "Username: ",
+                    style: TextStyle(
+                      fontSize: 17,
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+                  ),
                   TextField(
                     decoration: InputDecoration(
                       border: OutlineInputBorder(),
                       hintText: 'Enter Your Name',
                     ),
-                    onChanged: (text){
+                    onChanged: (text) {
                       username = text;
                     },
                   ),
@@ -44,15 +54,22 @@ class WaiterLoginScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  Text("Password: ", style: TextStyle(fontSize: 17,),),
-                  Padding(padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),),
+                  Text(
+                    "Password: ",
+                    style: TextStyle(
+                      fontSize: 17,
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+                  ),
                   TextField(
                     decoration: InputDecoration(
                       border: OutlineInputBorder(),
                       hintText: 'Enter Your Password',
                     ),
                     obscureText: true,
-                    onChanged: (text){
+                    onChanged: (text) {
                       password = text;
                     },
                   ),
@@ -62,12 +79,13 @@ class WaiterLoginScreen extends StatelessWidget {
             ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   primary: Colors.green,
-                  minimumSize: Size(150,50),
+                  minimumSize: Size(150, 50),
                 ),
-                onPressed: (){
-                  print(["username = ",username]);
-                  print(["password = ",password]);
-                }, child: Text("Login"))
+                onPressed: () {
+                  print(["username = ", username]);
+                  print(["password = ", password]);
+                },
+                child: Text("Login"))
           ],
         ),
       ),

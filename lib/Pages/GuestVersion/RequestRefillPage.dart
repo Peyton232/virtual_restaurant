@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:virtual_restaurant/Data/constants.dart';
 
+/*
+This is the page where the customer can request multiple drinks at once
+ */
+
 class Drink {
   bool isSelected;
   String drinkName;
@@ -69,9 +73,7 @@ class _RequestRefillPageState extends State<RequestRefillPage> {
               ),
               child: GridView.count(
                 childAspectRatio: 6,
-                // crossAxisCount is the number of columns
                 crossAxisCount: 2,
-                // This creates two columns with two items in each column
                 children: List.generate(currentOrderDrinks.length, (index) {
                   return Card(
                     margin: EdgeInsets.all(10.0),
@@ -161,25 +163,3 @@ class RefillOptionButton extends StatelessWidget {
     );
   }
 }
-
-// return Card(
-// margin: EdgeInsets.symmetric(
-// vertical: 15.0,
-// ),
-// color: kOffWhite,
-// elevation: 3.0,
-// child: CheckboxListTile(
-// controlAffinity: ListTileControlAffinity.leading,
-// contentPadding: EdgeInsets.all(10),
-// title: Text(
-// currentOrderDrinks[index].drinkName,
-// style: kLoginCardTextStyle,
-// ),
-// value: currentOrderDrinks[index].isSelected,
-// onChanged: (bool value) {
-// setState(() {
-// currentOrderDrinks[index].isSelected = value;
-// });
-// },
-// ),
-// );
