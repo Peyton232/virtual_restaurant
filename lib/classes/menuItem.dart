@@ -6,11 +6,11 @@ import 'package:virtual_restaurant/Data/constants.dart';
 abstract class Item {
   String itemName;
   double price;
-  FoodCategory itemFoodCategory;
+  String itemFoodCategory;
 
   double get getItemPrice;
   String get getItemName;
-  FoodCategory get getItemCategory;
+  String get getItemCategory;
 }
 
 class menuItem {

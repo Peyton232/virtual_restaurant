@@ -20,8 +20,8 @@ class _testState extends State<test> {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
 
-          OrderItem oneItem = OrderItem('Scrappy Burger',6.77, FoodCategory.Entree);
-          Order newOrder;
+          OrderItem oneItem = OrderItem('Scrappy Burger', 6.77, "Entree");
+          Order newOrder = new Order.customNumber(100004);
           newOrder.addItem(oneItem);
           sendOrderToFirebase(newOrder);
         },

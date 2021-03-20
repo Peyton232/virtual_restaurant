@@ -73,3 +73,13 @@ DatabaseReference sendOrderToFirebase(Order orderToProcess) {
 return id;
 }
 
+/*
+ * This is the *specific* order retrieval function. Pass in the table
+ */
+
+Future<Order> retrieveOrderFromDatabase(String tableIDtoFetch, int orderNumbertoFetch) {
+
+
+
+  return null;
+}

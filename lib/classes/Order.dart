@@ -18,10 +18,16 @@ class Order {
     //TODO: Get order number from Database or locally.
     _isReadyFromKitchen = false;
   }
-
+  Order.customNumber(int passedNumber){
+    _orderNumber = passedNumber;
+    _orderContents = [];
+    _orderTotal = 0.0;
+    //TODO: Get order number from Database or locally.
+    _isReadyFromKitchen = false;
+  }
   //Runs at O(n) since I do not want to account for list manipulation and identifying new items in the orderContents.
   //This should be used if unsure of the order's total.
-  void _sumOrderTotal() {
+  void sumOrderTotal() {
     _orderTotal = 0.0;
     for( var item in _orderContents ) {
       _orderTotal += item.getItemPrice;
@@ -60,8 +66,9 @@ class Order {
   List<OrderItem> getItemsOfCategoryFromOrder(FoodCategory categoryFilter) {
     List<OrderItem> filteredOutOrderItemsList = [];
     for( OrderItem obj in this._orderContents ) {
-      if(obj.itemFoodCategory == categoryFilter)
+      if(obj.itemFoodCategory == toStringFoodCategory(categoryFilter)) {
         filteredOutOrderItemsList.add(new OrderItem.clone(obj));
+      }
     }
 
     return filteredOutOrderItemsList;
@@ -81,7 +88,7 @@ class Order {
  */
 class OrderItem extends Item with ModifyItem {
 
-  OrderItem(String passedName, double passedPrice, FoodCategory passedCategory){
+  OrderItem(String passedName, double passedPrice, String passedCategory){
     this.itemName = passedName;
     this.price = passedPrice;
     this.itemFoodCategory = passedCategory;
@@ -95,6 +102,7 @@ class OrderItem extends Item with ModifyItem {
     this.itemName = objectToClone.getItemName;
     this.price = objectToClone.price;
     this.itemFoodCategory = objectToClone.itemFoodCategory;
+
   }
 
   OrderItem.MenuItemClone(MenuItem MenuItemToClone){
@@ -116,5 +124,5 @@ class OrderItem extends Item with ModifyItem {
 
   @override
   // TODO: implement getItemCategory
-  FoodCategory get getItemCategory => this.itemFoodCategory;
+  String get getItemCategory => this.itemFoodCategory;
 }

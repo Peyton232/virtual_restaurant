@@ -33,4 +33,22 @@ enum FoodCategory {
   Side
 }
 
+String toStringFoodCategory(FoodCategory cat) {
+  switch(cat) {
+    case FoodCategory.Appetizer:
+      return "Appetizer";
+    case FoodCategory.Dessert:
+      return "Dessert";
+    case FoodCategory.Drink:
+      return "Drink";
+    case FoodCategory.Entree:
+      return "Entree";
+    case FoodCategory.KidsMeal:
+      return "Kids Meal";
+    case FoodCategory.Side:
+      return "Side";
+    default:
+      return "null";
+  }
+}
 const MaxNumberOfTables = 20;
