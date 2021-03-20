@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:virtual_restaurant/Pages/GuestVersion/games/ticTacToe.dart';
+import 'package:virtual_restaurant/Pages/GuestVersion/games/snake.dart';
 import 'package:virtual_restaurant/Data/constants.dart';
 
 /*
@@ -56,7 +57,7 @@ class _GamesPageState extends State<GamesPage> {
                         ),
                         height: 250,
                         child: Center(
-                          child: Text("Image"), //TODO: Replace text with image
+                            child: Image.asset('images/ticcytaccy.png'),
                         ),
                       ),
                     ),
@@ -138,9 +139,7 @@ class _GamesPageState extends State<GamesPage> {
                           ),
                         ),
                         height: 250,
-                        child: Center(
-                          child: Text("Image"), //TODO: Replace text with image
-                        ),
+                        child: Image.asset('images/snaky.png'),
                       ),
                     ),
                     Expanded(
@@ -173,7 +172,13 @@ class _GamesPageState extends State<GamesPage> {
                                   primary: Colors.green,
                                   minimumSize: Size(180, 60),
                                 ),
-                                onPressed: () {},
+                                onPressed: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => SnakeGame()),
+                                  );
+                                },
                                 child: Text(
                                   "Play",
                                   style: TextStyle(
