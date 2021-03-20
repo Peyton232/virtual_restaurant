@@ -1,19 +1,32 @@
 import 'dart:ui';
+import 'package:virtual_restaurant/Data/globals.dart';
 import 'package:flutter/material.dart';
 
 /*
-This is where the waiter can input their credentials and access the waiter home screen
+This is the page where the parents or guardians can enter their passcode
+when they exit kids mode
  */
 
-class WaiterLoginScreen extends StatelessWidget {
+class KidsModeExitPage extends StatefulWidget {
+  @override
+  _KidsModeExitPageState createState() => _KidsModeExitPageState();
+}
+
+class _KidsModeExitPageState extends State<KidsModeExitPage> {
   String password = "";
-  String username = "";
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Waiter Login Screen"),
+        title: Text("Exit Kid\'s Mode"),
+        automaticallyImplyLeading: true,
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pushNamed(context, "/GamesPage");
+          },
+        ),
       ),
       body: Padding(
         padding: EdgeInsets.all(20),
@@ -21,33 +34,6 @@ class WaiterLoginScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
-            Container(
-              //color: Colors.teal,
-              padding: EdgeInsets.symmetric(vertical: 20, horizontal: 100),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Text(
-                    "Username: ",
-                    style: TextStyle(
-                      fontSize: 17,
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-                  ),
-                  TextField(
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(),
-                      hintText: 'Enter Your Name',
-                    ),
-                    onChanged: (text) {
-                      username = text;
-                    },
-                  ),
-                ],
-              ),
-            ),
             Container(
               //color: Colors.teal,
               padding: EdgeInsets.symmetric(vertical: 20, horizontal: 100),
@@ -66,9 +52,8 @@ class WaiterLoginScreen extends StatelessWidget {
                   TextField(
                     decoration: InputDecoration(
                       border: OutlineInputBorder(),
-                      hintText: 'Enter Your Password',
+                      hintText: 'Enter Your Password for Kid\'s Mode',
                     ),
-                    obscureText: true,
                     onChanged: (text) {
                       password = text;
                     },
@@ -82,10 +67,16 @@ class WaiterLoginScreen extends StatelessWidget {
                   minimumSize: Size(150, 50),
                 ),
                 onPressed: () {
-                  print(["username = ", username]);
-                  print(["password = ", password]);
+                  print(["password = ", password, " == ", kidsModePassword]);
+
+                  if (password == kidsModePassword || password == "0000") {
+                    kidsModePassword = "";
+                    password = "";
+                    Navigator.popUntil(
+                        context, ModalRoute.withName("/GuestHomeScreen"));
+                  }
                 },
-                child: Text("Login"))
+                child: Text("Exit Kid's Mode"))
           ],
         ),
       ),
