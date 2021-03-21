@@ -7,10 +7,10 @@ class MenuItem extends Item {
   String name;
   List<String> allergens; //list
   bool available;
-  String calories; //rounded int calories
+  int calories; //rounded int calories
   List<String> contents;
   String description;
-  String price; //float price
+  double price; //float price
 
   // AssetImage image;
 
@@ -32,4 +32,13 @@ class MenuItem extends Item {
 
   @override
   FoodCategory get getItemCategory => this.category;
+
+  List<String> get getAllergens => this.allergens;
+  bool get isAvailable => this.isAvailable;
+  int get getCalories => this.calories;
+  List<String> get getContents => this.contents;
+  String get getDescription => this.description;
+  double get getPrice => this.price;
+
+
 }

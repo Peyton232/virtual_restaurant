@@ -22,5 +22,5 @@ class KitchenOrder extends Order{
   List<KitchenItem> get getOrderContents{
     return new List<KitchenItem>.from(orderContents);
   }
-  
+
 }

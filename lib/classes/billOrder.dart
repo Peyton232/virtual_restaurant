@@ -2,6 +2,7 @@ import 'package:virtual_restaurant/Data/constants.dart';
 import 'orderItem.dart';
 import 'order.dart';
 
+
 class BillOrder extends Order{
 
   int tableNumber;
