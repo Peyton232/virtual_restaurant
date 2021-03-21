@@ -6,7 +6,7 @@ import 'package:virtual_restaurant/Data/constants.dart';
 abstract class Item {
   String itemName;
   double price;
-  String itemFoodCategory;
+  FoodCategory itemFoodCategory;
 
   double get getItemPrice;
   String get getItemName;

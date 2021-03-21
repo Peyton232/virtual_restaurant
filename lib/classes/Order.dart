@@ -88,7 +88,7 @@ class Order {
  */
 class OrderItem extends Item with ModifyItem {
 
-  OrderItem(String passedName, double passedPrice, String passedCategory){
+  OrderItem(String passedName, double passedPrice, FoodCategory passedCategory){
     this.itemName = passedName;
     this.price = passedPrice;
     this.itemFoodCategory = passedCategory;
@@ -123,6 +123,5 @@ class OrderItem extends Item with ModifyItem {
   String get getItemName => this.itemName;
 
   @override
-  // TODO: implement getItemCategory
-  String get getItemCategory => this.itemFoodCategory;
+  String get getItemCategory => toStringFoodCategory(this.itemFoodCategory);
 }
