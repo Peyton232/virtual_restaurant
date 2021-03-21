@@ -13,6 +13,7 @@ class KitchenItem extends Item with ModifyItem{
   KitchenItem({
    this.category,
    this.name,
+   this.modifications
 
   });
 

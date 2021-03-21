@@ -59,7 +59,7 @@ class BillOrder extends Order{
     List<OrderItem> filteredOrderItemsList = [];
     for(int x = 0; x < orderContents.length; x++ ) {
       if(orderContents[x].getItemCategory == categoryFilter) {
-        filteredOrderItemsList.add(new OrderItem.clone(orderContents[x]);
+        filteredOrderItemsList.add(new OrderItem.clone(orderContents[x]));
       }
     }
 
