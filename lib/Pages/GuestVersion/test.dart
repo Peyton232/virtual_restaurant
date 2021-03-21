@@ -19,10 +19,13 @@ class _testState extends State<test> {
       body: const Center(child: Text("Press the button kronk!")),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-
-          OrderItem oneItem = OrderItem('Scrappy Burger',6.77, FoodCategory.Entree);
-          Order newOrder;
+          Order newOrder = new Order.customNumber(100006);
+          OrderItem oneItem = OrderItem('Scrappy Burger', 7.77, FoodCategory.Entree);
+          OrderItem twoItem = OrderItem('Scrappy Balls', 6.69, FoodCategory.Appetizer);
+          OrderItem threeItem = OrderItem('Scrappy Fingers', 9.77, FoodCategory.Entree);
           newOrder.addItem(oneItem);
+          newOrder.addItem(twoItem);
+          newOrder.addItem(threeItem);
           sendOrderToFirebase(newOrder);
         },
         child: const Icon(Icons.navigation),
