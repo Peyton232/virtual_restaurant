@@ -1,41 +1,35 @@
-import 'dart:io';
-import 'package:flutter/cupertino.dart';
 import 'package:virtual_restaurant/Data/constants.dart';
-//TODO: refactor MenuItem name to UpperCamelCase for types
+import 'Item.dart';
 
-abstract class Item {
-  String itemName;
-  double price;
-  FoodCategory itemFoodCategory;
 
-  double get getItemPrice;
-  String get getItemName;
-  String get getItemCategory;
-}
-
-class menuItem {
+class MenuItem extends Item {
+  FoodCategory category;
   String name;
-  String allergens;//list
+  List<String> allergens; //list
   bool available;
-  String calories;//rounded int calories
+  String calories; //rounded int calories
+  List<String> contents;
   String description;
-  String price;//float price
+  String price; //float price
 
-  AssetImage image;
+  // AssetImage image;
 
-  menuItem({
-    @required this.name,
-    @required this.description,
-    @required this.price,
-    @required this.calories,
-    @required this.allergens,
+  MenuItem({
+    this.category,
+    this.name,
+    this.allergens,
+    this.available,
+    this.calories,
+    this.contents,
+    this.description,
+    this.price,
+
     //TODO: @required this.image, image files for menu.
   });
-}
 
-mixin ModifyItem {
-  String modifications;
+  @override
+  String get getItemName => this.name;
 
-  set makeModifications(String modInfo);
-  String get getModifications;
+  @override
+  FoodCategory get getItemCategory => this.category;
 }

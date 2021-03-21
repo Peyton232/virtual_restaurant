@@ -5,7 +5,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:virtual_restaurant/classes/menuItem.dart';
 import 'package:virtual_restaurant/Data/globals.dart' as globals;
-import 'package:virtual_restaurant/classes/Order.dart';
+import 'package:virtual_restaurant/classes/billOrder.dart';
 
 final databaseReference = FirebaseDatabase.instance.reference();
 final customerTableDatabaseReference = FirebaseDatabase.instance.reference().child('tables');//.push().child(path).set().asStream()

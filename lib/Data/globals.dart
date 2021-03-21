@@ -3,7 +3,7 @@ library my_prj.globals;
 import 'dart:collection';
 
 import 'package:virtual_restaurant/classes/CustomerTable.dart';
-import 'package:virtual_restaurant/classes/Order.dart';
+import 'package:virtual_restaurant/classes/billOrder.dart';
 
 import '../classes/menuItem.dart';
 

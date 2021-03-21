@@ -2,7 +2,7 @@
 
 
 import 'package:flutter/cupertino.dart';
-import 'package:virtual_restaurant/classes/Order.dart';
+import 'package:virtual_restaurant/classes/billOrder.dart';
 
 
 //A CustomerTable object should be created upon assignment to a device by the manager.

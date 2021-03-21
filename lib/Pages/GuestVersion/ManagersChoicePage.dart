@@ -34,7 +34,7 @@ class _ManagersChoicePageState extends State<ManagersChoicePage> {
                   top: 20.0,
                 ),
                 child: Text(
-                  "(Menu Item Name)",
+                  "(Menu Item.dart Name)",
                   style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
                 ),
               ),
