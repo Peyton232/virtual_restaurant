@@ -202,7 +202,7 @@ class _GamesPageState extends State<GamesPage> {
                             flex: 1,
                             child: Container(
                               padding: EdgeInsets.all(12),
-                              child: Text("Snake",
+                              child: Text("Mine Sweeper",
                                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 40),
                               ),
                             ),
@@ -226,7 +226,7 @@ class _GamesPageState extends State<GamesPage> {
                                         minimumSize: Size(180,60),
                                       ),
                                       onPressed: (){
-
+                                        Navigator.pushNamed(context, "/MineSweeperPage");
                                       }, child: Text("Play", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),))
                               ),
                             ),

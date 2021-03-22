@@ -1,0 +1,184 @@
+
+
+import 'package:flutter/material.dart';
+
+import 'dart:math';
+import 'dart:ui';
+
+enum tile_state { covered, open}
+
+class Tile{
+  tile_state state = tile_state.covered;
+  int val = 0;
+  bool mine = false;
+}
+
+
+class MineSweeperPage extends StatefulWidget {
+
+  _MineSweeperGame createState() => _MineSweeperGame();
+}
+
+class _MineSweeperGame extends State<MineSweeperPage> {
+
+  final int num_row = 9;
+  final int num_col = 9;
+  final int num_mine = 11;
+
+  List<Tile> board = <Tile>[];
+
+  void new_Board() {
+
+    for(int i = 0;i<num_col*num_row;i++)
+      {
+        board.add(Tile());
+      }
+
+
+
+    int count = 0;
+    int count2 = 0;
+    Random rand = new Random();
+    int x;
+
+    while(count < num_mine)
+    {
+      if(count2 > 30)
+        {
+          break;
+        }
+      x = rand.nextInt(num_row*num_col);
+      if(board[x].mine ==  false)
+      {
+        board[x].mine = true;
+        if(x+1 < 81)
+          {
+            board[x+1].val = board[x+1].val + 1;
+          }
+        if(x-1 >= 0)
+          {
+            board[x-1].val = board[x-1].val + 1;
+          }
+        if(x-8 >= 0)
+          {
+            board[x-8].val = board[x-8].val + 1;
+          }
+        if(x-9 >= 0)
+        {
+          board[x-9].val = board[x-9].val + 1;
+        }
+        if(x-10 >= 0)
+        {
+          board[x-10].val = board[x-10].val + 1;
+        }
+        if(x+8 < 81)
+        {
+          board[x+8].val = board[x+8].val + 1;
+        }
+        if(x+9 < 81)
+        {
+          board[x+9].val = board[x+9].val + 1;
+        }
+        if(x+10 < 81)
+        {
+          board[x+10].val = board[x+10].val + 1;
+        }
+        count++;
+      }
+      count2++;
+      //print(count);
+    }
+  }
+
+
+  @override
+  void initState(){
+
+    new_Board();
+    super.initState();
+  }
+
+  Widget make_Board(){
+
+    List<Widget> board_tiles = <Widget>[];
+    for(int i = 0;i < num_col*num_row;i++)
+      {
+        board_tiles.add(MineTile(
+          covered: board[i].state == tile_state.covered,
+          mine: board[i].mine,
+          val: board[i].val,
+        ));
+      }
+
+
+    return Center(
+      child: Container(
+        height: 540,
+        width: 520,
+        child:GridView.count(
+          crossAxisCount: num_col,
+          children: board_tiles,
+          primary: true,
+          shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
+        ),
+      ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[
+          make_Board(),
+        ],
+      ),
+    );
+  }
+}
+
+class MineTile extends StatefulWidget {
+  bool covered;
+  int val;
+  bool mine;
+
+  MineTile({
+    this.covered,
+    this.val,
+    this.mine
+  });
+  _MineTile createState() => _MineTile(
+
+  );
+}
+
+
+
+
+class _MineTile extends State<MineTile> {
+
+
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+        child: Container(
+          margin: EdgeInsets.all(3),
+          height: 5,
+          width: 5,
+          color: widget.covered ? Colors.black45 : Colors.blueGrey,
+          child: Center(
+            child: (widget.mine && widget.covered == false) ? Icon(Icons.local_fire_department_outlined, color: Colors.red,) : Text( widget.val == 0 || widget.covered ? '' : widget.val.toString(), style: TextStyle(fontSize: 23),),
+          ),
+        ),
+      onTap: () {
+          setState((){
+            widget.covered = false;
+          });
+          print(widget.covered);
+      },
+    );
+  }
+}
