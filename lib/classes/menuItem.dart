@@ -62,7 +62,14 @@ class MenuItem extends Item with JsonConversion {
   @override
   Map<String, dynamic> toJson() {
     return {
-      "name": getItemName,
+      "name" : getItemName,
+      "category" : getItemCategory,
+      "allergens" : getAllergens,
+      "available" : isAvailable,
+      "calories" : getCalories,
+      "contents" : getContents,
+      "description" : getDescription,
+      "price" : getPrice
     };
   }
 }
