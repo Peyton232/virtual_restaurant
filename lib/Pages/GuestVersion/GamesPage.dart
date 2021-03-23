@@ -209,6 +209,20 @@ class _GamesPageState extends State<GamesPage> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
+                    Expanded(
+                      flex: 3,
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Colors.grey,
+                          borderRadius: BorderRadius.only(
+                            topRight: Radius.circular(8),
+                            topLeft: Radius.circular(8),
+                          ),
+                        ),
+                        height: 250,
+                        child: Center(child: Image.asset('images/MineSweeperImage.png'),),
+                      ),
+                    ),
                           Expanded(
                             flex: 1,
                             child: Container(
@@ -221,7 +235,7 @@ class _GamesPageState extends State<GamesPage> {
                             flex: 1,
                             child: Container(
                               padding: EdgeInsets.all(12),
-                              child: Text("Control the snake to eat the point. The farther you get the bigger it gets!",
+                              child: Text("Click every square except the ones with a bomb!",
                                 style: TextStyle(fontSize: 20),
                               ),
                             ),
