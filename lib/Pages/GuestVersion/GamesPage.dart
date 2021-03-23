@@ -209,68 +209,14 @@ class _GamesPageState extends State<GamesPage> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    Expanded(
-                      flex: 3,
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: Colors.grey,
-                          borderRadius: BorderRadius.only(
-                            topRight: Radius.circular(8),
-                            topLeft: Radius.circular(8),
-                          ),
-                        ),
-                        height: 250,
-                        child: Center(
-                          child: Text("Image"), //TODO: Replace text with image
-                        ),
-                      ),
-                    ),
-                    Expanded(
-                      flex: 1,
-                      child: Container(
-                        padding: EdgeInsets.all(12),
-                        child: Text(
-                          "Pong",
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 40),
-                        ),
-                      ),
-                    ),
-                    Expanded(
-                      flex: 1,
-                      child: Container(
-                        padding: EdgeInsets.all(12),
-                        child: Text(
-                          "Control the snake to eat the point. The farther you get the bigger it gets!",
-                          style: TextStyle(fontSize: 20),
-                        ),
-                      ),
-                    ),
-                    Expanded(
-                      flex: 1,
-                      child: Center(
-                        child: Container(
-                            child: ElevatedButton(
-                                style: ElevatedButton.styleFrom(
-                                  primary: Colors.green,
-                                  minimumSize: Size(180, 60),
-                                ),
-                              ),
-                              height: 250,
-                              child: Center(
-                                child: Text("Image"), //TODO: Replace text with image
-                              ),
-                            ),
-                          ),
                           Expanded(
                             flex: 1,
                             child: Container(
                               padding: EdgeInsets.all(12),
-                              child: Text("Mine Sweeper",
-                                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 40),
+                              child: Text("Mine Sweeper" ,style: TextStyle(fontWeight: FontWeight.bold, fontSize: 40),
                               ),
                             ),
-                          ),
+                           ),
                           Expanded(
                             flex: 1,
                             child: Container(
@@ -298,13 +244,10 @@ class _GamesPageState extends State<GamesPage> {
                         ],
                       ),
                     ),
+                    ),
                   ],
                 ),
               ),
-            ),
-          ],
-        ),
-      ),
-    );
+            );
   }
 }
