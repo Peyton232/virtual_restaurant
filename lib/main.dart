@@ -5,7 +5,6 @@ import 'package:virtual_restaurant/Pages/GuestVersion/GuestHomeScreen.dart';
 import 'package:virtual_restaurant/Pages/GuestVersion/KidsModeEntrancePage.dart';
 import 'package:virtual_restaurant/Pages/GuestVersion/KidsModeExitPage.dart';
 import 'package:virtual_restaurant/Pages/GuestVersion/ManagersChoicePage.dart';
-import 'package:virtual_restaurant/Pages/GuestVersion/MyOrderPage.dart';
 import 'package:virtual_restaurant/Pages/GuestVersion/PayBillPage.dart';
 import 'package:virtual_restaurant/Pages/GuestVersion/RequestRefillPage.dart';
 import 'package:virtual_restaurant/Pages/GuestVersion/SettingsPage.dart';
@@ -15,8 +14,12 @@ import 'package:virtual_restaurant/Pages/ManagerVersion/ManagerHomeScreen.dart';
 import 'package:virtual_restaurant/Pages/ManagerVersion/ManagerLoginScreen.dart';
 import 'package:virtual_restaurant/Pages/ManagerVersion/ManagerReportPage.dart';
 import 'package:virtual_restaurant/Pages/WaiterVersion/WaiterLoginScreen.dart';
+
+import 'package:virtual_restaurant/Pages/GuestVersion/games/MineSweeper.dart';
+
 import 'package:virtual_restaurant/Pages/KitchenVersion/KitchenHomeScreen.dart';
 import 'Pages/GuestVersion/QRPage.dart';
+
 import 'Pages/welcomeScreen.dart';
 import 'Data/constants.dart';
 import 'Pages/GuestVersion/MenuPage.dart';
@@ -31,6 +34,7 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -64,6 +68,7 @@ class MyApp extends StatelessWidget {
         "/SplitBillPage": (context) => SplitBillPage(),
         "/KidsModeEntrancePage": (context) => KidsModeEntrancePage(),
         "/KidsModeExitPage": (context) => KidsModeExitPage(),
+        "/MineSweeperPage": (context) => MineSweeperPage(),
       },
     );
   }

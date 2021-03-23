@@ -255,13 +255,47 @@ class _GamesPageState extends State<GamesPage> {
                                   primary: Colors.green,
                                   minimumSize: Size(180, 60),
                                 ),
-                                onPressed: () {},
-                                child: Text(
-                                  "Play",
-                                  style: TextStyle(
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.bold),
-                                ))),
+                              ),
+                              height: 250,
+                              child: Center(
+                                child: Text("Image"), //TODO: Replace text with image
+                              ),
+                            ),
+                          ),
+                          Expanded(
+                            flex: 1,
+                            child: Container(
+                              padding: EdgeInsets.all(12),
+                              child: Text("Mine Sweeper",
+                                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 40),
+                              ),
+                            ),
+                          ),
+                          Expanded(
+                            flex: 1,
+                            child: Container(
+                              padding: EdgeInsets.all(12),
+                              child: Text("Control the snake to eat the point. The farther you get the bigger it gets!",
+                                style: TextStyle(fontSize: 20),
+                              ),
+                            ),
+                          ),
+                          Expanded(
+                            flex: 1,
+                            child: Center(
+                              child: Container(
+                                  child: ElevatedButton(
+                                      style: ElevatedButton.styleFrom(
+                                        primary: Colors.green,
+                                        minimumSize: Size(180,60),
+                                      ),
+                                      onPressed: (){
+                                        Navigator.pushNamed(context, "/MineSweeperPage");
+                                      }, child: Text("Play", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),))
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   ],
