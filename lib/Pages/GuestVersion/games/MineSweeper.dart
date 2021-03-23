@@ -6,6 +6,7 @@ import 'dart:math';
 import 'dart:ui';
 
 enum tile_state { covered, open}
+int win_Count = 0;
 
 class Tile{
   tile_state state = tile_state.covered;
@@ -28,7 +29,9 @@ class _MineSweeperGame extends State<MineSweeperPage> {
   List<Tile> board = <Tile>[];
 
   void new_Board() {
+    win_Count = 0;
 
+    //  creates board of class tile to create the data for each tile
     for(int i = 0;i<num_col*num_row;i++)
       {
         board.add(Tile());
@@ -38,9 +41,11 @@ class _MineSweeperGame extends State<MineSweeperPage> {
 
     int count = 0;
     int count2 = 0;
+    int numMines = 0;
     Random rand = new Random();
     int x;
 
+    //Creates randomized bomb placement and determines numbers for each tile
     while(count < num_mine)
     {
       if(count2 > 30)
@@ -51,6 +56,8 @@ class _MineSweeperGame extends State<MineSweeperPage> {
       if(board[x].mine ==  false)
       {
         board[x].mine = true;
+        numMines++;
+        //print(numMines);
         if(x+1 < 81)
           {
             board[x+1].val = board[x+1].val + 1;
@@ -98,6 +105,7 @@ class _MineSweeperGame extends State<MineSweeperPage> {
     super.initState();
   }
 
+  //Makes the board of widget tiles using gridview
   Widget make_Board(){
 
     List<Widget> board_tiles = <Widget>[];
@@ -110,7 +118,7 @@ class _MineSweeperGame extends State<MineSweeperPage> {
         ));
       }
 
-
+    //gridview
     return Center(
       child: Container(
         height: 540,
@@ -126,6 +134,7 @@ class _MineSweeperGame extends State<MineSweeperPage> {
     );
   }
 
+  //Makes the overall page view
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -139,6 +148,7 @@ class _MineSweeperGame extends State<MineSweeperPage> {
   }
 }
 
+//class for tile used on the board
 class MineTile extends StatefulWidget {
   bool covered;
   int val;
@@ -154,9 +164,6 @@ class MineTile extends StatefulWidget {
   );
 }
 
-
-
-
 class _MineTile extends State<MineTile> {
 
 
@@ -170,15 +177,97 @@ class _MineTile extends State<MineTile> {
           width: 5,
           color: widget.covered ? Colors.black45 : Colors.blueGrey,
           child: Center(
-            child: (widget.mine && widget.covered == false) ? Icon(Icons.local_fire_department_outlined, color: Colors.red,) : Text( widget.val == 0 || widget.covered ? '' : widget.val.toString(), style: TextStyle(fontSize: 23),),
+            child: (widget.mine && widget.covered == false) ? Icon(Icons.local_fire_department_outlined, color: Colors.red,) : Text( widget.val == 0 || widget.covered ? '' : widget.val.toString(), style: TextStyle(fontSize: 23),),    //Testing (reveals all mines)     (widget.mine) ? Icon(Icons.local_fire_department_outlined, color: Colors.red,) : Text( widget.val == 0 || widget.covered ? '' : widget.val.toString(), style: TextStyle(fontSize: 23),),
           ),
         ),
       onTap: () {
-          setState((){
-            widget.covered = false;
-          });
-          print(widget.covered);
+          if(widget.covered == true)
+            {
+              setState((){
+                widget.covered = false;
+              });
+                  win_Count++;
+              if(widget.mine)
+                {
+                  print('You Lose!!!!!');
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) => _lossPopup(context),
+                  );
+                }else if (win_Count >= 81 - 11)
+                  {
+                    print('You Win!');
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) => _winPopup(context),
+                    );
+                  }
+
+              //print(widget.covered);
+            }
       },
     );
   }
+
+  //Pop up for when the player loses
+  Widget _lossPopup(BuildContext context) {
+    return new AlertDialog(
+      title: const Text('You Lose'),
+      content: new Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+      ),
+      actions: <Widget>[
+        new FlatButton(
+          //  onpressed the button pops the popup and replaces the current MineSweeperPage from page stack with another of the same page
+          onPressed: () {
+            Navigator.of(context).pop();
+            Navigator.pushReplacementNamed(context, '/MineSweeperPage');
+          },
+          textColor: Theme.of(context).primaryColor,
+          child: const Text('NEW GAME', style: TextStyle(color: Colors.green),),
+        ),
+        new FlatButton(
+          //  onpressed the button pops both the popup and the MineSweeperPage from the page stack
+          onPressed: () {
+            Navigator.of(context).pop();
+            Navigator.of(context).pop();
+          },
+          textColor: Theme.of(context).primaryColor,
+          child: const Text('CLOSE', style: TextStyle(color: Colors.green),),
+        ),
+      ],
+    );
+  }
+
+  //Pop up for when the player winds
+  Widget _winPopup(BuildContext context) {
+    return new AlertDialog(
+      title: const Text('You Win'),
+      content: new Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+      ),
+      actions: <Widget>[
+        new FlatButton(
+          onPressed: () {
+            Navigator.of(context).pop();
+            Navigator.pushReplacementNamed(context, '/MineSweeperPage');
+          },
+          textColor: Theme.of(context).primaryColor,
+          child: const Text('NEW GAME', style: TextStyle(color: Colors.green),),
+        ),
+        new FlatButton(
+        onPressed: () {
+        Navigator.of(context).pop();
+        Navigator.of(context).pop();
+        },
+        textColor: Theme.of(context).primaryColor,
+        child: const Text('CLOSE', style: TextStyle(color: Colors.green),),
+        ),
+      ],
+    );
+  }
+
 }
+
