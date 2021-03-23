@@ -141,6 +141,10 @@ class _MineSweeperGame extends State<MineSweeperPage> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
+          Container(
+            padding: EdgeInsets.all(20),
+          ),
+          Text('Find all 11 Mines!', style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),),
           make_Board(),
         ],
       ),
