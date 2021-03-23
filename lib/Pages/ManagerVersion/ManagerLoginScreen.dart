@@ -1,7 +1,11 @@
 import 'dart:ui';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+/*
+This is where the manager can input their credentials to access
+ManagerHomeScreen.dart
+ */
 
 class ManagerLoginScreen extends StatelessWidget {
   String password = "";

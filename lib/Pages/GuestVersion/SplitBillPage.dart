@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:virtual_restaurant/Data/constants.dart';
 
+/*
+This is the page where the customer can split the bill amongst their party.
+ */
+
 class SplitBillPage extends StatefulWidget {
   @override
   _SplitBillPageState createState() => _SplitBillPageState();
@@ -67,7 +71,9 @@ class _SplitBillPageState extends State<SplitBillPage> {
                 GestureDetector(
                   onTap: () {
                     setState(() {
-                      _amountOfPeople = _subPeople(_amountOfPeople);
+                      if (_amountOfPeople > 0) {
+                        _amountOfPeople = _subPeople(_amountOfPeople);
+                      } else {}
                     });
                   },
                   child: Container(

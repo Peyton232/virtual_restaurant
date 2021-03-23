@@ -14,10 +14,20 @@ import 'package:virtual_restaurant/Pages/ManagerVersion/ManagerHomeScreen.dart';
 import 'package:virtual_restaurant/Pages/ManagerVersion/ManagerLoginScreen.dart';
 import 'package:virtual_restaurant/Pages/ManagerVersion/ManagerReportPage.dart';
 import 'package:virtual_restaurant/Pages/WaiterVersion/WaiterLoginScreen.dart';
+
 import 'package:virtual_restaurant/Pages/GuestVersion/games/MineSweeper.dart';
+
+import 'package:virtual_restaurant/Pages/KitchenVersion/KitchenHomeScreen.dart';
+import 'Pages/GuestVersion/QRPage.dart';
+
 import 'Pages/welcomeScreen.dart';
 import 'Data/constants.dart';
-import 'Pages/MenuPage.dart';
+import 'Pages/GuestVersion/MenuPage.dart';
+
+/*
+This is the starting point of the application. This handles the overall theme
+of the app and the navigation between pages.
+ */
 
 void main() {
   runApp(MyApp());
@@ -40,6 +50,7 @@ class MyApp extends StatelessWidget {
       routes: {
         "/WelcomeScreen": (context) => WelcomePage(),
         "/GuestHomeScreen": (context) => GuestHomeScreen(),
+        "/KitchenHomeScreen": (context) => KitchenHomeScreen(),
         "/ManagerHomeScreen": (context) => ManagerHomeScreen(),
         "/ManagerReportPage": (context) => ManagerReportPage(),
         "/ManagerLoginScreen": (context) => ManagerLoginScreen(),
@@ -49,7 +60,9 @@ class MyApp extends StatelessWidget {
         "/SettingsPage": (context) => SettingsPage(),
         "/PayBillPage": (context) => PayBillPage(),
         "/ManagersChoicePage": (context) => ManagersChoicePage(),
-        "/FreeDessertPage": (context) => FreeDessertPage(),
+        // "/FreeDessertPage": (context) => FreeDessertPage(),
+        "/FreeDessertPage": (context) => SpinningWheel(),
+        "/QRPage": (context) => QR(),
         "/GamesPage": (context) => GamesPage(),
         "/RequestRefillPage": (context) => RequestRefillPage(),
         "/SplitBillPage": (context) => SplitBillPage(),

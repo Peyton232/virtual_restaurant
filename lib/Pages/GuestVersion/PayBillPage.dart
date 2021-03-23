@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:virtual_restaurant/Data/constants.dart';
 
 //TODO: Make UI better later. Too lazy right now :(
+/*
+This is the page where the customer can view their bill and pay.
+They have the option to give a tip and split the bill between people
+ */
 
 class PayBillPage extends StatefulWidget {
   @override
@@ -9,17 +13,6 @@ class PayBillPage extends StatefulWidget {
 }
 
 class _PayBillPageState extends State<PayBillPage> {
-  double _tipAmount = 0.00;
-
-  double _addTipAmount(double newAmount) {
-    newAmount++;
-    return newAmount;
-  }
-
-  double _subTipAmount(double _tipAmount) {
-    _tipAmount--;
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:virtual_restaurant/Data/constants.dart';
 
+/*
+This is used to create the kids mode button in the GuestHomeScreen.dart
+ */
+
 class KidsModeButton extends StatefulWidget {
   @override
   _KidsModeButtonState createState() => _KidsModeButtonState();
