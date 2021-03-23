@@ -1,9 +1,9 @@
 import 'package:virtual_restaurant/Data/constants.dart';
 import 'orderItem.dart';
 import 'order.dart';
+import 'JsonConversion.dart';
 
-
-class BillOrder extends Order{
+class BillOrder extends Order with JsonConversion{
 
   int tableNumber;
   int orderNumber;
@@ -11,14 +11,22 @@ class BillOrder extends Order{
   List<OrderItem> orderContents;
   double orderTotal;
 
-  BillOrder(
+/*  BillOrder(
       this.orderNumber,
       this.tableNumber
       ) {
     orderContents = [];
     orderTotal = 0.0;
     isReady = false;
-  }
+  }*/
+
+  BillOrder({
+    this.tableNumber,
+    this.orderNumber,
+    this.isReady,
+    this.orderTotal,
+    this.orderContents
+  });
 
 
   @override
@@ -30,6 +38,28 @@ class BillOrder extends Order{
   @override
   set orderIsReady(bool ready){
     this.isReady = ready;
+  }
+  @override
+  fromJson(Map<String, dynamic> json) {
+    return BillOrder(
+      tableNumber : json.containsKey("tableNumber") ? json["tableNumber"] : -1,
+      orderNumber : json.containsKey("orderNumber") ? json["orderNumber"] : -1,
+      isReady : json.containsKey("isReady"),
+      orderTotal : json.containsKey("orderTotal") ? json["orderTotal"] : -1,
+      orderContents: json.containsKey("orderContents") ? json["orderContents"]: -1
+
+    );
+
+  }
+
+  Map<String, dynamic> toJson(){
+    return {
+      "orderNumber" : getOrderNumber,
+      "tableNumber" : getTableNumber,
+      "isReady" : isOrderReady,
+      "orderTotal" : getPrice,
+      "orderContents" : getOrderContents
+    };
   }
 
   double get getPrice => this.orderTotal;

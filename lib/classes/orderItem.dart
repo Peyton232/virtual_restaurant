@@ -1,8 +1,9 @@
 import 'package:virtual_restaurant/Data/constants.dart';
 import 'Item.dart';
+import 'JsonConversion.dart';
 
 
-class OrderItem extends Item{
+class OrderItem extends Item with JsonConversion{
   FoodCategory category;
   String name;
   double price;
@@ -28,14 +29,20 @@ class OrderItem extends Item{
 
   @override
   fromJson(Map<String, dynamic> json) {
-    // TODO: implement fromJson
-    throw UnimplementedError();
+    return OrderItem(
+      category : json.containsKey("category") ? json["category"] : -1,
+      name : json.containsKey("name") ? json["name"] : -1,
+      price : json.containsKey("price") ? json["price"] : -1
+
+    );
   }
 
-  @override
-  Map<String, dynamic> toJson() {
-    // TODO: implement toJson
-    throw UnimplementedError();
+  Map<String, dynamic> toJson(){
+    return {
+      "name" : getItemName,
+      "price" : getItemPrice,
+      "category" : getItemCategory,
+    };
   }
 
 }

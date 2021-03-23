@@ -1,7 +1,8 @@
 import 'order.dart';
 import 'kitchenItem.dart';
+import 'JsonConversion.dart';
 
-class KitchenOrder extends Order{
+class KitchenOrder extends Order with JsonConversion{
 
   int tableNumber;
   int orderNumber;
@@ -17,6 +18,35 @@ class KitchenOrder extends Order{
   @override
   set orderIsReady(bool ready){
     this.isReady = ready;
+  }
+
+  KitchenOrder({
+    this.tableNumber,
+    this.orderNumber,
+    this.isReady,
+    this.orderContents
+});
+
+  @override
+  fromJson(Map<String, dynamic> json) {
+    return KitchenOrder(
+      tableNumber : json.containsKey("tableNumber") ? json["tableNumber"] : -1,
+      orderNumber : json.containsKey("orderNumber") ? json["orderNumber"] : -1,
+      isReady : json.containsKey("isReady"),
+      orderContents : json.containsKey("contents") ? json["contents"] : -1
+
+    );
+
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      "orderNumber": getOrderNumber,
+      "tableNumber": getTableNumber,
+      "isReady" : isOrderReady,
+      "contents" : getOrderContents
+    };
   }
 
   List<KitchenItem> get getOrderContents{
