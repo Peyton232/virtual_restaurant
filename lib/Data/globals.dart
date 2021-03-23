@@ -3,7 +3,8 @@ library my_prj.globals;
 import 'dart:collection';
 
 import 'package:virtual_restaurant/classes/CustomerTable.dart';
-import 'package:virtual_restaurant/classes/Order.dart';
+import 'package:virtual_restaurant/classes/billOrder.dart';
+import 'package:virtual_restaurant/classes/kitchenOrder.dart';
 
 import '../classes/menuItem.dart';
 
@@ -11,174 +12,175 @@ bool kidsMode = false;
 String tableID = 'T2';//To be phased out with the CustomerTable object
 
 //list of entrees
-List<menuItem> entrees = [
-  menuItem(
+List<MenuItem> entrees = [
+  MenuItem(
     name: "Scrappy head",
     description: "<item description>",
     price: "\$23.44",
-    calories: "9000",
-    allergens: "dairy gluten",
+    calories: 9000,
+    allergens: ["dairy", "gluten"],
     //image: "https://browseyou.com/media/img/src/no-item.jpg",
   ),
-  menuItem(
+  MenuItem(
     name: "<item name>",
     description: "<item description>",
     price: "\$0.00",
-    calories: "9000",
-    allergens: "dairy gluten",
+    calories: 9000,
+    allergens: ["dairy", "gluten"],
     //image: "https://browseyou.com/media/img/src/no-item.jpg",
   ),
-  menuItem(
+  MenuItem(
     name: "<item name>",
     description: "<item description>",
     price: "\$0.00",
-    calories: "9000",
-    allergens: "dairy gluten",
+    calories: 9000,
+    allergens: ["dairy", "gluten"],
     //image: "https://browseyou.com/media/img/src/no-item.jpg",
   ),
 ];
 
 //list of appetizers
-List<menuItem> appetizers = [
-  menuItem(
+List<MenuItem> appetizers = [
+  MenuItem(
     name: "Scrappy sticks",
     description: "<item description>",
     price: "\$7.99",
-    calories: "9000",
-    allergens: "dairy gluten",
+    calories: 9000,
+    allergens: ["dairy", "gluten"],
     //image: "https://browseyou.com/media/img/src/no-item.jpg",
   ),
-  menuItem(
+  MenuItem(
     name: "<item name>",
     description: "<item description>",
     price: "\$0.00",
-    calories: "9000",
-    allergens: "dairy gluten",
+    calories: 9000,
+    allergens: ["dairy", "gluten"],
     //image: "https://browseyou.com/media/img/src/no-item.jpg",
   ),
-  menuItem(
+  MenuItem(
     name: "<item name>",
     description: "<item description>",
     price: "\$0.00",
-    calories: "9000",
-    allergens: "dairy gluten",
+    calories: 9000,
+    allergens: ["dairy", "gluten"],
     //image: "https://browseyou.com/media/img/src/no-item.jpg",
   ),
 ];
 
 //list of sides
-List<menuItem> sides = [
-  menuItem(
+List<MenuItem> sides = [
+  MenuItem(
     name: "Scrappy Fries",
     description: "<item description>",
     price: "\$2.33",
-    calories: "9000",
-    allergens: "dairy gluten",
+    calories: 9000,
+    allergens: ["dairy", "gluten"],
     //image: "https://browseyou.com/media/img/src/no-item.jpg",
   ),
-  menuItem(
+  MenuItem(
     name: "<item name>",
     description: "<item description>",
     price: "\$0.00",
-    calories: "9000",
-    allergens: "dairy gluten",
+    calories: 9000,
+    allergens: ["dairy", "gluten"],
     //image: "https://browseyou.com/media/img/src/no-item.jpg",
   ),
-  menuItem(
+  MenuItem(
     name: "<item name>",
     description: "<item description>",
     price: "\$0.00",
-    calories: "9000",
-    allergens: "dairy gluten",
+    calories: 9000,
+    allergens: ["dairy", "gluten"],
     //image: "https://browseyou.com/media/img/src/no-item.jpg",
   ),
 ];
 
 //list of kidsMeals
-List<menuItem> kidsMeals = [
-  menuItem(
+List<MenuItem> kidsMeals = [
+  MenuItem(
     name: "<item name>",
     description: "<item description>",
     price: "\$0.00",
-    calories: "9000",
-    allergens: "dairy gluten",
+    calories: 9000,
+    allergens: ["dairy", "gluten"],
     //image: "https://browseyou.com/media/img/src/no-item.jpg",
   ),
-  menuItem(
+  MenuItem(
     name: "<item name>",
     description: "<item description>",
     price: "\$0.00",
-    calories: "9000",
-    allergens: "dairy gluten",
+    calories: 9000,
+    allergens: ["dairy", "gluten"],
     //image: "https://browseyou.com/media/img/src/no-item.jpg",
   ),
-  menuItem(
+  MenuItem(
     name: "<item name>",
     description: "<item description>",
     price: "\$0.00",
-    calories: "9000",
-    allergens: "dairy gluten",
+    calories: 9000,
+    allergens: ["dairy", "gluten"],
     //image: "https://browseyou.com/media/img/src/no-item.jpg",
   ),
 ];
 
 //list of desserts
-List<menuItem> desserts = [
-  menuItem(
+List<MenuItem> desserts = [
+  MenuItem(
     name: "Scrappy's ice cream",
     description: "<item description>",
     price: "\$2.93",
-    calories: "9000",
-    allergens: "dairy gluten",
+    calories: 9000,
+    allergens: ["dairy", "gluten"],
     //image: "https://browseyou.com/media/img/src/no-item.jpg",
   ),
-  menuItem(
+  MenuItem(
     name: "<item name>",
     description: "<item description>",
     price: "\$0.00",
-    calories: "9000",
-    allergens: "dairy gluten",
+    calories: 9000,
+    allergens: ["dairy", "gluten"],
     //image: "https://browseyou.com/media/img/src/no-item.jpg",
   ),
-  menuItem(
+  MenuItem(
     name: "<item name>",
     description: "<item description>",
     price: "\$0.00",
-    calories: "9000",
-    allergens: "dairy gluten",
+    calories: 9000,
+    allergens: ["dairy", "gluten"],
     //image: "https://browseyou.com/media/img/src/no-item.jpg",
   ),
 ];
 
 //list of drinks, just need name
-List<menuItem> drinks = [
-  menuItem(
+List<MenuItem> drinks = [
+  MenuItem(
     name: "Scrappy juice",
     description: "<item description>",
     price: "\$1.11",
-    calories: "9000",
-    allergens: "dairy gluten",
+    calories: 9000,
+    allergens: ["dairy", "gluten"],
     //image: "https://browseyou.com/media/img/src/no-item.jpg",
   ),
-  menuItem(
+  MenuItem(
     name: "<item name>",
     description: "<item description>",
     price: "\$0.00",
-    calories: "9000",
-    allergens: "dairy gluten",
+    calories: 9000,
+    allergens: ["dairy", "gluten"],
     //image: "https://browseyou.com/media/img/src/no-item.jpg",
   ),
-  menuItem(
+  MenuItem(
     name: "<item name>",
     description: "<item description>",
     price: "\$0.00",
-    calories: "9000",
-    allergens: "dairy gluten",
+    calories: 9000,
+    allergens: ["dairy", "gluten"],
     //image: "https://browseyou.com/media/img/src/no-item.jpg",
   ),
 ];
 
 CustomerTable thisDevicesTable = CustomerTable(tableNum:1);
-ListQueue<Order> kitchenOrders;
+
+ListQueue<KitchenOrder> kitchenOrders;
 //order, initially empty
-List<menuItem> order = [];
+List<MenuItem> order = [];

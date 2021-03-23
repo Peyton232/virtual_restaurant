@@ -2,14 +2,14 @@
 
 
 import 'package:flutter/cupertino.dart';
-import 'package:virtual_restaurant/classes/Order.dart';
+import 'package:virtual_restaurant/classes/billOrder.dart';
 
 
 //A CustomerTable object should be created upon assignment to a device by the manager.
 class CustomerTable {
   int _tableNumber;//the table's number
   String _tableID;
-  List<Order> _ordersFromTable;//This is a list of all of the orders sent to the kitchen to be fulfilled.
+  List<BillOrder> _ordersFromTable;//This is a list of all of the orders sent to the kitchen to be fulfilled.
   double tableBillTotal;//This is the total the current table must pay from all of the orders sent.
   int _ordersPlacedAtTable;
 

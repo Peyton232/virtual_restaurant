@@ -1,14 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:virtual_restaurant/Data/constants.dart';
-import 'package:virtual_restaurant/classes/menuItem.dart';
 import 'package:virtual_restaurant/CustomWidgets/MenuItem.dart';
 import 'package:virtual_restaurant/Database/database.dart';
 import 'package:virtual_restaurant/Data/globals.dart' as globals;
+
+//TODO: Add comments to where the customer can request modifiers in their order
 
 enum DineOption {
   dineIn,
   toGo,
 }
+
+const kOrderInfoTextStyle = TextStyle(
+  fontSize: 30.0,
+);
+
+const kOrderHeaderTextStyle = TextStyle(
+  fontSize: 30.0,
+  fontWeight: FontWeight.bold,
+);
 
 class MyOrderPage extends StatefulWidget {
   final String orderID;
@@ -28,6 +38,14 @@ class _MyOrderPageState extends State<MyOrderPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.home),
+            onPressed: () {
+              Navigator.popAndPushNamed(context, "/GuestHomeScreen");
+            },
+          ),
+        ],
         title: Text(
           widget.orderID,
           style: kAppBarTextStyle,
@@ -38,135 +56,47 @@ class _MyOrderPageState extends State<MyOrderPage> {
           vertical: 20.0,
         ),
         child: Column(
+          //TODO: Redo UI
           children: <Widget>[
+            globals.order.isEmpty ? _NoOrder() : _header(),
             Expanded(
-                child: Container(
-              child: ListView.builder(
-                physics: ClampingScrollPhysics(),
-                shrinkWrap: true,
-                itemCount: globals.order.length,
-                itemBuilder: (BuildContext context, int index) {
-                  return MenuItem(//Are we building another object here??
-                    name: globals.order[index].name,
-                    //allergens: listOfMenuItems[index].allergens,
-                    calories: int.parse(globals.order[index].calories),
-                    description: globals.order[index].description,
-                    price: globals.order[index].price,
-                  );
-                },
-              ),
-            )
-
-                // Container(
-                //   child:
-                //   Row(
-                //     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                //     children: <Widget>[
-                //       //Items Column => Convert to ListView
-                //       Column(
-                //         children: <Widget>[
-                //           Text(
-                //             "Items: ",
-                //             style: kOrderColumnHeaderTextStyle,
-                //           ),
-                //           Padding(
-                //             padding:
-                //                 const EdgeInsets.symmetric(vertical: kRowSpacing),
-                //             child: Text(
-                //               "Coca Cola",
-                //               style: kOrderDetailsTextStyle,
-                //             ),
-                //           ),
-                //           Padding(
-                //             padding:
-                //                 const EdgeInsets.symmetric(vertical: kRowSpacing),
-                //             child: Text(
-                //               "Caesar Salad",
-                //               style: kOrderDetailsTextStyle,
-                //             ),
-                //           ),
-                //           Padding(
-                //             padding:
-                //                 const EdgeInsets.symmetric(vertical: kRowSpacing),
-                //             child: Text(
-                //               "Rib-Eye Steak",
-                //               style: kOrderDetailsTextStyle,
-                //             ),
-                //           ),
-                //         ],
-                //       ),
-                //
-                //       //Quantity Column => Convert to ListView
-                //       Column(
-                //         children: <Widget>[
-                //           Text(
-                //             "Qty: ",
-                //             style: kOrderColumnHeaderTextStyle,
-                //           ),
-                //           Padding(
-                //             padding:
-                //                 const EdgeInsets.symmetric(vertical: kRowSpacing),
-                //             child: Text(
-                //               "1",
-                //               style: kOrderDetailsTextStyle,
-                //             ),
-                //           ),
-                //           Padding(
-                //             padding:
-                //                 const EdgeInsets.symmetric(vertical: kRowSpacing),
-                //             child: Text(
-                //               "2",
-                //               style: kOrderDetailsTextStyle,
-                //             ),
-                //           ),
-                //           Padding(
-                //             padding:
-                //                 const EdgeInsets.symmetric(vertical: kRowSpacing),
-                //             child: Text(
-                //               "1",
-                //               style: kOrderDetailsTextStyle,
-                //             ),
-                //           ),
-                //         ],
-                //       ),
-                //
-                //       //Price Column => Convert to ListView
-                //       Column(
-                //         children: <Widget>[
-                //           Text(
-                //             "Price: ",
-                //             style: kOrderColumnHeaderTextStyle,
-                //           ),
-                //           Padding(
-                //             padding:
-                //                 const EdgeInsets.symmetric(vertical: kRowSpacing),
-                //             child: Text(
-                //               "\$ 1.79",
-                //               style: kOrderDetailsTextStyle,
-                //             ),
-                //           ),
-                //           Padding(
-                //             padding:
-                //                 const EdgeInsets.symmetric(vertical: kRowSpacing),
-                //             child: Text(
-                //               "\$ 7.49",
-                //               style: kOrderDetailsTextStyle,
-                //             ),
-                //           ),
-                //           Padding(
-                //             padding:
-                //                 const EdgeInsets.symmetric(vertical: kRowSpacing),
-                //             child: Text(
-                //               "\$ 29.02",
-                //               style: kOrderDetailsTextStyle,
-                //             ),
-                //           ),
-                //         ],
-                //       ),
-                //     ],
-                //   ),
-                // ),
+              child: Container(
+                child: ListView.builder(
+                  physics: ClampingScrollPhysics(),
+                  shrinkWrap: true,
+                  itemCount: globals.order.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return Card(
+                      elevation: 0,
+                      color: kOffWhite,
+                      margin: EdgeInsets.symmetric(
+                        horizontal: 180.0,
+                        vertical: 10.0,
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 20.0,
+                          vertical: 10.0,
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: <Widget>[
+                            Text(
+                              globals.order[index].name,
+                              style: kOrderInfoTextStyle,
+                            ),
+                            Text(
+                              globals.order[index].price,
+                              style: kOrderInfoTextStyle,
+                            ),
+                          ],
+                        ),
+                      ),
+                    );
+                  },
                 ),
+              ),
+            ),
             Padding(
               padding: const EdgeInsets.only(right: 170.0),
               child: Row(
@@ -180,7 +110,7 @@ class _MyOrderPageState extends State<MyOrderPage> {
                     width: 30.0,
                   ),
                   Text(
-                    "\$${getTotal(globals.order)}",
+                    "\$${globals.thisDevicesTable.tableBillTotal}",//TODO: This must be fixed to reflect Michael's changes.
                     style: kOrderDetailsTextStyle,
                   ),
                 ],
@@ -320,7 +250,7 @@ class _MyOrderPageState extends State<MyOrderPage> {
                           onPressed: () {
                             //TODO: Add functionality to send to kitchen or something?
                             //send to database cause why not
-                            sendData(globals.order);
+                            //sendData(globals.order);
                             print("hey");
                           },
                           child: Container(
@@ -347,14 +277,57 @@ class _MyOrderPageState extends State<MyOrderPage> {
       ),
     );
   }
-}
 
+  Widget _header() {
+    return Card(
+      color: kOffWhite,
+      elevation: 0,
+      margin: EdgeInsets.symmetric(
+        horizontal: 200.0,
+        vertical: 5.0,
+      ),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(
+          horizontal: 20.0,
+          vertical: 10.0,
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            Text(
+              "Items:",
+              style: kOrderHeaderTextStyle,
+            ),
+            Text(
+              "Price:",
+              style: kOrderHeaderTextStyle,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _NoOrder() {
+    return Expanded(
+      child: Center(
+        child: Text(
+          "No Orders Added Yet",
+          style: TextStyle(
+            fontSize: 30.0,
+          ),
+        ),
+      ),
+    );
+  }
+}
+//Delete this
 //helper functions
-double getTotal(List<menuItem> order) {
+/*double getTotal(List<MenuItem> order) {
   double total = 0;
   //parse through and get total
   for (int i = 0; i < order.length; i++) {
     total += double.parse(order[i].price.substring(1));
   }
   return total;
-}
+}*/
