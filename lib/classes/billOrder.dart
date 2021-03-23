@@ -11,15 +11,6 @@ class BillOrder extends Order with JsonConversion{
   List<OrderItem> orderContents;
   double orderTotal;
 
-/*  BillOrder(
-      this.orderNumber,
-      this.tableNumber
-      ) {
-    orderContents = [];
-    orderTotal = 0.0;
-    isReady = false;
-  }*/
-
   BillOrder({
     this.tableNumber,
     this.orderNumber,
@@ -27,6 +18,17 @@ class BillOrder extends Order with JsonConversion{
     this.orderTotal,
     this.orderContents
   });
+
+  BillOrder.newOrder(
+      this.orderNumber,
+      this.tableNumber
+      ) {
+    orderContents = [];
+    orderTotal = 0.0;
+    isReady = false;
+  }
+
+
 
 
   @override
