@@ -32,5 +32,17 @@ class KitchenItem extends Item with ModifyItem{
   @override
   String get getModifications => modifications;
 
+  @override
+  fromJson(Map<String, dynamic> json) {
+    // TODO: implement fromJson kitchenItem
+    throw UnimplementedError();
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    // TODO: implement toJson kitchenItem
+    throw UnimplementedError();
+  }
+
 }
 

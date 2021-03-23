@@ -1,12 +1,13 @@
 import 'package:virtual_restaurant/Data/constants.dart';
 
 
-abstract class Item {
+abstract class Item with JsonConversion{
   String itemName;
   FoodCategory itemFoodCategory;
 
   String get getItemName;
   FoodCategory get getItemCategory;
+
 }
 
 mixin ModifyItem {

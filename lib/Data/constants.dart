@@ -52,3 +52,9 @@ String toStringFoodCategory(FoodCategory cat) {
   }
 }
 const MaxNumberOfTables = 20;
+
+mixin JsonConversion {
+
+  Map<String, dynamic> toJson();
+  dynamic fromJson(Map<String, dynamic> json);
+}

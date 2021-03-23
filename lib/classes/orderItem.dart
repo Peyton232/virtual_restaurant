@@ -26,4 +26,16 @@ class OrderItem extends Item{
 
   double get getItemPrice => this.price;
 
+  @override
+  fromJson(Map<String, dynamic> json) {
+    // TODO: implement fromJson
+    throw UnimplementedError();
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    // TODO: implement toJson
+    throw UnimplementedError();
+  }
+
 }

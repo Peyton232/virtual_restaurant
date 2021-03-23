@@ -3,15 +3,15 @@ import 'package:virtual_restaurant/Data/constants.dart';
 import 'package:virtual_restaurant/classes/menuItem.dart';
 import 'package:virtual_restaurant/Data/globals.dart' as globals;
 //This MenuItem is the Widget that is displayed to the UI
-class MenuItem extends StatelessWidget {
+class MenuItemUI extends StatelessWidget {
   final Image image;
   final String name;
   final String price;
   final int calories;
   final String description;
-  final String allergens;
+  final List<String> allergens;
 
-  MenuItem({
+  MenuItemUI({
     this.image,
     @required this.name,
     @required this.allergens,
@@ -91,11 +91,11 @@ class MenuItem extends StatelessWidget {
 
                     //TODO: Add to order functionality: change so this supports Table>Order>item format
                     globals.order.add(
-                      menuItem(
+                      MenuItem(
                         name: name,
                         description: description,
                         price: price,
-                        calories: calories.toString(),
+                        calories: calories,
                         allergens: allergens,
                         //image: "https://browseyou.com/media/img/src/no-item.jpg",
                       ),

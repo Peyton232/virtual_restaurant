@@ -10,7 +10,7 @@ class MenuItem extends Item {
   int calories; //rounded int calories
   List<String> contents;
   String description;
-  double price; //float price
+  String price; //float price
 
   // AssetImage image;
 
@@ -33,12 +33,15 @@ class MenuItem extends Item {
   @override
   FoodCategory get getItemCategory => this.category;
 
-  List<String> get getAllergens => this.allergens;
-  bool get isAvailable => this.isAvailable;
-  int get getCalories => this.calories;
-  List<String> get getContents => this.contents;
-  String get getDescription => this.description;
-  double get getPrice => this.price;
+  @override
+  fromJson(Map<String, dynamic> json) {
+    // TODO: implement fromJson menuItem
+    throw UnimplementedError();
+  }
 
-
+  @override
+  Map<String, dynamic> toJson() {
+    // TODO: implement toJson menuItem
+    throw UnimplementedError();
+  }
 }

@@ -16,7 +16,7 @@ import 'package:virtual_restaurant/Pages/WaiterVersion/WaiterLoginScreen.dart';
 import 'Pages/GuestVersion/QRPage.dart';
 import 'Pages/welcomeScreen.dart';
 import 'Data/constants.dart';
-import 'Pages/MenuPage.dart';
+import 'Pages/GuestVersion/MenuPage.dart';
 import 'package:virtual_restaurant/Pages/GuestVersion/test.dart';
 void main() {
   runApp(MyApp());
