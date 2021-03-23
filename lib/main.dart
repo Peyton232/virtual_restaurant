@@ -14,6 +14,7 @@ import 'package:virtual_restaurant/Pages/ManagerVersion/ManagerHomeScreen.dart';
 import 'package:virtual_restaurant/Pages/ManagerVersion/ManagerLoginScreen.dart';
 import 'package:virtual_restaurant/Pages/ManagerVersion/ManagerReportPage.dart';
 import 'package:virtual_restaurant/Pages/WaiterVersion/WaiterLoginScreen.dart';
+import 'package:virtual_restaurant/Pages/KitchenVersion/KitchenLoginScreen.dart';
 
 import 'package:virtual_restaurant/Pages/GuestVersion/games/MineSweeper.dart';
 
@@ -54,6 +55,7 @@ class MyApp extends StatelessWidget {
         "/ManagerHomeScreen": (context) => ManagerHomeScreen(),
         "/ManagerReportPage": (context) => ManagerReportPage(),
         "/ManagerLoginScreen": (context) => ManagerLoginScreen(),
+        "/KitchenLoginScreen": (context) => KitchenLoginScreen(),
         "/ChangeMenuPage": (context) => ChangeMenuPage(),
         "/WaiterLoginScreen": (context) => WaiterLoginScreen(),
         "/MenuPage": (context) => MenuScreen(),
