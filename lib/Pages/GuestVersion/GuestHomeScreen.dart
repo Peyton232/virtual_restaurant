@@ -12,7 +12,6 @@ class GuestHomeScreen extends StatefulWidget {
 }
 
 class _GuestHomeScreenState extends State<GuestHomeScreen> {
-  //TODO: Don't let guest access welcome page
   @override
   Widget build(BuildContext context) {
     return Scaffold(
