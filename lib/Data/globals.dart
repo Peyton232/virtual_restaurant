@@ -11,6 +11,10 @@ import '../classes/menuItem.dart';
 bool kidsMode = false;
 String tableID = 'T2';//To be phased out with the CustomerTable object
 
+CustomerTable thisDevicesTable = CustomerTable(tableNum:1);
+List<MenuItem> order = [];//order, initially empty
+ListQueue<KitchenOrder> kitchenOrders;
+
 //list of entrees
 List<MenuItem> entrees = [
   MenuItem(
@@ -179,8 +183,5 @@ List<MenuItem> drinks = [
   ),
 ];
 
-CustomerTable thisDevicesTable = CustomerTable(tableNum:1);
 
-ListQueue<KitchenOrder> kitchenOrders;
-//order, initially empty
-List<MenuItem> order = [];
+

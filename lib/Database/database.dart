@@ -100,6 +100,8 @@ Future<KitchenOrder> retrieveOrderFromDatabase(int orderNumbertoFetch) {
  *  Then, when a change occurs in the DB in the focused area, this function should be called.
  *  A DataSnapshot will have all of the information of what changed. The issue will be if this is triggered
  *  when the kitchen makes a change themselves.
+ *
+ * Use with .onChildAdded
  */
 
 Future<KitchenOrder> onKitchenUpdate (DataSnapshot kSnapShot) async {
@@ -112,7 +114,7 @@ Future<KitchenOrder> onKitchenUpdate (DataSnapshot kSnapShot) async {
  * This function is to be called by a listener so as to update the menu listing
  * in a flexible fashion
  */
-Future<List<List<MenuItem>>> getMenuUpdate () async {
+Future<List<MenuItem>> getMenuUpdate () async {
 
 }
 
