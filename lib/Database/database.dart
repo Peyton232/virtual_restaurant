@@ -155,3 +155,24 @@ Future<List<MenuItem>> getMenuSection (String sectionName) async {
   });
   return menuList;
 }
+
+/*
+ * This initializes the MenuItem Lists in globals for use with the MenuSubpageTemplate Widget
+ */
+void loadMenuLists() async {
+
+  var temporaryList = await getMenuSection("Appetizers");
+  globals.appetizers = temporaryList;
+  temporaryList = await getMenuSection("Desserts");
+  globals.desserts = temporaryList;
+  temporaryList = await getMenuSection("Drinks");
+  globals.drinks = temporaryList;
+  temporaryList = await getMenuSection("Entrees");
+  globals.entrees = temporaryList;
+  //TODO: Fix async issue with iterator in getMenuSection using "KidsMeals"
+  //temporaryList = await getMenuSection("KidsMeals");
+  //globals.kidsMeals = temporaryList;
+  temporaryList = await getMenuSection("Sides");
+  globals.sides = temporaryList;
+
+}

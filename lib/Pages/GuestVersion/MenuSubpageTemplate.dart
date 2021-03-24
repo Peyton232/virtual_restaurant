@@ -75,11 +75,11 @@ class MenuSubpageTemplate extends StatelessWidget {
           itemCount: listOfMenuItems.length,
           itemBuilder: (BuildContext context, int index) {
             return MenuItemUI(//TODO: This will need to be changed to reflect Michael's changes.
-              name: listOfMenuItems[index].name,
-              //allergens: listOfMenuItems[index].allergens,
-              calories: listOfMenuItems[index].calories,
-              description: listOfMenuItems[index].description,
-              price: listOfMenuItems[index].price,
+              name: listOfMenuItems[index].getItemName,
+              allergens: listOfMenuItems[index].getAllergens,
+              calories: listOfMenuItems[index].getCalories,
+              description: listOfMenuItems[index].getDescription,
+              price: listOfMenuItems[index].getPrice,
             );
           },
         ),
