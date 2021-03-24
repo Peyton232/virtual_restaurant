@@ -5,22 +5,169 @@ import 'dart:math';
 import 'package:virtual_restaurant/CustomWidgets/CustomButton.dart';
 import 'package:virtual_restaurant/Pages/GuestVersion/QRPage.dart';
 
-/*
-This is the page where the user can earn the chance to win a free dessert.
-If the customer wins, they will be taken to the QR page where they can redeem
-(next) or (current) order
- */
+// class RandomDessertItem {
+//   bool currentSelection;
+//   String dessertName;
+//
+//   RandomDessertItem({this.currentSelection, this.dessertName});
+// }
+//
+// final List<RandomDessertItem> displayedDessert = [
+//   RandomDessertItem(
+//     dessertName: "Cheesecake",
+//     currentSelection: false,
+//   ),
+//   RandomDessertItem(
+//     dessertName: "Strawberry Shortcake",
+//     currentSelection: false,
+//   ),
+//   RandomDessertItem(
+//     dessertName: "Vanilla Ice Cream",
+//     currentSelection: false,
+//   ),
+//   RandomDessertItem(
+//     dessertName: "Nothing",
+//     currentSelection: false,
+//   ),
+// ];
+//
+// class FreeDessertPage extends StatefulWidget {
+//   @override
+//   _FreeDessertPageState createState() => _FreeDessertPageState();
+// }
+//
+// class _FreeDessertPageState extends State<FreeDessertPage> {
+//   bool inCenterOfScreen = false;
+//   Tween<double> _scaleTween = Tween<double>(begin: 1, end: 2);
+//
+//   double _height = 300;
+//   double _width = 500;
+//
+//   double _updateState() {
+//     setState(() {
+//       _height = _height == 300 ? 200 : 300;
+//       _width = _width == 500 ? 200 : 500;
+//     });
+//   }
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: Text(
+//           "Earn Chance to Win Free Dessert",
+//           style: kAppBarTextStyle,
+//         ),
+//       ),
+//       body: Column(
+//         crossAxisAlignment: CrossAxisAlignment.stretch,
+//         children: <Widget>[
+//           Expanded(
+//             child: Container(
+//               child: ListView.builder(
+//                 scrollDirection: Axis.horizontal,
+//                 physics: ClampingScrollPhysics(),
+//                 shrinkWrap: true,
+//                 itemCount: displayedDessert.length,
+//                 itemBuilder: (BuildContext context, int index) {
+//                   return Center(
+//                     child: AnimatedContainer(
+//                       duration: Duration(milliseconds: 500),
+//                       color: kGreen,
+//                       height: _height,
+//                       width: _width,
+//                       child: Center(
+//                         child: Text(displayedDessert[index].dessertName),
+//                       ),
+//                     ),
+//                   );
+//                 },
+//               ),
+//             ),
+//           ),
+//           Padding(
+//             padding: EdgeInsets.symmetric(
+//               horizontal: 300.0,
+//               vertical: 50.0,
+//             ),
+//             child: ElevatedButton(
+//               style: ElevatedButton.styleFrom(
+//                 primary: kLightGreen,
+//               ),
+//               onPressed: () {
+//                 _updateState();
+//               },
+//               child: Container(
+//                 height: 60,
+//                 width: 350,
+//                 child: Center(
+//                   child: Text(
+//                     "TRY",
+//                     style: TextStyle(
+//                       fontSize: 30,
+//                     ),
+//                   ),
+//                 ),
+//               ),
+//             ),
+//           ),
+//         ],
+//       ),
+//     );
+//   }
+// }
+
 
 class SpinningWheel extends StatefulWidget {
   @override
   _SpinningWheelState createState() => _SpinningWheelState();
 }
 
-class _SpinningWheelState extends State<SpinningWheel> {
-  int selected = 1;
 
+
+
+
+
+class _SpinningWheelState extends State<SpinningWheel>
+{
+  
+  createAlertDialog(BuildContext context)
+  {
+
+    TextEditingController customController = TextEditingController();
+
+    return showDialog(context: context, builder: (context)
+    {
+      return AlertDialog(
+        title: Text("You won a dessert!"),
+        actions: <Widget>[
+          MaterialButton(
+              elevation: 5.0,
+              child: Text('Claim'),
+              onPressed: (){
+                Navigator.of(context).pop(customController.text.toString());
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => QR(),
+                  ),
+                );
+              }
+              )
+        ],
+      );
+    });
+  }
+  
+  
+  
+  
+  
+  
+  int selected = 0;
   @override
   Widget build(BuildContext context) {
+
     final items = <String>[
       'Free Dessert! ',
       'Sorry, Try again ',
@@ -28,125 +175,60 @@ class _SpinningWheelState extends State<SpinningWheel> {
     ];
 
     final int rotationCount = 4;
-    bool animateWheel = false;
-
+    
+    
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Free Dessert"),
-      ),
-      body: Column(
-        children: <Widget>[
-          Expanded(
-            //flex: 2,
-            child: Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: FortuneWheel(
-                animateFirst: animateWheel,
-                selected: selected,
-                onAnimationEnd: () {
-                  if (selected == 0) {
-                    createAlertDialog(context);
-                  } else {
-                    animateWheel = false;
-                  }
-                },
-                items: [
-                  FortuneItem(
-                    style: FortuneItemStyle(
-                      color: Colors.green,
-                      borderColor: kOffWhite,
-                      borderWidth: 2,
-                    ),
-                    child: Text(
-                      "Free Dessert!",
-                      style: TextStyle(fontSize: 30.0),
-                    ),
-                  ),
-                  FortuneItem(
-                    style: FortuneItemStyle(
-                      color: Colors.blue[700],
-                      borderColor: kOffWhite,
-                      borderWidth: 2,
-                    ),
-                    child: Text(
-                      "Sorry, Try again",
-                      style: TextStyle(fontSize: 30.0),
-                    ),
-                  ),
-                  FortuneItem(
-                    style: FortuneItemStyle(
-                      color: Colors.red[700],
-                      borderColor: kOffWhite,
-                      borderWidth: 2,
-                    ),
-                    child: Text(
-                      "So Close!",
-                      style: TextStyle(fontSize: 30.0),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-          ElevatedButton(
-            style: ElevatedButton.styleFrom(
-              primary: kGreen,
-            ),
-            onPressed: () {
-              setState(() {
-                animateWheel = true;
-                selected = Random().nextInt(items.length);
-              });
-            },
-            child: Padding(
-              padding: const EdgeInsets.symmetric(
-                vertical: 5.0,
-                horizontal: 20.0,
-              ),
-              child: Text(
-                "Spin",
-                style: TextStyle(fontSize: 25.0),
-              ),
-            ),
-          ),
-          SizedBox(
-            height: 10.0,
-          ),
-        ],
-      ),
-    );
-  }
 
-  createAlertDialog(BuildContext context) {
-    TextEditingController customController = TextEditingController();
-    return showDialog(
-      context: context,
-      builder: (context) {
-        return AlertDialog(
-          title: Text("You won a free dessert!"),
-          actions: <Widget>[
-            MaterialButton(
-              elevation: 5.0,
-              child: Text(
-                'Claim',
-                style: TextStyle(
-                  fontSize: 18.0,
-                  color: kSemiDarkGreen,
-                ),
-              ),
-              onPressed: () {
-                Navigator.of(context).pop(customController.text.toString());
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => QR(),
-                  ),
-                );
-              },
+      appBar: AppBar(
+         title: Text("Free Dessert"),
+      ),
+      body: GestureDetector(
+        onTap: () {
+          setState(() {
+
+            selected = Random().nextInt(items.length);
+            if (selected == 0)
+              {
+                print("Free Dessert!");
+                createAlertDialog(context);
+
+              }
+          });
+        },
+        child: Column(
+          children: [
+            Expanded(
+                flex:2,
+                child: FortuneWheel(
+                  selected: selected,
+                  items: [
+                    for (var it in items ) FortuneItem(child: Text(it))
+                  ],
+                )
             ),
           ],
-        );
-      },
+        )
+      ),
     );
+
+    // return Scaffold(
+    //   appBar: AppBar(
+    //     title: Text("Free Dessert"),
+    //   ),
+    //   body: Column(
+    //       crossAxisAlignment: CrossAxisAlignment.start,
+    //       children: <Widget> [
+    //         CustomButton(
+    //           label: "Claim!";
+    //
+    //        ),
+    //       ],
+    //   ),
+    // );
+
+
+
+
   }
 }
+

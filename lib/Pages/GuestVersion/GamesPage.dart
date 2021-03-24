@@ -3,10 +3,6 @@ import 'package:virtual_restaurant/Pages/GuestVersion/games/ticTacToe.dart';
 import 'package:virtual_restaurant/Pages/GuestVersion/games/snake.dart';
 import 'package:virtual_restaurant/Data/constants.dart';
 
-/*
-This the page for 3 games. This can also be accessed in Kids Mode.
- */
-
 class GamesPage extends StatefulWidget {
   @override
   _GamesPageState createState() => _GamesPageState();
