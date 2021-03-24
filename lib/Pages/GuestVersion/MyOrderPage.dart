@@ -64,7 +64,7 @@ class _MyOrderPageState extends State<MyOrderPage> {
           children: <Widget>[
             globals.order.isEmpty ? _NoOrder() : _header(),
             Expanded(
-              flex: 2,
+              flex: 3,
               child: Container(
                 //Displays a list of added order
                 child: ListView.builder(
@@ -76,8 +76,8 @@ class _MyOrderPageState extends State<MyOrderPage> {
                       elevation: 0,
                       color: kOffWhite,
                       margin: EdgeInsets.only(
-                        left: 180.0,
-                        right: 70.0,
+                        left: 100.0,
+                        right: 50.0,
                         top: 10.0,
                         bottom: 10.0,
                       ),
@@ -89,9 +89,13 @@ class _MyOrderPageState extends State<MyOrderPage> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: <Widget>[
-                            Text(
-                              globals.order[index].name,
-                              style: kOrderInfoTextStyle,
+                            Container(
+                              width: 200,
+                              child: Text(
+                                globals.order[index].name,
+                                style: kOrderInfoTextStyle,
+                                maxLines: 2,
+                              ),
                             ),
                             SizedBox(
                               width: 90.0,
@@ -101,6 +105,50 @@ class _MyOrderPageState extends State<MyOrderPage> {
                               style: kOrderInfoTextStyle,
                             ),
                             IconButton(
+                              onPressed: () {
+                                showDialog(
+                                  context: context,
+                                  builder: (context) {
+                                    return AlertDialog(
+                                      title: Text(
+                                          "Are you sure you want to delete ${globals.order[index].name}?"),
+                                      actions: <Widget>[
+                                        MaterialButton(
+                                          elevation: 5.0,
+                                          child: Text(
+                                            'Yes',
+                                            style: TextStyle(
+                                              fontSize: 18.0,
+                                              color: Colors.red,
+                                            ),
+                                          ),
+                                          onPressed: () {
+                                            //TODO: remove item from list
+                                          },
+                                        ),
+                                        MaterialButton(
+                                          elevation: 5.0,
+                                          child: Text(
+                                            'No',
+                                            style: TextStyle(
+                                              fontSize: 18.0,
+                                              color: kSemiDarkGreen,
+                                            ),
+                                          ),
+                                          onPressed: () {
+                                            Navigator.pop(context);
+                                          },
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                );
+
+                                // createAlertDialog(
+                                //   context,
+                                //   globals.order[index].name,
+                                // );
+                              },
                               icon: Icon(
                                 Icons.delete,
                                 color: Colors.red,
@@ -114,9 +162,12 @@ class _MyOrderPageState extends State<MyOrderPage> {
                 ),
               ),
             ),
+            SizedBox(
+              height: 25.0,
+            ),
             Padding(
               padding: const EdgeInsets.only(
-                right: 170.0,
+                right: 360.0,
                 top: 10.0,
               ),
               child: Row(
@@ -350,9 +401,11 @@ class _MyOrderPageState extends State<MyOrderPage> {
     return Card(
       color: kOffWhite,
       elevation: 0,
-      margin: EdgeInsets.symmetric(
-        horizontal: 200.0,
-        vertical: 5.0,
+      margin: EdgeInsets.only(
+        left: 190.0,
+        right: 355.0,
+        top: 5.0,
+        bottom: 5.0,
       ),
       child: Padding(
         padding: const EdgeInsets.symmetric(
@@ -388,6 +441,44 @@ class _MyOrderPageState extends State<MyOrderPage> {
       ),
     );
   }
+}
+
+createAlertDialog(BuildContext context, String itemName) {
+  TextEditingController customController = TextEditingController();
+  return showDialog(
+    context: context,
+    builder: (context) {
+      return AlertDialog(
+        title: Text("Are you sure you want to delete $itemName?"),
+        actions: <Widget>[
+          MaterialButton(
+            elevation: 5.0,
+            child: Text(
+              'Yes',
+              style: TextStyle(
+                fontSize: 18.0,
+                color: Colors.red,
+              ),
+            ),
+            onPressed: () {},
+          ),
+          MaterialButton(
+            elevation: 5.0,
+            child: Text(
+              'No',
+              style: TextStyle(
+                fontSize: 18.0,
+                color: kSemiDarkGreen,
+              ),
+            ),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          ),
+        ],
+      );
+    },
+  );
 }
 
 //helper functions
