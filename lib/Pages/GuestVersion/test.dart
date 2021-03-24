@@ -23,12 +23,12 @@ class _testState extends State<test> {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           KitchenOrder newOrder;// = new Order.customNumber(100006);
-          OrderItem oneItem = OrderItem({FoodCategory.Entree,'Scrappy Burger', 7.77 });
+          /*OrderItem oneItem = OrderItem({FoodCategory.Entree,'Scrappy Burger', 7.77 });
           OrderItem twoItem = OrderItem('Scrappy Balls', 6.69, FoodCategory.Appetizer);
           OrderItem threeItem = OrderItem('Scrappy Fingers', 9.77, FoodCategory.Entree);
           newOrder.addItem(oneItem);
           newOrder.addItem(twoItem);
-          newOrder.addItem(threeItem);
+          newOrder.addItem(threeItem);*/
           sendOrderToFirebase(newOrder);
           getMenuSection("Drinks");
         },
