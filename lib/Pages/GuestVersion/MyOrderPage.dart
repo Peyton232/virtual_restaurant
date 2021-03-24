@@ -129,8 +129,18 @@ class _MyOrderPageState extends State<MyOrderPage> {
                 color: Colors.grey,
               ),
             ),
-            Text(
-              "Additional Comments: ",
+            Container(
+              margin: EdgeInsets.only(
+                left: 100.0,
+              ),
+              width: MediaQuery.of(context).size.width,
+              child: Text(
+                "Additional Comments: ",
+                style: TextStyle(
+                  fontSize: 20.0,
+                ),
+                textAlign: TextAlign.left,
+              ),
             ),
             Expanded(
               child: Container(
