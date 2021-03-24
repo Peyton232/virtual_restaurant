@@ -56,11 +56,12 @@ class _MyOrderPageState extends State<MyOrderPage> {
           vertical: 20.0,
         ),
         child: Column(
-          //TODO: Redo UI
           children: <Widget>[
             globals.order.isEmpty ? _NoOrder() : _header(),
             Expanded(
+              flex: 2,
               child: Container(
+                //Displays a list of added order
                 child: ListView.builder(
                   physics: ClampingScrollPhysics(),
                   shrinkWrap: true,
@@ -98,7 +99,10 @@ class _MyOrderPageState extends State<MyOrderPage> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(right: 170.0),
+              padding: const EdgeInsets.only(
+                right: 170.0,
+                top: 10.0,
+              ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: <Widget>[
@@ -125,12 +129,44 @@ class _MyOrderPageState extends State<MyOrderPage> {
                 color: Colors.grey,
               ),
             ),
+            Container(
+              margin: EdgeInsets.only(
+                left: 100.0,
+              ),
+              width: MediaQuery.of(context).size.width,
+              child: Text(
+                "Additional Comments: ",
+                style: TextStyle(
+                  fontSize: 20.0,
+                ),
+                textAlign: TextAlign.left,
+              ),
+            ),
+            Expanded(
+              child: Container(
+                margin: EdgeInsets.only(
+                  left: 100.0,
+                  right: 100.0,
+                  bottom: 20.0,
+                ),
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    color: kSemiBlack,
+                    width: 1,
+                  ),
+                ),
+                width: MediaQuery.of(context).size.width,
+                //Gets current device's width ^
+              ),
+            ),
             Row(
               children: <Widget>[
                 Expanded(
                   child: Container(
-                    margin: EdgeInsets.symmetric(
-                      horizontal: 30.0,
+                    margin: EdgeInsets.only(
+                      left: 30.0,
+                      right: 30.0,
+                      // top: 20.0,
                     ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,

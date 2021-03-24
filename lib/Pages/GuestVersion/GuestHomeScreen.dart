@@ -12,6 +12,8 @@ class GuestHomeScreen extends StatefulWidget {
 }
 
 class _GuestHomeScreenState extends State<GuestHomeScreen> {
+  final snackBar = SnackBar(content: Text("Waiter is coming soon..."));
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
