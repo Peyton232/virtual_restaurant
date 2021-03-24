@@ -4,7 +4,6 @@ import 'package:virtual_restaurant/CustomWidgets/CustomButton.dart';
 import 'package:virtual_restaurant/CustomWidgets/KidsModeButton.dart';
 import 'package:virtual_restaurant/CustomWidgets/BottomNavBarItems.dart';
 import 'package:virtual_restaurant/Pages/GuestVersion/MyOrderPage.dart';
-import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:virtual_restaurant/Data/globals.dart' as globals;
 
 /*
