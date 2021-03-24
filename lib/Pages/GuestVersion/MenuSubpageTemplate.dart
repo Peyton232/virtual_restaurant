@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:virtual_restaurant/CustomWidgets/MenuItem.dart';
+import 'package:virtual_restaurant/classes/menuItem.dart';
 import 'package:virtual_restaurant/Pages/GuestVersion/MyOrderPage.dart';
 import 'package:virtual_restaurant/Data/constants.dart';
 
@@ -73,12 +74,12 @@ class MenuSubpageTemplate extends StatelessWidget {
           shrinkWrap: true,
           itemCount: listOfMenuItems.length,
           itemBuilder: (BuildContext context, int index) {
-            return MenuItem(
-              name: listOfMenuItems[index].name,
-              //allergens: listOfMenuItems[index].allergens,
-              calories: listOfMenuItems[index].calories,
-              description: listOfMenuItems[index].description,
-              price: listOfMenuItems[index].price,
+            return MenuItemUI(//TODO: This will need to be changed to reflect Michael's changes.
+              name: listOfMenuItems[index].getItemName,
+              allergens: listOfMenuItems[index].getAllergens,
+              calories: listOfMenuItems[index].getCalories,
+              description: listOfMenuItems[index].getDescription,
+              price: listOfMenuItems[index].getPrice,
             );
           },
         ),
