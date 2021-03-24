@@ -69,7 +69,7 @@ class BillOrder extends Order with JsonConversion{
   List<OrderItem> get getOrderContents{
     return new List<OrderItem>.from(orderContents);
   }
-
+//maybe this should return the location if add supports that?
   void addItem(OrderItem passedOrderItem) {
     this.orderContents.add(passedOrderItem);
     this.orderTotal += passedOrderItem.getItemPrice;

@@ -10,7 +10,7 @@ class MenuItem extends Item with JsonConversion {
   int calories; //rounded int calories
   List<String> contents;
   String description;
-  double price; //float price
+  String price; //float price
 
   // AssetImage image;
 
@@ -43,7 +43,7 @@ class MenuItem extends Item with JsonConversion {
 
   String get getDescription => this.description;
 
-  double get getPrice => this.price;
+  String get getPrice => this.price;
 
   @override
   fromJson(Map<String, dynamic> json) {
@@ -72,4 +72,8 @@ class MenuItem extends Item with JsonConversion {
       "price" : getPrice
     };
   }
+
+  @override
+  String toString() => this.name.toString()+' '+toStringFoodCategory(this.category);
+
 }

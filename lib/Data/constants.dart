@@ -51,5 +51,28 @@ String toStringFoodCategory(FoodCategory cat) {
       return "null";
   }
 }
+FoodCategory toFoodCategoryFromString(String cat){
+  switch(cat){
+    case "Appetizer":
+    case "Appetizers":
+      return FoodCategory.Appetizer;
+    case "Dessert":
+    case "Desserts":
+      return FoodCategory.Dessert;
+    case "Drink":
+    case "Drinks":
+      return FoodCategory.Drink;
+    case "Entree":
+    case "Entrees":
+      return FoodCategory.Entree;
+    case "KidsMeals":
+    case "Kids Meal":
+    case "KidsMeal":
+      return FoodCategory.KidsMeal;
+    case "Side":
+    case "Sides":
+      return FoodCategory.Side;
+  }
+}
 const MaxNumberOfTables = 20;
 

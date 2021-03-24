@@ -1,20 +1,23 @@
 library database;
 
 import 'package:firebase_database/firebase_database.dart';
-//import 'package:firebase_core/firebase_core.dart';
-//import 'package:flutter/material.dart';
+import 'package:firebase_database/ui/firebase_list.dart';
+import 'package:virtual_restaurant/Data/constants.dart';
 import 'package:virtual_restaurant/classes/kitchenItem.dart';
 import 'package:virtual_restaurant/classes/kitchenOrder.dart';
-//import 'package:virtual_restaurant/classes/menuItem.dart';
 import 'package:virtual_restaurant/Data/globals.dart' as globals;
+import 'package:virtual_restaurant/classes/menuItem.dart';
 //import 'package:virtual_restaurant/classes/billOrder.dart';
 
 final databaseReference = FirebaseDatabase.instance.reference();
 final customerTableDatabaseReference = FirebaseDatabase.instance.reference().child('tables');//.push().child(path).set().asStream()
+final menuDatabaseReference = FirebaseDatabase.instance.reference().child('menu');
 final numberOfTablesRef = databaseReference.child('numberoftables');
 
 //reference
 //https://medium.com/flutterdevs/explore-realtime-database-in-flutter-c5870c2b231f
+
+
 
 //TODO: Do away with these as it will be at the class level instead. That way every object defines their Json how it needs to be.
 Map<String, dynamic> toJson(KitchenItem item){
@@ -76,14 +79,14 @@ DatabaseReference sendOrderToFirebase(KitchenOrder orderToProcess) {
     id.child('item$i').set(toJson(item));
     i++;
   }
-return id;
+  return id;
 }
 
 /*
  * This is the *specific* order retrieval function. Pass in the table
  */
 
-Future<KitchenOrder> retrieveOrderFromDatabase(String tableIDtoFetch, int orderNumbertoFetch) {
+Future<KitchenOrder> retrieveOrderFromDatabase(int orderNumbertoFetch) {
 
 
 
@@ -103,4 +106,50 @@ Future<KitchenOrder> onKitchenUpdate (DataSnapshot kSnapShot) async {
   KitchenOrder temp;
   temp.fromJson(kSnapShot.value);
   return temp;
+}
+
+/* TODO: Complete the getMenuUpdate method
+ * This function is to be called by a listener so as to update the menu listing
+ * in a flexible fashion
+ */
+Future<List<List<MenuItem>>> getMenuUpdate () async {
+
+}
+
+/*
+ *  Usage: This function is called on initial Table setup to establish what is on the menu.
+ *  This should be called early so that there is enough time for the application to fetch
+ *  all of the information from Firebase.
+ *
+ *  Pass in the
+ */
+
+
+Future<List<MenuItem>> getMenuSection (String sectionName) async {
+  List<Map<dynamic, dynamic>> mapList = [];
+  List<MenuItem> menuList = [];
+  await FirebaseDatabase.instance
+      .reference()
+      .child("menu/$sectionName")
+      .once()
+      .then((DataSnapshot snapshot){
+    //pulls titles in order and triples them
+    //print(snapshot.value);
+    //snapshot.value
+    (Map<dynamic, dynamic>.from(snapshot.value)).forEach((key,values) {
+      Map<dynamic, dynamic> json = values;
+      //TODO: Clean up this mess. This was originally supposed to work with the fromJson function, however I haven't tried (new MenuItem()).fromJson(json);
+      menuList.add(MenuItem(
+      category:toFoodCategoryFromString(sectionName),
+      name:key,
+      allergens:List<String>.from(json["allergens"]),
+      available:json["available"],
+      calories:json["calories"],
+      contents:json["contents"],
+      description:json["description"],
+      price:json["price"].toString()
+      ));
+    });
+  });
+  return menuList;
 }

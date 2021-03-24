@@ -29,6 +29,7 @@ class _testState extends State<test> {
           newOrder.addItem(twoItem);
           newOrder.addItem(threeItem);
           sendOrderToFirebase(newOrder);*/
+          getMenuSection("Drinks");
         },
         child: const Icon(Icons.navigation),
         backgroundColor: Colors.red,
