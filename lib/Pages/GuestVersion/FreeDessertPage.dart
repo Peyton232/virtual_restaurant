@@ -30,6 +30,7 @@ class _SpinningWheelState extends State<SpinningWheel> {
     final int rotationCount = 4;
     bool animateWheel = false;
 
+    //Changed the UI of the page to make it more user friendly
     return Scaffold(
       appBar: AppBar(
         title: Text("Free Dessert"),
