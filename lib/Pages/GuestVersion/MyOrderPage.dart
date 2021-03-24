@@ -166,8 +166,8 @@ class _MyOrderPageState extends State<MyOrderPage> {
               height: 25.0,
             ),
             Padding(
-              padding: const EdgeInsets.only(
-                right: 360.0,
+              padding: EdgeInsets.only(
+                right: globals.order.isEmpty ? 130.0 : 360.0,
                 top: 10.0,
               ),
               child: Row(
