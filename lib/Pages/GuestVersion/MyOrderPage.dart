@@ -75,9 +75,11 @@ class _MyOrderPageState extends State<MyOrderPage> {
                     return Card(
                       elevation: 0,
                       color: kOffWhite,
-                      margin: EdgeInsets.symmetric(
-                        horizontal: 180.0,
-                        vertical: 10.0,
+                      margin: EdgeInsets.only(
+                        left: 180.0,
+                        right: 70.0,
+                        top: 10.0,
+                        bottom: 10.0,
                       ),
                       child: Padding(
                         padding: const EdgeInsets.symmetric(
@@ -85,15 +87,24 @@ class _MyOrderPageState extends State<MyOrderPage> {
                           vertical: 10.0,
                         ),
                         child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: <Widget>[
                             Text(
                               globals.order[index].name,
                               style: kOrderInfoTextStyle,
                             ),
+                            SizedBox(
+                              width: 90.0,
+                            ),
                             Text(
                               globals.order[index].price,
                               style: kOrderInfoTextStyle,
+                            ),
+                            IconButton(
+                              icon: Icon(
+                                Icons.delete,
+                                color: Colors.red,
+                              ),
                             ),
                           ],
                         ),
