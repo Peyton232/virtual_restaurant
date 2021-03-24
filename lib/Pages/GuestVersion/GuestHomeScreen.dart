@@ -4,6 +4,7 @@ import 'package:virtual_restaurant/CustomWidgets/CustomButton.dart';
 import 'package:virtual_restaurant/CustomWidgets/KidsModeButton.dart';
 import 'package:virtual_restaurant/CustomWidgets/BottomNavBarItems.dart';
 import 'package:virtual_restaurant/Pages/GuestVersion/MyOrderPage.dart';
+import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:virtual_restaurant/Data/globals.dart' as globals;
 
 class GuestHomeScreen extends StatefulWidget {
@@ -114,8 +115,48 @@ class _GuestHomeScreenState extends State<GuestHomeScreen> {
                 ),
               ],
             ),
-          ),
-        ],
+            Expanded(
+              child: Container(
+                height: 100,
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: <Widget>[
+                    BottomNavBarItems(
+                      label: "Settings",
+                      buttonTapped: () {
+                        Navigator.pushNamed(context, "/SettingsPage");
+                      },
+                    ),
+                    BottomNavBarItems(
+                      label: "My Order",
+                      buttonTapped: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) {
+                              return MyOrderPage(
+                                orderID: "Order I-7845",
+                                //TODO: Add order ID here
+                                //TODO: Pass current list of order here
+                              );
+                            },
+                          ),
+                        );
+                      },
+                    ),
+                    BottomNavBarItems(
+                      label: "Pay Bill",
+                      buttonTapped: () {
+                        Navigator.pushNamed(context, "/PayBillPage");
+                      },
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
