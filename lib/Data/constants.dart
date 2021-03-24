@@ -18,10 +18,11 @@ const kOrderColumnHeaderTextStyle = TextStyle(
   fontWeight: FontWeight.bold,
   color: kSemiBlack,
 );
-
 const kOrderDetailsTextStyle = TextStyle(fontSize: 30.0, color: kSemiBlack);
-
 const kRowSpacing = 30.0;
+const kOrderInfoTextStyle = TextStyle(fontSize: 30.0);
+const kOrderHeaderTextStyle =
+    TextStyle(fontSize: 30.0, fontWeight: FontWeight.bold);
 
 //The different categories that food menu items belong to
 enum FoodCategory {

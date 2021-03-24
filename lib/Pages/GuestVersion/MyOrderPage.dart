@@ -11,15 +11,6 @@ enum DineOption {
   toGo,
 }
 
-const kOrderInfoTextStyle = TextStyle(
-  fontSize: 30.0,
-);
-
-const kOrderHeaderTextStyle = TextStyle(
-  fontSize: 30.0,
-  fontWeight: FontWeight.bold,
-);
-
 class MyOrderPage extends StatefulWidget {
   final String orderID;
 
@@ -33,10 +24,24 @@ class MyOrderPage extends StatefulWidget {
 
 class _MyOrderPageState extends State<MyOrderPage> {
   DineOption isSelected = DineOption.dineIn;
+  TextEditingController _commentsController;
+
+  @override
+  void initState() {
+    super.initState();
+    _commentsController = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    _commentsController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         actions: <Widget>[
           IconButton(
@@ -70,9 +75,11 @@ class _MyOrderPageState extends State<MyOrderPage> {
                     return Card(
                       elevation: 0,
                       color: kOffWhite,
-                      margin: EdgeInsets.symmetric(
-                        horizontal: 180.0,
-                        vertical: 10.0,
+                      margin: EdgeInsets.only(
+                        left: 180.0,
+                        right: 70.0,
+                        top: 10.0,
+                        bottom: 10.0,
                       ),
                       child: Padding(
                         padding: const EdgeInsets.symmetric(
@@ -80,15 +87,24 @@ class _MyOrderPageState extends State<MyOrderPage> {
                           vertical: 10.0,
                         ),
                         child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: <Widget>[
                             Text(
                               globals.order[index].name,
                               style: kOrderInfoTextStyle,
                             ),
+                            SizedBox(
+                              width: 90.0,
+                            ),
                             Text(
                               globals.order[index].price,
                               style: kOrderInfoTextStyle,
+                            ),
+                            IconButton(
+                              icon: Icon(
+                                Icons.delete,
+                                color: Colors.red,
+                              ),
                             ),
                           ],
                         ),
@@ -132,14 +148,16 @@ class _MyOrderPageState extends State<MyOrderPage> {
             Container(
               margin: EdgeInsets.only(
                 left: 100.0,
+                bottom: 5,
+
               ),
               width: MediaQuery.of(context).size.width,
               child: Text(
                 "Additional Comments: ",
                 style: TextStyle(
                   fontSize: 20.0,
+                  color: kSemiBlack,
                 ),
-                textAlign: TextAlign.left,
               ),
             ),
             Expanded(
@@ -151,12 +169,27 @@ class _MyOrderPageState extends State<MyOrderPage> {
                 ),
                 decoration: BoxDecoration(
                   border: Border.all(
-                    color: kSemiBlack,
-                    width: 1,
+                    color: Colors.grey[600],
+                    width: 0.5,
                   ),
                 ),
                 width: MediaQuery.of(context).size.width,
                 //Gets current device's width ^
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                  child: TextField(
+                    controller: _commentsController,
+                    decoration: InputDecoration(
+                      hintStyle: TextStyle(fontSize: 16.0, color: Colors.grey),
+                      border: InputBorder.none,
+                      hintText:
+                          "Ex. No pickles and onions on Scrappy Burger...",
+                    ),
+                  ),
+                  /*
+                  To get the text inside the text box: _commentsController.text
+                   */
+                ),
               ),
             ),
             Row(

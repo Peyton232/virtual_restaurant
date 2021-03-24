@@ -31,11 +31,31 @@ class _RequestRefillPageState extends State<RequestRefillPage> {
           Expanded(
             flex: 2,
             child: Container(
-              child: Column(
-                children: <Widget>[
-                  Center(
-                    child: RefillOptionButton(
-                      drinkName: "Coca Cola",
+              padding: EdgeInsets.symmetric(
+                horizontal: 80.0,
+              ),
+              //Editted UI to be able to select more than one drink
+              child: GridView.count(
+                childAspectRatio: 6,
+                crossAxisCount: 2,
+                children: List.generate(currentOrderDrinks.length, (index) {
+                  return Card(
+                    margin: EdgeInsets.all(10.0),
+                    color: kOffWhite,
+                    elevation: 3.0,
+                    child: CheckboxListTile(
+                      controlAffinity: ListTileControlAffinity.leading,
+                      contentPadding: EdgeInsets.all(10),
+                      title: Text(
+                        currentOrderDrinks[index].drinkName,
+                        style: kLoginCardTextStyle,
+                      ),
+                      value: currentOrderDrinks[index].isSelected,
+                      onChanged: (bool value) {
+                        setState(() {
+                          currentOrderDrinks[index].isSelected = value;
+                        });
+                      },
                     ),
                   ),
                   Center(
