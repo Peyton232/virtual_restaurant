@@ -1,10 +1,5 @@
 import 'package:flutter/material.dart';
 
-/*
-This file is used for the theme of the app. This can make the UI consistent throughout
-the app
- */
-
 //Colors used throughout the application
 const kDarkGreen = Color(0xff054a29);
 const kSemiDarkGreen = Color(0xff137547);
@@ -27,3 +22,57 @@ const kOrderColumnHeaderTextStyle = TextStyle(
 const kOrderDetailsTextStyle = TextStyle(fontSize: 30.0, color: kSemiBlack);
 
 const kRowSpacing = 30.0;
+
+//The different categories that food menu items belong to
+enum FoodCategory {
+  Appetizer,
+  Dessert,
+  Drink,
+  Entree,
+  KidsMeal,
+  Side
+}
+
+String toStringFoodCategory(FoodCategory cat) {
+  switch(cat) {
+    case FoodCategory.Appetizer:
+      return "Appetizer";
+    case FoodCategory.Dessert:
+      return "Dessert";
+    case FoodCategory.Drink:
+      return "Drink";
+    case FoodCategory.Entree:
+      return "Entree";
+    case FoodCategory.KidsMeal:
+      return "Kids Meal";
+    case FoodCategory.Side:
+      return "Side";
+    default:
+      return "null";
+  }
+}
+FoodCategory toFoodCategoryFromString(String cat){
+  switch(cat){
+    case "Appetizer":
+    case "Appetizers":
+      return FoodCategory.Appetizer;
+    case "Dessert":
+    case "Desserts":
+      return FoodCategory.Dessert;
+    case "Drink":
+    case "Drinks":
+      return FoodCategory.Drink;
+    case "Entree":
+    case "Entrees":
+      return FoodCategory.Entree;
+    case "KidsMeals":
+    case "Kids Meal":
+    case "KidsMeal":
+      return FoodCategory.KidsMeal;
+    case "Side":
+    case "Sides":
+      return FoodCategory.Side;
+  }
+}
+const MaxNumberOfTables = 20;
+
