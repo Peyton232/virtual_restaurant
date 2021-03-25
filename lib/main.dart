@@ -55,7 +55,7 @@ class MyApp extends StatelessWidget {
         //"/MyOrderPage": (context) => MyOrderPage(),
         "/PayBillPage": (context) => PayBillPage(),
         "/ManagersChoicePage": (context) => ManagersChoicePage(),
-        // "/FreeDessertPage": (context) => FreeDessertPage(),
+        "/MyOrderPage": (context) => MyOrderPage(),
         "/FreeDessertPage": (context) => SpinningWheel(),
         "/QRPage": (context) => QR(),
         "/GamesPage": (context) => GamesPage(),
