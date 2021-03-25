@@ -4,8 +4,6 @@ import 'package:virtual_restaurant/CustomWidgets/MenuItem.dart';
 import 'package:virtual_restaurant/Database/database.dart';
 import 'package:virtual_restaurant/Data/globals.dart' as globals;
 
-//TODO: Add comments to where the customer can request modifiers in their order
-
 enum DineOption {
   dineIn,
   toGo,
@@ -444,7 +442,6 @@ class _MyOrderPageState extends State<MyOrderPage> {
   }
 }
 
-
 createAlertDialog(BuildContext context, String itemName) {
   TextEditingController customController = TextEditingController();
   return showDialog(
@@ -462,7 +459,9 @@ createAlertDialog(BuildContext context, String itemName) {
                 color: Colors.red,
               ),
             ),
-            onPressed: () {},
+            onPressed: () {
+              //TODO: Delete item
+            },
           ),
           MaterialButton(
             elevation: 5.0,
@@ -482,7 +481,6 @@ createAlertDialog(BuildContext context, String itemName) {
     },
   );
 }
-
 //helper functions
 /*double getTotal(List<MenuItem> order) {
   double total = 0;
