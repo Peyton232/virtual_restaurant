@@ -6,10 +6,6 @@ import 'package:virtual_restaurant/CustomWidgets/BottomNavBarItems.dart';
 import 'package:virtual_restaurant/Pages/GuestVersion/MyOrderPage.dart';
 import 'package:virtual_restaurant/Data/globals.dart' as globals;
 
-/*
-This is the screen page that the user will see on the table.
- */
-
 class GuestHomeScreen extends StatefulWidget {
   @override
   _GuestHomeScreenState createState() => _GuestHomeScreenState();
@@ -18,72 +14,103 @@ class GuestHomeScreen extends StatefulWidget {
 class _GuestHomeScreenState extends State<GuestHomeScreen> {
   final snackBar = SnackBar(content: Text("Waiter is coming soon..."));
 
-  //TODO: Don't let guest access welcome page
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      //Disables back button in software and hardware
-      onWillPop: () async => false,
-      child: Scaffold(
-        appBar: PreferredSize(
-          preferredSize: Size.fromHeight(70.0),
-          child: AppBar(
-            title: Container(
-              height: 90,
-              child: Image.asset(
-                "images/scrappyLogo1.png",
-                fit: BoxFit.contain,
-              ),
+    return Scaffold(
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(70.0),
+        child: AppBar(
+          title: Container(
+            height: 90,
+            child: Image.asset(
+              "images/scrappyLogo1.png",
+              fit: BoxFit.contain,
             ),
           ),
         ),
-        body: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            KidsModeButton(),
-            Row(
+      ),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          KidsModeButton(),
+          Row(
+            children: <Widget>[
+              CustomButton(
+                //TODO: maybe add another property -> kid's mode true/false
+                label: "Manager's Choice",
+                buttonTapped: () {
+                  Navigator.pushNamed(context, "/ManagersChoicePage");
+                },
+              ),
+              CustomButton(
+                label: "Menu",
+                buttonTapped: () {
+                  Navigator.pushNamed(context, "/MenuPage");
+                },
+              ),
+              CustomButton(
+                label: "Call Waiter",
+                buttonTapped: () {
+                  print("Calling waiter now..");
+                  //TODO: Add call waiter functionality here
+                },
+              ),
+            ],
+          ),
+          Row(
+            children: <Widget>[
+              CustomButton(
+                label: "Earn Chance to Win Free Dessert",
+                buttonTapped: () {
+                  Navigator.pushNamed(context, "/FreeDessertPage");
+                },
+              ),
+              CustomButton(
+                label: "Games",
+                buttonTapped: () {
+                  Navigator.pushNamed(context, "/GamesPage");
+                },
+              ),
+              CustomButton(
+                label: "Request Drink Refills",
+                buttonTapped: () {
+                  Navigator.pushNamed(context, "/RequestRefillPage");
+                },
+              ),
+            ],
+          ),
+          Expanded(
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: <Widget>[
-                CustomButton(
-                  //TODO: maybe add another property -> kid's mode true/false
-                  label: "Manager's Choice",
+                BottomNavBarItems(
+                  label: "Settings",
                   buttonTapped: () {
-                    Navigator.pushNamed(context, "/ManagersChoicePage");
+                    Navigator.pushNamed(context, "/SettingsPage");
                   },
                 ),
-                CustomButton(
-                  label: "Menu",
+                BottomNavBarItems(
+                  label: "My Order",
                   buttonTapped: () {
-                    Navigator.pushNamed(context, "/MenuPage");
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return MyOrderPage(
+                            orderID: "Order I-7845",
+                            //TODO: Add order ID here
+                            //TODO: Pass current list of order here
+                          );
+                        },
+                      ),
+                    );
                   },
                 ),
-                CustomButton(
-                  label: "Call Waiter",
+                BottomNavBarItems(
+                  label: "Pay Bill",
                   buttonTapped: () {
-                    createAlertDialog(context);
-                    //ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                    //TODO: Add call waiter functionality here
-                  },
-                ),
-              ],
-            ),
-            Row(
-              children: <Widget>[
-                CustomButton(
-                  label: "Earn Chance to Win Free Dessert",
-                  buttonTapped: () {
-                    Navigator.pushNamed(context, "/FreeDessertPage");
-                  },
-                ),
-                CustomButton(
-                  label: "Games",
-                  buttonTapped: () {
-                    Navigator.pushNamed(context, "/GamesPage");
-                  },
-                ),
-                CustomButton(
-                  label: "Request Drink Refills",
-                  buttonTapped: () {
-                    Navigator.pushNamed(context, "/RequestRefillPage");
+                    Navigator.pushNamed(context, "/PayBillPage");
                   },
                 ),
               ],
