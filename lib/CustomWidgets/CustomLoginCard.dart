@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
 import '../Data/constants.dart';
 
-/*
-This is used to create the button cards in welcomePage.dart
- */
-
 class CustomLoginCard extends StatefulWidget {
   final String label;
   final Function cardTapped;

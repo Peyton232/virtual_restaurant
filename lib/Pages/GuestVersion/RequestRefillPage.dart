@@ -71,6 +71,7 @@ class _RequestRefillPageState extends State<RequestRefillPage> {
               padding: EdgeInsets.symmetric(
                 horizontal: 80.0,
               ),
+              //Editted UI to be able to select more than one drink
               child: GridView.count(
                 childAspectRatio: 6,
                 crossAxisCount: 2,

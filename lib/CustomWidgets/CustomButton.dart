@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:virtual_restaurant/Data/constants.dart';
-/*
-This is used to create the button cards for the GuestHomeScreen.dart
-and MenuPage.dart
- */
 
 class CustomButton extends StatefulWidget {
   final String label;
@@ -37,7 +33,7 @@ class _CustomButtonState extends State<CustomButton> {
             overlayColor: MaterialStateProperty.all<Color>(Colors.grey[300]),
           ),
           child: Container(
-            height: 200,
+            height: 180,
             width: 300,
             child: Center(
               child: Text(

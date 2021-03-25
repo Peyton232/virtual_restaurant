@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:virtual_restaurant/Data/constants.dart';
 
-/*
-This is used to create the kids mode button in the GuestHomeScreen.dart
- */
-
 class KidsModeButton extends StatefulWidget {
   @override
   _KidsModeButtonState createState() => _KidsModeButtonState();
@@ -25,8 +21,7 @@ class _KidsModeButtonState extends State<KidsModeButton> {
       child: GestureDetector(
         onTap: () {
           setState(() {
-            //kidsModeSelected = !kidsModeSelected;
-            Navigator.pushNamed(context, "/KidsModeEntrancePage");
+            kidsModeSelected = !kidsModeSelected;
             //TODO: Takes user to another page to set up a passcode
             //TODO: OR take to the games page
           });

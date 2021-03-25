@@ -31,10 +31,9 @@ class _ticTacToe extends State<ticTacToe> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: new AppBar(
-        centerTitle: true,
-        title: Text("Tic Tac Toe"),
-      ),
+      // appBar: new AppBar(
+      //   title: new Text('Tic Tac Toe'),
+      // ),
       body: Container(
         padding: EdgeInsets.all(32.0),
         child: Center(
