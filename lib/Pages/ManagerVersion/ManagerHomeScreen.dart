@@ -2,11 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:virtual_restaurant/Data/constants.dart';
 import 'package:virtual_restaurant/CustomWidgets/CustomButton.dart';
 
-/*
-This is the home page that the manager can see. They will be able to
-select many options to fulfil their manageral duties
- */
-
 class ManagerHomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

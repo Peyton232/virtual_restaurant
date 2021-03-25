@@ -1,34 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:virtual_restaurant/Data/constants.dart';
+import 'package:virtual_restaurant/classes/menuItem.dart';
 import 'package:virtual_restaurant/Data/globals.dart' as globals;
+//This MenuItem is the Widget that is displayed to the UI
+class MenuItemUI extends StatelessWidget {
+  final Image image;
+  final String name;
+  final String price;
+  final int calories;
+  final String description;
+  final List<String> allergens;
 
-/*
-This is used to create the individual UI for each menu item in the list
-in globals.dart
- */
-
-class MenuItem extends StatefulWidget {
-  String name;
-  String description;
-  String price;
-  String calories;
-  String allergens;
-
-  MenuItem({
+  MenuItemUI({
+    this.image,
     @required this.name,
+    @required this.allergens,
+    @required this.calories,
     @required this.description,
     @required this.price,
-    @required this.calories,
-    @required this.allergens,
-    //@required this.image,
   });
-
-  @override
-  _MenuItemState createState() => _MenuItemState();
-}
-
-class _MenuItemState extends State<MenuItem> {
-  AssetImage image;
 
   @override
   Widget build(BuildContext context) {
@@ -60,28 +50,28 @@ class _MenuItemState extends State<MenuItem> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
                 Text(
-                  widget.name,
+                  name,
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 25,
                   ),
                 ),
                 Text(
-                  widget.price,
+                  price,
                   style: TextStyle(
                     fontSize: 25,
                   ),
                 ),
                 Text(
-                  "${widget.description}",
+                  "$description",
                   style: TextStyle(fontSize: 17.0),
                 ),
                 Text(
-                  "${widget.calories} calories",
+                  "$calories calories",
                   style: TextStyle(fontSize: 17.0),
                 ),
                 Text(
-                  "Allergens: ${widget.allergens}",
+                  "Allergens: $allergens",
                   style: TextStyle(fontSize: 17.0),
                 ),
               ],
@@ -95,18 +85,18 @@ class _MenuItemState extends State<MenuItem> {
                   onPressed: () {
                     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                       duration: Duration(seconds: 1),
-                      content: Text("${widget.name} added to order!"),
+                      content: Text("$name added to order!"),
                     ));
                     print("Add to Order pressed");
 
-                    //TODO: Add to order functionality
+                    //TODO: Add to order functionality: change so this supports Table>Order>item format
                     globals.order.add(
                       MenuItem(
-                        name: widget.name,
-                        description: widget.description,
-                        price: widget.price,
-                        calories: widget.calories,
-                        allergens: widget.allergens,
+                        name: name,
+                        description: description,
+                        price: price,
+                        calories: calories,
+                        allergens: allergens,
                         //image: "https://browseyou.com/media/img/src/no-item.jpg",
                       ),
                     );

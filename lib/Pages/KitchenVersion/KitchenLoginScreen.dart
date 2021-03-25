@@ -1,9 +1,13 @@
 import 'dart:ui';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class ManagerLoginScreen extends StatelessWidget {
+/*
+This is where the manager can input their credentials to access
+ManagerHomeScreen.dart
+ */
+
+class KitchenLoginScreen extends StatelessWidget {
   String password = "";
   String username = "";
 
@@ -11,7 +15,7 @@ class ManagerLoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Manager Login Screen"),
+        title: Text("Kitchen Login Screen"),
       ),
       body: Padding(
         padding: EdgeInsets.all(20),
@@ -66,6 +70,7 @@ class ManagerLoginScreen extends StatelessWidget {
                       border: OutlineInputBorder(),
                       hintText: 'Enter Your Password',
                     ),
+                    obscureText: true,
                     onChanged: (text) {
                       password = text;
                     },
@@ -81,7 +86,7 @@ class ManagerLoginScreen extends StatelessWidget {
               onPressed: () {
                 print(["username = ", username]);
                 print(["password = ", password]);
-                Navigator.pushReplacementNamed(context, "/ManagerHomeScreen");
+                Navigator.pushReplacementNamed(context, "/KitchenHomeScreen");
               },
               child: Text(
                 "Login",

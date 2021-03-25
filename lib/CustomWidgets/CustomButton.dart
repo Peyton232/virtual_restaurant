@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:virtual_restaurant/Data/constants.dart';
-/*
-This is used to create the button cards for the GuestHomeScreen.dart
-and MenuPage.dart
- */
 
 class CustomButton extends StatefulWidget {
   final String label;
