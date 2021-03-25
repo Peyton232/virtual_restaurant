@@ -11,6 +11,8 @@ class MenuItem extends Item with JsonConversion {
   List<String> contents;
   String description;
   String price; //float price
+  bool finished;
+
 
   // AssetImage image;
 
@@ -23,6 +25,7 @@ class MenuItem extends Item with JsonConversion {
     this.contents,
     this.description,
     this.price,
+    this.finished = false,
 
     //TODO: @required this.image, image files for menu.
   });
@@ -45,6 +48,8 @@ class MenuItem extends Item with JsonConversion {
 
   String get getPrice => this.price;
 
+  bool get getFinished => this.finished;
+
   @override
   fromJson(Map<String, dynamic> json) {
     return MenuItem(
@@ -55,7 +60,8 @@ class MenuItem extends Item with JsonConversion {
         calories: json.containsKey("calories") ? json["calories"] : -1,
         contents: json.containsKey("contents") ? json["contents"] : -1,
         description: json.containsKey("description") ? json["description"] : -1,
-        price: json.containsKey("price") ? json["price"] : -1
+        price: json.containsKey("price") ? json["price"] : -1,
+        finished: json.containsKey("finished") ? json["finished"] : -1,
     );
   }
 
@@ -69,7 +75,8 @@ class MenuItem extends Item with JsonConversion {
       "calories" : getCalories,
       "contents" : getContents,
       "description" : getDescription,
-      "price" : getPrice
+      "price" : getPrice,
+      "finished" : getFinished,
     };
   }
 

@@ -69,6 +69,7 @@ class MyApp extends StatelessWidget {
         //"/KidsModeExitPage": (context) => KidsModeExitPage(),
         "/MineSweeperPage": (context) => MineSweeperPage(),
         "/CheckoutPage": (context) => CheckoutPage(),
+        "/KitchenHomeScreen": (context) => KitchenHomeScreen(),
       },
     );
   }

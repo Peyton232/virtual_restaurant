@@ -39,7 +39,8 @@ class _GuestHomeScreenState extends State<GuestHomeScreen> {
                 //TODO: maybe add another property -> kid's mode true/false
                 label: "Manager's Choice",
                 buttonTapped: () {
-                  Navigator.pushNamed(context, "/ManagersChoicePage");
+                  //Navigator.pushNamed(context, "/ManagersChoicePage");
+                  Navigator.pushNamed(context, "/KitchenHomeScreen");
                 },
               ),
               CustomButton(
