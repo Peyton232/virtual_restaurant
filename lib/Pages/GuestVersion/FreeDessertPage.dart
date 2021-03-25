@@ -5,6 +5,12 @@ import 'dart:math';
 import 'package:virtual_restaurant/CustomWidgets/CustomButton.dart';
 import 'package:virtual_restaurant/Pages/GuestVersion/QRPage.dart';
 
+/*
+This is the page where the user can earn the chance to win a free dessert.
+If the customer wins, they will be taken to the QR page where they can redeem
+(next) or (current) order
+ */
+
 class SpinningWheel extends StatefulWidget {
   @override
   _SpinningWheelState createState() => _SpinningWheelState();
@@ -24,6 +30,7 @@ class _SpinningWheelState extends State<SpinningWheel> {
     final int rotationCount = 4;
     bool animateWheel = false;
 
+    //Changed the UI of the page to make it more user friendly
     return Scaffold(
       appBar: AppBar(
         title: Text("Free Dessert"),

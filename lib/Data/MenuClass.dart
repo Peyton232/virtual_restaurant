@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class Menu {
+  bool available;//button to add item to menu should change based on this boolean's value
   Image image;
   String name;
   double price;
@@ -18,7 +19,7 @@ class Menu {
     @required this.price,
   });
 }
-
+//These are temporary and need to be replaced with dynamic data from the db
 final List<Menu> appetizerMenuItems = [
   Menu(
     name: "Scrappy Sticks",

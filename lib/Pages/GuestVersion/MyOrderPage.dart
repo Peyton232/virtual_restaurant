@@ -1,23 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:virtual_restaurant/Data/constants.dart';
-import 'package:virtual_restaurant/classes/menuItem.dart';
 import 'package:virtual_restaurant/CustomWidgets/MenuItem.dart';
 import 'package:virtual_restaurant/Database/database.dart';
 import 'package:virtual_restaurant/Data/globals.dart' as globals;
+
+//TODO: Add comments to where the customer can request modifiers in their order
 
 enum DineOption {
   dineIn,
   toGo,
 }
-
-const kOrderInfoTextStyle = TextStyle(
-  fontSize: 30.0,
-);
-
-const kOrderHeaderTextStyle = TextStyle(
-  fontSize: 30.0,
-  fontWeight: FontWeight.bold,
-);
 
 class MyOrderPage extends StatefulWidget {
   final String orderID;
@@ -32,10 +24,24 @@ class MyOrderPage extends StatefulWidget {
 
 class _MyOrderPageState extends State<MyOrderPage> {
   DineOption isSelected = DineOption.dineIn;
+  TextEditingController _commentsController;
+
+  @override
+  void initState() {
+    super.initState();
+    _commentsController = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    _commentsController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         actions: <Widget>[
           IconButton(
@@ -55,11 +61,12 @@ class _MyOrderPageState extends State<MyOrderPage> {
           vertical: 20.0,
         ),
         child: Column(
-          //TODO: Redo UI
           children: <Widget>[
             globals.order.isEmpty ? _NoOrder() : _header(),
             Expanded(
+              flex: 2,
               child: Container(
+                //Displays a list of added order
                 child: ListView.builder(
                   physics: ClampingScrollPhysics(),
                   shrinkWrap: true,
@@ -68,9 +75,11 @@ class _MyOrderPageState extends State<MyOrderPage> {
                     return Card(
                       elevation: 0,
                       color: kOffWhite,
-                      margin: EdgeInsets.symmetric(
-                        horizontal: 180.0,
-                        vertical: 10.0,
+                      margin: EdgeInsets.only(
+                        left: 180.0,
+                        right: 70.0,
+                        top: 10.0,
+                        bottom: 10.0,
                       ),
                       child: Padding(
                         padding: const EdgeInsets.symmetric(
@@ -78,15 +87,24 @@ class _MyOrderPageState extends State<MyOrderPage> {
                           vertical: 10.0,
                         ),
                         child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: <Widget>[
                             Text(
                               globals.order[index].name,
                               style: kOrderInfoTextStyle,
                             ),
+                            SizedBox(
+                              width: 90.0,
+                            ),
                             Text(
                               globals.order[index].price,
                               style: kOrderInfoTextStyle,
+                            ),
+                            IconButton(
+                              icon: Icon(
+                                Icons.delete,
+                                color: Colors.red,
+                              ),
                             ),
                           ],
                         ),
@@ -97,7 +115,10 @@ class _MyOrderPageState extends State<MyOrderPage> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(right: 170.0),
+              padding: const EdgeInsets.only(
+                right: 170.0,
+                top: 10.0,
+              ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: <Widget>[
@@ -109,7 +130,7 @@ class _MyOrderPageState extends State<MyOrderPage> {
                     width: 30.0,
                   ),
                   Text(
-                    "\$${getTotal(globals.order)}",
+                    "\$${globals.thisDevicesTable.tableBillTotal}",//TODO: This must be fixed to reflect Michael's changes.
                     style: kOrderDetailsTextStyle,
                   ),
                 ],
@@ -124,12 +145,61 @@ class _MyOrderPageState extends State<MyOrderPage> {
                 color: Colors.grey,
               ),
             ),
+            Container(
+              margin: EdgeInsets.only(
+                left: 100.0,
+                bottom: 5,
+
+              ),
+              width: MediaQuery.of(context).size.width,
+              child: Text(
+                "Additional Comments: ",
+                style: TextStyle(
+                  fontSize: 20.0,
+                  color: kSemiBlack,
+                ),
+              ),
+            ),
+            Expanded(
+              child: Container(
+                margin: EdgeInsets.only(
+                  left: 100.0,
+                  right: 100.0,
+                  bottom: 20.0,
+                ),
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    color: Colors.grey[600],
+                    width: 0.5,
+                  ),
+                ),
+                width: MediaQuery.of(context).size.width,
+                //Gets current device's width ^
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                  child: TextField(
+                    controller: _commentsController,
+                    decoration: InputDecoration(
+                      hintStyle: TextStyle(fontSize: 16.0, color: Colors.grey),
+                      border: InputBorder.none,
+                      hintText:
+                          "Ex. No pickles and onions on Scrappy Burger...",
+                    ),
+                  ),
+                  /*
+                  To get the text inside the text box: _commentsController.text
+                   */
+                ),
+              ),
+            ),
             Row(
               children: <Widget>[
                 Expanded(
                   child: Container(
-                    margin: EdgeInsets.symmetric(
-                      horizontal: 30.0,
+                    margin: EdgeInsets.only(
+                      left: 30.0,
+                      right: 30.0,
+                      // top: 20.0,
                     ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -249,7 +319,7 @@ class _MyOrderPageState extends State<MyOrderPage> {
                           onPressed: () {
                             //TODO: Add functionality to send to kitchen or something?
                             //send to database cause why not
-                            sendData(globals.order);
+                            //sendData(globals.order);
                             print("hey");
                           },
                           child: Container(
@@ -320,13 +390,13 @@ class _MyOrderPageState extends State<MyOrderPage> {
     );
   }
 }
-
+//Delete this
 //helper functions
-double getTotal(List<menuItem> order) {
+/*double getTotal(List<MenuItem> order) {
   double total = 0;
   //parse through and get total
   for (int i = 0; i < order.length; i++) {
     total += double.parse(order[i].price.substring(1));
   }
   return total;
-}
+}*/

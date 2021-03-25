@@ -14,7 +14,6 @@ class GuestHomeScreen extends StatefulWidget {
 class _GuestHomeScreenState extends State<GuestHomeScreen> {
   final snackBar = SnackBar(content: Text("Waiter is coming soon..."));
 
-  //TODO: Don't let guest access welcome page
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,8 +51,7 @@ class _GuestHomeScreenState extends State<GuestHomeScreen> {
               CustomButton(
                 label: "Call Waiter",
                 buttonTapped: () {
-                  createAlertDialog(context);
-                  //ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                  print("Calling waiter now..");
                   //TODO: Add call waiter functionality here
                 },
               ),
@@ -82,74 +80,44 @@ class _GuestHomeScreenState extends State<GuestHomeScreen> {
             ],
           ),
           Expanded(
-            child: Container(
-              height: 100,
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: <Widget>[
-                  BottomNavBarItems(
-                    label: "Settings",
-                    buttonTapped: () {
-                      Navigator.pushNamed(context, "/SettingsPage");
-                    },
-                  ),
-                  BottomNavBarItems(
-                    label: "My Order",
-                    buttonTapped: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) {
-                            return MyOrderPage(
-                              orderID: "Order I-7845",
-                              //TODO: Add order ID here
-                              //TODO: Pass current list of order here
-                            );
-                          },
-                        ),
-                      );
-                    },
-                  ),
-                  BottomNavBarItems(
-                    label: "Pay Bill",
-                    buttonTapped: () {
-                      Navigator.pushNamed(context, "/PayBillPage");
-                    },
-                  ),
-                ],
-              ),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: <Widget>[
+                BottomNavBarItems(
+                  label: "Settings",
+                  buttonTapped: () {
+                    Navigator.pushNamed(context, "/SettingsPage");
+                  },
+                ),
+                BottomNavBarItems(
+                  label: "My Order",
+                  buttonTapped: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return MyOrderPage(
+                            orderID: "Order I-7845",
+                            //TODO: Add order ID here
+                            //TODO: Pass current list of order here
+                          );
+                        },
+                      ),
+                    );
+                  },
+                ),
+                BottomNavBarItems(
+                  label: "Pay Bill",
+                  buttonTapped: () {
+                    Navigator.pushNamed(context, "/PayBillPage");
+                  },
+                ),
+              ],
             ),
           ),
         ],
       ),
-    );
-  }
-
-  createAlertDialog(BuildContext context) {
-    TextEditingController customController = TextEditingController();
-    return showDialog(
-      context: context,
-      builder: (context) {
-        return AlertDialog(
-          title: Text("Waiter is coming soon"),
-          actions: <Widget>[
-            MaterialButton(
-              elevation: 5.0,
-              child: Text(
-                'OK',
-                style: TextStyle(
-                  fontSize: 18.0,
-                  color: kSemiDarkGreen,
-                ),
-              ),
-              onPressed: () {
-                Navigator.pop(context);
-              },
-            ),
-          ],
-        );
-      },
     );
   }
 }
