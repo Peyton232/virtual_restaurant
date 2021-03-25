@@ -47,7 +47,7 @@ class ManagerHomeScreen extends StatelessWidget {
               CustomButton(
                 label: "Change Meal of the Day",
                 buttonTapped: () {
-                  //Navigator.pushNamed(context, "/FreeDessertPage");
+                  Navigator.pushNamed(context, "/ChangeMealOfDayPage");
                 },
               ),
               CustomButton(

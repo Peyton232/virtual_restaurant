@@ -9,6 +9,7 @@ import 'package:virtual_restaurant/Pages/GuestVersion/PayBillPage.dart';
 import 'package:virtual_restaurant/Pages/GuestVersion/RequestRefillPage.dart';
 import 'package:virtual_restaurant/Pages/GuestVersion/SettingsPage.dart';
 import 'package:virtual_restaurant/Pages/GuestVersion/SplitBillPage.dart';
+import 'package:virtual_restaurant/Pages/ManagerVersion/ChangeMealOfDayPage.dart';
 import 'package:virtual_restaurant/Pages/ManagerVersion/ChangeMenuPage.dart';
 import 'package:virtual_restaurant/Pages/ManagerVersion/ManagerHomeScreen.dart';
 import 'package:virtual_restaurant/Pages/ManagerVersion/ManagerLoginScreen.dart';
@@ -71,6 +72,7 @@ class MyApp extends StatelessWidget {
         "/KidsModeEntrancePage": (context) => KidsModeEntrancePage(),
         "/KidsModeExitPage": (context) => KidsModeExitPage(),
         "/MineSweeperPage": (context) => MineSweeperPage(),
+        "/ChangeMealOfDayPage": (context) => ChangeMealOfDayPage(),
       },
     );
   }
