@@ -214,7 +214,7 @@ class _MyBillPageState extends State<MyBillPage> {
                     width: 30.0,
                   ),
                   Text(
-                    "\$${getTotal(globals.order).toStringAsFixed(2)}", //Made total only display two decimal places
+                    "\$${getTotalWithTip(getTotal(globals.order)).toStringAsFixed(2)}", //Made total only display two decimal places
                     style: kOrderDetailsTextStyle,
                   ),
                 ],
@@ -414,17 +414,23 @@ class _MyBillPageState extends State<MyBillPage> {
       ),
     );
   }
+  //TODO:  Implement 10%, 15%, 20% tip functions for the total
 
 //helper functions
   double getTotal(List<MenuItem> order) {
-    double totalWithoutTax = 0.0;
-    double totalWithTax = 0.0;
+    double total = 0;
     //parse through and get total
     for (int i = 0; i < order.length; i++) {
-      totalWithoutTax += double.parse(order[i].price.substring(1));
+      total += double.parse(order[i].price.substring(1));
     }
-    totalWithTax = (getTax(totalWithoutTax) + totalWithoutTax);
-    return totalWithTax;
+
+    return total;
+  }
+
+  double getTotalWithTip(double total) {
+    double totalWithTip = 0.0;
+    totalWithTip = total + _tipAmount + getTax(total);
+    return totalWithTip;
   }
 
   double getTax(double total) {
