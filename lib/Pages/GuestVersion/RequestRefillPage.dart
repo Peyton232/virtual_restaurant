@@ -1,12 +1,49 @@
 import 'package:flutter/material.dart';
 import 'package:virtual_restaurant/Data/constants.dart';
 
+/*
+This is the page where the customer can request multiple drinks at once
+ */
+
+class Drink {
+  bool isSelected;
+  String drinkName;
+
+  Drink({
+    this.isSelected,
+    this.drinkName,
+  });
+}
+
 class RequestRefillPage extends StatefulWidget {
   @override
   _RequestRefillPageState createState() => _RequestRefillPageState();
 }
-//TODO: Should not work until an order containing drinks is sent
+
 class _RequestRefillPageState extends State<RequestRefillPage> {
+  List<Drink> currentOrderDrinks = [
+    Drink(
+      isSelected: false,
+      drinkName: "Coca Cola",
+    ),
+    Drink(
+      isSelected: false,
+      drinkName: "Water",
+    ),
+    Drink(
+      isSelected: false,
+      drinkName: "Hot Chocolate",
+    ),
+    Drink(
+      isSelected: false,
+      drinkName: "Sprite",
+    ),
+    Drink(
+      isSelected: false,
+      drinkName: "Mango Smoothie",
+    ),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,7 +57,7 @@ class _RequestRefillPageState extends State<RequestRefillPage> {
             child: Padding(
               padding: EdgeInsets.only(top: 20.0),
               child: Text(
-                "Which drink would you like to refill?",
+                "Which drink(s) would you like to refill?",
                 style: TextStyle(
                   fontSize: 40.0,
                   fontWeight: FontWeight.bold,
@@ -57,45 +94,33 @@ class _RequestRefillPageState extends State<RequestRefillPage> {
                         });
                       },
                     ),
-                  ),
-                  Center(
-                    child: RefillOptionButton(
-                      drinkName: "Sweet Tea",
-                    ),
-                  ),
-                  Center(
-                    child: RefillOptionButton(
-                      drinkName: "Hot Chocolate",
-                    ),
-                  ),
-                ],
+                  );
+                }),
               ),
             ),
           ),
           Expanded(
             child: Center(
-              child: Padding(
-                padding: EdgeInsets.only(top: 30, left: 50, right: 50),
-                child: ElevatedButton(
-                  onPressed: () {
-                    print("Request Drink has been pressed");
-                  },
-                  style: ButtonStyle(
-                    backgroundColor:
-                        MaterialStateProperty.all<Color>(kLightGreen),
-                    elevation: MaterialStateProperty.all(4.0),
-                    overlayColor:
-                        MaterialStateProperty.all<Color>(Colors.green[300]),
-                  ),
-                  child: Container(
-                    height: 70,
-                    width: 300,
-                    child: Center(
-                      child: Text(
-                        "Request Drink",
-                        style:
-                            kLoginCardTextStyle, // took this from login screen style
-                      ),
+              child: ElevatedButton(
+                onPressed: () {
+                  print("Request Drink has been pressed");
+                  Navigator.pop(context);
+                },
+                style: ButtonStyle(
+                  backgroundColor:
+                  MaterialStateProperty.all<Color>(kLightGreen),
+                  elevation: MaterialStateProperty.all(4.0),
+                  overlayColor:
+                  MaterialStateProperty.all<Color>(Colors.green[300]),
+                ),
+                child: Container(
+                  height: 70,
+                  width: 300,
+                  child: Center(
+                    child: Text(
+                      "Request Drink",
+                      style:
+                      kLoginCardTextStyle, // took this from login screen style
                     ),
                   ),
                 ),
