@@ -1,11 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:virtual_restaurant/Data/constants.dart';
 
-/*
-This is the page where the customer can see the manager's menu choice of the day/week.
-The user can order this item if they are interested.
- */
-
 class ManagersChoicePage extends StatefulWidget {
   @override
   _ManagersChoicePageState createState() => _ManagersChoicePageState();
@@ -39,7 +34,7 @@ class _ManagersChoicePageState extends State<ManagersChoicePage> {
                   top: 20.0,
                 ),
                 child: Text(
-                  "(Menu Item Name)",
+                  "(Menu Item.dart Name)",
                   style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
                 ),
               ),

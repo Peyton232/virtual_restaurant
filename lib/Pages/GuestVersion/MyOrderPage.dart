@@ -179,7 +179,7 @@ class _MyOrderPageState extends State<MyOrderPage> {
                     width: 30.0,
                   ),
                   Text(
-                    "\$${getTotal(globals.order).toStringAsFixed(2)}", //Made total only display two decimal places
+                    "\$${globals.thisDevicesTable.tableBillTotal}", //TODO: This must be fixed to reflect Michael's changes.
                     style: kOrderDetailsTextStyle,
                   ),
                 ],
@@ -206,6 +206,7 @@ class _MyOrderPageState extends State<MyOrderPage> {
                   fontSize: 20.0,
                   color: kSemiBlack,
                 ),
+                textAlign: TextAlign.left,
               ),
             ),
             Expanded(
@@ -367,7 +368,7 @@ class _MyOrderPageState extends State<MyOrderPage> {
                           onPressed: () {
                             //TODO: Add functionality to send to kitchen or something?
                             //send to database cause why not
-                            sendData(globals.order);
+                            //sendData(globals.order);
                             print("hey");
                           },
                           child: Container(
@@ -482,11 +483,11 @@ createAlertDialog(BuildContext context, String itemName) {
 }
 
 //helper functions
-double getTotal(List<MenuItem> order) {
+/*double getTotal(List<MenuItem> order) {
   double total = 0;
   //parse through and get total
   for (int i = 0; i < order.length; i++) {
     total += double.parse(order[i].price.substring(1));
   }
   return total;
-}
+}*/

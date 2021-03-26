@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:virtual_restaurant/Pages/GuestVersion/games/ticTacToe.dart';
+import 'package:virtual_restaurant/Pages/GuestVersion/games/snake.dart';
 import 'package:virtual_restaurant/Data/constants.dart';
-
-/*
-This the page for 3 games. This can also be accessed in Kids Mode.
- */
 
 class GamesPage extends StatefulWidget {
   @override
@@ -56,7 +53,7 @@ class _GamesPageState extends State<GamesPage> {
                         ),
                         height: 250,
                         child: Center(
-                          child: Text("Image"), //TODO: Replace text with image
+                            child: Image.asset('images/ticcytaccy.png'),
                         ),
                       ),
                     ),
@@ -138,9 +135,7 @@ class _GamesPageState extends State<GamesPage> {
                           ),
                         ),
                         height: 250,
-                        child: Center(
-                          child: Text("Image"), //TODO: Replace text with image
-                        ),
+                        child: Image.asset('images/snaky.png'),
                       ),
                     ),
                     Expanded(
@@ -173,7 +168,13 @@ class _GamesPageState extends State<GamesPage> {
                                   primary: Colors.green,
                                   minimumSize: Size(180, 60),
                                 ),
-                                onPressed: () {},
+                                onPressed: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => SnakeGame()),
+                                  );
+                                },
                                 child: Text(
                                   "Play",
                                   style: TextStyle(
@@ -215,57 +216,48 @@ class _GamesPageState extends State<GamesPage> {
                           ),
                         ),
                         height: 250,
-                        child: Center(
-                          child: Text("Image"), //TODO: Replace text with image
-                        ),
+                        child: Center(child: Image.asset('images/MineSweeperImage.png'),),
                       ),
                     ),
-                    Expanded(
-                      flex: 1,
-                      child: Container(
-                        padding: EdgeInsets.all(12),
-                        child: Text(
-                          "Pong",
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 40),
-                        ),
+                          Expanded(
+                            flex: 1,
+                            child: Container(
+                              padding: EdgeInsets.all(12),
+                              child: Text("Mine Sweeper" ,style: TextStyle(fontWeight: FontWeight.bold, fontSize: 40),
+                              ),
+                            ),
+                           ),
+                          Expanded(
+                            flex: 1,
+                            child: Container(
+                              padding: EdgeInsets.all(12),
+                              child: Text("Click every square except the ones with a bomb!",
+                                style: TextStyle(fontSize: 20),
+                              ),
+                            ),
+                          ),
+                          Expanded(
+                            flex: 1,
+                            child: Center(
+                              child: Container(
+                                  child: ElevatedButton(
+                                      style: ElevatedButton.styleFrom(
+                                        primary: Colors.green,
+                                        minimumSize: Size(180,60),
+                                      ),
+                                      onPressed: (){
+                                        Navigator.pushNamed(context, "/MineSweeperPage");
+                                      }, child: Text("Play", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),))
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
-                    Expanded(
-                      flex: 1,
-                      child: Container(
-                        padding: EdgeInsets.all(12),
-                        child: Text(
-                          "Control the snake to eat the point. The farther you get the bigger it gets!",
-                          style: TextStyle(fontSize: 20),
-                        ),
-                      ),
-                    ),
-                    Expanded(
-                      flex: 1,
-                      child: Center(
-                        child: Container(
-                            child: ElevatedButton(
-                                style: ElevatedButton.styleFrom(
-                                  primary: Colors.green,
-                                  minimumSize: Size(180, 60),
-                                ),
-                                onPressed: () {},
-                                child: Text(
-                                  "Play",
-                                  style: TextStyle(
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.bold),
-                                ))),
-                      ),
                     ),
                   ],
                 ),
               ),
-            ),
-          ],
-        ),
-      ),
-    );
+            );
   }
 }

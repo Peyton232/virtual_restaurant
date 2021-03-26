@@ -2,10 +2,6 @@ import 'package:virtual_restaurant/Data/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:virtual_restaurant/CustomWidgets/CustomButton.dart';
 
-/*
-This is where the manager can see the reports of sales and profit
- */
-
 class ManagerReportPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

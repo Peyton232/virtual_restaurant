@@ -1,10 +1,6 @@
 import 'package:virtual_restaurant/Data/constants.dart';
 import 'package:flutter/material.dart';
 
-/*
-This is where the manager can edit the menu that the customer can see
- */
-
 class ChangeMenuPage extends StatefulWidget {
   @override
   _ChangeMenuPageState createState() => _ChangeMenuPageState();

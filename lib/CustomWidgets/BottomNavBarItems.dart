@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:virtual_restaurant/Data/constants.dart';
 
-/*
-This is used to create the custom bottom navigation bar in the GuestHomeScreen.dart
- */
-
 class BottomNavBarItems extends StatelessWidget {
   final String label;
   final Function buttonTapped;
@@ -21,7 +17,7 @@ class BottomNavBarItems extends StatelessWidget {
         child: Container(
           decoration: BoxDecoration(
             border: Border(left: BorderSide(width: 0.5)),
-            color: kLightGreen,
+            color: kSemiLightGreen,
           ),
           height: 60,
           child: Center(

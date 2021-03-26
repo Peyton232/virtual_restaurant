@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:virtual_restaurant/Database/database.dart';
 import '../Data/constants.dart';
 import '../CustomWidgets/CustomLoginCard.dart';
 
@@ -37,10 +38,17 @@ class WelcomePage extends StatelessWidget {
             CustomLoginCard(
               label: "Tabletop Mode",
               cardTapped: () {
+                loadMenuLists();
                 //Disables back button when going to the guest home page
                 Navigator.pushReplacementNamed(context, "/GuestHomeScreen");
                 //Enables back button when going to the guest home page
                 //Navigator.pushNamed(context, "/GuestHomeScreen");
+              },
+            ),
+            CustomLoginCard(
+              label: "Kitchen Mode",
+              cardTapped: () {
+                Navigator.pushNamed(context, "/KitchenLoginScreen");
               },
             ),
           ],
