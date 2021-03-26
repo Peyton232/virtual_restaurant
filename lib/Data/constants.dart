@@ -25,6 +25,7 @@ const kOrderHeaderTextStyle =
     TextStyle(fontSize: 30.0, fontWeight: FontWeight.bold);
 
 //The different categories that food menu items belong to
+
 enum FoodCategory { Appetizer, Dessert, Drink, Entree, KidsMeal, Side }
 
 String toStringFoodCategory(FoodCategory cat) {

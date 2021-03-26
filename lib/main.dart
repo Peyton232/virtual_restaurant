@@ -4,6 +4,7 @@ import 'package:virtual_restaurant/Pages/GuestVersion/FreeDessertPage.dart';
 import 'package:virtual_restaurant/Pages/GuestVersion/GamesPage.dart';
 import 'package:virtual_restaurant/Pages/GuestVersion/GuestHomeScreen.dart';
 import 'package:virtual_restaurant/Pages/GuestVersion/ManagersChoicePage.dart';
+import 'package:virtual_restaurant/Pages/GuestVersion/PayBillPage.dart';
 import 'package:virtual_restaurant/Pages/GuestVersion/MyOrderPage.dart';
 import 'package:virtual_restaurant/Pages/GuestVersion/MyBillPage.dart';
 import 'package:virtual_restaurant/Pages/GuestVersion/RequestRefillPage.dart';
@@ -42,7 +43,7 @@ class MyApp extends StatelessWidget {
       routes: {
         "/WelcomeScreen": (context) => WelcomePage(),
         "/GuestHomeScreen": (context) => GuestHomeScreen(),
-        "/ManagerHomeScreen": (context) => test(), // need to change this back
+        "/ManagerHomeScreen": (context) => ManagerHomeScreen(),     // need to change this back
         "/ManagerReportPage": (context) => ManagerReportPage(),
         "/ManagerLoginScreen": (context) => ManagerLoginScreen(),
         "/KitchenLoginScreen": (context) => KitchenLoginScreen(),
@@ -50,6 +51,8 @@ class MyApp extends StatelessWidget {
         "/WaiterLoginScreen": (context) => WaiterLoginScreen(),
         "/MenuPage": (context) => MenuScreen(),
         "/SettingsPage": (context) => SettingsPage(),
+        //"/MyOrderPage": (context) => MyOrderPage(),
+        "/PayBillPage": (context) => PayBillPage(),
         "/MyBillPage": (context) => MyBillPage(),
         "/ManagersChoicePage": (context) => ManagersChoicePage(),
         "/MyOrderPage": (context) => MyOrderPage(),
@@ -58,11 +61,13 @@ class MyApp extends StatelessWidget {
         "/GamesPage": (context) => GamesPage(),
         "/RequestRefillPage": (context) => RequestRefillPage(),
         "/SplitBillPage": (context) => SplitBillPage(),
+        "/KitchenHomeScreen": (context) => KitchenHomeScreen(),
         "/CheckoutPage": (context) => CheckoutPage(),
         //"/KidsModeEntrancePage": (context) => KidsModeEntrancePage(),
         //"/KidsModeExitPage": (context) => KidsModeExitPage(),
         "/MineSweeperPage": (context) => MineSweeperPage(),
         "/ChangeMealOfDayPage": (context) => ChangeMealOfDayPage(),
+
       },
     );
   }
