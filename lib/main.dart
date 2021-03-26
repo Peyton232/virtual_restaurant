@@ -16,6 +16,8 @@ import 'package:virtual_restaurant/Pages/ManagerVersion/ManagerReportPage.dart';
 import 'package:virtual_restaurant/Pages/WaiterVersion/WaiterLoginScreen.dart';
 import 'package:virtual_restaurant/Pages/KitchenVersion/KitchenLoginScreen.dart';
 import 'package:virtual_restaurant/Pages/GuestVersion/games/MineSweeper.dart';
+import 'Pages/GuestVersion/KidsModeEntrancePage.dart';
+import 'Pages/GuestVersion/KidsModeExitPage.dart';
 import 'Pages/GuestVersion/QRPage.dart';
 import 'Pages/KitchenVersion/KitchenHomeScreen.dart';
 import 'Pages/ManagerVersion/ManagerHomeScreen.dart';
@@ -62,8 +64,8 @@ class MyApp extends StatelessWidget {
         "/SplitBillPage": (context) => SplitBillPage(),
         "/KitchenHomeScreen": (context) => KitchenHomeScreen(),
         "/CheckoutPage": (context) => CheckoutPage(),
-        //"/KidsModeEntrancePage": (context) => KidsModeEntrancePage(),
-        //"/KidsModeExitPage": (context) => KidsModeExitPage(),
+        "/KidsModeEntrancePage": (context) => KidsModeEntrancePage(),
+        "/KidsModeExitPage": (context) => KidsModeExitPage(),
         "/MineSweeperPage": (context) => MineSweeperPage(),
         "/ChangeMealOfDayPage": (context) => ChangeMealOfDayPage(),
       },

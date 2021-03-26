@@ -9,6 +9,8 @@ import 'package:virtual_restaurant/classes/kitchenOrder.dart';
 import '../classes/menuItem.dart';
 
 bool kidsMode = false;
+String kidsModePassword = '';
+
 String tableID = 'T2';//To be phased out with the CustomerTable object
 
 CustomerTable thisDevicesTable = CustomerTable(tableNum:1);
