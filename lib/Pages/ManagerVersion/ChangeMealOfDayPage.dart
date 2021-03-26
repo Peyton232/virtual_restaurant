@@ -62,7 +62,7 @@ class _ChangeMealOfDayPageState extends State<ChangeMealOfDayPage> {
           ),
           Expanded(
             flex: 2,
-            child: GridView.builder(
+            child: GridView.count(
             ),
           ),
         ],
