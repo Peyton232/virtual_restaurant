@@ -9,7 +9,7 @@ enum tile_state { covered, open}
 int win_Count = 0;
 
 class Tile{
-  tile_state state = tile_state.open;
+  tile_state state = tile_state.covered;
   int val = 0;
   bool mine = false;
 }

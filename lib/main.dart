@@ -45,7 +45,7 @@ class MyApp extends StatelessWidget {
       routes: {
         "/WelcomeScreen": (context) => WelcomePage(),
         "/GuestHomeScreen": (context) => GuestHomeScreen(),
-        "/ManagerHomeScreen": (context) => test(),     // need to change this back
+        "/ManagerHomeScreen": (context) => ManagerHomeScreen(),     // need to change this back
         "/ManagerReportPage": (context) => ManagerReportPage(),
         "/ManagerLoginScreen": (context) => ManagerLoginScreen(),
         "/KitchenLoginScreen": (context) => KitchenLoginScreen(),
