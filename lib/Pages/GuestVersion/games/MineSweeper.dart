@@ -9,8 +9,10 @@ enum tile_state { covered, open}
 int win_Count = 0;
 
 class Tile{
+
 //   tile_state state = tile_state.covered;
 //   tile_state state = tile_state.open;
+
 
   int val = 0;
   bool mine = false;
@@ -84,6 +86,7 @@ class _MineSweeperGame extends State<MineSweeperPage> {
         {
           board[x+8].val = board[x+8].val + 1;
         }
+
         if(x%9 != 0)
           {
             if(x-1 >= 0)
@@ -118,6 +121,7 @@ class _MineSweeperGame extends State<MineSweeperPage> {
         {
           board[x-9].val = board[x-9].val + 1;
         }
+
         if(x+9 < 81)
         {
           board[x+9].val = board[x+9].val + 1;

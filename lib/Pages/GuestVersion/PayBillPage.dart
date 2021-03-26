@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:virtual_restaurant/Data/constants.dart';
+
 import 'package:virtual_restaurant/CustomWidgets/MenuItem.dart';
 import 'package:virtual_restaurant/Database/database.dart';
 import 'package:virtual_restaurant/Data/globals.dart' as globals;
@@ -30,11 +31,13 @@ class _MyBillPageState extends State<MyBillPage> {
   void dispose() {
     _tipController.dispose();
     super.dispose();
+
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
         title: Text(
@@ -241,8 +244,10 @@ class _MyBillPageState extends State<MyBillPage> {
                     Navigator.pushNamed(context, "/SplitBillPage");
                   },
                   child: Container(
+
                     height: 70.0,
                     width: 250.0,
+
                     child: Center(
                       child: Text(
                         "Split Bill",
@@ -255,6 +260,7 @@ class _MyBillPageState extends State<MyBillPage> {
                   style: ElevatedButton.styleFrom(
                     primary: kGreen,
                   ),
+
                   onPressed: () {
                     Navigator.pushNamed(context, "/CheckoutPage");
                   },
@@ -439,4 +445,5 @@ class _MyBillPageState extends State<MyBillPage> {
     taxAmount = total * .0825;
     return taxAmount;
   }
+
 }

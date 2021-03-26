@@ -179,7 +179,9 @@ class _MyOrderPageState extends State<MyOrderPage> {
                     width: 30.0,
                   ),
                   Text(
+
                     "\$${globals.thisDevicesTable.tableBillTotal}", //TODO: This must be fixed to reflect Michael's changes.
+
                     style: kOrderDetailsTextStyle,
                   ),
                 ],
@@ -198,6 +200,7 @@ class _MyOrderPageState extends State<MyOrderPage> {
               margin: EdgeInsets.only(
                 left: 100.0,
                 bottom: 5,
+
               ),
               width: MediaQuery.of(context).size.width,
               child: Text(
@@ -481,7 +484,6 @@ createAlertDialog(BuildContext context, String itemName) {
     },
   );
 }
-
 //helper functions
 /*double getTotal(List<MenuItem> order) {
   double total = 0;
@@ -490,4 +492,6 @@ createAlertDialog(BuildContext context, String itemName) {
     total += double.parse(order[i].price.substring(1));
   }
   return total;
+
 }*/
+
