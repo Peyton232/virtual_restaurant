@@ -8,9 +8,6 @@ import 'package:virtual_restaurant/Data/constants.dart';
 import 'package:virtual_restaurant/Database/database.dart';
 import 'package:virtual_restaurant/classes/menuItem.dart';
 
-
-
-
 class KitchenHomeScreen extends StatefulWidget {
   // These two lines needed for firebase
 
@@ -23,8 +20,6 @@ class KitchenHomeScreen extends StatefulWidget {
 }
 
 class _KitchenHomeScreenState extends State<KitchenHomeScreen> {
-
-
   List<MenuItem> orders = [];
 
   Color changeIconColor = Colors.grey;
@@ -40,15 +35,13 @@ class _KitchenHomeScreenState extends State<KitchenHomeScreen> {
 
     // orders.add("item1");
     // orders.add("item2");
+  }
 
   // Varibles
   final OrderNumber = 'OrderNumber';
   @override
   Widget build(BuildContext context) {
-
-
     bool _checked = false;
-
 
     final ref = referenceDatabase.reference();
 
@@ -57,26 +50,25 @@ class _KitchenHomeScreenState extends State<KitchenHomeScreen> {
         title: Text("Orders Todo"),
       ),
       body: ListView.builder(
-        //Todo: Change this order.length later!!!! <- NICK LOOK AT ME
+          //Todo: Change this order.length later!!!! <- NICK LOOK AT ME
           itemCount: globals.order.length,
-          itemBuilder: (BuildContext context, int index){
+          itemBuilder: (BuildContext context, int index) {
             return Dismissible(
               //key: orders[index],
               background: Card(
                 shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(16),
+                  borderRadius: BorderRadius.circular(16),
                 ),
-                  color: Colors.red,
+                color: Colors.red,
               ),
               key: UniqueKey(),
               child: Card(
                 color: Colors.white54,
                 shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(16)
-                ),
+                    borderRadius: BorderRadius.circular(16)),
 
                 child: CheckboxListTile(
-                  title:  Text(
+                  title: Text(
                     globals.order[index].name,
                   ),
                   controlAffinity: ListTileControlAffinity.trailing,
@@ -84,8 +76,9 @@ class _KitchenHomeScreenState extends State<KitchenHomeScreen> {
                     Icons.timer,
                   ),
                   //value: _checked,
-                  value: globals.order[index].finished, // declared to false in menuItem class
-                  onChanged: (bool selected){
+                  value: globals.order[index]
+                      .finished, // declared to false in menuItem class
+                  onChanged: (bool selected) {
                     setState(() {
                       globals.order[index].finished = selected;
                     });
@@ -93,7 +86,7 @@ class _KitchenHomeScreenState extends State<KitchenHomeScreen> {
                 ),
                 //child: Text("${globals.order[index].finished}"),
               ),
-              onDismissed: (direction){
+              onDismissed: (direction) {
                 setState(() {
                   // Todo: Implement a on dismissed for widget for deleting from orders list
                   //globals.order[index].removeAt(index);
@@ -104,4 +97,3 @@ class _KitchenHomeScreenState extends State<KitchenHomeScreen> {
     );
   }
 }
-
