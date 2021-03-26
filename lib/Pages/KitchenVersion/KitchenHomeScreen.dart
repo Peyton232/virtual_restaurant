@@ -10,10 +10,13 @@ import 'package:virtual_restaurant/classes/menuItem.dart';
 
 
 
+
 class KitchenHomeScreen extends StatefulWidget {
   // These two lines needed for firebase
+
   KitchenHomeScreen({this.app});
   final FirebaseApp app;
+
   // -----------------------------------
   @override
   _KitchenHomeScreenState createState() => _KitchenHomeScreenState();
@@ -21,29 +24,31 @@ class KitchenHomeScreen extends StatefulWidget {
 
 class _KitchenHomeScreenState extends State<KitchenHomeScreen> {
 
+
   List<MenuItem> orders = [];
 
   Color changeIconColor = Colors.grey;
 
   MenuItem input;
+
   // using this to grab database information
   final referenceDatabase = FirebaseDatabase.instance;
 
   @override
   void initState() {
     super.initState();
+
     // orders.add("item1");
     // orders.add("item2");
-  }
-
-
 
   // Varibles
   final OrderNumber = 'OrderNumber';
   @override
   Widget build(BuildContext context) {
 
+
     bool _checked = false;
+
 
     final ref = referenceDatabase.reference();
 
@@ -51,7 +56,6 @@ class _KitchenHomeScreenState extends State<KitchenHomeScreen> {
       appBar: AppBar(
         title: Text("Orders Todo"),
       ),
-
       body: ListView.builder(
         //Todo: Change this order.length later!!!! <- NICK LOOK AT ME
           itemCount: globals.order.length,
@@ -100,3 +104,4 @@ class _KitchenHomeScreenState extends State<KitchenHomeScreen> {
     );
   }
 }
+

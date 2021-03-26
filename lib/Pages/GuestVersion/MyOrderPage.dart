@@ -179,7 +179,9 @@ class _MyOrderPageState extends State<MyOrderPage> {
                     width: 30.0,
                   ),
                   Text(
-                    "\$${globals.thisDevicesTable.tableBillTotal}",//TODO: This must be fixed to reflect Michael's changes.
+
+                    "\$${globals.thisDevicesTable.tableBillTotal}", //TODO: This must be fixed to reflect Michael's changes.
+
                     style: kOrderDetailsTextStyle,
                   ),
                 ],
@@ -207,6 +209,7 @@ class _MyOrderPageState extends State<MyOrderPage> {
                   fontSize: 20.0,
                   color: kSemiBlack,
                 ),
+                textAlign: TextAlign.left,
               ),
             ),
             Expanded(
@@ -489,4 +492,6 @@ createAlertDialog(BuildContext context, String itemName) {
     total += double.parse(order[i].price.substring(1));
   }
   return total;
+
 }*/
+
