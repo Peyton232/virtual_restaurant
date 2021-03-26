@@ -10,12 +10,14 @@ import 'package:virtual_restaurant/Pages/GuestVersion/PayBillPage.dart';
 import 'package:virtual_restaurant/Pages/GuestVersion/RequestRefillPage.dart';
 import 'package:virtual_restaurant/Pages/GuestVersion/SettingsPage.dart';
 import 'package:virtual_restaurant/Pages/GuestVersion/SplitBillPage.dart';
+import 'package:virtual_restaurant/Pages/ManagerVersion/ChangeMealOfDayPage.dart';
 import 'package:virtual_restaurant/Pages/ManagerVersion/ChangeMenuPage.dart';
 import 'package:virtual_restaurant/Pages/ManagerVersion/ManagerHomeScreen.dart';
 import 'package:virtual_restaurant/Pages/ManagerVersion/ManagerLoginScreen.dart';
 import 'package:virtual_restaurant/Pages/ManagerVersion/ManagerReportPage.dart';
 import 'package:virtual_restaurant/Pages/WaiterVersion/WaiterLoginScreen.dart';
 import 'package:virtual_restaurant/Pages/KitchenVersion/KitchenLoginScreen.dart';
+import 'package:virtual_restaurant/Pages/GuestVersion/games/MineSweeper.dart';
 import 'package:virtual_restaurant/Pages/GuestVersion/games/MineSweeper.dart';
 import 'package:virtual_restaurant/Pages/KitchenVersion/KitchenHomeScreen.dart';
 import 'Pages/GuestVersion/QRPage.dart';
@@ -29,6 +31,7 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -44,7 +47,7 @@ class MyApp extends StatelessWidget {
       routes: {
         "/WelcomeScreen": (context) => WelcomePage(),
         "/GuestHomeScreen": (context) => GuestHomeScreen(),
-        "/ManagerHomeScreen": (context) => test(), // need to change this back
+        "/ManagerHomeScreen": (context) => test(),     // need to change this back
         "/ManagerReportPage": (context) => ManagerReportPage(),
         "/ManagerLoginScreen": (context) => ManagerLoginScreen(),
         "/KitchenLoginScreen": (context) => KitchenLoginScreen(),
@@ -53,7 +56,6 @@ class MyApp extends StatelessWidget {
         "/MenuPage": (context) => MenuScreen(),
         "/SettingsPage": (context) => SettingsPage(),
         "/MyBillPage": (context) => MyBillPage(),
-        //"/MyOrderPage": (context) => MyOrderPage(),
         "/PayBillPage": (context) => PayBillPage(),
         "/ManagersChoicePage": (context) => ManagersChoicePage(),
         "/MyOrderPage": (context) => MyOrderPage(),
@@ -66,6 +68,7 @@ class MyApp extends StatelessWidget {
         //"/KidsModeEntrancePage": (context) => KidsModeEntrancePage(),
         //"/KidsModeExitPage": (context) => KidsModeExitPage(),
         "/MineSweeperPage": (context) => MineSweeperPage(),
+        "/ChangeMealOfDayPage": (context) => ChangeMealOfDayPage(),
       },
     );
   }
