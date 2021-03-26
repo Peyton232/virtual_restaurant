@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:virtual_restaurant/Pages/GuestVersion/CheckoutPage.dart';
 import 'package:virtual_restaurant/Pages/GuestVersion/FreeDessertPage.dart';
 import 'package:virtual_restaurant/Pages/GuestVersion/GamesPage.dart';
 import 'package:virtual_restaurant/Pages/GuestVersion/GuestHomeScreen.dart';
 import 'package:virtual_restaurant/Pages/GuestVersion/ManagersChoicePage.dart';
+import 'package:virtual_restaurant/Pages/GuestVersion/MyOrderPage.dart';
+import 'package:virtual_restaurant/Pages/GuestVersion/MyBillPage.dart';
 import 'package:virtual_restaurant/Pages/GuestVersion/PayBillPage.dart';
 import 'package:virtual_restaurant/Pages/GuestVersion/RequestRefillPage.dart';
 import 'package:virtual_restaurant/Pages/GuestVersion/SettingsPage.dart';
@@ -14,16 +17,15 @@ import 'package:virtual_restaurant/Pages/ManagerVersion/ManagerLoginScreen.dart'
 import 'package:virtual_restaurant/Pages/ManagerVersion/ManagerReportPage.dart';
 import 'package:virtual_restaurant/Pages/WaiterVersion/WaiterLoginScreen.dart';
 import 'package:virtual_restaurant/Pages/KitchenVersion/KitchenLoginScreen.dart';
-
 import 'package:virtual_restaurant/Pages/GuestVersion/games/MineSweeper.dart';
-
+import 'package:virtual_restaurant/Pages/GuestVersion/games/MineSweeper.dart';
 import 'package:virtual_restaurant/Pages/KitchenVersion/KitchenHomeScreen.dart';
 import 'Pages/GuestVersion/QRPage.dart';
-
 import 'Pages/welcomeScreen.dart';
 import 'Data/constants.dart';
 import 'Pages/GuestVersion/MenuPage.dart';
 import 'package:virtual_restaurant/Pages/GuestVersion/test.dart';
+
 void main() {
   runApp(MyApp());
 }
@@ -53,15 +55,16 @@ class MyApp extends StatelessWidget {
         "/WaiterLoginScreen": (context) => WaiterLoginScreen(),
         "/MenuPage": (context) => MenuScreen(),
         "/SettingsPage": (context) => SettingsPage(),
-        //"/MyOrderPage": (context) => MyOrderPage(),
+        "/MyBillPage": (context) => MyBillPage(),
         "/PayBillPage": (context) => PayBillPage(),
         "/ManagersChoicePage": (context) => ManagersChoicePage(),
-        // "/FreeDessertPage": (context) => FreeDessertPage(),
+        "/MyOrderPage": (context) => MyOrderPage(),
         "/FreeDessertPage": (context) => SpinningWheel(),
         "/QRPage": (context) => QR(),
         "/GamesPage": (context) => GamesPage(),
         "/RequestRefillPage": (context) => RequestRefillPage(),
         "/SplitBillPage": (context) => SplitBillPage(),
+        "/CheckoutPage": (context) => CheckoutPage(),
         //"/KidsModeEntrancePage": (context) => KidsModeEntrancePage(),
         //"/KidsModeExitPage": (context) => KidsModeExitPage(),
         "/MineSweeperPage": (context) => MineSweeperPage(),

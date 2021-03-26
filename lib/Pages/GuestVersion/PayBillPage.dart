@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:virtual_restaurant/Data/constants.dart';
 import 'package:virtual_restaurant/CustomWidgets/MenuItem.dart';
 import 'package:virtual_restaurant/Database/database.dart';
-import 'package:virtual_restaurant/classes/menuItem.dart';
 import 'package:virtual_restaurant/Data/globals.dart' as globals;
+import 'package:virtual_restaurant/classes/menuItem.dart';
 
 //TODO: Copy majority of the MyOrderPage
 /*
@@ -11,12 +11,12 @@ This is the page where the customer can view their bill and pay.
 They have the option to give a tip and split the bill between people
  */
 
-class PayBillPage extends StatefulWidget {
+class MyBillPage extends StatefulWidget {
   @override
   _MyBillPageState createState() => _MyBillPageState();
 }
 
-class _MyBillPageState extends State<PayBillPage> {
+class _MyBillPageState extends State<MyBillPage> {
   TextEditingController _tipController;
   double _tipAmount = 0.0;
 
@@ -215,7 +215,7 @@ class _MyBillPageState extends State<PayBillPage> {
                     width: 30.0,
                   ),
                   Text(
-                    "\$${getTotal(globals.order).toStringAsFixed(2)}", //Made total only display two decimal places
+                    "\$${getTotalWithTip(getTotal(globals.order)).toStringAsFixed(2)}", //Made total only display two decimal places
                     style: kOrderDetailsTextStyle,
                   ),
                 ],
@@ -415,17 +415,23 @@ class _MyBillPageState extends State<PayBillPage> {
       ),
     );
   }
+  //TODO:  Implement 10%, 15%, 20% tip functions for the total
 
 //helper functions
   double getTotal(List<MenuItem> order) {
-    double totalWithoutTax = 0.0;
-    double totalWithTax = 0.0;
+    double total = 0;
     //parse through and get total
     for (int i = 0; i < order.length; i++) {
-      totalWithoutTax += double.parse(order[i].price.substring(1));
+      total += double.parse(order[i].price.substring(1));
     }
-    totalWithTax = (getTax(totalWithoutTax) + totalWithoutTax);
-    return totalWithTax;
+
+    return total;
+  }
+
+  double getTotalWithTip(double total) {
+    double totalWithTip = 0.0;
+    totalWithTip = total + _tipAmount + getTax(total);
+    return totalWithTip;
   }
 
   double getTax(double total) {
