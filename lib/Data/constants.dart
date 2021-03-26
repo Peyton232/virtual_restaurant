@@ -20,7 +20,6 @@ const kOrderColumnHeaderTextStyle = TextStyle(
 );
 const kOrderDetailsTextStyle = TextStyle(fontSize: 30.0, color: kSemiBlack);
 const kRowSpacing = 30.0;
-
 const kOrderInfoTextStyle = TextStyle(fontSize: 30.0);
 const kOrderHeaderTextStyle =
     TextStyle(fontSize: 30.0, fontWeight: FontWeight.bold);
@@ -31,17 +30,6 @@ enum FoodCategory { Appetizer, Dessert, Drink, Entree, KidsMeal, Side }
 
 String toStringFoodCategory(FoodCategory cat) {
   switch (cat) {
-enum FoodCategory {
-  Appetizer,
-  Dessert,
-  Drink,
-  Entree,
-  KidsMeal,
-  Side
-}
-
-String toStringFoodCategory(FoodCategory cat) {
-  switch(cat) {
     case FoodCategory.Appetizer:
       return "Appetizer";
     case FoodCategory.Dessert:
@@ -59,8 +47,8 @@ String toStringFoodCategory(FoodCategory cat) {
   }
 }
 
-FoodCategory toFoodCategoryFromString(String cat){
-  switch(cat){
+FoodCategory toFoodCategoryFromString(String cat) {
+  switch (cat) {
     case "Appetizer":
     case "Appetizers":
       return FoodCategory.Appetizer;
@@ -84,4 +72,3 @@ FoodCategory toFoodCategoryFromString(String cat){
 }
 
 const MaxNumberOfTables = 20;
-
