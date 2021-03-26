@@ -24,6 +24,7 @@ List<MenuItem> entrees = [
     calories: 9000,
     allergens: ["dairy", "gluten"],
     //image: "https://browseyou.com/media/img/src/no-item.jpg",
+    finished: false,
   ),
   MenuItem(
     name: "<item name>",
@@ -32,6 +33,7 @@ List<MenuItem> entrees = [
     calories: 9000,
     allergens: ["dairy", "gluten"],
     //image: "https://browseyou.com/media/img/src/no-item.jpg",
+    finished: false,
   ),
   MenuItem(
     name: "<item name>",
@@ -40,6 +42,7 @@ List<MenuItem> entrees = [
     calories: 9000,
     allergens: ["dairy", "gluten"],
     //image: "https://browseyou.com/media/img/src/no-item.jpg",
+    finished: false,
   ),
 ];
 
@@ -52,6 +55,7 @@ List<MenuItem> appetizers = [
     calories: 9000,
     allergens: ["dairy", "gluten"],
     //image: "https://browseyou.com/media/img/src/no-item.jpg",
+    finished: false,
   ),
   MenuItem(
     name: "<item name>",
@@ -60,6 +64,7 @@ List<MenuItem> appetizers = [
     calories: 9000,
     allergens: ["dairy", "gluten"],
     //image: "https://browseyou.com/media/img/src/no-item.jpg",
+    finished: false,
   ),
   MenuItem(
     name: "<item name>",
@@ -68,6 +73,7 @@ List<MenuItem> appetizers = [
     calories: 9000,
     allergens: ["dairy", "gluten"],
     //image: "https://browseyou.com/media/img/src/no-item.jpg",
+    finished: false,
   ),
 ];
 
@@ -80,6 +86,7 @@ List<MenuItem> sides = [
     calories: 9000,
     allergens: ["dairy", "gluten"],
     //image: "https://browseyou.com/media/img/src/no-item.jpg",
+    finished: false,
   ),
   MenuItem(
     name: "<item name>",
@@ -88,6 +95,7 @@ List<MenuItem> sides = [
     calories: 9000,
     allergens: ["dairy", "gluten"],
     //image: "https://browseyou.com/media/img/src/no-item.jpg",
+    finished: false,
   ),
   MenuItem(
     name: "<item name>",
@@ -96,6 +104,7 @@ List<MenuItem> sides = [
     calories: 9000,
     allergens: ["dairy", "gluten"],
     //image: "https://browseyou.com/media/img/src/no-item.jpg",
+    finished: false,
   ),
 ];
 
@@ -108,6 +117,7 @@ List<MenuItem> kidsMeals = [
     calories: 9000,
     allergens: ["dairy", "gluten"],
     //image: "https://browseyou.com/media/img/src/no-item.jpg",
+    finished: false,
   ),
   MenuItem(
     name: "<item name>",
@@ -116,6 +126,7 @@ List<MenuItem> kidsMeals = [
     calories: 9000,
     allergens: ["dairy", "gluten"],
     //image: "https://browseyou.com/media/img/src/no-item.jpg",
+    finished: false,
   ),
   MenuItem(
     name: "<item name>",
@@ -124,6 +135,7 @@ List<MenuItem> kidsMeals = [
     calories: 9000,
     allergens: ["dairy", "gluten"],
     //image: "https://browseyou.com/media/img/src/no-item.jpg",
+    finished: false,
   ),
 ];
 
@@ -136,6 +148,7 @@ List<MenuItem> desserts = [
     calories: 9000,
     allergens: ["dairy", "gluten"],
     //image: "https://browseyou.com/media/img/src/no-item.jpg",
+    finished: false,
   ),
   MenuItem(
     name: "<item name>",
@@ -144,6 +157,7 @@ List<MenuItem> desserts = [
     calories: 9000,
     allergens: ["dairy", "gluten"],
     //image: "https://browseyou.com/media/img/src/no-item.jpg",
+    finished: false,
   ),
   MenuItem(
     name: "<item name>",
@@ -152,6 +166,7 @@ List<MenuItem> desserts = [
     calories: 9000,
     allergens: ["dairy", "gluten"],
     //image: "https://browseyou.com/media/img/src/no-item.jpg",
+    finished: false,
   ),
 ];
 
@@ -164,6 +179,7 @@ List<MenuItem> drinks = [
     calories: 9000,
     allergens: ["dairy", "gluten"],
     //image: "https://browseyou.com/media/img/src/no-item.jpg",
+    finished: false,
   ),
   MenuItem(
     name: "<item name>",
@@ -172,6 +188,7 @@ List<MenuItem> drinks = [
     calories: 9000,
     allergens: ["dairy", "gluten"],
     //image: "https://browseyou.com/media/img/src/no-item.jpg",
+    finished: false,
   ),
   MenuItem(
     name: "<item name>",
@@ -180,6 +197,7 @@ List<MenuItem> drinks = [
     calories: 9000,
     allergens: ["dairy", "gluten"],
     //image: "https://browseyou.com/media/img/src/no-item.jpg",
+    finished: false,
   ),
 ];
 

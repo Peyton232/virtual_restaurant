@@ -3,10 +3,6 @@ import 'package:flutter/services.dart';
 import 'package:virtual_restaurant/Data/constants.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
-/*
-This is the page where the customer can receive the coupon for their free dessert
- */
-
 class QR extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
