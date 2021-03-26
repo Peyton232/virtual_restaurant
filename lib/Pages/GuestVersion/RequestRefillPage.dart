@@ -108,10 +108,10 @@ class _RequestRefillPageState extends State<RequestRefillPage> {
                 },
                 style: ButtonStyle(
                   backgroundColor:
-                      MaterialStateProperty.all<Color>(kLightGreen),
+                  MaterialStateProperty.all<Color>(kLightGreen),
                   elevation: MaterialStateProperty.all(4.0),
                   overlayColor:
-                      MaterialStateProperty.all<Color>(Colors.green[300]),
+                  MaterialStateProperty.all<Color>(Colors.green[300]),
                 ),
                 child: Container(
                   height: 70,
@@ -120,7 +120,7 @@ class _RequestRefillPageState extends State<RequestRefillPage> {
                     child: Text(
                       "Request Drink",
                       style:
-                          kLoginCardTextStyle, // took this from login screen style
+                      kLoginCardTextStyle, // took this from login screen style
                     ),
                   ),
                 ),

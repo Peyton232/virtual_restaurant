@@ -2,10 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:virtual_restaurant/Data/constants.dart';
 import 'package:custom_switch/custom_switch.dart';
 
-/*
-This is the page where the customer can change the settings of the app
- */
-
 const kSettingsHeaderTextStyle = TextStyle(
   fontSize: 30.0,
 );
@@ -142,7 +138,7 @@ class _SettingsPageState extends State<SettingsPage> {
                   ),
                 ),
                 Text(
-                  " 30 ",
+                  " 30",
                   style: TextStyle(fontSize: 25.0),
                 ),
               ],
@@ -181,7 +177,7 @@ class _SettingsPageState extends State<SettingsPage> {
                   ),
                 ),
                 Text(
-                  " 30 ",
+                  " 30",
                   style: TextStyle(fontSize: 25.0),
                 ),
               ],
@@ -197,18 +193,14 @@ class _SettingsPageState extends State<SettingsPage> {
                   style: kSettingsHeaderTextStyle,
                   textAlign: TextAlign.left,
                 ),
-                //TODO: Redo look of Switch. It looks weird
-                Padding(
-                  padding: const EdgeInsets.only(left: 100.0),
-                  child: Switch.adaptive(
-                      activeColor: kGreen,
-                      value: _highContrastToggle,
-                      onChanged: (bool newValue) {
-                        setState(() {
-                          _highContrastToggle = newValue;
-                        });
-                      }),
-                ),
+                Switch.adaptive(
+                    activeColor: kGreen,
+                    value: _highContrastToggle,
+                    onChanged: (bool newValue) {
+                      setState(() {
+                        _highContrastToggle = newValue;
+                      });
+                    }),
               ],
             ),
           ],

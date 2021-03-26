@@ -31,9 +31,11 @@ class _ticTacToe extends State<ticTacToe> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: new AppBar(
-      //   title: new Text('Tic Tac Toe'),
-      // ),
+      appBar: new AppBar(
+         title: new Text(
+             'Tic Tac Toe'
+         ),
+       ),
       body: Container(
         padding: EdgeInsets.all(32.0),
         child: Center(
@@ -42,6 +44,7 @@ class _ticTacToe extends State<ticTacToe> {
             //crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Row(
+
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   _buildELement(0, 0),
@@ -86,11 +89,14 @@ class _ticTacToe extends State<ticTacToe> {
         }
       },
       child: Container(
+
         width: 100,
         decoration: BoxDecoration(
           shape: BoxShape.rectangle,
+          color: Colors.grey,
           border: Border.all(
             color: Colors.black,
+            width: 3,
           ),
         ),
         child: Center(
