@@ -4,9 +4,10 @@ import 'dart:math';
 import 'dart:ui';
 
 enum tile_state { covered, open }
+
 int win_Count = 0;
 
-class Tile{
+class Tile {
   tile_state state = tile_state.covered;
 
   int val = 0;
@@ -145,6 +146,7 @@ class MineTile extends StatefulWidget {
   bool mine;
 
   MineTile({this.covered, this.val, this.mine});
+
   _MineTile createState() => _MineTile();
 }
 
