@@ -33,7 +33,7 @@ class _ticTacToe extends State<ticTacToe> {
     return Scaffold(
       appBar: new AppBar(
          title: new Text(
-             'Tic Tac Toe'
+             'Games'
          ),
        ),
       body: Container(
@@ -42,7 +42,17 @@ class _ticTacToe extends State<ticTacToe> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             //crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
+            children: <Widget>[
+              Padding(
+                  padding: EdgeInsets.only(
+                    top: 32,
+                    bottom: 8,
+                  ),
+                child: Text('Tic Tac Toe',
+                    style: TextStyle(fontSize: 50, fontWeight: FontWeight.bold),
+                 ),
+              ),
+
               Row(
 
                 mainAxisSize: MainAxisSize.min,
@@ -89,20 +99,21 @@ class _ticTacToe extends State<ticTacToe> {
         }
       },
       child: Container(
-
         width: 100,
+        height: 100,
         decoration: BoxDecoration(
-          shape: BoxShape.rectangle,
+          //shape: BoxShape.rectangle,
           color: Colors.grey,
           border: Border.all(
-            color: Colors.black,
+            color: Colors.white,
             width: 3,
           ),
+          borderRadius: BorderRadius.circular(10),
         ),
         child: Center(
           child: Text(
             _matrix[i][j],
-            style: TextStyle(fontSize: 130.0),
+            style: TextStyle(fontSize: 70.0),
           ),
         ),
       ),
@@ -176,6 +187,8 @@ class _ticTacToe extends State<ticTacToe> {
         }
     );
   }
-
-
 }
+
+
+
+

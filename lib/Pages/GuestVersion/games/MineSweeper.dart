@@ -122,6 +122,9 @@ class _MineSweeperGame extends State<MineSweeperPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text("Mine Sweeper"),
+      ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
