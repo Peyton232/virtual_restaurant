@@ -4,11 +4,12 @@ import 'package:virtual_restaurant/Data/globals.dart';
 import 'package:virtual_restaurant/classes/menuItem.dart';
 
 /*
-This is where the manager can edit the menu that the customer can see
+This is where the manager can edit the meal of day
+
+ that the customer can see
  */
 
 List<MenuItem> mChoiceList = [...entrees, ...appetizers, ...sides, ...desserts];
-int mealOfday_place = 0;
 
 class ChangeMealOfDayPage extends StatefulWidget {
   @override
@@ -17,22 +18,21 @@ class ChangeMealOfDayPage extends StatefulWidget {
 
 class _ChangeMealOfDayPageState extends State<ChangeMealOfDayPage> {
   List<Widget> grid_items = [];
-  //TODO: Change base to currently chosen meal of day
+  int mealOfday_place = 0;
 
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    for (int i = 0; i < mChoiceList.length; i++) {
+      grid_items.add(Item_Card(i));
+    }
+  }
+
+  //TODO: Change base to currently chosen meal of day
 
   @override
   Widget build(BuildContext context) {
-    for (int i = 0; i < mChoiceList.length; i++) {
-      grid_items.add(item_Card(
-        place: i,
-        onChanged: (place){
-          setState(() {
-            mealOfday_place = place;
-          });
-          print(["Meal Of Day: ",mealOfday_place]);
-        }
-      ));
-    }
 
     return Scaffold(
       appBar: PreferredSize(
@@ -64,13 +64,7 @@ class _ChangeMealOfDayPageState extends State<ChangeMealOfDayPage> {
                     ),
                   ),
                   Expanded(
-                    child: MealOfDay(
-                      name: mChoiceList[mealOfday_place].getItemName,
-                      allergens: mChoiceList[mealOfday_place].getAllergens,
-                      calories: mChoiceList[mealOfday_place].getCalories,
-                      description: mChoiceList[mealOfday_place].getDescription,
-                      price: mChoiceList[mealOfday_place].getPrice,
-                    ),
+                    child: MealOfDay(),
                   ),
                 ],
               ),
@@ -85,7 +79,6 @@ class _ChangeMealOfDayPageState extends State<ChangeMealOfDayPage> {
                 ),
               ),
               child: GridView.count(
-                primary: true,
                 padding: EdgeInsets.symmetric(vertical: 30, horizontal: 40),
                 crossAxisSpacing: 40,
                 mainAxisSpacing: 40,
@@ -99,50 +92,35 @@ class _ChangeMealOfDayPageState extends State<ChangeMealOfDayPage> {
       ),
     );
   }
-}
 
-class item_Card extends StatelessWidget {
-  int place;
-  Function onChanged;
-
-  item_Card({this.place, this.onChanged});
-
-  @override
-  Widget build(BuildContext context) {
+  //    Card for items in grid
+  Widget Item_Card(int place) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
         primary: Colors.green[800],
       ),
       onPressed: () {
         print([mChoiceList.length, place]);
-        onChanged;
+        setState(() {
+          mealOfday_place = place;
+        });
+        print(mealOfday_place);
       },
       child: Center(
         child: Text(mChoiceList[place].getItemName),
       ),
     );
   }
-}
 
-class MealOfDay extends StatelessWidget {
-  final Image image;
-  final String name;
-  final String price;
-  final int calories;
-  final String description;
-  final List<String> allergens;
+  //                      Widget for the selected meal of day
+  Widget MealOfDay() {
+    Image image;
+    String name = mChoiceList[mealOfday_place].getItemName;
+    String price = mChoiceList[mealOfday_place].getPrice;
+    int calories = mChoiceList[mealOfday_place].getCalories;
+    String description = mChoiceList[mealOfday_place].getDescription;
+    List<String> allergens = mChoiceList[mealOfday_place].getAllergens;
 
-  MealOfDay({
-    this.image,
-    @required this.name,
-    @required this.allergens,
-    @required this.calories,
-    @required this.description,
-    @required this.price,
-  });
-
-  @override
-  Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
         border: Border(
@@ -210,7 +188,6 @@ class MealOfDay extends StatelessWidget {
                     print("Add to Meal of Day pressed");
 
                     //TODO: Add to order functionality: change so this supports adding to Meal Of Day Database location
-
                   },
                   style: ButtonStyle(
                     backgroundColor:
