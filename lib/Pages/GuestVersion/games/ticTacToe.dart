@@ -28,6 +28,9 @@ class _ticTacToe extends State<ticTacToe> {
     }
   }
 
+  int x_score = 0;
+  int o_score = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -76,6 +79,48 @@ class _ticTacToe extends State<ticTacToe> {
                   _buildELement(2, 0),
                   _buildELement(2, 1),
                   _buildELement(2, 2),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.all(32.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Text('Player X',
+                            style: TextStyle(
+                                fontSize: 30, fontWeight: FontWeight.bold
+                            ),
+                        ),
+                        Text(x_score.toString(),
+                          style: TextStyle(
+                              fontSize: 30, fontWeight: FontWeight.bold
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(32.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget> [
+                        Text('Player O',
+                          style: TextStyle(
+                              fontSize: 30, fontWeight: FontWeight.bold
+                          ),
+                        ),
+                        Text(o_score.toString(),
+                          style: TextStyle(
+                              fontSize: 30, fontWeight: FontWeight.bold
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+
                 ],
               ),
             ],
@@ -151,6 +196,13 @@ class _ticTacToe extends State<ticTacToe> {
     if (row == n+1 || col == n+1 || diag == n+1 || rdiag == n+1){
       //print('$player won');
       _showDialog(player);
+      if(player == 'X')
+        {
+          x_score++;
+        }
+      if(player == 'O'){
+        o_score++;
+      }
     }
   }
 

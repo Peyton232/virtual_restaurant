@@ -10,7 +10,6 @@ class KitchenItem extends Item with ModifyItem, JsonConversion{
 
 
   // AssetImage image;
-
   KitchenItem({
    this.category,
    this.name,
