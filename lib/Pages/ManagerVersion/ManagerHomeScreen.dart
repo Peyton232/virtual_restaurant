@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:virtual_restaurant/Data/constants.dart';
+import 'package:virtual_restaurant/Database/database.dart';
 import 'package:virtual_restaurant/CustomWidgets/CustomButton.dart';
 
 class ManagerHomeScreen extends StatelessWidget {
@@ -42,6 +43,7 @@ class ManagerHomeScreen extends StatelessWidget {
               CustomButton(
                 label: "Change Meal of the Day",
                 buttonTapped: () {
+                  loadMenuLists();
                   Navigator.pushNamed(context, "/ChangeMealOfDayPage");
                 },
               ),

@@ -26,6 +26,7 @@ class WelcomePage extends StatelessWidget {
             CustomLoginCard(
               label: "Manager Login",
               cardTapped: () {
+                loadMenuLists();
                 Navigator.pushNamed(context, "/ManagerLoginScreen");
               },
             ),
