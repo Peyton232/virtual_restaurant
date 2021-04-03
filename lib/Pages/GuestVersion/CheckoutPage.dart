@@ -340,7 +340,29 @@ class _CheckoutPageState extends State<CheckoutPage> {
               cardSecurityFilled) {
             Navigator.pushNamed(context, "/GoodbyePage");
           } else {
-            print("All fields have not been filled out");
+            return showDialog(
+              context: context,
+              builder: (context) {
+                return AlertDialog(
+                  title: Text("Some fields are empty"),
+                  actions: <Widget>[
+                    MaterialButton(
+                      elevation: 5.0,
+                      child: Text(
+                        'OK',
+                        style: TextStyle(
+                          fontSize: 18.0,
+                          color: kSemiDarkGreen,
+                        ),
+                      ),
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                    ),
+                  ],
+                );
+              },
+            );
           }
         },
         child: Container(
