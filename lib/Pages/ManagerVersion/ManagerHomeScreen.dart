@@ -56,6 +56,23 @@ class ManagerHomeScreen extends StatelessWidget {
               ),
             ],
           ),
+          Row(
+            children: <Widget>[
+              CustomButton(
+                label: "Pick Table for Tablet",
+                buttonTapped: () {
+                  Navigator.pushNamed(context, "/PickTablePage");
+                },
+              ),
+              CustomButton(
+                label: "Change Avalibility Of Items",
+                buttonTapped: () {
+                  loadMenuLists();
+                  Navigator.pushNamed(context, "/ChangeMenuPage");
+                },
+              ),
+            ],
+          ),
         ],
       ),
     );
