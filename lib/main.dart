@@ -49,7 +49,7 @@ class MyApp extends StatelessWidget {
         "/ManagerReportPage": (context) => ManagerReportPage(),
         "/ManagerLoginScreen": (context) => ManagerLoginScreen(),
         "/KitchenLoginScreen": (context) => KitchenLoginScreen(),
-        "/ChangeMenuPage": (context) => ChangeMenuPage(),
+        "/ChangeMenuPage": (context) => AvalibleItems(),
         "/WaiterLoginScreen": (context) => WaiterLoginScreen(),
         "/MenuPage": (context) => MenuScreen(),
         "/SettingsPage": (context) => SettingsPage(),
