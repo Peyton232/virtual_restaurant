@@ -2,6 +2,7 @@ import 'package:virtual_restaurant/Data/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:virtual_restaurant/Data/globals.dart';
 import 'package:virtual_restaurant/classes/menuItem.dart';
+import 'package:virtual_restaurant/Database/database.dart';
 
 /*
 This is where the manager can edit the meal of day
@@ -187,7 +188,16 @@ class _ChangeMealOfDayPageState extends State<ChangeMealOfDayPage> {
                     ));
                     print("Add to Meal of Day pressed");
 
-                    //TODO: Add to order functionality: change so this supports adding to Meal Of Day Database location
+                    mealOFTheDay.name = name;
+                    //mealOFTheDay.image = image;
+                    mealOFTheDay.price = price;
+                    mealOFTheDay.calories = calories;
+                    mealOFTheDay.description = description;
+                    mealOFTheDay.allergens = allergens;
+
+                    //make a change to database
+                    changeMealOfDay();
+
                   },
                   style: ButtonStyle(
                     backgroundColor:
