@@ -14,10 +14,10 @@ class _CheckoutPageState extends State<CheckoutPage> {
   bool cardSelected = false;
 
   //Fake Card information
-  String cardName = "John Doe";
-  String cardNumber = "5422869975448854";
-  String expDate = "06/23";
-  String securityCode = "486";
+  bool cardNameFilled = false;
+  bool cardNumberFilled = false;
+  bool cardExpFilled = false;
+  bool cardSecurityFilled = false;
 
   //Text Field stuff
   TextEditingController _nameController;
@@ -178,6 +178,11 @@ class _CheckoutPageState extends State<CheckoutPage> {
               height: 10.0,
             ),
             TextField(
+              onChanged: (String value) {
+                if (value != "") {
+                  cardNameFilled = true;
+                }
+              },
               inputFormatters: [
                 // ignore: deprecated_member_use
                 new WhitelistingTextInputFormatter(RegExp("[\ a-zA-Z]")),
@@ -213,6 +218,11 @@ class _CheckoutPageState extends State<CheckoutPage> {
                 new WhitelistingTextInputFormatter(RegExp("[0-9]")),
                 new LengthLimitingTextInputFormatter(16),
               ],
+              onChanged: (String value) {
+                if (value != "") {
+                  cardNumberFilled = true;
+                }
+              },
               controller: _numberController,
               decoration: InputDecoration(
                 border: OutlineInputBorder(
@@ -243,6 +253,11 @@ class _CheckoutPageState extends State<CheckoutPage> {
                 Container(
                   width: 100,
                   child: TextField(
+                    onChanged: (String value) {
+                      if (value != "") {
+                        cardExpFilled = true;
+                      }
+                    },
                     inputFormatters: [
                       // ignore: deprecated_member_use
                       new WhitelistingTextInputFormatter(RegExp("[\/0-9]")),
@@ -277,6 +292,11 @@ class _CheckoutPageState extends State<CheckoutPage> {
                 Container(
                   width: 120,
                   child: TextField(
+                    onChanged: (String value) {
+                      if (value != "") {
+                        cardSecurityFilled = true;
+                      }
+                    },
                     inputFormatters: [
                       // ignore: deprecated_member_use
                       new WhitelistingTextInputFormatter(RegExp("[0-9]")),
@@ -313,7 +333,16 @@ class _CheckoutPageState extends State<CheckoutPage> {
         style: ElevatedButton.styleFrom(
           primary: kGreen,
         ),
-        onPressed: () {},
+        onPressed: () {
+          if (cardNameFilled &&
+              cardExpFilled &&
+              cardNumberFilled &&
+              cardSecurityFilled) {
+            Navigator.pushNamed(context, "/GoodbyePage");
+          } else {
+            print("All fields have not been filled out");
+          }
+        },
         child: Container(
           height: 60.0,
           child: Center(
