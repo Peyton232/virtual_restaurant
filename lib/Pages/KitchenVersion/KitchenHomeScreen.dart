@@ -30,64 +30,79 @@ class _KitchenHomeScreenState extends State<KitchenHomeScreen> {
   }
 
   Widget _buildOrderItem({Map order}){
-      return Container(
-        margin: EdgeInsets.symmetric(vertical:10),
-        padding: EdgeInsets.all(10),
-        height: 150,
-        color: Colors.white54,
-        child:  Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              children: [
-                Icon(
-                  Icons.timer_outlined,
-                  color: Colors.red,
-                  size: 20,
-                ),
-                SizedBox(width: 10,),
-                Text(
-                  "Order Number : ",
-                    style: TextStyle(
-                    fontSize: 20,
-                    color: Theme.of(context).primaryColor,
-                    fontWeight: FontWeight.w600
-                  ),
-                ),
-                Text(
-                  order['order-id'].toString(),
-                  style:
-                  TextStyle(
+      return Dismissible(
+        // margin: EdgeInsets.symmetric(vertical:10),
+        // padding: EdgeInsets.all(10),
+        // height: 150,
+        // color: Colors.white54,
+        background: Card(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(16),
+          ),
+          color: Colors.red,
+        ),
+        key: UniqueKey(),
+        child:  Card(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(16)
+          ),
+          margin: EdgeInsets.all(8),
+          color: kOffWhite,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+
+            children: [
+              Row(
+                children: [
+                  // Icon(
+                  //   Icons.timer_outlined,
+                  //   color: Colors.red,
+                  //   size: 20,
+                  // ),
+                  SizedBox(width: 20,),
+                  Text(
+                    "Order Number : ",
+                      style: TextStyle(
                       fontSize: 20,
                       color: Theme.of(context).primaryColor,
                       fontWeight: FontWeight.w600
+                    ),
                   ),
-                ),
-              ],
-            ),
-            SizedBox(height: 10,),
-            Row(
-              children: [
-                // Icon(
-                //   Icons.add_alert_outlined,
-                //   color: Colors.red,
-                //   size: 20,
-                // ),
-                SizedBox(width: 30,),
-                Text(
-                  order['item1'].toString(),
-                  style:
-                  TextStyle(
-                      fontSize: 16,
-                      color: Theme.of(context).primaryColor,
-                      fontWeight: FontWeight.w600
+                  Text(
+                    order['order-id'].toString(),
+                    style:
+                    TextStyle(
+                        fontSize: 20,
+                        color: Theme.of(context).primaryColor,
+                        fontWeight: FontWeight.w600
+                    ),
                   ),
-                ),
-              ],
-            ),
-          ],
+                ],
+              ),
+              SizedBox(height: 10,),
+              Row(
+                children: [
+                  SizedBox(width: 20,),
+                  Text(
+                    order['item1'].toString(),
+                    style:
+                    TextStyle(
+                        fontSize: 16,
+                        color: Theme.of(context).primaryColor,
+                        fontWeight: FontWeight.w600
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
+        onDismissed: (direction){
+          setState(() {
+
+          });
+        },
       );
   }
 
@@ -116,3 +131,5 @@ class _KitchenHomeScreenState extends State<KitchenHomeScreen> {
     );
   }
 }
+
+
