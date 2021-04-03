@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:virtual_restaurant/Data/constants.dart';
 import 'package:virtual_restaurant/CustomWidgets/MenuItem.dart';
 import 'package:virtual_restaurant/Database/database.dart';
@@ -12,6 +13,13 @@ class CheckoutPage extends StatefulWidget {
 class _CheckoutPageState extends State<CheckoutPage> {
   bool cardSelected = false;
 
+  //Fake Card information
+  bool cardNameFilled = false;
+  bool cardNumberFilled = false;
+  bool cardExpFilled = false;
+  bool cardSecurityFilled = false;
+
+  //Text Field stuff
   TextEditingController _nameController;
   TextEditingController _numberController;
   TextEditingController _expirationController;
@@ -170,6 +178,15 @@ class _CheckoutPageState extends State<CheckoutPage> {
               height: 10.0,
             ),
             TextField(
+              onChanged: (String value) {
+                if (value != "") {
+                  cardNameFilled = true;
+                }
+              },
+              inputFormatters: [
+                // ignore: deprecated_member_use
+                new WhitelistingTextInputFormatter(RegExp("[\ a-zA-Z]")),
+              ],
               controller: _nameController,
               decoration: InputDecoration(
                 border: OutlineInputBorder(
@@ -196,6 +213,16 @@ class _CheckoutPageState extends State<CheckoutPage> {
               height: 10.0,
             ),
             TextField(
+              inputFormatters: [
+                // ignore: deprecated_member_use
+                new WhitelistingTextInputFormatter(RegExp("[0-9]")),
+                new LengthLimitingTextInputFormatter(16),
+              ],
+              onChanged: (String value) {
+                if (value != "") {
+                  cardNumberFilled = true;
+                }
+              },
               controller: _numberController,
               decoration: InputDecoration(
                 border: OutlineInputBorder(
@@ -226,6 +253,16 @@ class _CheckoutPageState extends State<CheckoutPage> {
                 Container(
                   width: 100,
                   child: TextField(
+                    onChanged: (String value) {
+                      if (value != "") {
+                        cardExpFilled = true;
+                      }
+                    },
+                    inputFormatters: [
+                      // ignore: deprecated_member_use
+                      new WhitelistingTextInputFormatter(RegExp("[\/0-9]")),
+                      new LengthLimitingTextInputFormatter(5),
+                    ],
                     controller: _expirationController,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(
@@ -255,6 +292,16 @@ class _CheckoutPageState extends State<CheckoutPage> {
                 Container(
                   width: 120,
                   child: TextField(
+                    onChanged: (String value) {
+                      if (value != "") {
+                        cardSecurityFilled = true;
+                      }
+                    },
+                    inputFormatters: [
+                      // ignore: deprecated_member_use
+                      new WhitelistingTextInputFormatter(RegExp("[0-9]")),
+                      new LengthLimitingTextInputFormatter(3),
+                    ],
                     controller: _securityController,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(
@@ -286,7 +333,38 @@ class _CheckoutPageState extends State<CheckoutPage> {
         style: ElevatedButton.styleFrom(
           primary: kGreen,
         ),
-        onPressed: () {},
+        onPressed: () {
+          if (cardNameFilled &&
+              cardExpFilled &&
+              cardNumberFilled &&
+              cardSecurityFilled) {
+            Navigator.pushNamed(context, "/GoodbyePage");
+          } else {
+            return showDialog(
+              context: context,
+              builder: (context) {
+                return AlertDialog(
+                  title: Text("Some fields are empty"),
+                  actions: <Widget>[
+                    MaterialButton(
+                      elevation: 5.0,
+                      child: Text(
+                        'OK',
+                        style: TextStyle(
+                          fontSize: 18.0,
+                          color: kSemiDarkGreen,
+                        ),
+                      ),
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                    ),
+                  ],
+                );
+              },
+            );
+          }
+        },
         child: Container(
           height: 60.0,
           child: Center(

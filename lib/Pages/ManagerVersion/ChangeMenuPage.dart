@@ -1,56 +1,112 @@
 import 'package:virtual_restaurant/Data/constants.dart';
 import 'package:flutter/material.dart';
-
-class ChangeMenuPage extends StatefulWidget {
-  @override
-  _ChangeMenuPageState createState() => _ChangeMenuPageState();
-}
+import 'package:virtual_restaurant/Data/globals.dart';
+import 'package:virtual_restaurant/classes/menuItem.dart';
 
 /*
-  - Use draggable and dragtarget widget
-  - draggable and drag target should have the same category
- */
+This is where the manager can edit the meal of day
 
-class _ChangeMenuPageState extends State<ChangeMenuPage> {
+ that the customer can see
+ */
+// TODO: Add kidsMeal catagory back when it works
+List<MenuItem> mChoiceList = [...entrees, ...appetizers, ...sides, ...desserts, ...drinks];
+
+
+class AvalibleItems extends StatefulWidget {
+  @override
+  _AvalibleItems createState() => _AvalibleItems();
+}
+
+class _AvalibleItems extends State<AvalibleItems> {
+  List<Widget> grid_items = [];
+
+  @override
+  void initState() {
+    super.initState();
+    for (int i = 0; i < mChoiceList.length; i++) {
+      grid_items.add(ItemCard(place: i,));
+    }
+  }
+
+
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Change Menu"),
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(70.0),
+        child: AppBar(
+          title: Text(
+            "Change Avalibility Of Items",
+            style: kAppBarTextStyle,
+          ),
+        ),
       ),
-      body: Row(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
+      body: Column(
         children: <Widget>[
           Expanded(
             flex: 2,
             child: Container(
-              color: kOffWhite,
-              child: Column(
-                children: <Widget>[
-                  Text(
-                    "Current Menu:",
-                    style: TextStyle(
-                      fontSize: 30.0,
-                    ),
-                  ),
-                  Expanded(
-                    child: Container(
-                      width: 250,
-                      color: kMintGreen,
-                      child: Text("Entree"),
-                    ),
-                  ),
-                ],
+              decoration: BoxDecoration(
+                border: Border.all(
+                  color: Colors.black,
+                ),
+              ),
+              child: GridView.count(
+                padding: EdgeInsets.symmetric(vertical: 30, horizontal: 40),
+                crossAxisSpacing: 40,
+                mainAxisSpacing: 40,
+                crossAxisCount: 3,
+                childAspectRatio: 5 / 3,
+                children: grid_items,
               ),
             ),
           ),
-          Expanded(
-            child: Container(
-              color: kLightGreen,
-              child: Text("Testing"),
-            ),
-          ),
         ],
+      ),
+    );
+  }
+
+}
+
+//    Card for items in grid
+class ItemCard extends StatefulWidget {
+  int place;
+
+  ItemCard({this.place});
+
+  @override
+  _ItemCardState createState() => _ItemCardState();
+}
+
+class _ItemCardState extends State<ItemCard> {
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return GestureDetector(
+      onTap: () {
+        //print([mChoiceList.length, place]);
+        setState(() {
+          mChoiceList[widget.place].available =
+          !mChoiceList[widget.place].available;
+        });
+        print([
+          mChoiceList[widget.place].getItemName,
+          mChoiceList[widget.place].available
+        ]);
+      },
+      child: Container(
+        decoration: BoxDecoration(
+          color: mChoiceList[widget.place].available ? kMintGreen : Colors.grey,
+          boxShadow: [
+            BoxShadow(
+                color: Colors.grey[500], blurRadius: 3, offset: Offset(2, 2))
+          ],
+        ),
+        child: Center(
+          child: Text(mChoiceList[widget.place].getItemName),
+        ),
       ),
     );
   }

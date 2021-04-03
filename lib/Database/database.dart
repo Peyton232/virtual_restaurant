@@ -13,6 +13,7 @@ final databaseReference = FirebaseDatabase.instance.reference();
 final customerTableDatabaseReference = FirebaseDatabase.instance.reference().child('tables');//.push().child(path).set().asStream()
 final menuDatabaseReference = FirebaseDatabase.instance.reference().child('menu');
 final numberOfTablesRef = databaseReference.child('numberoftables');
+final mealOfDayRef = databaseReference.child('mealOfDay');
 
 //reference
 //https://medium.com/flutterdevs/explore-realtime-database-in-flutter-c5870c2b231f
@@ -25,6 +26,16 @@ Map<String, dynamic> toJson(KitchenItem item){
     'name': item.getItemName,
     'modifications': item.getModifications,
     'category': item.getItemCategory,
+  };
+}
+
+Map<String, dynamic> toJsonMenu(MenuItem item){
+  return {
+    'name': item.name,
+    'description': item.description,
+    'price': item.price,
+    'allergens': item.allergens,
+    'finished': item.finished,
   };
 }
 
@@ -58,6 +69,30 @@ Future<int> incrementTableCount(int newTableNumber) async {
   numberOfTablesRef.set(newTableNumber);
   return newTableNumber;
 }
+
+/*
+*
+*
+*
+*/
+void changeMealOfDay() async {
+  var id = databaseReference.child('mealOfDay/');
+  id.set(toJsonMenu(globals.mealOFTheDay));
+}
+
+void getMealOfDay() async {
+  String result = (await FirebaseDatabase.instance.reference().child("mealOfDay/name").once()).value;
+  globals.mealOFTheDay.name = result;
+  result = (await FirebaseDatabase.instance.reference().child("mealOfDay/price").once()).value;
+  globals.mealOFTheDay.price = result;
+  result = (await FirebaseDatabase.instance.reference().child("mealOfDay/description").once()).value;
+  globals.mealOFTheDay.description = result;
+  bool bResult = (await FirebaseDatabase.instance.reference().child("mealOfDay/finished").once()).value;
+  globals.mealOFTheDay.finished = bResult;
+  List<String> allergies = (await FirebaseDatabase.instance.reference().child("mealOfDay/allergens").once()).value;
+  globals.mealOFTheDay.allergens = allergies;
+}
+
 /*
  *  Currently, this method is not safe as it calls the above incrementTableCount method which is not safe.
  *  Hopefully there won't be more than 20 devices acting as tables attempting to connect... in which case an
@@ -174,5 +209,8 @@ void loadMenuLists() async {
   //globals.kidsMeals = temporaryList;
   temporaryList = await getMenuSection("Sides");
   globals.sides = temporaryList;
+
+  //get meal of day
+  getMealOfDay();
 
 }

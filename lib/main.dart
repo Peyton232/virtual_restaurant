@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:virtual_restaurant/Pages/GuestVersion/CheckoutPage.dart';
 import 'package:virtual_restaurant/Pages/GuestVersion/FreeDessertPage.dart';
 import 'package:virtual_restaurant/Pages/GuestVersion/GamesPage.dart';
+import 'package:virtual_restaurant/Pages/GuestVersion/GoodbyePage.dart';
 import 'package:virtual_restaurant/Pages/GuestVersion/GuestHomeScreen.dart';
 import 'package:virtual_restaurant/Pages/GuestVersion/ManagersChoicePage.dart';
 import 'package:virtual_restaurant/Pages/GuestVersion/MyOrderPage.dart';
@@ -49,7 +50,7 @@ class MyApp extends StatelessWidget {
         "/ManagerReportPage": (context) => ManagerReportPage(),
         "/ManagerLoginScreen": (context) => ManagerLoginScreen(),
         "/KitchenLoginScreen": (context) => KitchenLoginScreen(),
-        "/ChangeMenuPage": (context) => ChangeMenuPage(),
+        "/ChangeMenuPage": (context) => AvalibleItems(),
         "/WaiterLoginScreen": (context) => WaiterLoginScreen(),
         "/MenuPage": (context) => MenuScreen(),
         "/SettingsPage": (context) => SettingsPage(),
@@ -68,6 +69,7 @@ class MyApp extends StatelessWidget {
         "/KidsModeExitPage": (context) => KidsModeExitPage(),
         "/MineSweeperPage": (context) => MineSweeperPage(),
         "/ChangeMealOfDayPage": (context) => ChangeMealOfDayPage(),
+        "/GoodbyePage": (context) => GoodbyePage(),
       },
     );
   }
