@@ -28,12 +28,15 @@ class _ticTacToe extends State<ticTacToe> {
     }
   }
 
+  int x_score = 0;
+  int o_score = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: new AppBar(
          title: new Text(
-             'Tic Tac Toe'
+             'Games'
          ),
        ),
       body: Container(
@@ -42,7 +45,17 @@ class _ticTacToe extends State<ticTacToe> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             //crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
+            children: <Widget>[
+              Padding(
+                  padding: EdgeInsets.only(
+                    top: 32,
+                    bottom: 8,
+                  ),
+                child: Text('Tic Tac Toe',
+                    style: TextStyle(fontSize: 50, fontWeight: FontWeight.bold),
+                 ),
+              ),
+
               Row(
 
                 mainAxisSize: MainAxisSize.min,
@@ -68,6 +81,48 @@ class _ticTacToe extends State<ticTacToe> {
                   _buildELement(2, 2),
                 ],
               ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.all(32.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Text('Player X',
+                            style: TextStyle(
+                                fontSize: 30, fontWeight: FontWeight.bold
+                            ),
+                        ),
+                        Text(x_score.toString(),
+                          style: TextStyle(
+                              fontSize: 30, fontWeight: FontWeight.bold
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(32.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget> [
+                        Text('Player O',
+                          style: TextStyle(
+                              fontSize: 30, fontWeight: FontWeight.bold
+                          ),
+                        ),
+                        Text(o_score.toString(),
+                          style: TextStyle(
+                              fontSize: 30, fontWeight: FontWeight.bold
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+
+                ],
+              ),
             ],
           ),
         ),
@@ -89,20 +144,21 @@ class _ticTacToe extends State<ticTacToe> {
         }
       },
       child: Container(
-
         width: 100,
+        height: 100,
         decoration: BoxDecoration(
-          shape: BoxShape.rectangle,
+          //shape: BoxShape.rectangle,
           color: Colors.grey,
           border: Border.all(
-            color: Colors.black,
+            color: Colors.white,
             width: 3,
           ),
+          borderRadius: BorderRadius.circular(10),
         ),
         child: Center(
           child: Text(
             _matrix[i][j],
-            style: TextStyle(fontSize: 130.0),
+            style: TextStyle(fontSize: 70.0),
           ),
         ),
       ),
@@ -140,6 +196,13 @@ class _ticTacToe extends State<ticTacToe> {
     if (row == n+1 || col == n+1 || diag == n+1 || rdiag == n+1){
       //print('$player won');
       _showDialog(player);
+      if(player == 'X')
+        {
+          x_score++;
+        }
+      if(player == 'O'){
+        o_score++;
+      }
     }
   }
 
@@ -176,6 +239,8 @@ class _ticTacToe extends State<ticTacToe> {
         }
     );
   }
-
-
 }
+
+
+
+

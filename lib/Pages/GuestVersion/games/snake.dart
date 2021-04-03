@@ -132,80 +132,89 @@ class _SnakeGameState extends State<SnakeGame> {
   //actual design of snake page
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      appBar: AppBar(
+        title: Text("Snake Game"),
+      ),
+      backgroundColor: Colors.grey[200],
+
       body: Column(
         children: <Widget>[
           Expanded(
-            //detect which way was swiped
-            child: GestureDetector(
-              onVerticalDragUpdate: (details) {
-                if (direction != 'up' && details.delta.dy > 0) {
-                  direction = 'down';
-                } else if (direction != 'down' && details.delta.dy < 0) {
-                  direction = 'up';
-                }
-              },
-              onHorizontalDragUpdate: (details) {
-                if (direction != 'left' && details.delta.dx > 0) {
-                  direction = 'right';
-                } else if (direction != 'right' && details.delta.dx < 0) {
-                  direction = 'left';
-                }
-              },
-              child: AspectRatio(
-                aspectRatio: columns / (rows + 5),
-                child: GridView.builder(
-                    physics: NeverScrollableScrollPhysics(),
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: columns,
-                    ),
-                    itemCount: columns * rows,
-                    itemBuilder: (BuildContext context, int index) {
-                      var color;
-                      var x = index % columns;
-                      var y = (index / columns).floor();
+            child: Container(
+              padding: EdgeInsets.symmetric(vertical: 50, horizontal: 100),
+              decoration: BoxDecoration(border: Border.all(
+                  color: Colors.black54
+              )),
+              child: GestureDetector(
+                onVerticalDragUpdate: (details) {
+                  if (direction != 'up' && details.delta.dy > 0) {
+                    direction = 'down';
+                  } else if (direction != 'down' && details.delta.dy < 0) {
+                    direction = 'up';
+                  }
+                },
+                onHorizontalDragUpdate: (details) {
+                  if (direction != 'left' && details.delta.dx > 0) {
+                    direction = 'right';
+                  } else if (direction != 'right' && details.delta.dx < 0) {
+                    direction = 'left';
+                  }
+                },
+                child: AspectRatio(
+                  aspectRatio: columns / (rows + 5),
+                  child: GridView.builder(
+                      physics: NeverScrollableScrollPhysics(),
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: columns,
+                      ),
+                      itemCount: columns * rows,
+                      itemBuilder: (BuildContext context, int index) {
+                        var color;
+                        var x = index % columns;
+                        var y = (index / columns).floor();
 
-                      bool isSnakeBody = false;
-                      for (var pos in snake) {
-                        if (pos[0] == x && pos[1] == y) {
-                          isSnakeBody = true;
-                          break;
+                        bool isSnakeBody = false;
+                        for (var pos in snake) {
+                          if (pos[0] == x && pos[1] == y) {
+                            isSnakeBody = true;
+                            break;
+                          }
                         }
-                      }
 
-                      if (snake.first[0] == x && snake.first[1] == y) {
-                        color = Colors.green;
-                      } else if (isSnakeBody) {
-                        color = Colors.green[200];
-                      } else if (food[0] == x && food[1] == y) {
-                        color = Colors.red;
-                      } else {
-                        color = Colors.grey[800];
-                      }
+                        if (snake.first[0] == x && snake.first[1] == y) {
+                          color = Colors.green;
+                        } else if (isSnakeBody) {
+                          color = Colors.green[200];
+                        } else if (food[0] == x && food[1] == y) {
+                          color = Colors.yellow;
+                        } else {
+                          color = Colors.grey[300];
+                        }
 
-                      return Container(
-                        margin: EdgeInsets.all(1),
-                        decoration: BoxDecoration(
-                          color: color,
-                          shape: BoxShape.circle,
-                        ),
-                      );
-                    }),
+                        return Container(
+                          margin: EdgeInsets.all(1),
+                          decoration: BoxDecoration(
+                            color: color,
+                            shape: BoxShape.rectangle,
+                          ),
+                        );
+                      }),
+                ),
               ),
             ),
           ),
           Padding(
-              padding: EdgeInsets.only(bottom: 20),
+              padding: EdgeInsets.only(bottom: 10),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
                   TextButton(
                       style: TextButton.styleFrom(
-                        backgroundColor: playing ? Colors.red : Colors.blue,
+                        backgroundColor: playing ? Colors.yellow: Colors.blue,
                       ),
                       child: Text(
                         playing ? 'End' : 'Start',
-                        style: TextStyle(color: Colors.white, fontSize: 20),
+                        style: TextStyle(color: Colors.black54, fontSize: 20),
                       ),
                       onPressed: () {
                         if (playing) {
@@ -214,9 +223,11 @@ class _SnakeGameState extends State<SnakeGame> {
                           startGame();
                         }
                       }),
-                  Text(
-                    'Score: ${snake.length - 2}',
-                    style: TextStyle(color: Colors.white, fontSize: 20),
+                  Container(
+                    child: Text(
+                      'Score: ${snake.length - 2}',
+                      style: TextStyle(color: Colors.black54, fontSize: 20),
+                    ),
                   ),
                 ],
               )),

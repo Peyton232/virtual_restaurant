@@ -9,11 +9,23 @@ import 'package:virtual_restaurant/classes/kitchenOrder.dart';
 import '../classes/menuItem.dart';
 
 bool kidsMode = false;
-String tableID = 'T2';//To be phased out with the CustomerTable object
+String kidsModePassword = '';
+
+String tableID = 'T2';  //To be set by manager
 
 CustomerTable thisDevicesTable = CustomerTable(tableNum:1);
 List<MenuItem> order = [];//order, initially empty
 ListQueue<KitchenOrder> kitchenOrders;
+
+MenuItem mealOFTheDay = MenuItem(
+  name: "Scrappy head",
+  description: "<item description>",
+  price: "\$23.44",
+  calories: 9000,
+  allergens: ["dairy", "gluten"],
+  //image: "https://browseyou.com/media/img/src/no-item.jpg",
+  finished: false,
+);
 
 //list of entrees
 List<MenuItem> entrees = [

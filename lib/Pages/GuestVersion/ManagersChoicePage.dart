@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:virtual_restaurant/Data/constants.dart';
+import 'package:virtual_restaurant/classes/menuItem.dart';
+import 'package:virtual_restaurant/Data/globals.dart' as globals;
 
 class ManagersChoicePage extends StatefulWidget {
   @override
@@ -24,7 +26,7 @@ class _ManagersChoicePageState extends State<ManagersChoicePage> {
                 width: 800,
                 color: Colors.grey,
                 child: Center(
-                  child: Text("Manager's Choice Image"),
+                  child: Text("Manager's Choice Image"), //TODO
                 ),
               ),
             ),
@@ -34,7 +36,7 @@ class _ManagersChoicePageState extends State<ManagersChoicePage> {
                   top: 20.0,
                 ),
                 child: Text(
-                  "(Menu Item.dart Name)",
+                  "${globals.mealOFTheDay.name}",
                   style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
                 ),
               ),
@@ -45,6 +47,11 @@ class _ManagersChoicePageState extends State<ManagersChoicePage> {
                 onPressed: () {
                   print("Order button pressed");
                   //TODO: Add order functionality here
+
+                  globals.order.add(
+                    globals.mealOFTheDay
+                  );
+
                 },
                 style: ButtonStyle(
                   backgroundColor:
