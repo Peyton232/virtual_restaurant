@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:virtual_restaurant/Data/constants.dart';
 import 'package:virtual_restaurant/CustomWidgets/MenuItem.dart';
 import 'package:virtual_restaurant/Database/database.dart';
@@ -12,6 +13,13 @@ class CheckoutPage extends StatefulWidget {
 class _CheckoutPageState extends State<CheckoutPage> {
   bool cardSelected = false;
 
+  //Fake Card information
+  String cardName = "John Doe";
+  String cardNumber = "5422869975448854";
+  String expDate = "06/23";
+  String securityCode = "486";
+
+  //Text Field stuff
   TextEditingController _nameController;
   TextEditingController _numberController;
   TextEditingController _expirationController;
@@ -170,6 +178,10 @@ class _CheckoutPageState extends State<CheckoutPage> {
               height: 10.0,
             ),
             TextField(
+              inputFormatters: [
+                // ignore: deprecated_member_use
+                new WhitelistingTextInputFormatter(RegExp("[\ a-zA-Z]")),
+              ],
               controller: _nameController,
               decoration: InputDecoration(
                 border: OutlineInputBorder(
@@ -196,6 +208,11 @@ class _CheckoutPageState extends State<CheckoutPage> {
               height: 10.0,
             ),
             TextField(
+              inputFormatters: [
+                // ignore: deprecated_member_use
+                new WhitelistingTextInputFormatter(RegExp("[0-9]")),
+                new LengthLimitingTextInputFormatter(16),
+              ],
               controller: _numberController,
               decoration: InputDecoration(
                 border: OutlineInputBorder(
@@ -226,6 +243,11 @@ class _CheckoutPageState extends State<CheckoutPage> {
                 Container(
                   width: 100,
                   child: TextField(
+                    inputFormatters: [
+                      // ignore: deprecated_member_use
+                      new WhitelistingTextInputFormatter(RegExp("[\/0-9]")),
+                      new LengthLimitingTextInputFormatter(5),
+                    ],
                     controller: _expirationController,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(
@@ -255,6 +277,11 @@ class _CheckoutPageState extends State<CheckoutPage> {
                 Container(
                   width: 120,
                   child: TextField(
+                    inputFormatters: [
+                      // ignore: deprecated_member_use
+                      new WhitelistingTextInputFormatter(RegExp("[0-9]")),
+                      new LengthLimitingTextInputFormatter(3),
+                    ],
                     controller: _securityController,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(
