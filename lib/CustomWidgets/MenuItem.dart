@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:virtual_restaurant/Data/constants.dart';
-import 'package:virtual_restaurant/classes/menuItem.dart';
+import 'package:virtual_restaurant/classes/MenuItem.dart';
 import 'package:virtual_restaurant/Data/globals.dart' as globals;
 //This MenuItem is the Widget that is displayed to the UI
 class MenuItemUI extends StatelessWidget {

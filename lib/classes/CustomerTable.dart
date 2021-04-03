@@ -1,38 +1,67 @@
 
-
-
-import 'package:flutter/cupertino.dart';
-import 'package:virtual_restaurant/classes/billOrder.dart';
-
+import 'package:virtual_restaurant/classes/BillOrder.dart';
+import 'package:virtual_restaurant/classes/JsonConversion.dart';
 
 //A CustomerTable object should be created upon assignment to a device by the manager.
-class CustomerTable {
-  int _tableNumber;//the table's number
-  String _tableID;
-  List<BillOrder> _ordersFromTable;//This is a list of all of the orders sent to the kitchen to be fulfilled.
-  double tableBillTotal;//This is the total the current table must pay from all of the orders sent.
-  int _ordersPlacedAtTable;
+class CustomerTable with JsonConversion {
+
+  int tableNumber;
+  List<BillOrder> ordersFromTable;
+  double tableBillTotal;
+  int ordersPlacedAtTable;
 
   CustomerTable({
-    @required int tableNum
-  }) {
-    this._tableNumber = tableNum;
-    this.tableBillTotal = 0.0;
-    _ordersFromTable = [];
-    this._tableID = 'T' + tableNum.toString();//jank as hell but probably works
-  }
-  //getter for tableID
-  String get tableID => this._tableID;
+    this.tableNumber,
+    this.ordersFromTable,
+    this.tableBillTotal,
+    this.ordersPlacedAtTable
+  });
 
-  //setter for tableID with some bounds checking. It does not check the database
-  // for duplicate tables so it is likely this method will end up being changed.
-  // TODO: check for table in database to ensure we do not have duplicate tables. Better: have tables be assigned from the database
-  set tableNumber(int newTableNumber) {
-    if( newTableNumber > 20 || newTableNumber <= 0 )
-      throw Exception(["Table Number out of bounds"]);
-    else
-      this._tableNumber = newTableNumber;
+  CustomerTable.newTable(int tableNum) {
+    this.tableNumber = tableNum;
+    ordersFromTable = [];
+    this.tableBillTotal = 0.0;
+    ordersPlacedAtTable = 0;
   }
+
+  int get getTableNumber => this.tableNumber;
+  double get getTableBillTotal => this.tableBillTotal;
+  List<BillOrder> get getOrdersFromTable => this.ordersFromTable;
+  int get getOrdersAtTable => this.ordersPlacedAtTable;
+
+  set setTableBillTotal(double updateTotal) => this.tableBillTotal;
+  set setOrdersFromTable(List<BillOrder> updateOrders) => this.ordersFromTable;
+  set setOrdersAtTable(int updateOrdersAtTable) => this.getOrdersAtTable;
+
+
+  int addOrderToTable(BillOrder orderToAdd) {
+    ordersFromTable.add(orderToAdd);
+    this.tableBillTotal += orderToAdd.getPrice;
+    this.ordersPlacedAtTable++;
+    return getOrdersAtTable;
+  }
+
+  @override
+  CustomerTable fromJson(Map<String, dynamic> json) {
+    return CustomerTable(
+        tableNumber : json.containsKey("tableNumber") ? json["tableNumber"] : -1,
+        ordersFromTable : json.containsKey("ordersFromTable") ? json["ordersFromTable"] : -1,
+        tableBillTotal : json.containsKey("tableBillTotal") ? json["tableBillTotal"] : -1,
+        ordersPlacedAtTable : json.containsKey("ordersAtTable") ? json["ordersAtTable"]  : -1
+    );
+  }
+
+
+  @override
+  Map<String, dynamic> toJson() {
+    return{
+      "tableNumber" : getTableNumber,
+      "ordersFromTable" : getOrdersFromTable,
+      "tableBillTotal" : getTableBillTotal,
+      "ordersAtTable" : getOrdersAtTable
+    };
+  }
+
 
 
 }

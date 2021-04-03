@@ -1,5 +1,7 @@
 import 'package:virtual_restaurant/Data/constants.dart';
 
+import 'JsonConversion.dart';
+
 
 abstract class Item with JsonConversion{
   String itemName;

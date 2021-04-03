@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:virtual_restaurant/Data/constants.dart';
 import 'package:virtual_restaurant/Data/globals.dart';
-import 'package:virtual_restaurant/classes/billOrder.dart';
-import 'package:virtual_restaurant/classes/kitchenOrder.dart';
-import 'package:virtual_restaurant/classes/menuItem.dart';
+import 'package:virtual_restaurant/classes/BillOrder.dart';
+import 'package:virtual_restaurant/classes/KitchenOrder.dart';
+import 'package:virtual_restaurant/classes/MenuItem.dart';
 import 'package:virtual_restaurant/Database/database.dart';
 
 class test extends StatefulWidget {

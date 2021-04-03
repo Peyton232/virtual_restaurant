@@ -3,10 +3,10 @@ library my_prj.globals;
 import 'dart:collection';
 
 import 'package:virtual_restaurant/classes/CustomerTable.dart';
-import 'package:virtual_restaurant/classes/billOrder.dart';
-import 'package:virtual_restaurant/classes/kitchenOrder.dart';
+import 'package:virtual_restaurant/classes/BillOrder.dart';
+import 'package:virtual_restaurant/classes/KitchenOrder.dart';
 
-import '../classes/menuItem.dart';
+import '../classes/MenuItem.dart';
 
 bool kidsMode = false;
 String tableID = 'T2';//To be phased out with the CustomerTable object
@@ -179,7 +179,7 @@ List<MenuItem> drinks = [
   ),
 ];
 
-CustomerTable thisDevicesTable = CustomerTable(tableNum:1);
+CustomerTable thisDevicesTable = CustomerTable.newTable(1);
 
 ListQueue<KitchenOrder> kitchenOrders;
 //order, initially empty

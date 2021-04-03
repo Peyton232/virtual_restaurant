@@ -1,8 +1,9 @@
 import 'package:virtual_restaurant/Data/constants.dart';
-import 'orderItem.dart';
-import 'order.dart';
+import 'OrderItem.dart';
+import 'Order.dart';
+import 'JsonConversion.dart';
 
-class BillOrder extends Order{
+class BillOrder extends Order with JsonConversion{
 
   int tableNumber;
   int orderNumber;
@@ -10,7 +11,15 @@ class BillOrder extends Order{
   List<OrderItem> orderContents;
   double orderTotal;
 
-  BillOrder(
+  BillOrder({
+    this.tableNumber,
+    this.orderNumber,
+    this.isReady,
+    this.orderTotal,
+    this.orderContents
+  });
+
+  BillOrder.newOrder(
       this.orderNumber,
       this.tableNumber
       ) {
@@ -18,6 +27,8 @@ class BillOrder extends Order{
     orderTotal = 0.0;
     isReady = false;
   }
+
+
 
 
   @override
@@ -30,13 +41,35 @@ class BillOrder extends Order{
   set orderIsReady(bool ready){
     this.isReady = ready;
   }
+  @override
+  fromJson(Map<String, dynamic> json) {
+    return BillOrder(
+        tableNumber : json.containsKey("tableNumber") ? json["tableNumber"] : -1,
+        orderNumber : json.containsKey("orderNumber") ? json["orderNumber"] : -1,
+        isReady : json.containsKey("isReady"),
+        orderTotal : json.containsKey("orderTotal") ? json["orderTotal"] : -1,
+        orderContents: json.containsKey("orderContents") ? json["orderContents"]: -1
+
+    );
+
+  }
+
+  Map<String, dynamic> toJson(){
+    return {
+      "orderNumber" : getOrderNumber,
+      "tableNumber" : getTableNumber,
+      "isReady" : isOrderReady,
+      "orderTotal" : getPrice,
+      "orderContents" : getOrderContents
+    };
+  }
 
   double get getPrice => this.orderTotal;
 
   List<OrderItem> get getOrderContents{
     return new List<OrderItem>.from(orderContents);
   }
-
+//maybe this should return the location if add supports that?
   void addItem(OrderItem passedOrderItem) {
     this.orderContents.add(passedOrderItem);
     this.orderTotal += passedOrderItem.getItemPrice;
