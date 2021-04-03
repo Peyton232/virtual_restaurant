@@ -100,11 +100,11 @@ class _ChangeMealOfDayPageState extends State<ChangeMealOfDayPage> {
         primary: Colors.green[800],
       ),
       onPressed: () {
-        print([mChoiceList.length, place]);
+        //print([mChoiceList.length, place]);
         setState(() {
           mealOfday_place = place;
         });
-        print(mealOfday_place);
+        //print(mealOfday_place);
       },
       child: Center(
         child: Text(mChoiceList[place].getItemName),
