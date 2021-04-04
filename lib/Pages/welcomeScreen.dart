@@ -41,9 +41,9 @@ class WelcomePage extends StatelessWidget {
               cardTapped: () {
                 loadMenuLists();
                 //Disables back button when going to the guest home page
-                Navigator.pushReplacementNamed(context, "/GuestHomeScreen");
+                //Navigator.pushReplacementNamed(context, "/GuestHomeScreen");
                 //Enables back button when going to the guest home page
-                //Navigator.pushNamed(context, "/GuestHomeScreen");
+                Navigator.pushNamed(context, "/GuestHomeScreen");
               },
             ),
             CustomLoginCard(
