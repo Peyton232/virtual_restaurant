@@ -19,44 +19,68 @@ class ManagerHomeScreen extends StatelessWidget {
           ),
         ),
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Row(
-            children: <Widget>[
-              CustomButton(
-                label: "Waiter Mode",
-                buttonTapped: () {
-                  //Navigator.pushNamed(context, "/ManagersChoicePage");
-                },
-              ),
-              CustomButton(
-                label: "See Reports",
-                buttonTapped: () {
-                  Navigator.pushNamed(context, "/ManagerReportPage");
-                },
-              ),
-            ],
-          ),
-          Row(
-            children: <Widget>[
-              CustomButton(
-                label: "Change Meal of the Day",
-                buttonTapped: () {
-                  loadMenuLists();
-                  Navigator.pushNamed(context, "/ChangeMealOfDayPage");
-                },
-              ),
-              CustomButton(
-                label: "Change Avalibility Of Items",
-                buttonTapped: () {
-                  loadMenuLists();
-                  Navigator.pushNamed(context, "/ChangeMenuPage");
-                },
-              ),
-            ],
-          ),
-        ],
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Row(
+              children: <Widget>[
+                CustomButton(
+                  icon: Icons.assignment_ind,
+                  label: "Waiter Mode",
+                  buttonTapped: () {
+                    Navigator.pushNamed(context, "/WaiterHomeScreen");
+                  },
+                ),
+                CustomButton(
+                  icon: Icons.show_chart,
+                  label: "See Reports",
+                  buttonTapped: () {
+                    Navigator.pushNamed(context, "/ManagerReportPage");
+                  },
+                ),
+              ],
+            ),
+            Row(
+              children: <Widget>[
+                CustomButton(
+                  icon: Icons.restaurant_menu,
+                  label: "Change Meal of the Day",
+                  buttonTapped: () {
+                    loadMenuLists();
+                    Navigator.pushNamed(context, "/ChangeMealOfDayPage");
+                  },
+                ),
+                CustomButton(
+                  icon: Icons.menu_book,
+                  label: "Change Avalibility Of Items",
+                  buttonTapped: () {
+                    loadMenuLists();
+                    Navigator.pushNamed(context, "/ChangeMenuPage");
+                  },
+                ),
+              ],
+            ),
+            Row(
+              children: <Widget>[
+                CustomButton(
+                  icon: Icons.table_rows,
+                  label: "Pick Table for Tablet",
+                  buttonTapped: () {
+                    Navigator.pushNamed(context, "/PickTablePage");
+                  },
+                ),
+                CustomButton(
+                  label: "Change Avalibility Of Items",
+                  buttonTapped: () {
+                    loadMenuLists();
+                    Navigator.pushNamed(context, "/ChangeMenuPage");
+                  },
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }

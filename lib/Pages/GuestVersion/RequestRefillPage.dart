@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:virtual_restaurant/Data/constants.dart';
+import 'package:virtual_restaurant/Database/database.dart';
 
 /*
 This is the page where the customer can request multiple drinks at once
@@ -21,28 +22,28 @@ class RequestRefillPage extends StatefulWidget {
 }
 
 class _RequestRefillPageState extends State<RequestRefillPage> {
-  List<Drink> currentOrderDrinks = [
-    Drink(
-      isSelected: false,
-      drinkName: "Coca Cola",
-    ),
-    Drink(
-      isSelected: false,
-      drinkName: "Water",
-    ),
-    Drink(
-      isSelected: false,
-      drinkName: "Hot Chocolate",
-    ),
-    Drink(
-      isSelected: false,
-      drinkName: "Sprite",
-    ),
-    Drink(
-      isSelected: false,
-      drinkName: "Mango Smoothie",
-    ),
-  ];
+  // List<Drink> currentOrderDrinks = [
+  //   Drink(
+  //     isSelected: false,
+  //     drinkName: "Coca Cola",
+  //   ),
+  //   Drink(
+  //     isSelected: false,
+  //     drinkName: "Water",
+  //   ),
+  //   Drink(
+  //     isSelected: false,
+  //     drinkName: "Hot Chocolate",
+  //   ),
+  //   Drink(
+  //     isSelected: false,
+  //     drinkName: "Sprite",
+  //   ),
+  //   Drink(
+  //     isSelected: false,
+  //     drinkName: "Mango Smoothie",
+  //   ),
+  // ];
 
   @override
   Widget build(BuildContext context) {
@@ -65,45 +66,46 @@ class _RequestRefillPageState extends State<RequestRefillPage> {
               ),
             ),
           ),
-          Expanded(
-            flex: 2,
-            child: Container(
-              padding: EdgeInsets.symmetric(
-                horizontal: 80.0,
-              ),
-              //Editted UI to be able to select more than one drink
-              child: GridView.count(
-                childAspectRatio: 6,
-                crossAxisCount: 2,
-                children: List.generate(currentOrderDrinks.length, (index) {
-                  return Card(
-                    margin: EdgeInsets.all(10.0),
-                    color: kOffWhite,
-                    elevation: 3.0,
-                    child: CheckboxListTile(
-                      controlAffinity: ListTileControlAffinity.leading,
-                      contentPadding: EdgeInsets.all(10),
-                      title: Text(
-                        currentOrderDrinks[index].drinkName,
-                        style: kLoginCardTextStyle,
-                      ),
-                      value: currentOrderDrinks[index].isSelected,
-                      onChanged: (bool value) {
-                        setState(() {
-                          currentOrderDrinks[index].isSelected = value;
-                        });
-                      },
-                    ),
-                  );
-                }),
-              ),
-            ),
-          ),
+          // Expanded(
+          //   flex: 2,
+          //   // child: Container(
+          //   //   padding: EdgeInsets.symmetric(
+          //   //     horizontal: 80.0,
+          //   //   ),
+          //   //   //Editted UI to be able to select more than one drink
+          //   //   child: GridView.count(
+          //   //     childAspectRatio: 6,
+          //   //     crossAxisCount: 2,
+          //   //     // children: List.generate(currentOrderDrinks.length, (index) {
+          //   //     //   return Card(
+          //   //     //     margin: EdgeInsets.all(10.0),
+          //   //     //     color: kOffWhite,
+          //   //     //     elevation: 3.0,
+          //   //     //     child: CheckboxListTile(
+          //   //     //       controlAffinity: ListTileControlAffinity.leading,
+          //   //     //       contentPadding: EdgeInsets.all(10),
+          //   //     //       title: Text(
+          //   //     //         currentOrderDrinks[index].drinkName,
+          //   //     //         style: kLoginCardTextStyle,
+          //   //     //       ),
+          //   //     //       value: currentOrderDrinks[index].isSelected,
+          //   //     //       onChanged: (bool value) {
+          //   //     //         setState(() {
+          //   //     //           currentOrderDrinks[index].isSelected = value;
+          //   //     //         });
+          //   //     //       },
+          //   //     //     ),
+          //   //     //   );
+          //   //     // }
+          //   //     ),
+          //   //   ),
+          //   ),
           Expanded(
             child: Center(
               child: ElevatedButton(
                 onPressed: () {
                   print("Request Drink has been pressed");
+                  requestRefill();
                   Navigator.pop(context);
                 },
                 style: ButtonStyle(
@@ -118,7 +120,7 @@ class _RequestRefillPageState extends State<RequestRefillPage> {
                   width: 300,
                   child: Center(
                     child: Text(
-                      "Request Drink",
+                      "Request Drink Refills",
                       style:
                       kLoginCardTextStyle, // took this from login screen style
                     ),
@@ -144,7 +146,8 @@ class RefillOptionButton extends StatelessWidget {
       padding: EdgeInsets.only(top: 30, left: 50, right: 50),
       child: ElevatedButton(
         onPressed: () {
-          print("$drinkName has been pressed");
+          //print("$drinkName has been pressed");
+          requestRefill();
         },
         style: ButtonStyle(
           backgroundColor: MaterialStateProperty.all<Color>(kOffWhite),

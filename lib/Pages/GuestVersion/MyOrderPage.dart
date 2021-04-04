@@ -23,6 +23,7 @@ class MyOrderPage extends StatefulWidget {
 class _MyOrderPageState extends State<MyOrderPage> {
   DineOption isSelected = DineOption.dineIn;
   TextEditingController _commentsController;
+  String testingText;
 
   @override
   void initState() {
@@ -179,7 +180,6 @@ class _MyOrderPageState extends State<MyOrderPage> {
                     width: 30.0,
                   ),
                   Text(
-
                     "\$${globals.thisDevicesTable.tableBillTotal}", //TODO: This must be fixed to reflect Michael's changes.
 
                     style: kOrderDetailsTextStyle,
@@ -200,7 +200,6 @@ class _MyOrderPageState extends State<MyOrderPage> {
               margin: EdgeInsets.only(
                 left: 100.0,
                 bottom: 5,
-
               ),
               width: MediaQuery.of(context).size.width,
               child: Text(
@@ -370,6 +369,47 @@ class _MyOrderPageState extends State<MyOrderPage> {
                           ),
                           onPressed: () {
                             //TODO: Add functionality to send to kitchen or something?
+
+                            //  Funcionality for comping kidsmeals after 4pm on sundays
+                            DateTime now = DateTime.now();
+                            int entreeCount = 0;
+                            int kidsmealsComped = 0;
+                            //print('Curr Hour: ${now.hour}       Curr Day: ${now.weekday}');
+                            if(now.hour >= 16 && now.weekday == 7)
+                              {
+                                // Finding how many entrees are in the order
+                                for(int i = 0;i < globals.order.length;i++)
+                                  {
+                                    for(int j = 0;j < globals.entrees.length;j++)
+                                      {
+                                        if(globals.order[i].getItemName == globals.entrees[j].getItemName)
+                                          {
+                                            entreeCount++;
+                                          }
+                                      }
+                                  }
+                                //print('EntreeCount: ${entreeCount}');
+
+                                for(int i = 0;i < globals.order.length;i++)
+                                  {
+                                    for(int j = 0;j < globals.kidsMeals.length;j++)
+                                      {
+                                        if(globals.order[i].getItemName == globals.kidsMeals[j].getItemName)
+                                          {
+                                            if(kidsmealsComped < entreeCount)
+                                              {
+                                                //TODO: Comp order
+                                                globals.order[i].price = "\$0.00";
+                                                kidsmealsComped++;
+                                                //print('KidsMealsComped: ${kidsmealsComped}');
+                                                print('${globals.order[i].getItemName} is comped');
+                                              }
+                                          }
+                                      }
+                                  }
+                              }
+                            globals.modification = _commentsController.text;
+                            sendData();
                             //send to database cause why not
                             //sendData(globals.order);
                             print("hey");
@@ -494,4 +534,3 @@ createAlertDialog(BuildContext context, String itemName) {
   return total;
 
 }*/
-

@@ -4,6 +4,7 @@ import 'package:virtual_restaurant/CustomWidgets/CustomButton.dart';
 import 'package:virtual_restaurant/CustomWidgets/KidsModeButton.dart';
 import 'package:virtual_restaurant/CustomWidgets/BottomNavBarItems.dart';
 import 'package:virtual_restaurant/Pages/GuestVersion/MyOrderPage.dart';
+import 'package:virtual_restaurant/Database/database.dart';
 import 'package:virtual_restaurant/Data/globals.dart' as globals;
 
 class GuestHomeScreen extends StatefulWidget {
@@ -38,22 +39,50 @@ class _GuestHomeScreenState extends State<GuestHomeScreen> {
               CustomButton(
                 //TODO: maybe add another property -> kid's mode true/false
                 label: "Manager's Choice",
+                icon: Icons.favorite,
                 buttonTapped: () {
                   Navigator.pushNamed(context, "/ManagersChoicePage");
                   //Navigator.pushNamed(context, "/KitchenHomeScreen");
                 },
               ),
               CustomButton(
+                icon: Icons.restaurant,
                 label: "Menu",
                 buttonTapped: () {
                   Navigator.pushNamed(context, "/MenuPage");
                 },
               ),
               CustomButton(
+                icon: Icons.phone,
                 label: "Call Waiter",
                 buttonTapped: () {
-                  print("Calling waiter now..");
                   //TODO: Add call waiter functionality here
+
+                  sendWaiterRequest();
+
+                  return showDialog(
+                    context: context,
+                    builder: (context) {
+                      return AlertDialog(
+                        title: Text("Waiter is coming soon!"),
+                        actions: <Widget>[
+                          MaterialButton(
+                            elevation: 5.0,
+                            child: Text(
+                              'OK',
+                              style: TextStyle(
+                                fontSize: 18.0,
+                                color: kSemiDarkGreen,
+                              ),
+                            ),
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                          ),
+                        ],
+                      );
+                    },
+                  );
                 },
               ),
             ],
@@ -61,18 +90,21 @@ class _GuestHomeScreenState extends State<GuestHomeScreen> {
           Row(
             children: <Widget>[
               CustomButton(
+                icon: Icons.cake,
                 label: "Earn Chance to Win Free Dessert",
                 buttonTapped: () {
                   Navigator.pushNamed(context, "/FreeDessertPage");
                 },
               ),
               CustomButton(
+                icon: Icons.sports_esports,
                 label: "Games",
                 buttonTapped: () {
                   Navigator.pushNamed(context, "/GamesPage");
                 },
               ),
               CustomButton(
+                icon: Icons.local_drink,
                 label: "Request Drink Refills",
                 buttonTapped: () {
                   Navigator.pushNamed(context, "/RequestRefillPage");
