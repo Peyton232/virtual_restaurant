@@ -214,3 +214,20 @@ void loadMenuLists() async {
   getMealOfDay();
 
 }
+
+Map<String, dynamic> orderItemToJson(MenuItem order) {
+  return{
+    'name': order.name,
+    'price': order.price,
+  };
+}
+
+DatabaseReference sendData() {
+  var id = databaseReference.child('kitchen-orders/${globals.tableID}/');
+  List<Map<String, dynamic>> completeOrder = List<Map<String, dynamic>>.filled(globals.order.length, new Map<String, dynamic>());
+  for (int i = 0; i < globals.order.length; i++) {
+    completeOrder[i] = orderItemToJson(globals.order[i]);
+  }
+  id.push().set(completeOrder);
+  return id;
+}
