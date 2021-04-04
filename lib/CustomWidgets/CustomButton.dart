@@ -4,10 +4,12 @@ import 'package:virtual_restaurant/Data/constants.dart';
 class CustomButton extends StatefulWidget {
   final String label;
   final Function buttonTapped;
+  final IconData icon;
 
   CustomButton({
     this.label,
     this.buttonTapped,
+    this.icon,
   });
 
   @override
@@ -35,12 +37,23 @@ class _CustomButtonState extends State<CustomButton> {
           child: Container(
             height: 180,
             width: 300,
-            child: Center(
-              child: Text(
-                widget.label,
-                style: TextStyle(fontSize: 30, color: kSemiBlack),
-                textAlign: TextAlign.center,
-              ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Icon(
+                  widget.icon,
+                  size: 45,
+                  color: kLightGreen,
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Text(
+                  widget.label,
+                  style: TextStyle(fontSize: 30, color: kSemiBlack),
+                  textAlign: TextAlign.center,
+                ),
+              ],
             ),
           ),
         ),

@@ -29,7 +29,7 @@ class _KidsModeButtonState extends State<KidsModeButton> {
         },
         child: Container(
           height: 70,
-          width: 180,
+          width: 200,
           decoration: BoxDecoration(
             color: kidsModeSelected ? kOffWhite : kMintGreen,
             boxShadow: [
@@ -38,13 +38,21 @@ class _KidsModeButtonState extends State<KidsModeButton> {
             ],
           ),
           child: Center(
-            child: Text(
-              "Kid's Mode",
-              style: TextStyle(
-                fontSize: 24.0,
-                fontWeight: FontWeight.w500,
-                color: kidsModeSelected ? Colors.grey[400] : kSemiBlack,
-              ),
+            child: Row(
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                  child: Icon(Icons.child_friendly),
+                ),
+                Text(
+                  "Kid's Mode",
+                  style: TextStyle(
+                    fontSize: 24.0,
+                    fontWeight: FontWeight.w500,
+                    color: kidsModeSelected ? Colors.grey[400] : kSemiBlack,
+                  ),
+                ),
+              ],
             ),
           ),
         ),

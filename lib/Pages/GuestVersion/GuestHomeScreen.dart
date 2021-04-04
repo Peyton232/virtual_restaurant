@@ -39,18 +39,21 @@ class _GuestHomeScreenState extends State<GuestHomeScreen> {
               CustomButton(
                 //TODO: maybe add another property -> kid's mode true/false
                 label: "Manager's Choice",
+                icon: Icons.favorite,
                 buttonTapped: () {
                   Navigator.pushNamed(context, "/ManagersChoicePage");
                   //Navigator.pushNamed(context, "/KitchenHomeScreen");
                 },
               ),
               CustomButton(
+                icon: Icons.restaurant,
                 label: "Menu",
                 buttonTapped: () {
                   Navigator.pushNamed(context, "/MenuPage");
                 },
               ),
               CustomButton(
+                icon: Icons.phone,
                 label: "Call Waiter",
                 buttonTapped: () {
                   //TODO: Add call waiter functionality here
@@ -87,18 +90,21 @@ class _GuestHomeScreenState extends State<GuestHomeScreen> {
           Row(
             children: <Widget>[
               CustomButton(
+                icon: Icons.cake,
                 label: "Earn Chance to Win Free Dessert",
                 buttonTapped: () {
                   Navigator.pushNamed(context, "/FreeDessertPage");
                 },
               ),
               CustomButton(
+                icon: Icons.sports_esports,
                 label: "Games",
                 buttonTapped: () {
                   Navigator.pushNamed(context, "/GamesPage");
                 },
               ),
               CustomButton(
+                icon: Icons.local_drink,
                 label: "Request Drink Refills",
                 buttonTapped: () {
                   Navigator.pushNamed(context, "/RequestRefillPage");
