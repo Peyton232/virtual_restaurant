@@ -39,6 +39,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      highContrastTheme: ThemeData(
+        primaryColor: Colors.green[900],
+        scaffoldBackgroundColor: Colors.white,
+      ),
       theme: ThemeData(
         primaryColor: kDarkGreen,
         scaffoldBackgroundColor: kOffWhite,
