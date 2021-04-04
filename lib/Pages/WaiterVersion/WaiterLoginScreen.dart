@@ -47,6 +47,7 @@ class WaiterLoginScreen extends StatelessWidget {
                   Text("Password: ", style: TextStyle(fontSize: 17,),),
                   Padding(padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),),
                   TextField(
+                    obscureText: true,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(),
                       hintText: 'Enter Your Password',

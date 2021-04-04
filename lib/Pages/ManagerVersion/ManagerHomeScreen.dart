@@ -64,13 +64,6 @@ class ManagerHomeScreen extends StatelessWidget {
                   Navigator.pushNamed(context, "/PickTablePage");
                 },
               ),
-              CustomButton(
-                label: "Change Avalibility Of Items",
-                buttonTapped: () {
-                  loadMenuLists();
-                  Navigator.pushNamed(context, "/ChangeMenuPage");
-                },
-              ),
             ],
           ),
         ],

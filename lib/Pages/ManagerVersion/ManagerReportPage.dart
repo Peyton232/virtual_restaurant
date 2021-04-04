@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:virtual_restaurant/CustomWidgets/CustomButton.dart';
 
 class ManagerReportPage extends StatelessWidget {
+  double revenue = 2352435.34;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,6 +19,10 @@ class ManagerReportPage extends StatelessWidget {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
+          Container(
+            margin: EdgeInsets.symmetric(vertical: 20, horizontal: 35),
+            child: Text('Total Revenue:     \$${revenue}', style: TextStyle(fontSize: 30),),
+          ),
           Row(
             children: <Widget>[
               CustomButton(
@@ -38,13 +44,7 @@ class ManagerReportPage extends StatelessWidget {
               CustomButton(
                 label: "Tips Gained",
                 buttonTapped: () {
-                  //Navigator.pushNamed(context, "/FreeDessertPage");
-                },
-              ),
-              CustomButton(
-                label: "View Revenue",
-                buttonTapped: () {
-                  //Navigator.pushNamed(context, "/GamesPage");
+                  Navigator.pushNamed(context, "/TipsGained");
                 },
               ),
             ],

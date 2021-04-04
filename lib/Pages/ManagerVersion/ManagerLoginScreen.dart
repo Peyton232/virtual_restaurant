@@ -62,6 +62,7 @@ class ManagerLoginScreen extends StatelessWidget {
                     padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
                   ),
                   TextField(
+                    obscureText: true,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(),
                       hintText: 'Enter Your Password',
