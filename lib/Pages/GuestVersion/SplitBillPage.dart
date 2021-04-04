@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:virtual_restaurant/Data/constants.dart';
+import 'package:virtual_restaurant/Data/globals.dart' as globals;
 
 class SplitBillPage extends StatefulWidget {
   @override
@@ -7,8 +8,8 @@ class SplitBillPage extends StatefulWidget {
 }
 
 class _SplitBillPageState extends State<SplitBillPage> {
-  int _amountOfPeople = 0;
-  double _splitBill = 10.26;
+  int _amountOfPeople = 1;
+  double _splitBill = globals.total;
 
   int _addPeople(int newAmount) {
     newAmount++;
@@ -41,6 +42,8 @@ class _SplitBillPageState extends State<SplitBillPage> {
                   onTap: () {
                     setState(() {
                       _amountOfPeople = _addPeople(_amountOfPeople);
+                      _splitBill = getSplit(_amountOfPeople);
+                      globals.waysToSplitBill = _amountOfPeople;
                     });
                   },
                   child: Container(
@@ -68,6 +71,8 @@ class _SplitBillPageState extends State<SplitBillPage> {
                   onTap: () {
                     setState(() {
                       _amountOfPeople = _subPeople(_amountOfPeople);
+                      _splitBill = getSplit(_amountOfPeople);
+                      globals.waysToSplitBill = _amountOfPeople;
                     });
                   },
                   child: Container(
@@ -96,4 +101,8 @@ class _SplitBillPageState extends State<SplitBillPage> {
       ),
     );
   }
+}
+
+double getSplit(int numPeep){
+  return globals.total/numPeep;
 }
