@@ -19,7 +19,6 @@ class ManagerHomeScreen extends StatelessWidget {
           ),
         ),
       ),
-
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -27,12 +26,14 @@ class ManagerHomeScreen extends StatelessWidget {
             Row(
               children: <Widget>[
                 CustomButton(
+                  icon: Icons.assignment_ind,
                   label: "Waiter Mode",
                   buttonTapped: () {
                     Navigator.pushNamed(context, "/WaiterHomeScreen");
                   },
                 ),
                 CustomButton(
+                  icon: Icons.show_chart,
                   label: "See Reports",
                   buttonTapped: () {
                     Navigator.pushNamed(context, "/ManagerReportPage");
@@ -43,6 +44,7 @@ class ManagerHomeScreen extends StatelessWidget {
             Row(
               children: <Widget>[
                 CustomButton(
+                  icon: Icons.restaurant_menu,
                   label: "Change Meal of the Day",
                   buttonTapped: () {
                     loadMenuLists();
@@ -50,6 +52,7 @@ class ManagerHomeScreen extends StatelessWidget {
                   },
                 ),
                 CustomButton(
+                  icon: Icons.menu_book,
                   label: "Change Avalibility Of Items",
                   buttonTapped: () {
                     loadMenuLists();
@@ -61,6 +64,7 @@ class ManagerHomeScreen extends StatelessWidget {
             Row(
               children: <Widget>[
                 CustomButton(
+                  icon: Icons.table_rows,
                   label: "Pick Table for Tablet",
                   buttonTapped: () {
                     Navigator.pushNamed(context, "/PickTablePage");

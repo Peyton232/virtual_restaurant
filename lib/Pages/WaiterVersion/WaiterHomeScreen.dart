@@ -82,9 +82,10 @@ class _WaiterHomeScreenState extends State<WaiterHomeScreen> {
         itemCount: dummyData.length,
         itemBuilder: (BuildContext context, int index) {
           return Padding(
-            padding: const EdgeInsets.symmetric(
-              vertical: 10.0,
-              horizontal: 30,
+            padding: const EdgeInsets.only(
+              top: 40.0,
+              left: 30,
+              right: 30,
             ),
             child: TableCard(
               tableNumber: dummyData[index].tableNumber,
