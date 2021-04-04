@@ -10,8 +10,8 @@ import '../classes/menuItem.dart';
 
 bool kidsMode = false;
 String kidsModePassword = '';
-
-String tableID = 'T4';  //To be set by manager
+String modification = '';
+String tableID = 'T2';  //To be set by manager
 
 CustomerTable thisDevicesTable = CustomerTable(tableNum:1);
 List<MenuItem> order = [];//order, initially empty

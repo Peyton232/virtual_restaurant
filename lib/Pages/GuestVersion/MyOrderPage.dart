@@ -370,6 +370,8 @@ class _MyOrderPageState extends State<MyOrderPage> {
                           ),
                           onPressed: () {
                             //TODO: Add functionality to send to kitchen or something?
+                            globals.modification = _commentsController.text;
+                            sendData();
                             //send to database cause why not
                             //sendData(globals.order);
                             print("hey");
