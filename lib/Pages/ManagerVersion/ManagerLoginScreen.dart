@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:virtual_restaurant/Data/constants.dart';
 
 class ManagerLoginScreen extends StatelessWidget {
   String password = "";
@@ -17,11 +18,21 @@ class ManagerLoginScreen extends StatelessWidget {
         padding: EdgeInsets.all(20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
+            SizedBox(
+              height: 30,
+            ),
+            Icon(
+              Icons.group,
+              size: 90,
+              color: kSemiDarkGreen,
+            ),
+            SizedBox(
+              height: 30,
+            ),
             Container(
               //color: Colors.teal,
-              padding: EdgeInsets.symmetric(vertical: 10, horizontal: 100),
+              padding: EdgeInsets.symmetric(vertical: 10, horizontal: 300),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
@@ -48,7 +59,7 @@ class ManagerLoginScreen extends StatelessWidget {
             ),
             Container(
               //color: Colors.teal,
-              padding: EdgeInsets.symmetric(vertical: 10, horizontal: 100),
+              padding: EdgeInsets.symmetric(vertical: 10, horizontal: 300),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
@@ -73,6 +84,9 @@ class ManagerLoginScreen extends StatelessWidget {
                   ),
                 ],
               ),
+            ),
+            SizedBox(
+              height: 20,
             ),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
