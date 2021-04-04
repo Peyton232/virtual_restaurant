@@ -28,7 +28,7 @@ class ManagerReportPage extends StatelessWidget {
               CustomButton(
                 label: "Items Sold",
                 buttonTapped: () {
-                  //Navigator.pushNamed(context, "/ManagersChoicePage");
+                  Navigator.pushNamed(context, "/ItemsSoldPage");
                 },
               ),
               CustomButton(
