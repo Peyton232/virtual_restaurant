@@ -129,9 +129,9 @@ List<MenuItem> sides = [
 //list of kidsMeals
 List<MenuItem> kidsMeals = [
   MenuItem(
-    name: "<item name>",
+    name: "Testing",
     description: "<item description>",
-    price: "\$0.00",
+    price: "\$23.44",
     calories: 9000,
     allergens: ["dairy", "gluten"],
     //image: "https://browseyou.com/media/img/src/no-item.jpg",
