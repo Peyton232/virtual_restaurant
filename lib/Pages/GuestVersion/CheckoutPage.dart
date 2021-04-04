@@ -338,6 +338,9 @@ class _CheckoutPageState extends State<CheckoutPage> {
               cardExpFilled &&
               cardNumberFilled &&
               cardSecurityFilled) {
+            setState(() {
+              globals.order.clear();
+            });
             Navigator.pushNamed(context, "/GoodbyePage");
           } else {
             return showDialog(

@@ -19,8 +19,6 @@ final mealOfDayRef = databaseReference.child('mealOfDay');
 //reference
 //https://medium.com/flutterdevs/explore-realtime-database-in-flutter-c5870c2b231f
 
-
-
 //TODO: Do away with these as it will be at the class level instead. That way every object defines their Json how it needs to be.
 Map<String, dynamic> toJson(KitchenItem item){
   return {
@@ -41,28 +39,6 @@ Map<String, dynamic> toJsonMenu(MenuItem item){
 }
 
 /*
- * Change the format of the JSON hierarchy sent to tableOrderDB
-This is now a reference for new methods
-DatabaseReference sendData(List<MenuItem> order) {
-  var id = databaseReference.child('order/${globals.tableID}/');
-  for (int i  = 0; i < order.length; i++) {
-    id = databaseReference.child('order/${globals.tableID}/item${i+1}');
-    id.set(toJson0(order[i]));
-  }
-  return id;
-}
-*/
-//TODO: Remove.
-Future<String> readData() async {
-  String result = (await FirebaseDatabase.instance.reference().child("fromPython/log/message").once()).value;
-  print(result);
-  //remove to and from python descriptors---------------------------------------------------------------------------------uncomment later
-  //databaseReference.child('fromPython').remove();
-  //databaseReference.child('toPython').remove();
-  return(result);
-}
-
-/*
  *  Currently, this method is not safe and may try to set values over 20. Firebase Rules should catch this,
  *  but it should be something to be aware of in the case of undefined behavior.
  */
@@ -72,9 +48,7 @@ Future<int> incrementTableCount(int newTableNumber) async {
 }
 
 /*
-*
-*
-*
+* allows manager ot change meal of the day
 */
 void changeMealOfDay() async {
   var id = databaseReference.child('mealOfDay/');
@@ -216,7 +190,6 @@ void loadMenuLists() async {
 
 }
 
-
 void sendWaiterRequest(){
   var id = databaseReference.child('waiterOrders/${globals.tableID}/');
   id.set('table requests assistance');
@@ -264,32 +237,6 @@ DatabaseReference sendData() {
   id.push().set(completeOrder);
   return id;
 }
-
-// Future<List<String>> getWaiterInfo() async{
-//
-//   // List<Map<String, dynamic>> temp = List<Map<String, dynamic>>.filled(50, new Map<String, dynamic>());;
-//   // Map<dynamic, dynamic> data;
-//   // //List<Map<String, dynamic>> temp = [];
-//   // int i = 0;
-//
-//   var id = databaseReference.child('kitchen-orders/');
-//   print(id.once);
-//     id.once().then((DataSnapshot snapshot){
-//       (new Map<String, dynamic>.from(snapshot.value)).forEach((key,values) {
-//         Map<dynamic, dynamic> json = values;
-//         print(json);
-//
-//       });
-//   });
-//
-//
-//     // for(int i = 0 ; i < 2; i++){
-//     //   print(temp[i].keys);
-//     // }
-//
-//     //globals.itemsToOrder;
-//
-// }
 
 
 void getWaiterInfo() async{
