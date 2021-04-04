@@ -17,6 +17,24 @@ CustomerTable thisDevicesTable = CustomerTable(tableNum:1);
 List<MenuItem> order = [];//order, initially empty
 ListQueue<KitchenOrder> kitchenOrders;
 
+//money variables for bill
+double total = 0;
+double tip = 0;
+int waysToSplitBill = 1;
+
+//waiter variables
+//move this class later
+class orderItems{
+  String table;
+  Map<dynamic, dynamic> items;
+
+  orderItems({
+    this.table,
+    this.items,
+  });
+}
+List<orderItems> itemsToOrder = [];
+
 MenuItem mealOFTheDay = MenuItem(
   name: "Scrappy head",
   description: "<item description>",
@@ -123,9 +141,9 @@ List<MenuItem> sides = [
 //list of kidsMeals
 List<MenuItem> kidsMeals = [
   MenuItem(
-    name: "<item name>",
+    name: "Testing",
     description: "<item description>",
-    price: "\$0.00",
+    price: "\$23.44",
     calories: 9000,
     allergens: ["dairy", "gluten"],
     //image: "https://browseyou.com/media/img/src/no-item.jpg",

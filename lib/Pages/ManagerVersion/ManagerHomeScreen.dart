@@ -29,7 +29,7 @@ class ManagerHomeScreen extends StatelessWidget {
                 CustomButton(
                   label: "Waiter Mode",
                   buttonTapped: () {
-                    //Navigator.pushNamed(context, "/ManagersChoicePage");
+                    Navigator.pushNamed(context, "/WaiterHomeScreen");
                   },
                 ),
                 CustomButton(
