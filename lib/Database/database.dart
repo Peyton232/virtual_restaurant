@@ -378,3 +378,21 @@ Map<String, dynamic> toJsonReports(int itemsSold, int comped, double tips, doubl
     'items': specificItemSold,
   };
 }
+
+//add an available table to waitlist
+Future<int> addTable() async {
+  int result = (await FirebaseDatabase.instance.reference().child("waitlist").once()).value;
+  result++;
+
+  var id = databaseReference.child('waitlist');
+  id.set({'tables available': result});
+}
+
+//remove an available table to waitlist
+Future<int> subTable() async {
+  int result = (await FirebaseDatabase.instance.reference().child("waitlist").once()).value;
+  result--;
+
+  var id = databaseReference.child('waitlist');
+  id.set({'tables available': result});
+}
