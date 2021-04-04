@@ -24,6 +24,7 @@ class WelcomePage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             CustomLoginCard(
+              icon: Icons.supervisor_account,
               label: "Manager Login",
               cardTapped: () {
                 loadMenuLists();
@@ -31,12 +32,14 @@ class WelcomePage extends StatelessWidget {
               },
             ),
             CustomLoginCard(
+              icon: Icons.assignment_ind,
               label: "Waiter Login",
               cardTapped: () {
                 Navigator.pushNamed(context, "/WaiterLoginScreen");
               },
             ),
             CustomLoginCard(
+              icon: Icons.tablet,
               label: "Tabletop Mode",
               cardTapped: () {
                 loadMenuLists();
@@ -47,6 +50,7 @@ class WelcomePage extends StatelessWidget {
               },
             ),
             CustomLoginCard(
+              icon: Icons.kitchen,
               label: "Kitchen Mode",
               cardTapped: () {
                 Navigator.pushNamed(context, "/KitchenLoginScreen");

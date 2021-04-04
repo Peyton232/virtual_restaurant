@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:virtual_restaurant/Data/constants.dart';
 import 'package:custom_switch/custom_switch.dart';
+import 'dart:ui';
 
 const kSettingsHeaderTextStyle = TextStyle(
   fontSize: 30.0,
