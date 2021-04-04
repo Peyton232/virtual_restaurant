@@ -26,6 +26,7 @@ class _MenuScreenState extends State<MenuScreen> {
           Row(
             children: <Widget>[
               CustomButton(
+                icon: Icons.bakery_dining,
                 label: "Appetizers",
                 buttonTapped: () {
                   Navigator.push(
@@ -42,6 +43,7 @@ class _MenuScreenState extends State<MenuScreen> {
                 },
               ),
               CustomButton(
+                icon: Icons.fastfood,
                 label: "Entrees",
                 buttonTapped: () {
                   Navigator.push(
@@ -58,6 +60,7 @@ class _MenuScreenState extends State<MenuScreen> {
                 },
               ),
               CustomButton(
+                icon: Icons.local_dining,
                 label: "Sides",
                 buttonTapped: () {
                   Navigator.push(
@@ -78,6 +81,7 @@ class _MenuScreenState extends State<MenuScreen> {
           Row(
             children: <Widget>[
               CustomButton(
+                icon: Icons.local_cafe,
                 label: "Drinks",
                 buttonTapped: () {
                   Navigator.push(
@@ -94,6 +98,7 @@ class _MenuScreenState extends State<MenuScreen> {
                 },
               ),
               CustomButton(
+                icon: Icons.emoji_emotions,
                 label: "Kid's Meal",
                 buttonTapped: () {
                   Navigator.push(
@@ -110,6 +115,7 @@ class _MenuScreenState extends State<MenuScreen> {
                 },
               ),
               CustomButton(
+                icon: Icons.icecream,
                 label: "Dessert",
                 buttonTapped: () {
                   Navigator.push(
