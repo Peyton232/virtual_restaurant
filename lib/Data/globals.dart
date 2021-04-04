@@ -20,6 +20,7 @@ ListQueue<KitchenOrder> kitchenOrders;
 //money variables for bill
 double total = 0;
 double tip = 0;
+int waysToSplitBill = 1;
 
 
 MenuItem mealOFTheDay = MenuItem(

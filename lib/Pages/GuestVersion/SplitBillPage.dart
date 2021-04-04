@@ -43,6 +43,7 @@ class _SplitBillPageState extends State<SplitBillPage> {
                     setState(() {
                       _amountOfPeople = _addPeople(_amountOfPeople);
                       _splitBill = getSplit(_amountOfPeople);
+                      globals.waysToSplitBill = _amountOfPeople;
                     });
                   },
                   child: Container(
@@ -71,6 +72,7 @@ class _SplitBillPageState extends State<SplitBillPage> {
                     setState(() {
                       _amountOfPeople = _subPeople(_amountOfPeople);
                       _splitBill = getSplit(_amountOfPeople);
+                      globals.waysToSplitBill = _amountOfPeople;
                     });
                   },
                   child: Container(
