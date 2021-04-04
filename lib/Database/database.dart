@@ -214,3 +214,8 @@ void loadMenuLists() async {
   getMealOfDay();
 
 }
+
+void sendWaiterRequest(){
+  var id = databaseReference.child('waiterOrders/${globals.tableID}/');
+  id.set('table requests assistance');
+}

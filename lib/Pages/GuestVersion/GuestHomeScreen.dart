@@ -4,6 +4,7 @@ import 'package:virtual_restaurant/CustomWidgets/CustomButton.dart';
 import 'package:virtual_restaurant/CustomWidgets/KidsModeButton.dart';
 import 'package:virtual_restaurant/CustomWidgets/BottomNavBarItems.dart';
 import 'package:virtual_restaurant/Pages/GuestVersion/MyOrderPage.dart';
+import 'package:virtual_restaurant/Database/database.dart';
 import 'package:virtual_restaurant/Data/globals.dart' as globals;
 
 class GuestHomeScreen extends StatefulWidget {
@@ -53,6 +54,8 @@ class _GuestHomeScreenState extends State<GuestHomeScreen> {
                 label: "Call Waiter",
                 buttonTapped: () {
                   //TODO: Add call waiter functionality here
+
+                  sendWaiterRequest();
 
                   return showDialog(
                     context: context,
