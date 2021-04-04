@@ -7,6 +7,7 @@ import 'package:virtual_restaurant/Pages/GuestVersion/GuestHomeScreen.dart';
 import 'package:virtual_restaurant/Pages/GuestVersion/ManagersChoicePage.dart';
 import 'package:virtual_restaurant/Pages/GuestVersion/MyOrderPage.dart';
 import 'package:virtual_restaurant/Pages/GuestVersion/MyBillPage.dart';
+import 'package:virtual_restaurant/Pages/GuestVersion/PickTablePage.dart';
 import 'package:virtual_restaurant/Pages/GuestVersion/RequestRefillPage.dart';
 import 'package:virtual_restaurant/Pages/GuestVersion/SettingsPage.dart';
 import 'package:virtual_restaurant/Pages/GuestVersion/SplitBillPage.dart';
@@ -52,7 +53,7 @@ class MyApp extends StatelessWidget {
         "/ManagerReportPage": (context) => ManagerReportPage(),
         "/ManagerLoginScreen": (context) => ManagerLoginScreen(),
         "/KitchenLoginScreen": (context) => KitchenLoginScreen(),
-        "/ChangeMenuPage": (context) => ChangeMenuPage(),
+        "/ChangeMenuPage": (context) => AvalibleItems(),
         "/WaiterLoginScreen": (context) => WaiterLoginScreen(),
         "/MenuPage": (context) => MenuScreen(),
         "/SettingsPage": (context) => SettingsPage(),
@@ -74,6 +75,7 @@ class MyApp extends StatelessWidget {
         "/GoodbyePage": (context) => GoodbyePage(),
         "/WaiterHomeScreen": (context) => WaiterHomeScreen(),
         "/CustomerRequests": (context) => CustomerRequests(),
+        "/PickTablePage": (context) => PickTablePage(),
       },
     );
   }
