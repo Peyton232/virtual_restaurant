@@ -162,7 +162,7 @@ class _MyBillPageState extends State<MyBillPage> {
                     width: 45.0,
                   ),
                   Text(
-                    "\$${_tipAmount.toStringAsFixed(2)}", //Made total only display two decimal places
+                    "\$${globals.tip.toStringAsFixed(2)}", //Made total only display two decimal places
                     style: kOrderDetailsTextStyle,
                   ),
                   IconButton(
@@ -300,6 +300,9 @@ class _MyBillPageState extends State<MyBillPage> {
                     ),
                   ),
                   onPressed: () {
+                    setState(() {
+                      globals.tip = globals.total * .10;
+                    });
                     Navigator.pop(context);
                   },
                 ),
@@ -313,6 +316,9 @@ class _MyBillPageState extends State<MyBillPage> {
                     ),
                   ),
                   onPressed: () {
+                    setState(() {
+                      globals.tip = globals.total * .15;
+                    });
                     Navigator.pop(context);
                   },
                 ),
@@ -326,6 +332,9 @@ class _MyBillPageState extends State<MyBillPage> {
                     ),
                   ),
                   onPressed: () {
+                    setState(() {
+                      globals.tip = globals.total * .20;
+                    });
                     Navigator.pop(context);
                   },
                 ),
@@ -360,7 +369,7 @@ class _MyBillPageState extends State<MyBillPage> {
           content: TextField(
             onSubmitted: (String value) {
               setState(() {
-                _tipAmount = double.parse(value);
+                globals.tip = double.parse(value);
               });
               Navigator.pop(context);
             },
@@ -420,18 +429,18 @@ class _MyBillPageState extends State<MyBillPage> {
 
 //helper functions
   double getTotal(List<MenuItem> order) {
-    double total = 0;
+    globals.total = 0;
     //parse through and get total
     for (int i = 0; i < order.length; i++) {
-      total += double.parse(order[i].price.substring(1));
+      globals.total += double.parse(order[i].price);
     }
 
-    return total;
+    return globals.total;
   }
 
   double getTotalWithTip(double total) {
     double totalWithTip = 0.0;
-    totalWithTip = total + _tipAmount + getTax(total);
+    totalWithTip = globals.total + globals.tip + getTax(total);
     return totalWithTip;
   }
 

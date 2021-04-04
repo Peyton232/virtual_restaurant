@@ -17,6 +17,11 @@ CustomerTable thisDevicesTable = CustomerTable(tableNum:1);
 List<MenuItem> order = [];//order, initially empty
 ListQueue<KitchenOrder> kitchenOrders;
 
+//money variables for bill
+double total = 0;
+double tip = 0;
+
+
 MenuItem mealOFTheDay = MenuItem(
   name: "Scrappy head",
   description: "<item description>",
