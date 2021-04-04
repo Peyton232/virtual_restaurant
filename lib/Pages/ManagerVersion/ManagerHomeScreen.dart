@@ -19,6 +19,7 @@ class ManagerHomeScreen extends StatelessWidget {
           ),
         ),
       ),
+
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
