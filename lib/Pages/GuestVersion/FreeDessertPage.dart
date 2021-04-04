@@ -11,6 +11,8 @@ If the customer wins, they will be taken to the QR page where they can redeem
 (next) or (current) order
  */
 
+//TODO: have condition to deny customers to try again. It enables the spin again after leaving and coming back to the page
+
 class SpinningWheel extends StatefulWidget {
   @override
   _SpinningWheelState createState() => _SpinningWheelState();
@@ -18,6 +20,9 @@ class SpinningWheel extends StatefulWidget {
 
 class _SpinningWheelState extends State<SpinningWheel> {
   int selected = 1;
+  int spinCount = 0;
+  Color buttonColor = kGreen;
+  Color buttonTextColor = kOffWhite;
 
   @override
   Widget build(BuildContext context) {
@@ -91,13 +96,45 @@ class _SpinningWheelState extends State<SpinningWheel> {
           ),
           ElevatedButton(
             style: ElevatedButton.styleFrom(
-              primary: kGreen,
+              primary: buttonColor,
             ),
             onPressed: () {
-              setState(() {
-                animateWheel = true;
-                selected = Random().nextInt(items.length);
-              });
+              if (spinCount == 0) {
+                setState(() {
+                  animateWheel = true;
+                  selected = Random().nextInt(items.length);
+                  spinCount = 1;
+                  buttonColor = Colors.grey;
+                  buttonTextColor = Colors.grey[300];
+                });
+              } else {
+                return showDialog(
+                  context: context,
+                  builder: (context) {
+                    return AlertDialog(
+                      title: Text("You already spun once!"),
+                      content: Text("Try again next time you visit."),
+                      actions: <Widget>[
+                        MaterialButton(
+                          elevation: 5.0,
+                          child: Text(
+                            'OK',
+                            style: TextStyle(
+                              fontSize: 18.0,
+                              color: kSemiDarkGreen,
+                            ),
+                          ),
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                        ),
+                      ],
+                    );
+                  },
+                );
+              }
+
+              print(spinCount);
             },
             child: Padding(
               padding: const EdgeInsets.symmetric(
@@ -106,7 +143,10 @@ class _SpinningWheelState extends State<SpinningWheel> {
               ),
               child: Text(
                 "Spin",
-                style: TextStyle(fontSize: 25.0),
+                style: TextStyle(
+                  fontSize: 25.0,
+                  color: buttonTextColor,
+                ),
               ),
             ),
           ),

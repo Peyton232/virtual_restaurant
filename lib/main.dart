@@ -17,6 +17,8 @@ import 'package:virtual_restaurant/Pages/ManagerVersion/ItemsSold.dart';
 import 'package:virtual_restaurant/Pages/ManagerVersion/ManagerLoginScreen.dart';
 import 'package:virtual_restaurant/Pages/ManagerVersion/ManagerReportPage.dart';
 import 'package:virtual_restaurant/Pages/ManagerVersion/TipsGained.dart';
+import 'package:virtual_restaurant/Pages/WaiterVersion/CustomerRequests.dart';
+import 'package:virtual_restaurant/Pages/WaiterVersion/WaiterHomeScreen.dart';
 import 'package:virtual_restaurant/Pages/WaiterVersion/WaiterLoginScreen.dart';
 import 'package:virtual_restaurant/Pages/KitchenVersion/KitchenLoginScreen.dart';
 import 'package:virtual_restaurant/Pages/GuestVersion/games/MineSweeper.dart';
@@ -73,6 +75,8 @@ class MyApp extends StatelessWidget {
         "/MineSweeperPage": (context) => MineSweeperPage(),
         "/ChangeMealOfDayPage": (context) => ChangeMealOfDayPage(),
         "/GoodbyePage": (context) => GoodbyePage(),
+        "/WaiterHomeScreen": (context) => WaiterHomeScreen(),
+        "/CustomerRequests": (context) => CustomerRequests(),
         "/PickTablePage": (context) => PickTablePage(),
         "/TipsGained": (context) => TipsGained(),
         "/ItemsSoldPage": (context) => ItemsSoldPage(),
