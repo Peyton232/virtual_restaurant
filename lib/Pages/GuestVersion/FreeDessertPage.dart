@@ -18,6 +18,7 @@ class SpinningWheel extends StatefulWidget {
 
 class _SpinningWheelState extends State<SpinningWheel> {
   int selected = 1;
+  int spinCount = 0;
 
   @override
   Widget build(BuildContext context) {

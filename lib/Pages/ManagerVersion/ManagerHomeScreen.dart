@@ -19,61 +19,63 @@ class ManagerHomeScreen extends StatelessWidget {
           ),
         ),
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Row(
-            children: <Widget>[
-              CustomButton(
-                label: "Waiter Mode",
-                buttonTapped: () {
-                  //Navigator.pushNamed(context, "/ManagersChoicePage");
-                },
-              ),
-              CustomButton(
-                label: "See Reports",
-                buttonTapped: () {
-                  Navigator.pushNamed(context, "/ManagerReportPage");
-                },
-              ),
-            ],
-          ),
-          Row(
-            children: <Widget>[
-              CustomButton(
-                label: "Change Meal of the Day",
-                buttonTapped: () {
-                  loadMenuLists();
-                  Navigator.pushNamed(context, "/ChangeMealOfDayPage");
-                },
-              ),
-              CustomButton(
-                label: "Change Avalibility Of Items",
-                buttonTapped: () {
-                  loadMenuLists();
-                  Navigator.pushNamed(context, "/ChangeMenuPage");
-                },
-              ),
-            ],
-          ),
-          Row(
-            children: <Widget>[
-              CustomButton(
-                label: "Pick Table for Tablet",
-                buttonTapped: () {
-                  Navigator.pushNamed(context, "/PickTablePage");
-                },
-              ),
-              CustomButton(
-                label: "Change Avalibility Of Items",
-                buttonTapped: () {
-                  loadMenuLists();
-                  Navigator.pushNamed(context, "/ChangeMenuPage");
-                },
-              ),
-            ],
-          ),
-        ],
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Row(
+              children: <Widget>[
+                CustomButton(
+                  label: "Waiter Mode",
+                  buttonTapped: () {
+                    //Navigator.pushNamed(context, "/ManagersChoicePage");
+                  },
+                ),
+                CustomButton(
+                  label: "See Reports",
+                  buttonTapped: () {
+                    Navigator.pushNamed(context, "/ManagerReportPage");
+                  },
+                ),
+              ],
+            ),
+            Row(
+              children: <Widget>[
+                CustomButton(
+                  label: "Change Meal of the Day",
+                  buttonTapped: () {
+                    loadMenuLists();
+                    Navigator.pushNamed(context, "/ChangeMealOfDayPage");
+                  },
+                ),
+                CustomButton(
+                  label: "Change Avalibility Of Items",
+                  buttonTapped: () {
+                    loadMenuLists();
+                    Navigator.pushNamed(context, "/ChangeMenuPage");
+                  },
+                ),
+              ],
+            ),
+            Row(
+              children: <Widget>[
+                CustomButton(
+                  label: "Pick Table for Tablet",
+                  buttonTapped: () {
+                    Navigator.pushNamed(context, "/PickTablePage");
+                  },
+                ),
+                CustomButton(
+                  label: "Change Avalibility Of Items",
+                  buttonTapped: () {
+                    loadMenuLists();
+                    Navigator.pushNamed(context, "/ChangeMenuPage");
+                  },
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
