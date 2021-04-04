@@ -249,6 +249,9 @@ Map<String, dynamic> orderItemToJson(MenuItem order) {
   return{
     'name': order.name,
     'price': order.price,
+    'category': order.category,
+    'available': order.available,
+    'finished': order.finished,
   };
 }
 
@@ -305,5 +308,10 @@ void getWaiterInfo() async{
     });
   });
   await new Future.delayed(const Duration(seconds : 1));
+
+  // print(globals.itemsToOrder[0].table);
+  // print(globals.itemsToOrder[0].items);
+  // print(globals.itemsToOrder[1].table);
+  // print(globals.itemsToOrder[1].items);
 
 }

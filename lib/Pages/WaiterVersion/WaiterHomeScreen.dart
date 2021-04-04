@@ -68,8 +68,11 @@ class _WaiterHomeScreenState extends State<WaiterHomeScreen> {
                 // draw a red marble
                 top: 13.0,
                 right: 13.0,
-                child: Icon(Icons.brightness_1,
-                    size: 10.0, color: Colors.redAccent),
+                child: Icon(
+                  Icons.brightness_1,
+                  size: 10.0,
+                  color: Colors.redAccent,
+                ),
               )
             ],
           ),
@@ -120,6 +123,14 @@ class _TableCardState extends State<TableCard> {
         padding: const EdgeInsets.all(10.0),
         child: Row(
           children: <Widget>[
+            Icon(
+              Icons.bookmark,
+              size: 40,
+              color: Colors.yellow[800],
+            ),
+            SizedBox(
+              width: 20,
+            ),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -145,7 +156,7 @@ class _TableCardState extends State<TableCard> {
               children: <Widget>[
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    primary: kGreen,
+                    primary: kLightGreen,
                   ),
                   onPressed: () {
                     //TODO: Comp functionality
@@ -162,7 +173,7 @@ class _TableCardState extends State<TableCard> {
                 ),
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    primary: kGreen,
+                    primary: kLightGreen,
                   ),
                   onPressed: () {
                     //TODO: Paid functionality

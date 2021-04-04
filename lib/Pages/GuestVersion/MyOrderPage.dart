@@ -23,6 +23,7 @@ class MyOrderPage extends StatefulWidget {
 class _MyOrderPageState extends State<MyOrderPage> {
   DineOption isSelected = DineOption.dineIn;
   TextEditingController _commentsController;
+  String testingText;
 
   @override
   void initState() {
@@ -179,7 +180,6 @@ class _MyOrderPageState extends State<MyOrderPage> {
                     width: 30.0,
                   ),
                   Text(
-
                     "\$${globals.thisDevicesTable.tableBillTotal}", //TODO: This must be fixed to reflect Michael's changes.
 
                     style: kOrderDetailsTextStyle,
@@ -200,7 +200,6 @@ class _MyOrderPageState extends State<MyOrderPage> {
               margin: EdgeInsets.only(
                 left: 100.0,
                 bottom: 5,
-
               ),
               width: MediaQuery.of(context).size.width,
               child: Text(
@@ -535,4 +534,3 @@ createAlertDialog(BuildContext context, String itemName) {
   return total;
 
 }*/
-
