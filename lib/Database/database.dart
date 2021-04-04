@@ -215,6 +215,15 @@ void loadMenuLists() async {
 
 }
 
+
+void sendWaiterRequest(){
+  var id = databaseReference.child('waiterOrders/${globals.tableID}/');
+  id.set('table requests assistance');
+}
+
+void requestRefill(){
+  var id = databaseReference.child('waiterOrders/${globals.tableID}/');
+  id.set('table needs refills');
 Map<String, dynamic> orderItemToJson(MenuItem order) {
   return{
     'name': order.name,
