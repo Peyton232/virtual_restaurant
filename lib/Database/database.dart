@@ -8,6 +8,7 @@ import 'package:virtual_restaurant/classes/kitchenOrder.dart';
 import 'package:virtual_restaurant/Data/globals.dart' as globals;
 import 'package:virtual_restaurant/classes/menuItem.dart';
 //import 'package:virtual_restaurant/classes/billOrder.dart';
+import 'dart:convert';
 
 final databaseReference = FirebaseDatabase.instance.reference();
 final customerTableDatabaseReference = FirebaseDatabase.instance.reference().child('tables');//.push().child(path).set().asStream()
@@ -259,4 +260,50 @@ DatabaseReference sendData() {
   }
   id.push().set(completeOrder);
   return id;
+}
+
+// Future<List<String>> getWaiterInfo() async{
+//
+//   // List<Map<String, dynamic>> temp = List<Map<String, dynamic>>.filled(50, new Map<String, dynamic>());;
+//   // Map<dynamic, dynamic> data;
+//   // //List<Map<String, dynamic>> temp = [];
+//   // int i = 0;
+//
+//   var id = databaseReference.child('kitchen-orders/');
+//   print(id.once);
+//     id.once().then((DataSnapshot snapshot){
+//       (new Map<String, dynamic>.from(snapshot.value)).forEach((key,values) {
+//         Map<dynamic, dynamic> json = values;
+//         print(json);
+//
+//       });
+//   });
+//
+//
+//     // for(int i = 0 ; i < 2; i++){
+//     //   print(temp[i].keys);
+//     // }
+//
+//     //globals.itemsToOrder;
+//
+// }
+
+
+void getWaiterInfo() async{
+
+  var id = databaseReference.child('kitchen-orders/');
+  id.once().then((DataSnapshot snapshot){
+    (new Map<String, dynamic>.from(snapshot.value)).forEach((key,values) {
+      Map<dynamic, dynamic> json = values;
+        //add key to orderItems
+        globals.itemsToOrder.add(
+          new globals.orderItems(
+            table: key,
+            items: json,
+          )
+        );
+    });
+  });
+  await new Future.delayed(const Duration(seconds : 1));
+
 }
