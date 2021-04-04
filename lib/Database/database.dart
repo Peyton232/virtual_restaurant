@@ -221,9 +221,29 @@ void sendWaiterRequest(){
   id.set('table requests assistance');
 }
 
-void requestRefill(){
+void requestRefill() {
   var id = databaseReference.child('waiterOrders/${globals.tableID}/');
   id.set('table needs refills');
+  Map<String, dynamic> orderItemToJson(MenuItem order) {
+    return {
+      'name': order.name,
+      'price': order.price,
+    };
+  }
+
+  DatabaseReference sendData() {
+    var id = databaseReference.child('kitchen-orders/${globals.tableID}/');
+    List<Map<String, dynamic>> completeOrder = List<
+        Map<String, dynamic>>.filled(
+        globals.order.length, new Map<String, dynamic>());
+    for (int i = 0; i < globals.order.length; i++) {
+      completeOrder[i] = orderItemToJson(globals.order[i]);
+    }
+    id.push().set(completeOrder);
+    return id;
+  }
+}
+
 Map<String, dynamic> orderItemToJson(MenuItem order) {
   return{
     'name': order.name,
