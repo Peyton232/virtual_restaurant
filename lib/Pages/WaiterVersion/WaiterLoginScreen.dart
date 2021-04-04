@@ -1,5 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:virtual_restaurant/Database/database.dart';
 
 class WaiterLoginScreen extends StatefulWidget {
   @override
@@ -85,6 +86,10 @@ class _WaiterLoginScreenState extends State<WaiterLoginScreen> {
                 onPressed: () {
                   print(["username = ", username]);
                   print(["password = ", password]);
+
+                  //call get orders to initialize
+                  getWaiterInfo();
+
                   Navigator.pushNamed(context, "/WaiterHomeScreen");
                 },
                 child: Text(

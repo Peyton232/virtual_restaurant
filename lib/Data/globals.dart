@@ -22,6 +22,18 @@ double total = 0;
 double tip = 0;
 int waysToSplitBill = 1;
 
+//waiter variables
+//move this class later
+class orderItems{
+  String table;
+  Map<dynamic, dynamic> items;
+
+  orderItems({
+    this.table,
+    this.items,
+  });
+}
+List<orderItems> itemsToOrder = [];
 
 MenuItem mealOFTheDay = MenuItem(
   name: "Scrappy head",
