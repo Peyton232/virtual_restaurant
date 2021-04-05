@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:virtual_restaurant/Data/constants.dart';
 import 'package:virtual_restaurant/classes/menuItem.dart';
 import 'package:virtual_restaurant/Data/globals.dart' as globals;
+
 //This MenuItem is the Widget that is displayed to the UI
 class MenuItemUI extends StatelessWidget {
   final Image image;
@@ -10,6 +11,7 @@ class MenuItemUI extends StatelessWidget {
   final int calories;
   final String description;
   final List<String> allergens;
+  final bool available;
 
   MenuItemUI({
     this.image,
@@ -18,6 +20,7 @@ class MenuItemUI extends StatelessWidget {
     @required this.calories,
     @required this.description,
     @required this.price,
+    @required this.available,
   });
 
   @override
@@ -83,23 +86,30 @@ class MenuItemUI extends StatelessWidget {
                 padding: EdgeInsets.only(right: 15.0),
                 child: ElevatedButton(
                   onPressed: () {
-                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                      duration: Duration(seconds: 1),
-                      content: Text("$name added to order!"),
-                    ));
-                    print("Add to Order pressed");
+                    if (available == true) {
+                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                        duration: Duration(seconds: 1),
+                        content: Text("$name added to order!"),
+                      ));
+                      print("Add to Order pressed");
 
-                    //TODO: Add to order functionality: change so this supports Table>Order>item format
-                    globals.order.add(
-                      MenuItem(
-                        name: name,
-                        description: description,
-                        price: price,
-                        calories: calories,
-                        allergens: allergens,
-                        //image: "https://browseyou.com/media/img/src/no-item.jpg",
-                      ),
-                    );
+                      //TODO: Add to order functionality: change so this supports Table>Order>item format
+                      globals.order.add(
+                        MenuItem(
+                          name: name,
+                          description: description,
+                          price: price,
+                          calories: calories,
+                          allergens: allergens,
+                          //image: "https://browseyou.com/media/img/src/no-item.jpg",
+                        ),
+                      );
+                    } else {
+                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                        duration: Duration(seconds: 1),
+                        content: Text("$name is not available!"),
+                      ));
+                    }
                   },
                   style: ButtonStyle(
                     backgroundColor:
