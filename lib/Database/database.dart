@@ -242,6 +242,7 @@ Map<String, dynamic> orderItemToJson(MenuItem order) {
     'category': order.category,
     'available': order.available,
     'finished': order.finished,
+    'modification from order': order.specialInstructs,
   };
 }
 
@@ -264,7 +265,7 @@ void getItemsSoldInfo() async {
   id = databaseReference.child('reports/items sold/').once().then((DataSnapshot snapshot) {
     globals.totalSold = snapshot.value;
   });
-  await new Future.delayed(const Duration(seconds: 2));
+  await new Future.delayed(const Duration(seconds: 1));
 }
 
 void getReportsInfo() async {
@@ -277,14 +278,16 @@ void getReportsInfo() async {
   id = databaseReference.child('reports/total revenue/').once().then((DataSnapshot snapshot) {
     globals.totalRevenue = snapshot.value;
   });
-  await new Future.delayed(const Duration(seconds: 2));
+  await new Future.delayed(const Duration(seconds: 1));
 }
 
 
 void getWaiterInfo() async {
   var id = databaseReference.child('kitchen-orders/');
+
   id.once().then((DataSnapshot snapshot) {
     (new Map<String, dynamic>.from(snapshot.value)).forEach((key, values) {
+
       Map<dynamic, dynamic> json = values;
       //add key to orderItems
       globals.itemsToOrder.add(new globals.orderItems(
@@ -293,7 +296,7 @@ void getWaiterInfo() async {
       ));
     });
   });
-  await new Future.delayed(const Duration(seconds: 2));
+  await new Future.delayed(const Duration(seconds: 1));
 
   // print(globals.itemsToOrder[0].table);
   // print(globals.itemsToOrder[0].items);

@@ -12,6 +12,7 @@ class MenuItem extends Item with JsonConversion {
   String description;
   String price; //float price
   bool finished;
+  String specialInstructs;
 
 
 
@@ -26,6 +27,7 @@ class MenuItem extends Item with JsonConversion {
     this.contents,
     this.description,
     this.price,
+    this.specialInstructs,
 
     this.finished = false,
 

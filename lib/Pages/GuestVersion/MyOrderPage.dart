@@ -410,10 +410,14 @@ class _MyOrderPageState extends State<MyOrderPage> {
                                   }
                               }
                             globals.modification = _commentsController.text;
+                            //TODO
+                            globals.modification += isSelected.toString();
+                            //print(globals.modification);
+                            //apply modification to order
+                            applyModification();
                             sendData();
                             //send to database cause why not
                             //sendData(globals.order);
-                            print("hey");
                           },
                           child: Container(
                             height: 90.0,
@@ -535,3 +539,9 @@ createAlertDialog(BuildContext context, String itemName) {
   return total;
 
 }*/
+
+void applyModification(){
+  for(int i  = 0; i < globals.order.length; i++){
+    globals.order[i].specialInstructs = globals.modification;
+  }
+}
