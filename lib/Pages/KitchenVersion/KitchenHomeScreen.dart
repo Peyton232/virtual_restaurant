@@ -40,9 +40,9 @@ class _KitchenHomeScreenState extends State<KitchenHomeScreen> {
           title: Text("Orders Todo"),
         ),
         body: Container(
-          margin: EdgeInsets.symmetric(
-            horizontal: 50,
-          ),
+          // margin: EdgeInsets.symmetric(
+          //   horizontal: 50,
+          // ),
           height: double.infinity,
           child: FirebaseAnimatedList(
             query: _ref,
@@ -57,44 +57,67 @@ class _KitchenHomeScreenState extends State<KitchenHomeScreen> {
   Widget buildOrder({List order, int index}) {
     return Container(
       color: Colors.white,
-      height: 100,
-      child: ListView.builder(
-          itemCount:
-              globals.itemsToOrder[index].items.values.toList().first.length,
-          itemBuilder: (BuildContext context, int i) {
-            return Dismissible(
-              key: UniqueKey(),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    children: [
-                      Container(
-                        color: Colors.grey,
-                        child: Text(
-                          globals.itemsToOrder[index].table.toString()
-                        ),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Container(
-                        color: Colors.grey,
-                        child: Text(
-                          globals.itemsToOrder[index].items.values
-                              .toList()
-                              .first[i]['name']
-                              .toString(),
-                        ),
-                      ),
-                    ],
-                  ),
+      height: 150,
 
-                ],
-              ),
-            );
-          }),
+      child: Container(
+        margin: EdgeInsets.all(10.0),
+
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+                globals.itemsToOrder[index].table.toString()
+            ),
+            Expanded(
+              child: ListView.builder(
+                  shrinkWrap: true,
+                  itemCount:
+                      globals.itemsToOrder[index].items.values.toList().first.length,
+                  itemBuilder: (BuildContext context, int i) {
+                    return Dismissible(
+                      key: UniqueKey(),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          // Row(
+                          //   children: [
+                          //     Container(
+                          //       color: Colors.grey,
+                          //       child: Text(
+                          //         //globals.itemsToOrder[index].table.toString()
+                          //         "testing it"
+                          //       ),
+                          //     ),
+                          //   ],
+                          // ),
+                          Row(
+                            children: [
+                              Container(
+                                color: Colors.grey,
+                                child: Text(
+                                  globals.itemsToOrder[index].items.values
+                                      .toList()
+                                      .first[i]['name']
+                                      .toString(),
+                                ),
+                              ),
+                            ],
+                          ),
+
+                        ],
+                      ),
+                      onDismissed: (direction){
+                        setState(() {
+
+                        });
+                      },
+                    );
+                  }),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
