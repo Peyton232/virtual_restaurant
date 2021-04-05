@@ -19,7 +19,7 @@ class ItemsSoldPage extends StatelessWidget {
         preferredSize: Size.fromHeight(70.0),
         child: AppBar(
           title: Text(
-            "Items Sold",
+            "Total Sold: ${totalSold}",
             style: kAppBarTextStyle,
           ),
         ),
