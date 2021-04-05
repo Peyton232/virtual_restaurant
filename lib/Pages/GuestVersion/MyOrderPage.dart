@@ -51,7 +51,8 @@ class _MyOrderPageState extends State<MyOrderPage> {
           ),
         ],
         title: Text(
-          widget.orderID,
+          //widget.orderID,
+          "Order",
           style: kAppBarTextStyle,
         ),
       ),
@@ -399,7 +400,7 @@ class _MyOrderPageState extends State<MyOrderPage> {
                                             if(kidsmealsComped < entreeCount)
                                               {
                                                 //TODO: Comp order
-                                                globals.order[i].price = "\$0.00";
+                                                globals.order[i].price = "0.00";
                                                 kidsmealsComped++;
                                                 //print('KidsMealsComped: ${kidsmealsComped}');
                                                 print('${globals.order[i].getItemName} is comped');

@@ -145,6 +145,10 @@ class _CheckoutPageState extends State<CheckoutPage> {
                 ),
               ),
               onPressed: () {
+                sendReports();
+                setState(() {
+                  globals.order.clear();
+                });
                 Navigator.pop(context);
               },
             ),
@@ -338,6 +342,11 @@ class _CheckoutPageState extends State<CheckoutPage> {
               cardExpFilled &&
               cardNumberFilled &&
               cardSecurityFilled) {
+            //TODO send info for data collection
+            sendReports();
+            setState(() {
+              globals.order.clear();
+            });
             Navigator.pushNamed(context, "/GoodbyePage");
           } else {
             return showDialog(
