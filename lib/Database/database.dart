@@ -423,3 +423,20 @@ Future<int> subTable() async {
   var id = databaseReference.child('waitlist');
   id.set({'tables available': result});
 }
+
+void changeAvailability(String itemName, bool available, String cat){
+
+  //get category
+  cat = cat.substring(cat.indexOf('.') + 1, cat.length);
+  cat += 's';
+
+
+  print('menu/$cat/$itemName');
+
+  var id = databaseReference.child('menu/$cat/$itemName');
+  id.child("available").set(available);
+
+}
+
+// var id = databaseReference.child('waiterOrders/${globals.tableID}/');
+//   id.set('table requests assistance');
