@@ -256,16 +256,29 @@ DatabaseReference sendData() {
   id.push().set(completeOrder);
   return id;
 }
+
+//    Gets Info for ItemsSold.dart UI
 void getItemsSoldInfo() async {
   var id = databaseReference.child('reports/items/').once().then((DataSnapshot snapshot) {
     globals.itemsSold = snapshot.value;
   });
+  id = databaseReference.child('reports/items sold/').once().then((DataSnapshot snapshot) {
+    globals.totalSold = snapshot.value;
+  });
   await new Future.delayed(const Duration(seconds: 2));
+}
 
-  // print(globals.itemsToOrder[0].table);
-  // print(globals.itemsToOrder[0].items);
-  // print(globals.itemsToOrder[1].table);
-  // print(globals.itemsToOrder[1].items);
+void getReportsInfo() async {
+  var id = databaseReference.child('reports/items comped/').once().then((DataSnapshot snapshot) {
+    globals.itemsComped = snapshot.value;
+  });
+  id = databaseReference.child('reports/tips gained/').once().then((DataSnapshot snapshot) {
+    globals.tipsGained = snapshot.value;
+  });
+  id = databaseReference.child('reports/total revenue/').once().then((DataSnapshot snapshot) {
+    globals.totalRevenue = snapshot.value;
+  });
+  await new Future.delayed(const Duration(seconds: 2));
 }
 
 

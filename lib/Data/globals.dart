@@ -24,6 +24,10 @@ int waysToSplitBill = 1;
 
 //variables for reports
 var itemsSold;
+var totalSold;
+var itemsComped;
+var tipsGained;
+var totalRevenue;
 
 //waiter variables
 //move this class later
