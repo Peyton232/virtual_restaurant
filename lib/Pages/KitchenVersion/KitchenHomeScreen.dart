@@ -31,96 +31,6 @@ class _KitchenHomeScreenState extends State<KitchenHomeScreen> {
         .orderByChild('order-id');
   }
 
-  // Widget _buildOrderItem({List order, int index}) {
-  //   var i = 0;
-  //
-  //   return Dismissible(
-  //     background: Card(
-  //       shape: RoundedRectangleBorder(
-  //         borderRadius: BorderRadius.circular(16),
-  //       ),
-  //       color: Colors.red,
-  //     ),
-  //     key: UniqueKey(),
-  //     child: Container(
-  //
-  //       child: Column(
-  //         mainAxisAlignment: MainAxisAlignment.center,
-  //         crossAxisAlignment: CrossAxisAlignment.start,
-  //
-  //         children: [
-  //           Row(
-  //             children: [
-  //               // Icon(
-  //               //   Icons.timer_outlined,
-  //               //   color: Colors.red,
-  //               //   size: 20,
-  //               // ),
-  //               SizedBox(width: 20,),
-  //               Text(
-  //                 "Table Number : ",
-  //                 style: TextStyle(
-  //                     fontSize: 20,
-  //                     color: Theme
-  //                         .of(context)
-  //                         .primaryColor,
-  //                     fontWeight: FontWeight.w600
-  //                 ),
-  //               ),
-  //               Text(
-  //                 globals.itemsToOrder[index].table.toString(),
-  //                 //"Hello",
-  //                 style:
-  //                 TextStyle(
-  //                     fontSize: 20,
-  //                     color: Theme
-  //                         .of(context)
-  //                         .primaryColor,
-  //                     fontWeight: FontWeight.w600
-  //                 ),
-  //               ),
-  //             ],
-  //           ),
-  //           SizedBox(height: 10,),
-  //           Row(
-  //             children: [
-  //               SizedBox(width: 20,),
-  //               Container(
-  //                 width: double.minPositive,
-  //                 child: ListView.builder(
-  //                     shrinkWrap: true,
-  //
-  //                     itemCount: rur[index].items.values
-  //                             .toLibberDucky.length,
-  //   //                     scrollDirection: Axis.horizontal,
-  //   //                     itemBuilder: (BuildContext context, int i) {
-  //   //                       return Text(
-  //   //                         globals.itemsToOrdest()
-  //                             .first[i]['name'].toString(),
-  //                         style: TextStyle(
-  //                             fontSize: 16,
-  //                             color: Theme
-  //                                 .of(context)
-  //                                 .primaryColor,
-  //                             fontWeight: FontWeight.w600
-  //                         ),
-  //                       );
-  //                     }
-  //                 ),
-  //               ),
-  //             ],
-  //           ),
-  //         ],
-  //       ),
-  //     ),
-  //     onDismissed: (direction) {
-  //       setState(() {
-  //
-  //       });
-  //     },
-  //   );
-  // }
-
   @override
   Widget build(BuildContext context) {
     bool _checked = false;
@@ -130,6 +40,9 @@ class _KitchenHomeScreenState extends State<KitchenHomeScreen> {
           title: Text("Orders Todo"),
         ),
         body: Container(
+          margin: EdgeInsets.symmetric(
+            horizontal: 50,
+          ),
           height: double.infinity,
           child: FirebaseAnimatedList(
             query: _ref,
@@ -145,7 +58,7 @@ class _KitchenHomeScreenState extends State<KitchenHomeScreen> {
   Widget buildOrder({List order, int index}) {
     return Container(
       color: Colors.white,
-      height: 350,
+      height: 100,
       child: ListView.builder(
           itemCount:
               globals.itemsToOrder[index].items.values.toList().first.length,
