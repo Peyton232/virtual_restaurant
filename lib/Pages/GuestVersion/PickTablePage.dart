@@ -25,24 +25,21 @@ class _PickTablePageState extends State<PickTablePage> {
                 mainAxisSpacing: 30),
             itemCount: 20,
             itemBuilder: (BuildContext ctx, index) {
-              return InkWell(
-                onTap: () {
+              return ElevatedButton(
+                onPressed: () {
                   setState(() {
                     tableID = "T${index + 1}";
                   });
-                  print(tableID);
+                  //print(tableID);
                 },
-                child: Container(
-                  alignment: Alignment.center,
+                style: ElevatedButton.styleFrom(
+                  elevation: 2,
+                  primary: kMintGreen,
+                ),
+                child: Center(
                   child: Text(
                     "T${index + 1}",
-                    style: TextStyle(
-                      fontSize: 30,
-                    ),
-                  ),
-                  decoration: BoxDecoration(
-                    color: kGreen,
-                    borderRadius: BorderRadius.circular(15),
+                    style: TextStyle(fontSize: 35, color: kSemiBlack),
                   ),
                 ),
               );
