@@ -9,7 +9,7 @@ This is where the manager can edit the meal of day
  that the customer can see
  */
 // TODO: Add kidsMeal catagory back when it works
-List<MenuItem> mChoiceList = [...entrees, ...appetizers, ...sides, ...desserts, ...drinks];
+List<MenuItem> mChoiceList = [...entrees, ...appetizers, ...sides, ...desserts, ...drinks, ...kidsMeals];
 
 
 class AvalibleItems extends StatefulWidget {

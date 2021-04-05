@@ -12,7 +12,6 @@ List<MenuItem> Items = [...entrees, ...appetizers, ...sides, ...desserts, ...dri
 class ItemsSoldPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    getItemsSoldInfo();
     print(itemsSold);
     return Scaffold(
       appBar: PreferredSize(
