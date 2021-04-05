@@ -155,14 +155,14 @@ class _MyBillPageState extends State<MyBillPage> {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: <Widget>[
                   Text(
-                    "Tip: ",
+                    "Tip:",
                     style: kOrderDetailsTextStyle,
                   ),
                   SizedBox(
-                    width: 45.0,
+                    width: 55.0,
                   ),
                   Text(
-                    "\$${globals.tip.toStringAsFixed(2)}", //Made total only display two decimal places
+                    "\$ ${globals.tip.toStringAsFixed(2)}", //Made total only display two decimal places
                     style: kOrderDetailsTextStyle,
                   ),
                   IconButton(
@@ -191,10 +191,10 @@ class _MyBillPageState extends State<MyBillPage> {
                     style: kOrderDetailsTextStyle,
                   ),
                   SizedBox(
-                    width: 30.0,
+                    width: 47.0,
                   ),
                   Text(
-                    "\$${getTax(getTotal(globals.order)).toStringAsFixed(2)}", //Made total only display two decimal places
+                    "\$ ${getTax(getTotal(globals.order)).toStringAsFixed(2)}", //Made total only display two decimal places
                     style: kOrderDetailsTextStyle,
                   ),
                 ],
@@ -216,7 +216,7 @@ class _MyBillPageState extends State<MyBillPage> {
                     width: 30.0,
                   ),
                   Text(
-                    "\$${getTotalWithTip(getTotal(globals.order)).toStringAsFixed(2)}", //Made total only display two decimal places
+                    "\$ ${getTotalWithTip(getTotal(globals.order)).toStringAsFixed(2)}", //Made total only display two decimal places
                     style: kOrderDetailsTextStyle,
                   ),
                 ],

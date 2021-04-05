@@ -48,17 +48,14 @@ class _ManagersChoicePageState extends State<ManagersChoicePage> {
                   print("Order button pressed");
                   //TODO: Add order functionality here
 
-                  globals.order.add(
-                    globals.mealOFTheDay
-                  );
-
+                  globals.order.add(globals.mealOFTheDay);
                 },
                 style: ButtonStyle(
                   backgroundColor:
                       MaterialStateProperty.all<Color>(kLightGreen),
                   elevation: MaterialStateProperty.all(4.0),
                   overlayColor:
-                      MaterialStateProperty.all<Color>(Colors.grey[300]),
+                      MaterialStateProperty.all<Color>(Colors.green[300]),
                 ),
                 child: Container(
                   height: 60,

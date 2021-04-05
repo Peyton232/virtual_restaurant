@@ -60,7 +60,7 @@ class MenuItemUI extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  price,
+                  "\$ $price",
                   style: TextStyle(
                     fontSize: 25,
                   ),
