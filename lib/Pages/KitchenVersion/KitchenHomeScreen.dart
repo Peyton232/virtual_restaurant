@@ -48,7 +48,6 @@ class _KitchenHomeScreenState extends State<KitchenHomeScreen> {
             query: _ref,
             itemBuilder: (BuildContext context, DataSnapshot snapshot,
                 Animation<double> animation, int index) {
-              getWaiterInfo(); // grabbing data from database for orders
               return buildOrder(order: globals.itemsToOrder, index: index);
             },
           ),

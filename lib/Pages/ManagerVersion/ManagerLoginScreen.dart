@@ -1,5 +1,5 @@
 import 'dart:ui';
-
+import 'package:virtual_restaurant/Database/database.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:virtual_restaurant/Data/constants.dart';
@@ -96,6 +96,8 @@ class ManagerLoginScreen extends StatelessWidget {
               onPressed: () {
                 print(["username = ", username]);
                 print(["password = ", password]);
+                getReportsInfo();
+                getItemsSoldInfo();
                 Navigator.pushReplacementNamed(context, "/ManagerHomeScreen");
               },
               child: Text(
