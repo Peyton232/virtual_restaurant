@@ -7,7 +7,14 @@ import 'package:virtual_restaurant/Data/globals.dart';
 import 'package:virtual_restaurant/classes/menuItem.dart';
 
 //TODO: Add kidsMeals once they are fixed
-List<MenuItem> Items = [...entrees, ...appetizers, ...sides, ...desserts, ...drinks, ...kidsMeals];
+List<MenuItem> Items = [
+  ...entrees,
+  ...appetizers,
+  ...sides,
+  ...desserts,
+  ...drinks,
+  ...kidsMeals
+];
 
 class ItemsSoldPage extends StatelessWidget {
   @override
@@ -28,7 +35,7 @@ class ItemsSoldPage extends StatelessWidget {
           itemCount: Items.length,
           itemBuilder: (BuildContext context, int index) {
             return Container(
-              margin: EdgeInsets.symmetric(vertical: 15,horizontal: 20),
+              margin: EdgeInsets.symmetric(vertical: 15, horizontal: 20),
               decoration: BoxDecoration(
                 border: Border.all(
                   color: Colors.black,

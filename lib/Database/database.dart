@@ -242,6 +242,7 @@ Map<String, dynamic> orderItemToJson(MenuItem order) {
     'category': order.category,
     'available': order.available,
     'finished': order.finished,
+    'modification from order': order.specialInstructs,
   };
 }
 
