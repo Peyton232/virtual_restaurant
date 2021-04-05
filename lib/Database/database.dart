@@ -265,7 +265,7 @@ void getItemsSoldInfo() async {
   id = databaseReference.child('reports/items sold/').once().then((DataSnapshot snapshot) {
     globals.totalSold = snapshot.value;
   });
-  await new Future.delayed(const Duration(seconds: 2));
+  await new Future.delayed(const Duration(seconds: 1));
 }
 
 void getReportsInfo() async {
@@ -278,7 +278,7 @@ void getReportsInfo() async {
   id = databaseReference.child('reports/total revenue/').once().then((DataSnapshot snapshot) {
     globals.totalRevenue = snapshot.value;
   });
-  await new Future.delayed(const Duration(seconds: 2));
+  await new Future.delayed(const Duration(seconds: 1));
 }
 
 
@@ -294,7 +294,7 @@ void getWaiterInfo() async {
       ));
     });
   });
-  await new Future.delayed(const Duration(seconds: 2));
+  await new Future.delayed(const Duration(seconds: 1));
 
   // print(globals.itemsToOrder[0].table);
   // print(globals.itemsToOrder[0].items);

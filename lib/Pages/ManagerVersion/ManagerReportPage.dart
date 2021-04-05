@@ -5,11 +5,9 @@ import 'package:virtual_restaurant/Data/globals.dart' as globals;
 import 'package:virtual_restaurant/Database/database.dart';
 
 class ManagerReportPage extends StatelessWidget {
-  double revenue = 2352435.34;
 
   @override
   Widget build(BuildContext context) {
-    getReportsInfo();
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(70.0),
