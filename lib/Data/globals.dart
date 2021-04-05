@@ -22,6 +22,9 @@ double total = 0;
 double tip = 0;
 int waysToSplitBill = 1;
 
+//variables for reports
+var itemsSold;
+
 //waiter variables
 //move this class later
 class orderItems{

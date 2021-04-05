@@ -256,6 +256,18 @@ DatabaseReference sendData() {
   id.push().set(completeOrder);
   return id;
 }
+void getItemsSoldInfo() async {
+  var id = databaseReference.child('reports/items/').once().then((DataSnapshot snapshot) {
+    globals.itemsSold = snapshot.value;
+  });
+  await new Future.delayed(const Duration(seconds: 2));
+
+  // print(globals.itemsToOrder[0].table);
+  // print(globals.itemsToOrder[0].items);
+  // print(globals.itemsToOrder[1].table);
+  // print(globals.itemsToOrder[1].items);
+}
+
 
 void getWaiterInfo() async {
   var id = databaseReference.child('kitchen-orders/');
