@@ -2,6 +2,7 @@ import 'package:virtual_restaurant/Data/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:virtual_restaurant/Data/globals.dart';
 import 'package:virtual_restaurant/classes/menuItem.dart';
+import 'package:virtual_restaurant/Database/database.dart';
 
 /*
 This is where the manager can edit the meal of day
@@ -90,6 +91,7 @@ class _ItemCardState extends State<ItemCard> {
         setState(() {
           mChoiceList[widget.place].available =
           !mChoiceList[widget.place].available;
+          changeAvailability(mChoiceList[widget.place].getItemName, mChoiceList[widget.place].available, mChoiceList[widget.place].category.toString());
         });
         print([
           mChoiceList[widget.place].getItemName,

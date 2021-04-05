@@ -80,6 +80,7 @@ class MenuSubpageTemplate extends StatelessWidget {
               calories: listOfMenuItems[index].getCalories,
               description: listOfMenuItems[index].getDescription,
               price: listOfMenuItems[index].getPrice,
+              available: listOfMenuItems[index].available,
             );
           },
         ),
