@@ -293,7 +293,7 @@ void getWaiterInfo() async{
 
   var id = databaseReference.child('kitchen-orders/');
   id.once().then((DataSnapshot snapshot){
-    (new Map<String, dynamic>.from(snapshot.value)).forEach((key,values) {
+    (new Map<dynamic, dynamic>.from(snapshot.value)).forEach((key,values) {
       Map<dynamic, dynamic> json = values;
         //add key to orderItems
         globals.itemsToOrder.add(
