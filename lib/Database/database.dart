@@ -198,9 +198,8 @@ void loadMenuLists() async {
   globals.drinks = temporaryList;
   temporaryList = await getMenuSection("Entrees");
   globals.entrees = temporaryList;
-  //TODO: Fix async issue with iterator in getMenuSection using "KidsMeals"
-  //temporaryList = await getMenuSection("KidsMeals");
-  //globals.kidsMeals = temporaryList;
+  temporaryList = await getMenuSection("KidsMeals");
+  globals.kidsMeals = temporaryList;
   temporaryList = await getMenuSection("Sides");
   globals.sides = temporaryList;
 
@@ -282,7 +281,7 @@ void getWaiterInfo() async {
 Future<void> sendReports() async {
   //list of every item
   //TODO: Add kidsMeals once they are fixed
-  List<MenuItem> Items = [...globals.entrees, ...globals.appetizers, ...globals.sides, ...globals.desserts, ...globals.drinks];
+  List<MenuItem> Items = [...globals.entrees, ...globals.appetizers, ...globals.sides, ...globals.desserts, ...globals.drinks, ...globals.kidsMeals];
   final Map<String, int> specificItemSold = {};
   int num;
 
@@ -305,7 +304,7 @@ Future<void> sendReports() async {
   //find comped
   int comped = 0;
   for(int i = 0; i < globals.order.length; i++){
-    if (globals.order[i].price == "\$0.00"){
+    if (globals.order[i].price == "0.00"){
       comped++;
     }
   }

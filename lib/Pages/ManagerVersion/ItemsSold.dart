@@ -6,7 +6,7 @@ import 'package:virtual_restaurant/Data/globals.dart';
 import 'package:virtual_restaurant/classes/menuItem.dart';
 
 //TODO: Add kidsMeals once they are fixed
-List<MenuItem> Items = [...entrees, ...appetizers, ...sides, ...desserts, ...drinks];
+List<MenuItem> Items = [...entrees, ...appetizers, ...sides, ...desserts, ...drinks, ...kidsMeals];
 
 class ItemsSoldPage extends StatelessWidget {
   @override
