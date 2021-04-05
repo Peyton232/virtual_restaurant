@@ -22,6 +22,13 @@ double total = 0;
 double tip = 0;
 int waysToSplitBill = 1;
 
+//variables for reports
+var itemsSold;
+var totalSold;
+var itemsComped;
+var tipsGained;
+var totalRevenue;
+
 //waiter variables
 //move this class later
 class orderItems{
@@ -46,190 +53,22 @@ MenuItem mealOFTheDay = MenuItem(
 );
 
 //list of entrees
-List<MenuItem> entrees = [
-  MenuItem(
-    name: "Scrappy head",
-    description: "<item description>",
-    price: "\$23.44",
-    calories: 9000,
-    allergens: ["dairy", "gluten"],
-    //image: "https://browseyou.com/media/img/src/no-item.jpg",
-    finished: false,
-  ),
-  MenuItem(
-    name: "<item name>",
-    description: "<item description>",
-    price: "\$0.00",
-    calories: 9000,
-    allergens: ["dairy", "gluten"],
-    //image: "https://browseyou.com/media/img/src/no-item.jpg",
-    finished: false,
-  ),
-  MenuItem(
-    name: "<item name>",
-    description: "<item description>",
-    price: "\$0.00",
-    calories: 9000,
-    allergens: ["dairy", "gluten"],
-    //image: "https://browseyou.com/media/img/src/no-item.jpg",
-    finished: false,
-  ),
-];
+List<MenuItem> entrees = [];
 
 //list of appetizers
-List<MenuItem> appetizers = [
-  MenuItem(
-    name: "Scrappy sticks",
-    description: "<item description>",
-    price: "\$7.99",
-    calories: 9000,
-    allergens: ["dairy", "gluten"],
-    //image: "https://browseyou.com/media/img/src/no-item.jpg",
-    finished: false,
-  ),
-  MenuItem(
-    name: "<item name>",
-    description: "<item description>",
-    price: "\$0.00",
-    calories: 9000,
-    allergens: ["dairy", "gluten"],
-    //image: "https://browseyou.com/media/img/src/no-item.jpg",
-    finished: false,
-  ),
-  MenuItem(
-    name: "<item name>",
-    description: "<item description>",
-    price: "\$0.00",
-    calories: 9000,
-    allergens: ["dairy", "gluten"],
-    //image: "https://browseyou.com/media/img/src/no-item.jpg",
-    finished: false,
-  ),
-];
+List<MenuItem> appetizers = [];
 
 //list of sides
-List<MenuItem> sides = [
-  MenuItem(
-    name: "Scrappy Fries",
-    description: "<item description>",
-    price: "\$2.33",
-    calories: 9000,
-    allergens: ["dairy", "gluten"],
-    //image: "https://browseyou.com/media/img/src/no-item.jpg",
-    finished: false,
-  ),
-  MenuItem(
-    name: "<item name>",
-    description: "<item description>",
-    price: "\$0.00",
-    calories: 9000,
-    allergens: ["dairy", "gluten"],
-    //image: "https://browseyou.com/media/img/src/no-item.jpg",
-    finished: false,
-  ),
-  MenuItem(
-    name: "<item name>",
-    description: "<item description>",
-    price: "\$0.00",
-    calories: 9000,
-    allergens: ["dairy", "gluten"],
-    //image: "https://browseyou.com/media/img/src/no-item.jpg",
-    finished: false,
-  ),
-];
+List<MenuItem> sides = [];
 
 //list of kidsMeals
-List<MenuItem> kidsMeals = [
-  MenuItem(
-    name: "Testing",
-    description: "<item description>",
-    price: "\$23.44",
-    calories: 9000,
-    allergens: ["dairy", "gluten"],
-    //image: "https://browseyou.com/media/img/src/no-item.jpg",
-    finished: false,
-  ),
-  MenuItem(
-    name: "<item name>",
-    description: "<item description>",
-    price: "\$0.00",
-    calories: 9000,
-    allergens: ["dairy", "gluten"],
-    //image: "https://browseyou.com/media/img/src/no-item.jpg",
-    finished: false,
-  ),
-  MenuItem(
-    name: "<item name>",
-    description: "<item description>",
-    price: "\$0.00",
-    calories: 9000,
-    allergens: ["dairy", "gluten"],
-    //image: "https://browseyou.com/media/img/src/no-item.jpg",
-    finished: false,
-  ),
-];
+List<MenuItem> kidsMeals = [];
 
 //list of desserts
-List<MenuItem> desserts = [
-  MenuItem(
-    name: "Scrappy's ice cream",
-    description: "<item description>",
-    price: "\$2.93",
-    calories: 9000,
-    allergens: ["dairy", "gluten"],
-    //image: "https://browseyou.com/media/img/src/no-item.jpg",
-    finished: false,
-  ),
-  MenuItem(
-    name: "<item name>",
-    description: "<item description>",
-    price: "\$0.00",
-    calories: 9000,
-    allergens: ["dairy", "gluten"],
-    //image: "https://browseyou.com/media/img/src/no-item.jpg",
-    finished: false,
-  ),
-  MenuItem(
-    name: "<item name>",
-    description: "<item description>",
-    price: "\$0.00",
-    calories: 9000,
-    allergens: ["dairy", "gluten"],
-    //image: "https://browseyou.com/media/img/src/no-item.jpg",
-    finished: false,
-  ),
-];
+List<MenuItem> desserts = [];
 
 //list of drinks, just need name
-List<MenuItem> drinks = [
-  MenuItem(
-    name: "Scrappy juice",
-    description: "<item description>",
-    price: "\$1.11",
-    calories: 9000,
-    allergens: ["dairy", "gluten"],
-    //image: "https://browseyou.com/media/img/src/no-item.jpg",
-    finished: false,
-  ),
-  MenuItem(
-    name: "<item name>",
-    description: "<item description>",
-    price: "\$0.00",
-    calories: 9000,
-    allergens: ["dairy", "gluten"],
-    //image: "https://browseyou.com/media/img/src/no-item.jpg",
-    finished: false,
-  ),
-  MenuItem(
-    name: "<item name>",
-    description: "<item description>",
-    price: "\$0.00",
-    calories: 9000,
-    allergens: ["dairy", "gluten"],
-    //image: "https://browseyou.com/media/img/src/no-item.jpg",
-    finished: false,
-  ),
-];
+List<MenuItem> drinks = [];
 
 
 

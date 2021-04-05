@@ -198,9 +198,8 @@ void loadMenuLists() async {
   globals.drinks = temporaryList;
   temporaryList = await getMenuSection("Entrees");
   globals.entrees = temporaryList;
-  //TODO: Fix async issue with iterator in getMenuSection using "KidsMeals"
-  //temporaryList = await getMenuSection("KidsMeals");
-  //globals.kidsMeals = temporaryList;
+  temporaryList = await getMenuSection("KidsMeals");
+  globals.kidsMeals = temporaryList;
   temporaryList = await getMenuSection("Sides");
   globals.sides = temporaryList;
 
@@ -257,6 +256,31 @@ DatabaseReference sendData() {
   return id;
 }
 
+//    Gets Info for ItemsSold.dart UI
+void getItemsSoldInfo() async {
+  var id = databaseReference.child('reports/items/').once().then((DataSnapshot snapshot) {
+    globals.itemsSold = snapshot.value;
+  });
+  id = databaseReference.child('reports/items sold/').once().then((DataSnapshot snapshot) {
+    globals.totalSold = snapshot.value;
+  });
+  await new Future.delayed(const Duration(seconds: 2));
+}
+
+void getReportsInfo() async {
+  var id = databaseReference.child('reports/items comped/').once().then((DataSnapshot snapshot) {
+    globals.itemsComped = snapshot.value;
+  });
+  id = databaseReference.child('reports/tips gained/').once().then((DataSnapshot snapshot) {
+    globals.tipsGained = snapshot.value;
+  });
+  id = databaseReference.child('reports/total revenue/').once().then((DataSnapshot snapshot) {
+    globals.totalRevenue = snapshot.value;
+  });
+  await new Future.delayed(const Duration(seconds: 2));
+}
+
+
 void getWaiterInfo() async {
   var id = databaseReference.child('kitchen-orders/');
   id.once().then((DataSnapshot snapshot) {
@@ -282,7 +306,7 @@ void getWaiterInfo() async {
 Future<void> sendReports() async {
   //list of every item
   //TODO: Add kidsMeals once they are fixed
-  List<MenuItem> Items = [...globals.entrees, ...globals.appetizers, ...globals.sides, ...globals.desserts, ...globals.drinks];
+  List<MenuItem> Items = [...globals.entrees, ...globals.appetizers, ...globals.sides, ...globals.desserts, ...globals.drinks, ...globals.kidsMeals];
   final Map<String, int> specificItemSold = {};
   int num;
 
@@ -305,7 +329,7 @@ Future<void> sendReports() async {
   //find comped
   int comped = 0;
   for(int i = 0; i < globals.order.length; i++){
-    if (globals.order[i].price == "\$0.00"){
+    if (globals.order[i].price == "0.00"){
       comped++;
     }
   }
@@ -377,4 +401,22 @@ Map<String, dynamic> toJsonReports(int itemsSold, int comped, double tips, doubl
     'total revenue': total,
     'items': specificItemSold,
   };
+}
+
+//add an available table to waitlist
+Future<int> addTable() async {
+  int result = (await FirebaseDatabase.instance.reference().child("waitlist").once()).value;
+  result++;
+
+  var id = databaseReference.child('waitlist');
+  id.set({'tables available': result});
+}
+
+//remove an available table to waitlist
+Future<int> subTable() async {
+  int result = (await FirebaseDatabase.instance.reference().child("waitlist").once()).value;
+  result--;
+
+  var id = databaseReference.child('waitlist');
+  id.set({'tables available': result});
 }

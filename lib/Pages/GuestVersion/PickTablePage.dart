@@ -9,17 +9,12 @@ class PickTablePage extends StatefulWidget {
 class _PickTablePageState extends State<PickTablePage> {
   @override
 
-  Widget table_button(){
-    return ElevatedButton(
-        onPressed: (){},
-        child: Text(""),
-    );
-  }
 
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Pick Table'),
+        title: Text('Current Table: ${tableID}'),
+
       ),
       body: Center(
         child: GridView.builder(
@@ -34,7 +29,9 @@ class _PickTablePageState extends State<PickTablePage> {
             itemBuilder: (BuildContext ctx, index) {
               return GestureDetector(
                 onTap: (){
-                  tableID = "T${index+1}";
+                  setState(() {
+                    tableID = "T${index+1}";
+                  });
                   print(tableID);
                 },
                 child: Container(

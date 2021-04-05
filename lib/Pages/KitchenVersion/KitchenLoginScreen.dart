@@ -1,6 +1,7 @@
 import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:virtual_restaurant/Data/constants.dart';
 
 /*
 This is where the manager can input their credentials to access
@@ -21,11 +22,21 @@ class KitchenLoginScreen extends StatelessWidget {
         padding: EdgeInsets.all(20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
+            SizedBox(
+              height: 30,
+            ),
+            Icon(
+              Icons.kitchen,
+              size: 90,
+              color: kSemiDarkGreen,
+            ),
+            SizedBox(
+              height: 30,
+            ),
             Container(
               //color: Colors.teal,
-              padding: EdgeInsets.symmetric(vertical: 10, horizontal: 100),
+              padding: EdgeInsets.symmetric(vertical: 10, horizontal: 300),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
@@ -52,7 +63,7 @@ class KitchenLoginScreen extends StatelessWidget {
             ),
             Container(
               //color: Colors.teal,
-              padding: EdgeInsets.symmetric(vertical: 10, horizontal: 100),
+              padding: EdgeInsets.symmetric(vertical: 10, horizontal: 300),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
@@ -77,6 +88,9 @@ class KitchenLoginScreen extends StatelessWidget {
                   ),
                 ],
               ),
+            ),
+            SizedBox(
+              height: 20,
             ),
             ElevatedButton(
               style: ElevatedButton.styleFrom(

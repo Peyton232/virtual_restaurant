@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:virtual_restaurant/Database/database.dart';
 import 'package:virtual_restaurant/Data/constants.dart';
 import 'package:virtual_restaurant/Database/database.dart';
 import 'package:virtual_restaurant/CustomWidgets/CustomButton.dart';
@@ -6,18 +7,19 @@ import 'package:virtual_restaurant/Data/globals.dart';
 import 'package:virtual_restaurant/classes/menuItem.dart';
 
 //TODO: Add kidsMeals once they are fixed
-List<MenuItem> Items = [...entrees, ...appetizers, ...sides, ...desserts, ...drinks];
+List<MenuItem> Items = [...entrees, ...appetizers, ...sides, ...desserts, ...drinks, ...kidsMeals];
 
 class ItemsSoldPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-
+    getItemsSoldInfo();
+    print(itemsSold);
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(70.0),
         child: AppBar(
           title: Text(
-            "Items Sold",
+            "Total Sold: ${totalSold}",
             style: kAppBarTextStyle,
           ),
         ),
@@ -52,7 +54,7 @@ class ItemsSoldPage extends StatelessWidget {
                     child: Container(
                       margin: EdgeInsets.symmetric(horizontal: 20),
                       child: Text(
-                        '# Sold',
+                        '${itemsSold['${Items[index].getItemName}']}',
                         style: TextStyle(fontSize: 20),
                       ),
                     ),

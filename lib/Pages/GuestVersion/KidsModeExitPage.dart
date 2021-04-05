@@ -1,4 +1,5 @@
 import 'dart:ui';
+import 'package:virtual_restaurant/Data/constants.dart';
 import 'package:virtual_restaurant/Data/globals.dart';
 import 'package:flutter/material.dart';
 
@@ -32,11 +33,21 @@ class _KidsModeExitPageState extends State<KidsModeExitPage> {
         padding: EdgeInsets.all(20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
+            SizedBox(
+              height: 30,
+            ),
+            Icon(
+              Icons.child_friendly,
+              size: 90,
+              color: kSemiDarkGreen,
+            ),
+            SizedBox(
+              height: 30,
+            ),
             Container(
               //color: Colors.teal,
-              padding: EdgeInsets.symmetric(vertical: 20, horizontal: 100),
+              padding: EdgeInsets.symmetric(vertical: 10, horizontal: 300),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
@@ -60,6 +71,9 @@ class _KidsModeExitPageState extends State<KidsModeExitPage> {
                   ),
                 ],
               ),
+            ),
+            SizedBox(
+              height: 20,
             ),
             ElevatedButton(
                 style: ElevatedButton.styleFrom(
