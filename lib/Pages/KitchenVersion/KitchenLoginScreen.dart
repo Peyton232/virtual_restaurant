@@ -1,4 +1,5 @@
 import 'dart:ui';
+import 'package:virtual_restaurant/Database/database.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:virtual_restaurant/Data/constants.dart';
@@ -100,6 +101,7 @@ class KitchenLoginScreen extends StatelessWidget {
               onPressed: () {
                 print(["username = ", username]);
                 print(["password = ", password]);
+                getWaiterInfo(); // grabbing data from database for orders
                 Navigator.pushReplacementNamed(context, "/KitchenHomeScreen");
               },
               child: Text(
