@@ -107,7 +107,33 @@ class _GuestHomeScreenState extends State<GuestHomeScreen> {
                 icon: Icons.local_drink,
                 label: "Request Drink Refills",
                 buttonTapped: () {
-                  Navigator.pushNamed(context, "/RequestRefillPage");
+                  requestRefill();
+
+                  return showDialog(
+                    context: context,
+                    builder: (context) {
+                      return AlertDialog(
+                        title: Text(
+                            "Waiter is coming soon to refill your drink(s)!"),
+                        actions: <Widget>[
+                          MaterialButton(
+                            elevation: 5.0,
+                            child: Text(
+                              'OK',
+                              style: TextStyle(
+                                fontSize: 18.0,
+                                color: kSemiDarkGreen,
+                              ),
+                            ),
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                          ),
+                        ],
+                      );
+                    },
+                  );
+                  //Navigator.pushNamed(context, "/RequestRefillPage");
                 },
               ),
             ],
