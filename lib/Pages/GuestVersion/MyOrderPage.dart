@@ -101,7 +101,7 @@ class _MyOrderPageState extends State<MyOrderPage> {
                               width: 90.0,
                             ),
                             Text(
-                              globals.order[index].price,
+                              "\$ ${globals.order[index].price}",
                               style: kOrderInfoTextStyle,
                             ),
                             IconButton(
@@ -143,11 +143,6 @@ class _MyOrderPageState extends State<MyOrderPage> {
                                     );
                                   },
                                 );
-
-                                // createAlertDialog(
-                                //   context,
-                                //   globals.order[index].name,
-                                // );
                               },
                               icon: Icon(
                                 Icons.delete,
@@ -181,8 +176,7 @@ class _MyOrderPageState extends State<MyOrderPage> {
                     width: 30.0,
                   ),
                   Text(
-                    "\$${globals.thisDevicesTable.tableBillTotal}", //TODO: This must be fixed to reflect Michael's changes.
-
+                    "\$ ${globals.thisDevicesTable.tableBillTotal.toStringAsFixed(2)}", //TODO: This must be fixed to reflect Michael's changes.
                     style: kOrderDetailsTextStyle,
                   ),
                 ],
@@ -376,39 +370,38 @@ class _MyOrderPageState extends State<MyOrderPage> {
                             int entreeCount = 0;
                             int kidsmealsComped = 0;
                             //print('Curr Hour: ${now.hour}       Curr Day: ${now.weekday}');
-                            if(now.hour >= 16 && now.weekday == 7)
-                              {
-                                // Finding how many entrees are in the order
-                                for(int i = 0;i < globals.order.length;i++)
-                                  {
-                                    for(int j = 0;j < globals.entrees.length;j++)
-                                      {
-                                        if(globals.order[i].getItemName == globals.entrees[j].getItemName)
-                                          {
-                                            entreeCount++;
-                                          }
-                                      }
+                            if (now.hour >= 16 && now.weekday == 7) {
+                              // Finding how many entrees are in the order
+                              for (int i = 0; i < globals.order.length; i++) {
+                                for (int j = 0;
+                                    j < globals.entrees.length;
+                                    j++) {
+                                  if (globals.order[i].getItemName ==
+                                      globals.entrees[j].getItemName) {
+                                    entreeCount++;
                                   }
-                                //print('EntreeCount: ${entreeCount}');
-
-                                for(int i = 0;i < globals.order.length;i++)
-                                  {
-                                    for(int j = 0;j < globals.kidsMeals.length;j++)
-                                      {
-                                        if(globals.order[i].getItemName == globals.kidsMeals[j].getItemName)
-                                          {
-                                            if(kidsmealsComped < entreeCount)
-                                              {
-                                                //TODO: Comp order
-                                                globals.order[i].price = "0.00";
-                                                kidsmealsComped++;
-                                                //print('KidsMealsComped: ${kidsmealsComped}');
-                                                print('${globals.order[i].getItemName} is comped');
-                                              }
-                                          }
-                                      }
-                                  }
+                                }
                               }
+                              //print('EntreeCount: ${entreeCount}');
+
+                              for (int i = 0; i < globals.order.length; i++) {
+                                for (int j = 0;
+                                    j < globals.kidsMeals.length;
+                                    j++) {
+                                  if (globals.order[i].getItemName ==
+                                      globals.kidsMeals[j].getItemName) {
+                                    if (kidsmealsComped < entreeCount) {
+                                      //TODO: Comp order
+                                      globals.order[i].price = "0.00";
+                                      kidsmealsComped++;
+                                      //print('KidsMealsComped: ${kidsmealsComped}');
+                                      print(
+                                          '${globals.order[i].getItemName} is comped');
+                                    }
+                                  }
+                                }
+                              }
+                            }
                             globals.modification = _commentsController.text;
                             //TODO
                             globals.modification += isSelected.toString();
@@ -540,8 +533,8 @@ createAlertDialog(BuildContext context, String itemName) {
 
 }*/
 
-void applyModification(){
-  for(int i  = 0; i < globals.order.length; i++){
+void applyModification() {
+  for (int i = 0; i < globals.order.length; i++) {
     globals.order[i].specialInstructs = globals.modification;
   }
 }
