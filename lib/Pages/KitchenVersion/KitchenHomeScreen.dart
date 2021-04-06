@@ -33,7 +33,8 @@ class _KitchenHomeScreenState extends State<KitchenHomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    bool _checked = false;
+    bool checkbox = false;
+    bool _checkboxListTile = false;
 
     return Scaffold(
         appBar: AppBar(
@@ -48,72 +49,98 @@ class _KitchenHomeScreenState extends State<KitchenHomeScreen> {
             query: _ref,
             itemBuilder: (BuildContext context, DataSnapshot snapshot,
                 Animation<double> animation, int index) {
-              return buildOrder(order: globals.itemsToOrder, index: index);
+              return buildOrder(
+                  order: globals.itemsToOrder,
+                  index: index,
+                  checkbox: checkbox);
             },
           ),
         ));
   }
 
-  Widget buildOrder({List order, int index}) {
+  Widget buildOrder({List order, int index, bool checkbox}) {
     return Container(
-      color: Colors.white,
+      color: Colors.white54,
       height: 150,
-
       child: Container(
+        color: Colors.green,
         margin: EdgeInsets.all(10.0),
-
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-                globals.itemsToOrder[index].table.toString()
+            Checkbox(
+                value: checkbox,
+                onChanged: (value) {
+                  checkbox = !checkbox;
+                }),
+            Card(
+              elevation: 3,
+              child: Text(
+                globals.itemsToOrder[index].table.toString(),
+                style: TextStyle(
+                  fontSize: 20,
+                  color: Theme.of(context).primaryColor,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
             ),
             Expanded(
-              child: ListView.builder(
-                  shrinkWrap: true,
-                  itemCount:
-                      globals.itemsToOrder[index].items.values.toList().first.length,
-                  itemBuilder: (BuildContext context, int i) {
-                    return Dismissible(
-                      key: UniqueKey(),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          // Row(
-                          //   children: [
-                          //     Container(
-                          //       color: Colors.grey,
-                          //       child: Text(
-                          //         //globals.itemsToOrder[index].table.toString()
-                          //         "testing it"
-                          //       ),
-                          //     ),
-                          //   ],
-                          // ),
-                          Row(
-                            children: [
-                              Container(
-                                color: Colors.grey,
-                                child: Text(
-                                  globals.itemsToOrder[index].items.values
-                                      .toList()
-                                      .first[i]['name']
-                                      .toString(),
+              child: Container(
+                color: Colors.grey[200],
+                child: ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: globals.itemsToOrder[index].items.values
+                        .toList()
+                        .first
+                        .length,
+                    itemBuilder: (BuildContext context, int i) {
+                      return Dismissible(
+                        key: UniqueKey(),
+                        child: Column(
+                          //mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            // Row(
+                            //   children: [
+                            //     Container(
+                            //       color: Colors.grey,
+                            //       child: Text(
+                            //         //globals.itemsToOrder[index].table.toString()
+                            //         "testing it"
+                            //       ),
+                            //     ),
+                            //   ],
+                            // ),
+                            Row(
+                              //mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [
+                                Container(
+                                  color: Colors.white54,
+                                  child: Text(
+                                    globals.itemsToOrder[index].items.values
+                                        .toList()
+                                        .first[i]['name']
+                                        .toString(),
+                                    style: TextStyle(
+                                      fontSize: 20,
+                                      color: Theme.of(context).primaryColor,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                  ),
                                 ),
-                              ),
-                            ],
-                          ),
-
-                        ],
-                      ),
-                      onDismissed: (direction){
-                        setState(() {
-
-                        });
-                      },
-                    );
-                  }),
+                              ],
+                            ),
+                          ],
+                        ),
+                        // onDismissed: (direction){
+                        //   setState(() {
+                        //
+                        //   });
+                        // },
+                      );
+                    }),
+              ),
             ),
           ],
         ),
