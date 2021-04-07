@@ -44,13 +44,11 @@ class _KitchenHomeScreenState extends State<KitchenHomeScreen> {
             horizontal: 50,
           ),
           height: double.infinity,
-          child: FirebaseAnimatedList(
-            query: _ref,
-            itemBuilder: (BuildContext context, DataSnapshot snapshot,
-                Animation<double> animation, int index) {
-              return buildOrder(order: globals.itemsToOrder, index: index);
-            },
-          ),
+          child: ListView.builder(
+            itemCount: globals.itemsToOrder.length,
+              itemBuilder: (BuildContext context, int index){
+                return buildOrder(order: globals.itemsToOrder, index: index);
+              })
         ));
   }
 
@@ -64,35 +62,7 @@ class _KitchenHomeScreenState extends State<KitchenHomeScreen> {
           itemBuilder: (BuildContext context, int i) {
             return Dismissible(
               key: UniqueKey(),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    children: [
-                      Container(
-                        color: Colors.grey,
-                        child: Text(
-                          globals.itemsToOrder[index].table.toString()
-                        ),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Container(
-                        color: Colors.grey,
-                        child: Text(
-                          globals.itemsToOrder[index].items.values
-                              .toList()
-                              .first[i]['name']
-                              .toString(),
-                        ),
-                      ),
-                    ],
-                  ),
-
-                ],
-              ),
+              child: Container(),
             );
           }),
     );

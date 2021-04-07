@@ -36,7 +36,7 @@ class _PickTablePageState extends State<PickTablePage> {
                 },
                 child: Container(
                   alignment: Alignment.center,
-                  child: Text("T${index+1}"),
+                  child: Text("T${index+1}", style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold, color: Colors.white,),),
                   decoration: BoxDecoration(
                       color: Colors.green[800],
                       borderRadius: BorderRadius.circular(15)),
