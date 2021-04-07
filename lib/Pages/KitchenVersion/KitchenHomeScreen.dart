@@ -35,6 +35,7 @@ class _KitchenHomeScreenState extends State<KitchenHomeScreen> {
   Widget build(BuildContext context) {
     bool checkbox = false;
     bool _checkboxListTile = false;
+    Color colorChanger = Colors.black87;
 
     return Scaffold(
         appBar: AppBar(
@@ -52,13 +53,14 @@ class _KitchenHomeScreenState extends State<KitchenHomeScreen> {
               return buildOrder(
                   order: globals.itemsToOrder,
                   index: index,
-                  checkbox: checkbox);
+                  checkbox: checkbox,
+                  colorChanger: colorChanger);
             },
           ),
         ));
   }
 
-  Widget buildOrder({List order, int index, bool checkbox}) {
+  Widget buildOrder({List order, int index, bool checkbox, Color colorChanger}) {
     return Container(
       color: Colors.white54,
       height: 150,
@@ -69,19 +71,17 @@ class _KitchenHomeScreenState extends State<KitchenHomeScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Checkbox(
-                value: checkbox,
-                onChanged: (value) {
-                  checkbox = !checkbox;
-                }),
-            Card(
-              elevation: 3,
-              child: Text(
-                globals.itemsToOrder[index].table.toString(),
-                style: TextStyle(
-                  fontSize: 20,
-                  color: Theme.of(context).primaryColor,
-                  fontWeight: FontWeight.w600,
+            Dismissible(
+              key: UniqueKey(),
+              child: Card(
+                elevation: 3,
+                child: Text(
+                  globals.itemsToOrder[index].table.toString(),
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Theme.of(context).primaryColor,
+                    fontWeight: FontWeight.w600,
+                  ),
                 ),
               ),
             ),
@@ -97,47 +97,21 @@ class _KitchenHomeScreenState extends State<KitchenHomeScreen> {
                     itemBuilder: (BuildContext context, int i) {
                       return Dismissible(
                         key: UniqueKey(),
-                        child: Column(
-                          //mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            // Row(
-                            //   children: [
-                            //     Container(
-                            //       color: Colors.grey,
-                            //       child: Text(
-                            //         //globals.itemsToOrder[index].table.toString()
-                            //         "testing it"
-                            //       ),
-                            //     ),
-                            //   ],
-                            // ),
-                            Row(
-                              //mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              children: [
-                                Container(
-                                  color: Colors.white54,
-                                  child: Text(
-                                    globals.itemsToOrder[index].items.values
-                                        .toList()
-                                        .first[i]['name']
-                                        .toString(),
-                                    style: TextStyle(
-                                      fontSize: 20,
-                                      color: Theme.of(context).primaryColor,
-                                      fontWeight: FontWeight.w600,
-                                    ),
-                                  ),
-                                ),
-                              ],
+
+                        child: Container(
+                          color: Colors.white54,
+                          child: Text(
+                            globals.itemsToOrder[index].items.values
+                                .toList()
+                                .first[i]['name']
+                                .toString(),
+                            style: TextStyle(
+                              fontSize: 20,
+                              color: colorChanger,
+                              fontWeight: FontWeight.w600,
                             ),
-                          ],
+                          ),
                         ),
-                        // onDismissed: (direction){
-                        //   setState(() {
-                        //
-                        //   });
-                        // },
                       );
                     }),
               ),
