@@ -41,6 +41,7 @@ class _PickTablePageState extends State<PickTablePage> {
                     "T${index + 1}",
                     style: TextStyle(fontSize: 35, color: kSemiBlack),
                   ),
+
                 ),
               );
             }),
