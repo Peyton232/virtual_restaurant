@@ -46,6 +46,7 @@ class _KitchenHomeScreenState extends State<KitchenHomeScreen> {
           //   horizontal: 50,
           // ),
           height: double.infinity,
+
           child: FirebaseAnimatedList(
             query: _ref,
             itemBuilder: (BuildContext context, DataSnapshot snapshot,
@@ -57,6 +58,7 @@ class _KitchenHomeScreenState extends State<KitchenHomeScreen> {
                   colorChanger: colorChanger);
             },
           ),
+
         ));
   }
 
