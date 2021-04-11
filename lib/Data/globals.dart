@@ -22,6 +22,9 @@ double total = 0;
 double tip = 0;
 int waysToSplitBill = 1;
 
+//Add to Menu form
+MenuItem tempItem;
+
 //variables for reports
 var itemsSold;
 var totalSold;
