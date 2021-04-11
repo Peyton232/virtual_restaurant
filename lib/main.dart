@@ -7,10 +7,11 @@ import 'package:virtual_restaurant/Pages/GuestVersion/GuestHomeScreen.dart';
 import 'package:virtual_restaurant/Pages/GuestVersion/ManagersChoicePage.dart';
 import 'package:virtual_restaurant/Pages/GuestVersion/MyOrderPage.dart';
 import 'package:virtual_restaurant/Pages/GuestVersion/MyBillPage.dart';
-import 'package:virtual_restaurant/Pages/GuestVersion/PickTablePage.dart';
+import 'file:///C:/Users/david/IdeaProjects/virtual_restaurant/lib/Pages/ManagerVersion/PickTablePage.dart';
 import 'package:virtual_restaurant/Pages/GuestVersion/RequestRefillPage.dart';
 import 'package:virtual_restaurant/Pages/GuestVersion/SettingsPage.dart';
 import 'package:virtual_restaurant/Pages/GuestVersion/SplitBillPage.dart';
+import 'package:virtual_restaurant/Pages/ManagerVersion/AddMenuItemForm.dart';
 import 'package:virtual_restaurant/Pages/ManagerVersion/ChangeMealOfDayPage.dart';
 import 'package:virtual_restaurant/Pages/ManagerVersion/ChangeMenuPage.dart';
 import 'package:virtual_restaurant/Pages/ManagerVersion/ItemsSold.dart';
@@ -84,6 +85,7 @@ class MyApp extends StatelessWidget {
         "/PickTablePage": (context) => PickTablePage(),
         "/TipsGained": (context) => TipsGained(),
         "/ItemsSoldPage": (context) => ItemsSoldPage(),
+        "/AddMenuItemForm": (context) => AddMenuItemForm(),
       },
     );
   }

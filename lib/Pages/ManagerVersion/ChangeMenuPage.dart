@@ -44,9 +44,24 @@ class _AvalibleItems extends State<AvalibleItems> {
         preferredSize: Size.fromHeight(70.0),
         child: AppBar(
           title: Text(
-            "Change Avalibility Of Items",
+            "Change Availability Of Items",
             style: kAppBarTextStyle,
           ),
+          actions: [
+            Container(
+              margin: EdgeInsets.all(20),
+                child: Center(
+                  child: IconButton(
+                      icon: Icon(Icons.library_add_sharp),
+                    onPressed: (){
+                        //print("hello");
+                        Navigator.pushNamed(context, "/AddMenuItemForm");
+                    },
+
+                  ),
+                )
+            ),
+          ],
         ),
       ),
       body: Column(
