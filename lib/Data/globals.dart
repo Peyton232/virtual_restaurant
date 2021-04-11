@@ -8,6 +8,8 @@ import 'package:virtual_restaurant/classes/kitchenOrder.dart';
 
 import '../classes/menuItem.dart';
 
+int waitList = 0;
+
 bool kidsMode = false;
 String kidsModePassword = '';
 String modification = '';
