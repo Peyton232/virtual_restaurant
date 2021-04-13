@@ -11,6 +11,7 @@ import 'file:///C:/Users/david/IdeaProjects/virtual_restaurant/lib/Pages/Manager
 import 'package:virtual_restaurant/Pages/GuestVersion/RequestRefillPage.dart';
 import 'package:virtual_restaurant/Pages/GuestVersion/SettingsPage.dart';
 import 'package:virtual_restaurant/Pages/GuestVersion/SplitBillPage.dart';
+import 'package:virtual_restaurant/Pages/GuestVersion/games/ConnectFour.dart';
 import 'package:virtual_restaurant/Pages/ManagerVersion/AddMenuItemForm.dart';
 import 'package:virtual_restaurant/Pages/ManagerVersion/ChangeMealOfDayPage.dart';
 import 'package:virtual_restaurant/Pages/ManagerVersion/ChangeMenuPage.dart';
@@ -86,6 +87,7 @@ class MyApp extends StatelessWidget {
         "/TipsGained": (context) => TipsGained(),
         "/ItemsSoldPage": (context) => ItemsSoldPage(),
         "/AddMenuItemForm": (context) => AddMenuItemForm(),
+        "/ConnectFour": (context) => ConnectFour(),
       },
     );
   }

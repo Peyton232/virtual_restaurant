@@ -251,10 +251,80 @@ class _GamesPageState extends State<GamesPage> {
                               ),
                             ),
                           ),
+
                         ],
                       ),
                     ),
                     ),
+            Expanded(
+              child: Container(
+                margin: EdgeInsets.all(12),
+                decoration: BoxDecoration(
+                  color: kOffWhite,
+                  borderRadius: BorderRadius.circular(8.0),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey,
+                      blurRadius: 4.0,
+                      offset:
+                      Offset(2.0, 2.0), // shadow direction: bottom right
+                    ),
+                  ],
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Expanded(
+                      flex: 3,
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Colors.grey,
+                          borderRadius: BorderRadius.only(
+                            topRight: Radius.circular(8),
+                            topLeft: Radius.circular(8),
+                          ),
+                        ),
+                        height: 250,
+                        child: Center(child: Image.asset('images/Connect4.png'),),
+                      ),
+                    ),
+                    Expanded(
+                      flex: 1,
+                      child: Container(
+                        padding: EdgeInsets.all(12),
+                        child: Text("Connect 4" ,style: TextStyle(fontWeight: FontWeight.bold, fontSize: 40),
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      flex: 1,
+                      child: Container(
+                        padding: EdgeInsets.all(12),
+                        child: Text("Connect 4 of your color, while keeping your opponents from connecting 4!",
+                          style: TextStyle(fontSize: 20),
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      flex: 1,
+                      child: Center(
+                        child: Container(
+                            child: ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                  primary: Colors.green,
+                                  minimumSize: Size(180,60),
+                                ),
+                                onPressed: (){
+                                  Navigator.pushNamed(context, "/ConnectFour");
+                                }, child: Text("Play", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),))
+                        ),
+                      ),
+                    ),
+
+                  ],
+                ),
+              ),
+            ),
                   ],
                 ),
               ),
