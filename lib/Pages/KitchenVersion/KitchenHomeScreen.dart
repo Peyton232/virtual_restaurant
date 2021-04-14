@@ -1,15 +1,12 @@
-import 'package:firebase_core/firebase_core.dart';
+/*
+  This file will house the information for populating the screen
+  of all the Kitchen Orders.
+*/
+
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
 import 'package:virtual_restaurant/Data/globals.dart' as globals;
-
-//import 'package:virtual_restaurant/classes/menuItem.dart';
-import 'package:virtual_restaurant/CustomWidgets/MenuItem.dart';
-import 'package:virtual_restaurant/Data/constants.dart';
-import 'package:virtual_restaurant/Database/database.dart';
-import 'package:virtual_restaurant/classes/kitchenOrder.dart';
-import 'package:virtual_restaurant/classes/menuItem.dart';
 
 class KitchenHomeScreen extends StatefulWidget {
   @override
@@ -17,10 +14,9 @@ class KitchenHomeScreen extends StatefulWidget {
 }
 
 class _KitchenHomeScreenState extends State<KitchenHomeScreen> {
+
   // Referencing the database
   Query _ref;
-
-  // making this a variable because I dont want to type alot
 
   @override
   void initState() {
@@ -42,11 +38,7 @@ class _KitchenHomeScreenState extends State<KitchenHomeScreen> {
           title: Text("Orders Todo"),
         ),
         body: Container(
-          // margin: EdgeInsets.symmetric(
-          //   horizontal: 50,
-          // ),
           height: double.infinity,
-
           child: FirebaseAnimatedList(
             query: _ref,
             itemBuilder: (BuildContext context, DataSnapshot snapshot,
@@ -58,7 +50,6 @@ class _KitchenHomeScreenState extends State<KitchenHomeScreen> {
                   colorChanger: colorChanger);
             },
           ),
-
         ));
   }
 
@@ -99,7 +90,6 @@ class _KitchenHomeScreenState extends State<KitchenHomeScreen> {
                     itemBuilder: (BuildContext context, int i) {
                       return Dismissible(
                         key: UniqueKey(),
-
                         child: Container(
                           color: Colors.white54,
                           child: Text(

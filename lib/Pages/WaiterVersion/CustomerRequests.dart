@@ -1,7 +1,12 @@
+/*
+   This page shows all of the notifications for the requests
+   from the table's. The information is pulled from the database
+   and displayed here.
+*/
+
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
-import 'package:virtual_restaurant/Data/constants.dart';
 
 const kRequestTextStyle = TextStyle(fontSize: 30);
 
@@ -26,7 +31,6 @@ class _CustomerRequestsState extends State<CustomerRequests> {
     super.initState();
     _ref = FirebaseDatabase.instance.reference()
         .child('waiterOrders');
-
   }
 
   Widget _buildOrderItem({Map order}){
@@ -90,8 +94,6 @@ class _CustomerRequestsState extends State<CustomerRequests> {
       ),
     );
   }
-
-
 
   @override
   Widget build(BuildContext context) {
