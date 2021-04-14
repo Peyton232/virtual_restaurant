@@ -408,7 +408,8 @@ Map<String, dynamic> toJsonReports(int itemsSold, int comped, double tips, doubl
 
 //add an available table to waitlist
 Future<int> addTable() async {
-  int result = (await FirebaseDatabase.instance.reference().child("waitlist").once()).value;
+  var temp = (await FirebaseDatabase.instance.reference().child("waitlist").once()).value;
+  int result = temp["tables available"];
   result++;
 
   globals.waitList = result;
@@ -419,7 +420,8 @@ Future<int> addTable() async {
 
 //remove an available table to waitlist
 Future<int> subTable() async {
-  int result = (await FirebaseDatabase.instance.reference().child("waitlist").once()).value;
+  var temp = (await FirebaseDatabase.instance.reference().child("waitlist").once()).value;
+  int result = temp["tables available"];
   result--;
 
   globals.waitList = result;
