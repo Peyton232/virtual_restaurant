@@ -3,6 +3,10 @@ import 'package:virtual_restaurant/Data/constants.dart';
 import 'package:virtual_restaurant/classes/menuItem.dart';
 import 'package:virtual_restaurant/Data/globals.dart' as globals;
 
+/*
+This file displays the manager's choice of menu item. THe customer can order this if they are interested
+ */
+
 class ManagersChoicePage extends StatefulWidget {
   @override
   _ManagersChoicePageState createState() => _ManagersChoicePageState();
@@ -26,7 +30,7 @@ class _ManagersChoicePageState extends State<ManagersChoicePage> {
                 width: 800,
                 color: Colors.grey,
                 child: Center(
-                  child: Text("Manager's Choice Image"), //TODO
+                  child: Image.network("https://firebasestorage.googleapis.com/v0/b/virtual-restaurant-99ee5.appspot.com/o/images_of_food%2FscrappyBurger.png?alt=media&token=94c47918-d942-4cb2-aca7-946273d3164a"), //TODO
                 ),
               ),
             ),
@@ -48,17 +52,14 @@ class _ManagersChoicePageState extends State<ManagersChoicePage> {
                   print("Order button pressed");
                   //TODO: Add order functionality here
 
-                  globals.order.add(
-                    globals.mealOFTheDay
-                  );
-
+                  globals.order.add(globals.mealOFTheDay);
                 },
                 style: ButtonStyle(
                   backgroundColor:
                       MaterialStateProperty.all<Color>(kLightGreen),
                   elevation: MaterialStateProperty.all(4.0),
                   overlayColor:
-                      MaterialStateProperty.all<Color>(Colors.grey[300]),
+                      MaterialStateProperty.all<Color>(Colors.green[300]),
                 ),
                 child: Container(
                   height: 60,

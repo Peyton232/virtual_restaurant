@@ -2,6 +2,7 @@ library database;
 
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_database/ui/firebase_list.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:virtual_restaurant/Data/constants.dart';
 import 'package:virtual_restaurant/classes/kitchenItem.dart';
 import 'package:virtual_restaurant/classes/kitchenOrder.dart';
@@ -171,6 +172,7 @@ Future<List<MenuItem>> getMenuSection(String sectionName) async {
     //snapshot.value
     (Map<dynamic, dynamic>.from(snapshot.value)).forEach((key, values) {
       Map<dynamic, dynamic> json = values;
+      print(json["image"]);
       //TODO: Clean up this mess. This was originally supposed to work with the fromJson function, however I haven't tried (new MenuItem()).fromJson(json);
       menuList.add(MenuItem(
           category: toFoodCategoryFromString(sectionName),
@@ -178,6 +180,7 @@ Future<List<MenuItem>> getMenuSection(String sectionName) async {
           allergens: List<String>.from(json["allergens"]),
           available: json["available"],
           calories: json["calories"],
+          image: json["image"],
           contents: json["contents"],
           description: json["description"],
           price: json["price"].toString()));
@@ -208,41 +211,46 @@ void loadMenuLists() async {
 }
 
 void sendWaiterRequest() {
-  var id = databaseReference.child('waiterOrders/${globals.tableID}/');
-  id.set('table requests assistance');
+  var id = databaseReference.child('waiterOrders/');
+  //id.set('table requests assistance');
+
+  Map<String, dynamic> request(String tableID) {
+    return {
+      'Table': globals.tableID,
+      'Request': "Assistance Needed",
+    };
+  }
+  id.push().set(request(globals.tableID));
 }
 
 void requestRefill() {
-  var id = databaseReference.child('waiterOrders/${globals.tableID}/');
-  id.set('table needs refills');
-  Map<String, dynamic> orderItemToJson(MenuItem order) {
+  var id = databaseReference.child('waiterOrders/');
+  //var _ref = FirebaseDatabase.instance.reference('waiterOrders');
+  Map<String, dynamic> request(String tableID) {
     return {
-      'name': order.name,
-      'price': order.price,
+      'Table': globals.tableID,
+      'Request': "Drink Refills Needed",
     };
   }
 
-  DatabaseReference sendData() {
-    var id = databaseReference.child('kitchen-orders/${globals.tableID}/');
-    List<Map<String, dynamic>> completeOrder =
-        List<Map<String, dynamic>>.filled(
-            globals.order.length, new Map<String, dynamic>());
-    for (int i = 0; i < globals.order.length; i++) {
-      completeOrder[i] = orderItemToJson(globals.order[i]);
-    }
-    id.push().set(completeOrder);
-    return id;
-  }
+  id.push().set(request(globals.tableID));
 }
 
 Map<String, dynamic> orderItemToJson(MenuItem order) {
+
+  String spec = order.specialInstructs;
+  // cat = cat.substring(cat.indexOf('.') + 1, cat.length);
+  // cat += 's';
+  spec = spec.substring(0, spec.indexOf('.')) + ":  "  + spec.substring(spec.indexOf('.') + 1, spec.length);
+
+
   return {
     'name': order.name,
     'price': order.price,
     'category': order.category,
     'available': order.available,
     'finished': order.finished,
-    'modification from order': order.specialInstructs,
+    'modification from order': spec,
   };
 }
 
@@ -408,8 +416,11 @@ Map<String, dynamic> toJsonReports(int itemsSold, int comped, double tips, doubl
 
 //add an available table to waitlist
 Future<int> addTable() async {
-  int result = (await FirebaseDatabase.instance.reference().child("waitlist").once()).value;
+  var temp = (await FirebaseDatabase.instance.reference().child("waitlist").once()).value;
+  int result = temp["tables available"];
   result++;
+
+  globals.waitList = result;
 
   var id = databaseReference.child('waitlist');
   id.set({'tables available': result});
@@ -417,8 +428,11 @@ Future<int> addTable() async {
 
 //remove an available table to waitlist
 Future<int> subTable() async {
-  int result = (await FirebaseDatabase.instance.reference().child("waitlist").once()).value;
+  var temp = (await FirebaseDatabase.instance.reference().child("waitlist").once()).value;
+  int result = temp["tables available"];
   result--;
+
+  globals.waitList = result;
 
   var id = databaseReference.child('waitlist');
   id.set({'tables available': result});
@@ -436,6 +450,22 @@ void changeAvailability(String itemName, bool available, String cat){
   var id = databaseReference.child('menu/$cat/$itemName');
   id.child("available").set(available);
 
+}
+
+addItem(itemCat, itemAllergens, itemName, itemDescription, itemPrice, itemCal){
+  var id = databaseReference.child('menu/${itemCat}/${itemName}');
+
+  Map<String, dynamic> newItem = {
+    'allergens': itemAllergens,
+    'available': true,
+    'calories': itemCal,
+    'description': itemDescription,
+    'image': "here is where I would put an image",
+    'price': itemPrice
+  };
+
+  id.set(newItem);
+  return id;
 }
 
 // var id = databaseReference.child('waiterOrders/${globals.tableID}/');

@@ -10,8 +10,14 @@ This is where the manager can edit the meal of day
  that the customer can see
  */
 // TODO: Add kidsMeal catagory back when it works
-List<MenuItem> mChoiceList = [...entrees, ...appetizers, ...sides, ...desserts, ...drinks, ...kidsMeals];
-
+List<MenuItem> mChoiceList = [
+  ...entrees,
+  ...appetizers,
+  ...sides,
+  ...desserts,
+  ...drinks,
+  ...kidsMeals
+];
 
 class AvalibleItems extends StatefulWidget {
   @override
@@ -25,22 +31,37 @@ class _AvalibleItems extends State<AvalibleItems> {
   void initState() {
     super.initState();
     for (int i = 0; i < mChoiceList.length; i++) {
-      grid_items.add(ItemCard(place: i,));
+      grid_items.add(ItemCard(
+        place: i,
+      ));
     }
   }
 
-
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(70.0),
         child: AppBar(
           title: Text(
-            "Change Avalibility Of Items",
+            "Change Availability Of Items",
             style: kAppBarTextStyle,
           ),
+          actions: [
+            Container(
+              margin: EdgeInsets.all(20),
+                child: Center(
+                  child: IconButton(
+                      icon: Icon(Icons.library_add_sharp),
+                    onPressed: (){
+                        //print("hello");
+                        Navigator.pushNamed(context, "/AddMenuItemForm");
+                    },
+
+                  ),
+                )
+            ),
+          ],
         ),
       ),
       body: Column(
@@ -67,7 +88,6 @@ class _AvalibleItems extends State<AvalibleItems> {
       ),
     );
   }
-
 }
 
 //    Card for items in grid
@@ -81,7 +101,6 @@ class ItemCard extends StatefulWidget {
 }
 
 class _ItemCardState extends State<ItemCard> {
-
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -90,8 +109,11 @@ class _ItemCardState extends State<ItemCard> {
         //print([mChoiceList.length, place]);
         setState(() {
           mChoiceList[widget.place].available =
-          !mChoiceList[widget.place].available;
-          changeAvailability(mChoiceList[widget.place].getItemName, mChoiceList[widget.place].available, mChoiceList[widget.place].category.toString());
+              !mChoiceList[widget.place].available;
+          changeAvailability(
+              mChoiceList[widget.place].getItemName,
+              mChoiceList[widget.place].available,
+              mChoiceList[widget.place].category.toString());
         });
         print([
           mChoiceList[widget.place].getItemName,
@@ -103,11 +125,17 @@ class _ItemCardState extends State<ItemCard> {
           color: mChoiceList[widget.place].available ? kMintGreen : Colors.grey,
           boxShadow: [
             BoxShadow(
-                color: Colors.grey[500], blurRadius: 3, offset: Offset(2, 2))
+              color: Colors.grey[500],
+              blurRadius: 3,
+              offset: Offset(2, 2),
+            ),
           ],
         ),
         child: Center(
-          child: Text(mChoiceList[widget.place].getItemName),
+          child: Text(
+            mChoiceList[widget.place].getItemName,
+            style: TextStyle(fontSize: 30, letterSpacing: 1.3),
+          ),
         ),
       ),
     );

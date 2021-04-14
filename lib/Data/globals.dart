@@ -1,5 +1,9 @@
 library my_prj.globals;
 
+/*
+(Add comment that describes what this file does)
+ */
+
 import 'dart:collection';
 
 import 'package:virtual_restaurant/classes/CustomerTable.dart';
@@ -8,19 +12,24 @@ import 'package:virtual_restaurant/classes/kitchenOrder.dart';
 
 import '../classes/menuItem.dart';
 
+int waitList = 0;
+
 bool kidsMode = false;
 String kidsModePassword = '';
 String modification = '';
-String tableID = 'T3';  //To be set by manager
+String tableID = 'T3'; //To be set by manager
 
-CustomerTable thisDevicesTable = CustomerTable(tableNum:1);
-List<MenuItem> order = [];//order, initially empty
+CustomerTable thisDevicesTable = CustomerTable(tableNum: 1);
+List<MenuItem> order = []; //order, initially empty
 ListQueue<KitchenOrder> kitchenOrders;
 
 //money variables for bill
 double total = 0;
 double tip = 0;
 int waysToSplitBill = 1;
+
+//Add to Menu form
+MenuItem tempItem;
 
 //variables for reports
 var itemsSold;
@@ -31,7 +40,7 @@ var totalRevenue;
 
 //waiter variables
 //move this class later
-class orderItems{
+class orderItems {
   String table;
   Map<dynamic, dynamic> items;
 
@@ -40,6 +49,7 @@ class orderItems{
     this.items,
   });
 }
+
 List<orderItems> itemsToOrder = [];
 
 MenuItem mealOFTheDay = MenuItem(
@@ -69,6 +79,3 @@ List<MenuItem> desserts = [];
 
 //list of drinks, just need name
 List<MenuItem> drinks = [];
-
-
-

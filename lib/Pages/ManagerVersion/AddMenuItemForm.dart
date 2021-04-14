@@ -3,47 +3,56 @@ import 'package:flutter/services.dart';
 import 'package:virtual_restaurant/Data/constants.dart';
 import 'package:virtual_restaurant/CustomWidgets/MenuItem.dart';
 import 'package:virtual_restaurant/Database/database.dart';
-import 'package:virtual_restaurant/Data/globals.dart' as globals;
+import 'package:virtual_restaurant/classes/menuItem.dart';
+import 'package:virtual_restaurant/Data/globals.dart' as global;
 
-/*
-This file is used to get the payment from the user either by cash or card
- */
 
-class CheckoutPage extends StatefulWidget {
+class AddMenuItemForm extends StatefulWidget {
   @override
-  _CheckoutPageState createState() => _CheckoutPageState();
+  _AddMenuItemFormState createState() => _AddMenuItemFormState();
 }
 
-class _CheckoutPageState extends State<CheckoutPage> {
-  bool cardSelected = false;
+class _AddMenuItemFormState extends State<AddMenuItemForm> {
+  String itemCat = "Entrees";
+
+  String itemName;
+  String itemDescription;
+  String itemPrice;
+  int itemCal;
+  String origAllergens;
+  List<String> itemAllergens;
+
 
   //Fake Card information
-  bool cardNameFilled = false;
-  bool cardNumberFilled = false;
-  bool cardExpFilled = false;
-  bool cardSecurityFilled = false;
+  bool itemNameFilled = false;
+  bool DescriptionFilled = false;
+  bool priceFilled = false;
+  bool caloriesFilled = false;
 
   //Text Field stuff
   TextEditingController _nameController;
-  TextEditingController _numberController;
-  TextEditingController _expirationController;
-  TextEditingController _securityController;
+  TextEditingController _DescriptionController;
+  TextEditingController _priceController;
+  TextEditingController _caloriesController;
+  TextEditingController _allergensController;
 
   @override
   void initState() {
     super.initState();
     _nameController = TextEditingController();
-    _numberController = TextEditingController();
-    _expirationController = TextEditingController();
-    _securityController = TextEditingController();
+    _DescriptionController = TextEditingController();
+    _priceController = TextEditingController();
+    _caloriesController = TextEditingController();
+    _allergensController = TextEditingController();
   }
 
   @override
   void dispose() {
     _nameController.dispose();
-    _numberController.dispose();
-    _expirationController.dispose();
-    _securityController.dispose();
+    _DescriptionController.dispose();
+    _priceController.dispose();
+    _caloriesController.dispose();
+    _allergensController.dispose();
     super.dispose();
   }
 
@@ -51,7 +60,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Pay Bill"),
+        title: Text("Add Menu Item"),
       ),
       body: Padding(
         padding: EdgeInsets.symmetric(
@@ -61,15 +70,10 @@ class _CheckoutPageState extends State<CheckoutPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
+            Text("Category: ${itemCat}", style: TextStyle(fontSize: 25),),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Text(
-                  "Payment Method:",
-                  style: TextStyle(
-                    fontSize: 30.0,
-                  ),
-                ),
                 SizedBox(
                   width: 20.0,
                 ),
@@ -78,16 +82,18 @@ class _CheckoutPageState extends State<CheckoutPage> {
                     primary: kMintGreen,
                   ),
                   onPressed: () {
-                    createAlertDialog(context);
+                    setState(() {
+                      itemCat = "Entrees";
+                    });
                   },
                   child: Container(
-                    height: 50.0,
-                    width: 150.0,
+                    height: 40.0,
+                    width: 120.0,
                     child: Center(
                       child: Text(
-                        "Cash",
+                        "Entrees",
                         style: TextStyle(
-                          fontSize: 25.0,
+                          fontSize: 20.0,
                           color: kSemiBlack,
                         ),
                       ),
@@ -103,17 +109,121 @@ class _CheckoutPageState extends State<CheckoutPage> {
                   ),
                   onPressed: () {
                     setState(() {
-                      cardSelected = !cardSelected;
+                      itemCat = "Appetizers";
                     });
                   },
                   child: Container(
-                    height: 50.0,
-                    width: 200.0,
+                    height: 40.0,
+                    width: 120.0,
                     child: Center(
                       child: Text(
-                        "Credit/Debit Card",
+                        "Appetizers",
                         style: TextStyle(
-                          fontSize: 25.0,
+                          fontSize: 20.0,
+                          color: kSemiBlack,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  width: 20.0,
+                ),
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    primary: kMintGreen,
+                  ),
+                  onPressed: () {
+                    setState(() {
+                      itemCat = "Sides";
+                    });
+                  },
+                  child: Container(
+                    height: 40.0,
+                    width: 120.0,
+                    child: Center(
+                      child: Text(
+                        "Sides",
+                        style: TextStyle(
+                          fontSize: 20.0,
+                          color: kSemiBlack,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  width: 20.0,
+                ),
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    primary: kMintGreen,
+                  ),
+                  onPressed: () {
+                    setState(() {
+                      itemCat = "Kids Meals";
+                    });
+                  },
+                  child: Container(
+                    height: 40.0,
+                    width: 120.0,
+                    child: Center(
+                      child: Text(
+                        "Kids Meals",
+                        style: TextStyle(
+                          fontSize: 20.0,
+                          color: kSemiBlack,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  width: 20.0,
+                ),
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    primary: kMintGreen,
+                  ),
+                  onPressed: () {
+                    setState(() {
+                      itemCat = "Desserts";
+                    });
+                  },
+                  child: Container(
+                    height: 40.0,
+                    width: 120.0,
+                    child: Center(
+                      child: Text(
+                        "Desserts",
+                        style: TextStyle(
+                          fontSize: 20.0,
+                          color: kSemiBlack,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  width: 20.0,
+                ),
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    primary: kMintGreen,
+                  ),
+                  onPressed: () {
+                    setState(() {
+                      itemCat = "Drinks";
+                    });
+                  },
+                  child: Container(
+                    height: 40.0,
+                    width: 120.0,
+                    child: Center(
+                      child: Text(
+                        "Drinks",
+                        style: TextStyle(
+                          fontSize: 20.0,
                           color: kSemiBlack,
                         ),
                       ),
@@ -122,43 +232,13 @@ class _CheckoutPageState extends State<CheckoutPage> {
                 ),
               ],
             ),
-            cardSelected ? _cardInfo() : SizedBox(height: 0.0),
+
+            _cardInfo(),
             SizedBox(height: 50.0),
-            cardSelected ? _checkoutButton() : SizedBox(height: 0.0),
+            _checkoutButton(),
           ],
         ),
       ),
-    );
-  }
-
-  //Call Waiter Alert
-  createAlertDialog(BuildContext context) {
-    return showDialog(
-      context: context,
-      builder: (context) {
-        return AlertDialog(
-          title: Text("Waiter is coming soon to collect your payment!"),
-          actions: <Widget>[
-            MaterialButton(
-              elevation: 5.0,
-              child: Text(
-                'OK',
-                style: TextStyle(
-                  fontSize: 18.0,
-                  color: kSemiDarkGreen,
-                ),
-              ),
-              onPressed: () {
-                sendReports();
-                setState(() {
-                  globals.order.clear();
-                });
-                Navigator.pop(context);
-              },
-            ),
-          ],
-        );
-      },
     );
   }
 
@@ -177,7 +257,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
           children: <Widget>[
             //Name
             Text(
-              "Cardholder Name:",
+              "Item Name:",
               style: TextStyle(
                 fontSize: 20.0,
               ),
@@ -188,8 +268,9 @@ class _CheckoutPageState extends State<CheckoutPage> {
             TextField(
               onChanged: (String value) {
                 if (value != "") {
-                  cardNameFilled = true;
+                  itemNameFilled = true;
                 }
+                itemName = value;
               },
               inputFormatters: [
                 // ignore: deprecated_member_use
@@ -203,7 +284,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                   ),
                 ),
                 hintStyle: TextStyle(fontSize: 16.0, color: Colors.grey),
-                hintText: "Enter name on card",
+                hintText: "Enter name of item",
               ),
             ),
             SizedBox(
@@ -212,7 +293,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
 
             //Card Number
             Text(
-              "Card Number:",
+              "Description:",
               style: TextStyle(
                 fontSize: 20.0,
               ),
@@ -221,17 +302,14 @@ class _CheckoutPageState extends State<CheckoutPage> {
               height: 10.0,
             ),
             TextField(
-              inputFormatters: [
-                // ignore: deprecated_member_use
-                new WhitelistingTextInputFormatter(RegExp("[0-9]")),
-                new LengthLimitingTextInputFormatter(16),
-              ],
               onChanged: (String value) {
                 if (value != "") {
-                  cardNumberFilled = true;
+                  DescriptionFilled = true;
                 }
+                itemDescription = value;
+                //print(itemDescription);
               },
-              controller: _numberController,
+              controller: _DescriptionController,
               decoration: InputDecoration(
                 border: OutlineInputBorder(
                   borderSide: BorderSide(
@@ -239,7 +317,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                   ),
                 ),
                 hintStyle: TextStyle(fontSize: 16.0, color: Colors.grey),
-                hintText: "Enter number on card",
+                hintText: "Enter description of item",
               ),
             ),
             SizedBox(
@@ -250,7 +328,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
               children: <Widget>[
                 //Expiration Date
                 Text(
-                  "Expiration Date:",
+                  "Price:",
                   style: TextStyle(
                     fontSize: 20.0,
                   ),
@@ -263,15 +341,16 @@ class _CheckoutPageState extends State<CheckoutPage> {
                   child: TextField(
                     onChanged: (String value) {
                       if (value != "") {
-                        cardExpFilled = true;
+                        priceFilled = true;
                       }
+                      itemPrice = value;
                     },
                     inputFormatters: [
                       // ignore: deprecated_member_use
-                      new WhitelistingTextInputFormatter(RegExp("[\/0-9]")),
-                      new LengthLimitingTextInputFormatter(5),
+                      new WhitelistingTextInputFormatter(RegExp("[\/0-9.]")),
+                      //new WhitelistingTextInputFormatter(RegExp("[\/.]")),
                     ],
-                    controller: _expirationController,
+                    controller: _priceController,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(
                         borderSide: BorderSide(
@@ -279,7 +358,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                         ),
                       ),
                       hintStyle: TextStyle(fontSize: 16.0, color: Colors.grey),
-                      hintText: "mm/yy",
+                      hintText: "price",
                     ),
                   ),
                 ),
@@ -289,7 +368,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
 
                 //Security Code
                 Text(
-                  "Security Code:",
+                  "Calories:",
                   style: TextStyle(
                     fontSize: 20.0,
                   ),
@@ -302,15 +381,15 @@ class _CheckoutPageState extends State<CheckoutPage> {
                   child: TextField(
                     onChanged: (String value) {
                       if (value != "") {
-                        cardSecurityFilled = true;
+                        caloriesFilled = true;
                       }
+                      itemCal = int.parse(value);
                     },
                     inputFormatters: [
                       // ignore: deprecated_member_use
                       new WhitelistingTextInputFormatter(RegExp("[0-9]")),
-                      new LengthLimitingTextInputFormatter(3),
                     ],
-                    controller: _securityController,
+                    controller: _caloriesController,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(
                         borderSide: BorderSide(
@@ -318,7 +397,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                         ),
                       ),
                       hintStyle: TextStyle(fontSize: 16.0, color: Colors.grey),
-                      hintText: "3-digit code",
+                      hintText: "calories",
                     ),
                   ),
                 ),
@@ -327,13 +406,47 @@ class _CheckoutPageState extends State<CheckoutPage> {
                 ),
               ],
             ),
+            SizedBox(
+              height: 20.0,
+            ),
+            Row(
+              children: [
+                Text(
+                  "Allergens:",
+                  style: TextStyle(
+                    fontSize: 20.0,
+                  ),
+                ),
+                SizedBox(
+                  width: 10.0,
+                ),
+              ],
+            ),
+            SizedBox(
+              height: 10.0,
+            ),
+            TextField(
+              onChanged: (String value) {
+                origAllergens = value;
+              },
+              controller: _allergensController,
+              decoration: InputDecoration(
+                border: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    width: 1,
+                  ),
+                ),
+                hintStyle: TextStyle(fontSize: 16.0, color: Colors.grey),
+                hintText: "Enter allergens separated by spaces",
+              ),
+            ),
           ],
         ),
       ),
     );
   }
 
-  //Checkout Button
+  //Create item
   Widget _checkoutButton() {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 200.0),
@@ -341,17 +454,22 @@ class _CheckoutPageState extends State<CheckoutPage> {
         style: ElevatedButton.styleFrom(
           primary: kGreen,
         ),
+
+
         onPressed: () {
-          if (cardNameFilled &&
-              cardExpFilled &&
-              cardNumberFilled &&
-              cardSecurityFilled) {
-            //TODO send info for data collection
-            sendReports();
-            setState(() {
-              globals.order.clear();
-            });
-            Navigator.pushNamed(context, "/GoodbyePage");
+          if (itemNameFilled &&
+              priceFilled &&
+              DescriptionFilled &&
+              caloriesFilled)
+          {
+
+            itemAllergens = origAllergens.split(' ');
+            print(itemAllergens);
+            print([itemName, itemDescription, itemPrice, itemCal]);
+
+            addItem(itemCat, itemAllergens, itemName, itemDescription, itemPrice, itemCal);
+
+
           } else {
             return showDialog(
               context: context,
@@ -382,7 +500,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
           height: 60.0,
           child: Center(
             child: Text(
-              "Checkout",
+              "Create Item",
               style: TextStyle(
                 fontSize: 25.0,
               ),

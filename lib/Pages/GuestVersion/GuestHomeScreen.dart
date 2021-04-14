@@ -7,6 +7,11 @@ import 'package:virtual_restaurant/Pages/GuestVersion/MyOrderPage.dart';
 import 'package:virtual_restaurant/Database/database.dart';
 import 'package:virtual_restaurant/Data/globals.dart' as globals;
 
+/*
+This file is used to display the home screen for the guest. It displays major options such as manager's choice,
+menu, call waiter, free dessert, games, requests drink refill, order details, and more.
+ */
+
 class GuestHomeScreen extends StatefulWidget {
   @override
   _GuestHomeScreenState createState() => _GuestHomeScreenState();
@@ -107,7 +112,33 @@ class _GuestHomeScreenState extends State<GuestHomeScreen> {
                 icon: Icons.local_drink,
                 label: "Request Drink Refills",
                 buttonTapped: () {
-                  Navigator.pushNamed(context, "/RequestRefillPage");
+                  requestRefill();
+
+                  return showDialog(
+                    context: context,
+                    builder: (context) {
+                      return AlertDialog(
+                        title: Text(
+                            "Waiter is coming soon to refill your drink(s)!"),
+                        actions: <Widget>[
+                          MaterialButton(
+                            elevation: 5.0,
+                            child: Text(
+                              'OK',
+                              style: TextStyle(
+                                fontSize: 18.0,
+                                color: kSemiDarkGreen,
+                              ),
+                            ),
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                          ),
+                        ],
+                      );
+                    },
+                  );
+                  //Navigator.pushNamed(context, "/RequestRefillPage");
                 },
               ),
             ],

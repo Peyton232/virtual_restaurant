@@ -5,9 +5,9 @@ import 'package:virtual_restaurant/Pages/GuestVersion/MyOrderPage.dart';
 import 'package:virtual_restaurant/Data/constants.dart';
 
 /*
-This is the file used to create all the menu items for each category. This will take in a list
-of menu items from MenuPage.dart and the UI will be created using the class in MenuItem.dart
- */
+    This is the file used to create all the menu items for each category. This will take in a list
+    of menu items from MenuPage.dart and the UI will be created using the class in MenuItem.dart
+*/
 
 class MenuSubpageTemplate extends StatelessWidget {
   final String menuCategory;
@@ -77,6 +77,7 @@ class MenuSubpageTemplate extends StatelessWidget {
             return MenuItemUI(//TODO: This will need to be changed to reflect Michael's changes.
               name: listOfMenuItems[index].getItemName,
               allergens: listOfMenuItems[index].getAllergens,
+              image: listOfMenuItems[index].getImageStr,
               calories: listOfMenuItems[index].getCalories,
               description: listOfMenuItems[index].getDescription,
               price: listOfMenuItems[index].getPrice,

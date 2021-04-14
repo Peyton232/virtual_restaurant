@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:virtual_restaurant/Data/constants.dart';
 import 'package:virtual_restaurant/Data/globals.dart' as globals;
 
+/*
+this file is used to split the total bill between however many people
+ */
+
 class SplitBillPage extends StatefulWidget {
   @override
   _SplitBillPageState createState() => _SplitBillPageState();
@@ -69,11 +73,23 @@ class _SplitBillPageState extends State<SplitBillPage> {
                 ),
                 GestureDetector(
                   onTap: () {
-                    setState(() {
-                      _amountOfPeople = _subPeople(_amountOfPeople);
-                      _splitBill = getSplit(_amountOfPeople);
-                      globals.waysToSplitBill = _amountOfPeople;
-                    });
+                    /*
+                    Created condition to where it cannot go below 1
+                     */
+
+                    if (_amountOfPeople > 1) {
+                      setState(() {
+                        _amountOfPeople = _subPeople(_amountOfPeople);
+                        _splitBill = getSplit(_amountOfPeople);
+                        globals.waysToSplitBill = _amountOfPeople;
+                      });
+                    } else {
+                      setState(() {
+                        //_amountOfPeople = _subPeople(_amountOfPeople);
+                        _splitBill = getSplit(_amountOfPeople);
+                        globals.waysToSplitBill = _amountOfPeople;
+                      });
+                    }
                   },
                   child: Container(
                     decoration: BoxDecoration(
@@ -93,7 +109,7 @@ class _SplitBillPageState extends State<SplitBillPage> {
               height: 20.0,
             ),
             Text(
-              "Each one will pay: \$$_splitBill",
+              "Each one will pay: \$ ${_splitBill.toStringAsFixed(2)}",
               style: TextStyle(fontSize: 30.0),
             ),
           ],
@@ -103,6 +119,6 @@ class _SplitBillPageState extends State<SplitBillPage> {
   }
 }
 
-double getSplit(int numPeep){
-  return globals.total/numPeep;
+double getSplit(int numPeep) {
+  return globals.total / numPeep;
 }

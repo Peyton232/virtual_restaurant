@@ -7,10 +7,12 @@ import 'package:virtual_restaurant/Pages/GuestVersion/GuestHomeScreen.dart';
 import 'package:virtual_restaurant/Pages/GuestVersion/ManagersChoicePage.dart';
 import 'package:virtual_restaurant/Pages/GuestVersion/MyOrderPage.dart';
 import 'package:virtual_restaurant/Pages/GuestVersion/MyBillPage.dart';
-import 'package:virtual_restaurant/Pages/GuestVersion/PickTablePage.dart';
+import 'package:virtual_restaurant/Pages/ManagerVersion/PickTablePage.dart';
 import 'package:virtual_restaurant/Pages/GuestVersion/RequestRefillPage.dart';
 import 'package:virtual_restaurant/Pages/GuestVersion/SettingsPage.dart';
 import 'package:virtual_restaurant/Pages/GuestVersion/SplitBillPage.dart';
+import 'package:virtual_restaurant/Pages/GuestVersion/games/ConnectFour.dart';
+import 'package:virtual_restaurant/Pages/ManagerVersion/AddMenuItemForm.dart';
 import 'package:virtual_restaurant/Pages/ManagerVersion/ChangeMealOfDayPage.dart';
 import 'package:virtual_restaurant/Pages/ManagerVersion/ChangeMenuPage.dart';
 import 'package:virtual_restaurant/Pages/ManagerVersion/ItemsSold.dart';
@@ -31,6 +33,10 @@ import 'Pages/welcomeScreen.dart';
 import 'Data/constants.dart';
 import 'Pages/GuestVersion/MenuPage.dart';
 
+/*
+This file is the starting point of the application. It deals with navigation between pages and overall theme of the app
+ */
+
 void main() {
   runApp(MyApp());
 }
@@ -41,10 +47,6 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      highContrastTheme: ThemeData(
-        primaryColor: Colors.green[900],
-        scaffoldBackgroundColor: Colors.white,
-      ),
       theme: ThemeData(
         primaryColor: kDarkGreen,
         scaffoldBackgroundColor: kOffWhite,
@@ -84,6 +86,8 @@ class MyApp extends StatelessWidget {
         "/PickTablePage": (context) => PickTablePage(),
         "/TipsGained": (context) => TipsGained(),
         "/ItemsSoldPage": (context) => ItemsSoldPage(),
+        "/AddMenuItemForm": (context) => AddMenuItemForm(),
+        "/ConnectFour": (context) => ConnectFour(),
       },
     );
   }

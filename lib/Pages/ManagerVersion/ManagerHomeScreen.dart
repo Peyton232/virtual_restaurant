@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:virtual_restaurant/Data/constants.dart';
+import 'package:virtual_restaurant/Data/globals.dart' as globals;
 import 'package:virtual_restaurant/Database/database.dart';
 import 'package:virtual_restaurant/CustomWidgets/CustomButton.dart';
 
-class ManagerHomeScreen extends StatelessWidget {
+class ManagerHomeScreen extends StatefulWidget {
+  @override
+  _ManagerHomeScreenState createState() => _ManagerHomeScreenState();
+}
+
+class _ManagerHomeScreenState extends State<ManagerHomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,6 +23,23 @@ class ManagerHomeScreen extends StatelessWidget {
               fit: BoxFit.contain,
             ),
           ),
+          actions: [
+            /// Waitlist add and subtract                   //TODO: Fix add and sub
+            IconButton(icon: Icon(Icons.add), onPressed: (){
+              setState(() {
+                addTable();
+              });
+            }),
+            Center(child:
+            Text("${globals.waitList}", style: TextStyle(fontSize: 20),),
+            ),
+            IconButton(icon: Icon(Icons.remove), onPressed: (){
+              setState(() {
+                subTable();
+              });
+            }),
+            SizedBox(width: 20,),
+          ],
         ),
       ),
       body: SingleChildScrollView(
@@ -68,13 +91,6 @@ class ManagerHomeScreen extends StatelessWidget {
                   label: "Pick Table for Tablet",
                   buttonTapped: () {
                     Navigator.pushNamed(context, "/PickTablePage");
-                  },
-                ),
-                CustomButton(
-                  label: "Change Avalibility Of Items",
-                  buttonTapped: () {
-                    loadMenuLists();
-                    Navigator.pushNamed(context, "/ChangeMenuPage");
                   },
                 ),
               ],
