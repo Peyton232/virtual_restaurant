@@ -171,6 +171,7 @@ Future<List<MenuItem>> getMenuSection(String sectionName) async {
     //snapshot.value
     (Map<dynamic, dynamic>.from(snapshot.value)).forEach((key, values) {
       Map<dynamic, dynamic> json = values;
+      print(json["image"]);
       //TODO: Clean up this mess. This was originally supposed to work with the fromJson function, however I haven't tried (new MenuItem()).fromJson(json);
       menuList.add(MenuItem(
           category: toFoodCategoryFromString(sectionName),
@@ -178,6 +179,7 @@ Future<List<MenuItem>> getMenuSection(String sectionName) async {
           allergens: List<String>.from(json["allergens"]),
           available: json["available"],
           calories: json["calories"],
+          image: json["image"],
           contents: json["contents"],
           description: json["description"],
           price: json["price"].toString()));
