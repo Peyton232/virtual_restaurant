@@ -236,13 +236,20 @@ void requestRefill() {
 }
 
 Map<String, dynamic> orderItemToJson(MenuItem order) {
+
+  String spec = order.specialInstructs;
+  // cat = cat.substring(cat.indexOf('.') + 1, cat.length);
+  // cat += 's';
+  spec = spec.substring(0, spec.indexOf('.')) + ":  "  + spec.substring(spec.indexOf('.') + 1, spec.length);
+
+
   return {
     'name': order.name,
     'price': order.price,
     'category': order.category,
     'available': order.available,
     'finished': order.finished,
-    'modification from order': order.specialInstructs,
+    'modification from order': spec,
   };
 }
 
