@@ -8,6 +8,8 @@ import 'package:virtual_restaurant/classes/kitchenOrder.dart';
 
 import '../classes/menuItem.dart';
 
+int waitList = 0;
+
 bool kidsMode = false;
 String kidsModePassword = '';
 String modification = '';
@@ -21,6 +23,9 @@ ListQueue<KitchenOrder> kitchenOrders;
 double total = 0;
 double tip = 0;
 int waysToSplitBill = 1;
+
+//Add to Menu form
+MenuItem tempItem;
 
 //variables for reports
 var itemsSold;
