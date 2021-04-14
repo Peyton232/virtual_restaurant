@@ -30,7 +30,7 @@ class _ManagersChoicePageState extends State<ManagersChoicePage> {
                 width: 800,
                 color: Colors.grey,
                 child: Center(
-                  child: Text("Manager's Choice Image"), //TODO
+                  child: Image.network("https://firebasestorage.googleapis.com/v0/b/virtual-restaurant-99ee5.appspot.com/o/images_of_food%2FscrappyBurger.png?alt=media&token=94c47918-d942-4cb2-aca7-946273d3164a"), //TODO
                 ),
               ),
             ),
