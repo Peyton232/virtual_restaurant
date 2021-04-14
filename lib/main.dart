@@ -7,7 +7,7 @@ import 'package:virtual_restaurant/Pages/GuestVersion/GuestHomeScreen.dart';
 import 'package:virtual_restaurant/Pages/GuestVersion/ManagersChoicePage.dart';
 import 'package:virtual_restaurant/Pages/GuestVersion/MyOrderPage.dart';
 import 'package:virtual_restaurant/Pages/GuestVersion/MyBillPage.dart';
-import 'file:///C:/Users/david/IdeaProjects/virtual_restaurant/lib/Pages/ManagerVersion/PickTablePage.dart';
+import 'package:virtual_restaurant/Pages/ManagerVersion/PickTablePage.dart';
 import 'package:virtual_restaurant/Pages/GuestVersion/RequestRefillPage.dart';
 import 'package:virtual_restaurant/Pages/GuestVersion/SettingsPage.dart';
 import 'package:virtual_restaurant/Pages/GuestVersion/SplitBillPage.dart';
