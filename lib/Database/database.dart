@@ -233,6 +233,7 @@ void requestRefill() {
     id.push().set(completeOrder);
     return id;
   }
+
 }
 
 Map<String, dynamic> orderItemToJson(MenuItem order) {
@@ -449,6 +450,22 @@ void changeAvailability(String itemName, bool available, String cat){
   var id = databaseReference.child('menu/$cat/$itemName');
   id.child("available").set(available);
 
+}
+
+addItem(itemCat, itemAllergens, itemName, itemDescription, itemPrice, itemCal){
+  var id = databaseReference.child('menu/${itemCat}/${itemName}');
+
+  Map<String, dynamic> newItem = {
+    'allergens': itemAllergens,
+    'available': true,
+    'calories': itemCal,
+    'description': itemDescription,
+    'image': "here is where I would put an image",
+    'price': itemPrice
+  };
+
+  id.set(newItem);
+  return id;
 }
 
 // var id = databaseReference.child('waiterOrders/${globals.tableID}/');
