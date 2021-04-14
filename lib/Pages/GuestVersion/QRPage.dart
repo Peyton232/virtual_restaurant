@@ -3,6 +3,11 @@ import 'package:flutter/services.dart';
 import 'package:virtual_restaurant/Data/constants.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
+/*
+This file is used to claim the free dessert voucher after they win
+a free dessert from spinning the wheel
+ */
+
 class QR extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

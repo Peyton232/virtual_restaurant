@@ -4,6 +4,11 @@ import 'package:virtual_restaurant/CustomWidgets/MenuItem.dart';
 import 'package:virtual_restaurant/Database/database.dart';
 import 'package:virtual_restaurant/Data/globals.dart' as globals;
 
+/*
+this file is used to view the menu items added to the order. The customer can add comments to
+modify/request changes to an order item. They can also choose between dine in or to go.
+ */
+
 enum DineOption {
   dineIn,
   toGo,

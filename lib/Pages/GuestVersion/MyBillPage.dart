@@ -6,7 +6,6 @@ import 'package:virtual_restaurant/classes/menuItem.dart';
 import 'package:virtual_restaurant/Data/globals.dart' as globals;
 import 'package:virtual_restaurant/classes/menuItem.dart';
 
-//TODO: Copy majority of the MyOrderPage
 /*
 This is the page where the customer can view their bill and pay.
 They have the option to give a tip and split the bill between people

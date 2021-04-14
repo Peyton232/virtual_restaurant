@@ -3,6 +3,10 @@ import 'package:virtual_restaurant/Data/constants.dart';
 import 'package:virtual_restaurant/classes/menuItem.dart';
 import 'package:virtual_restaurant/Data/globals.dart' as globals;
 
+/*
+This file displays the manager's choice of menu item. THe customer can order this if they are interested
+ */
+
 class ManagersChoicePage extends StatefulWidget {
   @override
   _ManagersChoicePageState createState() => _ManagersChoicePageState();
