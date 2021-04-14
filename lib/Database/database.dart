@@ -411,6 +411,8 @@ Future<int> addTable() async {
   int result = (await FirebaseDatabase.instance.reference().child("waitlist").once()).value;
   result++;
 
+  globals.waitList = result;
+
   var id = databaseReference.child('waitlist');
   id.set({'tables available': result});
 }
@@ -419,6 +421,8 @@ Future<int> addTable() async {
 Future<int> subTable() async {
   int result = (await FirebaseDatabase.instance.reference().child("waitlist").once()).value;
   result--;
+
+  globals.waitList = result;
 
   var id = databaseReference.child('waitlist');
   id.set({'tables available': result});
