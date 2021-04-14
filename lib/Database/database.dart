@@ -232,17 +232,25 @@ void requestRefill() {
       'Request': "Drink Refills Needed",
     };
   }
+
   id.push().set(request(globals.tableID));
 }
 
 Map<String, dynamic> orderItemToJson(MenuItem order) {
+
+  String spec = order.specialInstructs;
+  // cat = cat.substring(cat.indexOf('.') + 1, cat.length);
+  // cat += 's';
+  spec = spec.substring(0, spec.indexOf('.')) + ":  "  + spec.substring(spec.indexOf('.') + 1, spec.length);
+
+
   return {
     'name': order.name,
     'price': order.price,
     'category': order.category,
     'available': order.available,
     'finished': order.finished,
-    'modification from order': order.specialInstructs,
+    'modification from order': spec,
   };
 }
 
@@ -442,6 +450,22 @@ void changeAvailability(String itemName, bool available, String cat){
   var id = databaseReference.child('menu/$cat/$itemName');
   id.child("available").set(available);
 
+}
+
+addItem(itemCat, itemAllergens, itemName, itemDescription, itemPrice, itemCal){
+  var id = databaseReference.child('menu/${itemCat}/${itemName}');
+
+  Map<String, dynamic> newItem = {
+    'allergens': itemAllergens,
+    'available': true,
+    'calories': itemCal,
+    'description': itemDescription,
+    'image': "here is where I would put an image",
+    'price': itemPrice
+  };
+
+  id.set(newItem);
+  return id;
 }
 
 // var id = databaseReference.child('waiterOrders/${globals.tableID}/');

@@ -446,7 +446,7 @@ class _AddMenuItemFormState extends State<AddMenuItemForm> {
     );
   }
 
-  //Checkout Button
+  //Create item
   Widget _checkoutButton() {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 200.0),
@@ -454,6 +454,8 @@ class _AddMenuItemFormState extends State<AddMenuItemForm> {
         style: ElevatedButton.styleFrom(
           primary: kGreen,
         ),
+
+
         onPressed: () {
           if (itemNameFilled &&
               priceFilled &&
@@ -463,28 +465,9 @@ class _AddMenuItemFormState extends State<AddMenuItemForm> {
 
             itemAllergens = origAllergens.split(' ');
             print(itemAllergens);
-            print([itemName,itemDescription,itemPrice,itemCal]);
+            print([itemName, itemDescription, itemPrice, itemCal]);
 
-            switch(itemCat){
-              case "Entrees":
-                print("tada Entrees");
-                break;
-              case "Appetizers":
-                print("tada Appetizers");
-                break;
-              case "Sides":
-                print("tada Sides");
-                break;
-              case "Kids Meals":
-                print("tada Kids Meals");
-                break;
-              case "Desserts":
-                print("tada Desserts");
-                break;
-              case "Drinks":
-                print("tada Drinks");
-                break;
-            }
+            addItem(itemCat, itemAllergens, itemName, itemDescription, itemPrice, itemCal);
 
 
           } else {

@@ -53,7 +53,8 @@ class _KitchenHomeScreenState extends State<KitchenHomeScreen> {
         ));
   }
 
-  Widget buildOrder({List order, int index, bool checkbox, Color colorChanger}) {
+  Widget buildOrder(
+      {List order, int index, bool checkbox, Color colorChanger}) {
     return Container(
       color: Colors.white54,
       height: 150,
