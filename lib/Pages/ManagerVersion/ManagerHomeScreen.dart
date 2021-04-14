@@ -93,6 +93,13 @@ class _ManagerHomeScreenState extends State<ManagerHomeScreen> {
                     Navigator.pushNamed(context, "/PickTablePage");
                   },
                 ),
+                CustomButton(
+                  icon: Icons.timer,
+                  label: "Set Opening and Closing Time",
+                  buttonTapped: () {
+                    Navigator.pushNamed(context, "/ChangeOpeningClosingTime");
+                  },
+                ),
               ],
             ),
           ],

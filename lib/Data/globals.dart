@@ -5,6 +5,7 @@ library my_prj.globals;
  */
 
 import 'dart:collection';
+import 'dart:core';
 
 import 'package:virtual_restaurant/classes/CustomerTable.dart';
 import 'package:virtual_restaurant/classes/billOrder.dart';
@@ -27,6 +28,13 @@ ListQueue<KitchenOrder> kitchenOrders;
 double total = 0;
 double tip = 0;
 int waysToSplitBill = 1;
+
+//  Closing and Opening Times Variables
+int closeHour = 21; //  in 24 hour time
+int closeMin = 30;  //Either 30 or 0
+int openHour = 8;   //  in 24 hour time
+int openMin = 0;   //Either 30 or 0
+
 
 //Add to Menu form
 MenuItem tempItem;
