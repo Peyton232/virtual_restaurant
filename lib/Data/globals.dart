@@ -56,6 +56,7 @@ MenuItem mealOFTheDay = MenuItem(
   name: "Scrappy head",
   description: "<item description>",
   price: "\$23.44",
+  image: "image String",
   calories: 9000,
   allergens: ["dairy", "gluten"],
   //image: "https://browseyou.com/media/img/src/no-item.jpg",

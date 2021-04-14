@@ -115,7 +115,7 @@ class _ChangeMealOfDayPageState extends State<ChangeMealOfDayPage> {
 
   //                      Widget for the selected meal of day
   Widget MealOfDay() {
-    Image image;
+    String image = mChoiceList[mealOfday_place].getImageStr;
     String name = mChoiceList[mealOfday_place].getItemName;
     String price = mChoiceList[mealOfday_place].getPrice;
     int calories = mChoiceList[mealOfday_place].getCalories;
@@ -138,7 +138,7 @@ class _ChangeMealOfDayPageState extends State<ChangeMealOfDayPage> {
               width: 250,
               color: Colors.grey,
               child: Center(
-                child: Text("Image"), //TODO: Replace text with image
+                child: Image.network(image), //TODO: Replace text with image
               ),
             ),
           ),
@@ -189,7 +189,7 @@ class _ChangeMealOfDayPageState extends State<ChangeMealOfDayPage> {
                     print("Add to Meal of Day pressed");
 
                     mealOFTheDay.name = name;
-                    //mealOFTheDay.image = image;
+                    mealOFTheDay.image = image;
                     mealOFTheDay.price = price;
                     mealOFTheDay.calories = calories;
                     mealOFTheDay.description = description;
