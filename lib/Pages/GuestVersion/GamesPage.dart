@@ -3,6 +3,10 @@ import 'package:virtual_restaurant/Pages/GuestVersion/games/ticTacToe.dart';
 import 'package:virtual_restaurant/Pages/GuestVersion/games/snake.dart';
 import 'package:virtual_restaurant/Data/constants.dart';
 
+/*
+This file is used to display all the games available in the program
+ */
+
 class GamesPage extends StatefulWidget {
   @override
   _GamesPageState createState() => _GamesPageState();
@@ -53,7 +57,7 @@ class _GamesPageState extends State<GamesPage> {
                         ),
                         height: 250,
                         child: Center(
-                            child: Image.asset('images/ticcytaccy.png'),
+                          child: Image.asset('images/ticcytaccy.png'),
                         ),
                       ),
                     ),
@@ -216,46 +220,57 @@ class _GamesPageState extends State<GamesPage> {
                           ),
                         ),
                         height: 250,
-                        child: Center(child: Image.asset('images/MineSweeperImage.png'),),
+                        child: Center(
+                          child: Image.asset('images/MineSweeperImage.png'),
+                        ),
                       ),
                     ),
-                          Expanded(
-                            flex: 1,
-                            child: Container(
-                              padding: EdgeInsets.all(12),
-                              child: Text("Mine Sweeper" ,style: TextStyle(fontWeight: FontWeight.bold, fontSize: 40),
-                              ),
-                            ),
-                           ),
-                          Expanded(
-                            flex: 1,
-                            child: Container(
-                              padding: EdgeInsets.all(12),
-                              child: Text("Click every square except the ones with a bomb!",
-                                style: TextStyle(fontSize: 20),
-                              ),
-                            ),
-                          ),
-                          Expanded(
-                            flex: 1,
-                            child: Center(
-                              child: Container(
-                                  child: ElevatedButton(
-                                      style: ElevatedButton.styleFrom(
-                                        primary: Colors.green,
-                                        minimumSize: Size(180,60),
-                                      ),
-                                      onPressed: (){
-                                        Navigator.pushNamed(context, "/MineSweeperPage");
-                                      }, child: Text("Play", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),))
-                              ),
-                            ),
-                          ),
-
-                        ],
+                    Expanded(
+                      flex: 1,
+                      child: Container(
+                        padding: EdgeInsets.all(12),
+                        child: Text(
+                          "Mine Sweeper",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 40),
+                        ),
                       ),
                     ),
+                    Expanded(
+                      flex: 1,
+                      child: Container(
+                        padding: EdgeInsets.all(12),
+                        child: Text(
+                          "Click every square except the ones with a bomb!",
+                          style: TextStyle(fontSize: 20),
+                        ),
+                      ),
                     ),
+                    Expanded(
+                      flex: 1,
+                      child: Center(
+                        child: Container(
+                            child: ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                  primary: Colors.green,
+                                  minimumSize: Size(180, 60),
+                                ),
+                                onPressed: () {
+                                  Navigator.pushNamed(
+                                      context, "/MineSweeperPage");
+                                },
+                                child: Text(
+                                  "Play",
+                                  style: TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold),
+                                ))),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
             Expanded(
               child: Container(
                 margin: EdgeInsets.all(12),
@@ -267,7 +282,7 @@ class _GamesPageState extends State<GamesPage> {
                       color: Colors.grey,
                       blurRadius: 4.0,
                       offset:
-                      Offset(2.0, 2.0), // shadow direction: bottom right
+                          Offset(2.0, 2.0), // shadow direction: bottom right
                     ),
                   ],
                 ),
@@ -285,14 +300,8 @@ class _GamesPageState extends State<GamesPage> {
                           ),
                         ),
                         height: 250,
-                        child: Center(child: Image.asset('images/Connect4.png'),),
-                      ),
-                    ),
-                    Expanded(
-                      flex: 1,
-                      child: Container(
-                        padding: EdgeInsets.all(12),
-                        child: Text("Connect 4" ,style: TextStyle(fontWeight: FontWeight.bold, fontSize: 40),
+                        child: Center(
+                          child: Image.asset('images/Connect4.png'),
                         ),
                       ),
                     ),
@@ -300,7 +309,19 @@ class _GamesPageState extends State<GamesPage> {
                       flex: 1,
                       child: Container(
                         padding: EdgeInsets.all(12),
-                        child: Text("Connect 4 of your color, while keeping your opponents from connecting 4!",
+                        child: Text(
+                          "Connect 4",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 40),
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      flex: 1,
+                      child: Container(
+                        padding: EdgeInsets.all(12),
+                        child: Text(
+                          "Connect 4 of your color, while keeping your opponents from connecting 4!",
                           style: TextStyle(fontSize: 20),
                         ),
                       ),
@@ -312,22 +333,26 @@ class _GamesPageState extends State<GamesPage> {
                             child: ElevatedButton(
                                 style: ElevatedButton.styleFrom(
                                   primary: Colors.green,
-                                  minimumSize: Size(180,60),
+                                  minimumSize: Size(180, 60),
                                 ),
-                                onPressed: (){
+                                onPressed: () {
                                   Navigator.pushNamed(context, "/ConnectFour");
-                                }, child: Text("Play", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),))
-                        ),
+                                },
+                                child: Text(
+                                  "Play",
+                                  style: TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold),
+                                ))),
                       ),
                     ),
-
                   ],
                 ),
               ),
             ),
-                  ],
-                ),
-              ),
-            );
+          ],
+        ),
+      ),
+    );
   }
 }

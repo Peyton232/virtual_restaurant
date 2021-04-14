@@ -1,8 +1,12 @@
+/*
+  This screen will show the current orders
+  the waiter can swipe away and show that the order is comped / paid
+*/
+
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
 import 'package:virtual_restaurant/Data/constants.dart';
-import 'package:virtual_restaurant/Database/database.dart';
 import 'package:virtual_restaurant/Data/globals.dart' as globals;
 
 class Table {
@@ -18,7 +22,7 @@ class Table {
     @required this.comped,
     @required this.listOfOrders,
     @required this.paid,
-    //this.index,
+
   });
 }
 
@@ -35,15 +39,12 @@ class _WaiterHomeScreenState extends State<WaiterHomeScreen> {
   // Referencing the database
   Query _ref;
 
-  // making this a variable because I dont want to type alot
-
   @override
   void initState() {
     super.initState();
     _ref = FirebaseDatabase.instance
         .reference()
-        .child('kitchen-orders')
-        .orderByChild('order-id');
+        .child('kitchen-orders');
   }
 
   @override
@@ -64,9 +65,7 @@ class _WaiterHomeScreenState extends State<WaiterHomeScreen> {
                     Navigator.pushNamed(context, "/CustomerRequests");
                   },
                 ),
-                //TODO: make ternary condition: no request - no dot, request - yes dot
                 Positioned(
-                  // draw a red marble
                   top: 13.0,
                   right: 13.0,
                   child: Icon(
@@ -117,7 +116,6 @@ class _WaiterHomeScreenState extends State<WaiterHomeScreen> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-
                     Icon(Icons.delete),
                   ],
                 ),
@@ -189,7 +187,6 @@ class _WaiterHomeScreenState extends State<WaiterHomeScreen> {
                         ),
                       ],
                     ),
-
                   ],
                 ),
               ),
@@ -255,8 +252,4 @@ class _WaiterHomeScreenState extends State<WaiterHomeScreen> {
       },
     );
   }
-
-
-
-
 }

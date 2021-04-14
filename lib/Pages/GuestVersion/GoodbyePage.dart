@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:virtual_restaurant/Data/constants.dart';
 
+/*
+this file is used to display a goodbye message to the customer after they have paid their bill
+ */
+
 class GoodbyePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

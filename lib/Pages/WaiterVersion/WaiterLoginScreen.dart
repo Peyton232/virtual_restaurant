@@ -1,3 +1,7 @@
+/*
+    This page is used for logging in for the waitor's
+    side of tablet.
+*/
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:virtual_restaurant/Data/constants.dart';
