@@ -2,6 +2,7 @@ library database;
 
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_database/ui/firebase_list.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:virtual_restaurant/Data/constants.dart';
 import 'package:virtual_restaurant/classes/kitchenItem.dart';
 import 'package:virtual_restaurant/classes/kitchenOrder.dart';
@@ -208,31 +209,28 @@ void loadMenuLists() async {
 }
 
 void sendWaiterRequest() {
-  var id = databaseReference.child('waiterOrders/${globals.tableID}/');
-  id.set('table requests assistance');
+  var id = databaseReference.child('waiterOrders/');
+  //id.set('table requests assistance');
+
+  Map<String, dynamic> request(String tableID) {
+    return {
+      'Table': globals.tableID,
+      'Request': "Assistance Needed",
+    };
+  }
+  id.push().set(request(globals.tableID));
 }
 
 void requestRefill() {
-  var id = databaseReference.child('waiterOrders/${globals.tableID}/');
-  id.set('table needs refills');
-  Map<String, dynamic> orderItemToJson(MenuItem order) {
+  var id = databaseReference.child('waiterOrders/');
+  //var _ref = FirebaseDatabase.instance.reference('waiterOrders');
+  Map<String, dynamic> request(String tableID) {
     return {
-      'name': order.name,
-      'price': order.price,
+      'Table': globals.tableID,
+      'Request': "Drink Refills Needed",
     };
   }
-
-  DatabaseReference sendData() {
-    var id = databaseReference.child('kitchen-orders/${globals.tableID}/');
-    List<Map<String, dynamic>> completeOrder =
-        List<Map<String, dynamic>>.filled(
-            globals.order.length, new Map<String, dynamic>());
-    for (int i = 0; i < globals.order.length; i++) {
-      completeOrder[i] = orderItemToJson(globals.order[i]);
-    }
-    id.push().set(completeOrder);
-    return id;
-  }
+  id.push().set(request(globals.tableID));
 }
 
 Map<String, dynamic> orderItemToJson(MenuItem order) {
