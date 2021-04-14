@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:virtual_restaurant/Data/constants.dart';
 import 'package:virtual_restaurant/Data/globals.dart' as globals;
 
+/*
+this file is used to split the total bill between however many people
+ */
+
 class SplitBillPage extends StatefulWidget {
   @override
   _SplitBillPageState createState() => _SplitBillPageState();

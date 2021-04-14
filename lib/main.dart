@@ -33,6 +33,10 @@ import 'Pages/welcomeScreen.dart';
 import 'Data/constants.dart';
 import 'Pages/GuestVersion/MenuPage.dart';
 
+/*
+This file is the starting point of the application. It deals with navigation between pages and overall theme of the app
+ */
+
 void main() {
   runApp(MyApp());
 }
@@ -43,10 +47,6 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      highContrastTheme: ThemeData(
-        primaryColor: Colors.green[900],
-        scaffoldBackgroundColor: Colors.white,
-      ),
       theme: ThemeData(
         primaryColor: kDarkGreen,
         scaffoldBackgroundColor: kOffWhite,
