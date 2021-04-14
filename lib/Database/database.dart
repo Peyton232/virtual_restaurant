@@ -37,6 +37,7 @@ Map<String, dynamic> toJsonMenu(MenuItem item) {
   return {
     'name': item.name,
     'description': item.description,
+    'image': item.getImageStr,
     'price': item.price,
     'allergens': item.allergens,
     'finished': item.finished,
@@ -72,6 +73,15 @@ void getMealOfDay() async {
           .child("mealOfDay/price")
           .once())
       .value;
+  globals.mealOFTheDay.image = (await FirebaseDatabase.instance
+      .reference()
+      .child("mealOfDay/image")
+      .once())
+      .value;
+  print((await FirebaseDatabase.instance
+      .reference()
+      .child("mealOfDay/image")
+      .once()));
   globals.mealOFTheDay.price = result;
   result = (await FirebaseDatabase.instance
           .reference()
@@ -91,6 +101,7 @@ void getMealOfDay() async {
           .once())
       .value;
   globals.mealOFTheDay.allergens = allergies;
+
 }
 
 /*

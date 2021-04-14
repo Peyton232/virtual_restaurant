@@ -13,8 +13,10 @@ class ManagersChoicePage extends StatefulWidget {
 }
 
 class _ManagersChoicePageState extends State<ManagersChoicePage> {
+
   @override
   Widget build(BuildContext context) {
+    print(globals.mealOFTheDay.getImageStr);
     return Scaffold(
       appBar: AppBar(
         title: Text("Manager's Choice"),
@@ -30,7 +32,7 @@ class _ManagersChoicePageState extends State<ManagersChoicePage> {
                 width: 800,
                 color: Colors.grey,
                 child: Center(
-                  child: Image.network("https://firebasestorage.googleapis.com/v0/b/virtual-restaurant-99ee5.appspot.com/o/images_of_food%2FscrappyBurger.png?alt=media&token=94c47918-d942-4cb2-aca7-946273d3164a"), //TODO
+                  child: Image.network(globals.mealOFTheDay.getImageStr), //TODO
                 ),
               ),
             ),
