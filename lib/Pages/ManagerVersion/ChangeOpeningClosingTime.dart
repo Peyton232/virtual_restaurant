@@ -100,7 +100,7 @@ class _ChangeOpeningClosingTimeState extends State<ChangeOpeningClosingTime> {
                   ),
                 ),
               ),
-              Text(':${selcMin}', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),),
+              selcMin == 0 ? Text(':00', style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),) : Text(':${selcMin}', style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),),
               SizedBox(width: 80,),
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
