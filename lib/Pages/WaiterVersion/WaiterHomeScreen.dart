@@ -8,6 +8,7 @@ import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
 import 'package:virtual_restaurant/Data/constants.dart';
 import 'package:virtual_restaurant/Data/globals.dart' as globals;
+import 'package:virtual_restaurant/Data/globals.dart';
 import 'package:virtual_restaurant/Database/database.dart';
 
 class Table {
@@ -87,11 +88,13 @@ class _WaiterHomeScreenState extends State<WaiterHomeScreen> {
             query: _ref,
             itemBuilder: (BuildContext context, DataSnapshot snapshot,
                 Animation<double> animation, int index) {
-              return buildOrder(
-                  order: globals.itemsToOrder,
-                  index: index,
-                  checkbox: checkbox,
-                  colorChanger: colorChanger);
+              getFinishOrder(index);
+              return
+                  buildOrder(
+                      order: globals.itemsToOrder,
+                      index: index,
+                      checkbox: checkbox,
+                      colorChanger: colorChanger);
             },
           ),
         ));
@@ -99,6 +102,7 @@ class _WaiterHomeScreenState extends State<WaiterHomeScreen> {
 
   Widget buildOrder(
       {List order, int index, bool checkbox, Color colorChanger}) {
+    print(globals.orderFinished);
     return Container(
       margin: EdgeInsets.all(10),
       child: Container(
@@ -107,15 +111,14 @@ class _WaiterHomeScreenState extends State<WaiterHomeScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
+
           children: [
+            if(orderFinished == null)
             Dismissible(
               onDismissed:(DismissDirection direction){
                 deleteOrder(globals.itemsToOrder[index].table.toString());
               },
               background: Card(
-              //  shape: RoundedRectangleBorder(
-              //  borderRadius: BorderRadius.circular(16),
-              // ),
                 color: Colors.red,
                 child: Padding(
                   padding: const EdgeInsets.only(right: 15),
@@ -126,7 +129,6 @@ class _WaiterHomeScreenState extends State<WaiterHomeScreen> {
                     ],
                   ),
                 ),
-
               ),
               key: UniqueKey(),
               child: Column(
@@ -137,6 +139,7 @@ class _WaiterHomeScreenState extends State<WaiterHomeScreen> {
                       Card(
                         elevation: 3,
                         child: Text(
+                          //globals.itemsToOrder[index].table.toString(),
                           globals.itemsToOrder[index].table.toString(),
                           style: TextStyle(
                             fontSize: 20,
@@ -155,7 +158,7 @@ class _WaiterHomeScreenState extends State<WaiterHomeScreen> {
                               setState(() {
                                 createCompedAlertDialog(context);
                               });
-                              //TODO: Comp functionality
+                              // TODO: Comp functionality
                             },
                             child: Text(
                               "Comp",
@@ -175,7 +178,7 @@ class _WaiterHomeScreenState extends State<WaiterHomeScreen> {
                               setState(() {
                                 createPaidAlertDialog(context);
                               });
-                              //TODO: Paid functionality
+                              // TODO: Paid functionality
                             },
                             child: Text(
                               "Paid",

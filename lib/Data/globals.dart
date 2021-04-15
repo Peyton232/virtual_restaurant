@@ -45,6 +45,7 @@ var totalSold;
 var itemsComped;
 var tipsGained;
 var totalRevenue;
+var orderFinished;
 
 //waiter variables
 //move this class later
@@ -55,6 +56,7 @@ class orderItems {
   orderItems({
     this.table,
     this.items,
+
   });
 }
 
