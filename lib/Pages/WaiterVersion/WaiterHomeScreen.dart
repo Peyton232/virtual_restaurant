@@ -8,6 +8,7 @@ import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
 import 'package:virtual_restaurant/Data/constants.dart';
 import 'package:virtual_restaurant/Data/globals.dart' as globals;
+import 'package:virtual_restaurant/Database/database.dart';
 
 class Table {
   Map tableNumber;
@@ -38,6 +39,7 @@ class _WaiterHomeScreenState extends State<WaiterHomeScreen> {
 
   // Referencing the database
   Query _ref;
+
 
   @override
   void initState() {
@@ -98,101 +100,127 @@ class _WaiterHomeScreenState extends State<WaiterHomeScreen> {
   Widget buildOrder(
       {List order, int index, bool checkbox, Color colorChanger}) {
     return Container(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Dismissible(
-            onDismissed: (direction){
-                  globals.itemsToOrder.removeAt(index);
-            },
-            background: Card(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(16),
-              ),
-              color: Colors.red,
-              child: Padding(
-                padding: const EdgeInsets.only(right: 15),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Icon(Icons.delete),
-                  ],
+      margin: EdgeInsets.all(10),
+      child: Container(
+        color: Colors.grey[300],
+        margin: EdgeInsets.all(10.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Dismissible(
+              onDismissed:(DismissDirection direction){
+                deleteOrder(globals.itemsToOrder[index].table.toString());
+              },
+              background: Card(
+              //  shape: RoundedRectangleBorder(
+              //  borderRadius: BorderRadius.circular(16),
+              // ),
+                color: Colors.red,
+                child: Padding(
+                  padding: const EdgeInsets.only(right: 15),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Icon(Icons.delete),
+                    ],
+                  ),
                 ),
-              ),
-            ),
 
-            key: UniqueKey(),
-            child: Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(16),
-                color: Colors.grey[300],
               ),
-              height: 50,
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    Card(
-                      elevation: 3,
-                      child: Text(
-                        globals.itemsToOrder[index].table.toString(),
-                        style: TextStyle(
-                          fontSize: 20,
-                          color: Theme.of(context).primaryColor,
-                          fontWeight: FontWeight.w600,
+              key: UniqueKey(),
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Card(
+                        elevation: 3,
+                        child: Text(
+                          globals.itemsToOrder[index].table.toString(),
+                          style: TextStyle(
+                            fontSize: 20,
+                            color: Theme.of(context).primaryColor,
+                            fontWeight: FontWeight.w600,
+                          ),
                         ),
                       ),
-                    ),
-
-                    Row(
-                      children: [
-                        ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            primary: kLightGreen,
-                          ),
-                          onPressed: () {
-                            setState(() {
-                              createCompedAlertDialog(context);
-                            });
-                            //TODO: Comp functionality
-                          },
-                          child: Text(
-                            "Comp",
-                            style: TextStyle(
-                              fontSize: 20,
+                      Row(
+                        children: [
+                          ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              primary: kLightGreen,
+                            ),
+                            onPressed: () {
+                              setState(() {
+                                createCompedAlertDialog(context);
+                              });
+                              //TODO: Comp functionality
+                            },
+                            child: Text(
+                              "Comp",
+                              style: TextStyle(
+                                fontSize: 20,
+                              ),
                             ),
                           ),
-                        ),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            primary: kLightGreen,
+                          SizedBox(
+                            width: 10,
                           ),
-                          onPressed: () {
-                            setState(() {
-                              createPaidAlertDialog(context);
-                            });
-                            //TODO: Paid functionality
-                          },
-                          child: Text(
-                            "Paid",
-                            style: TextStyle(
-                              fontSize: 20,
+                          ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              primary: kLightGreen,
+                            ),
+                            onPressed: () {
+                              setState(() {
+                                createPaidAlertDialog(context);
+                              });
+                              //TODO: Paid functionality
+                            },
+                            child: Text(
+                              "Paid",
+                              style: TextStyle(
+                                fontSize: 20,
+                              ),
                             ),
                           ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
+                          SizedBox(
+                            width: 10,
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
+                  Container(
+                    color: Colors.grey[200],
+                    child: ListView.builder(
+                        shrinkWrap: true,
+                        itemCount: globals.itemsToOrder[index].items.values
+                            .toList()
+                            .first
+                            .length,
+                        itemBuilder: (BuildContext context, int i) {
+                          return Container(
+                            color: Colors.white54,
+                            child: Text(
+                              globals.itemsToOrder[index].items.values
+                                  .toList()
+                                  .first[i]['name']
+                                  .toString(),
+                              style: TextStyle(
+                                fontSize: 20,
+                                color: colorChanger,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                          );
+                        }),
+                  ),
+                ],
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

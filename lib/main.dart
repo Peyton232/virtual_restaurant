@@ -7,6 +7,7 @@ import 'package:virtual_restaurant/Pages/GuestVersion/GuestHomeScreen.dart';
 import 'package:virtual_restaurant/Pages/GuestVersion/ManagersChoicePage.dart';
 import 'package:virtual_restaurant/Pages/GuestVersion/MyOrderPage.dart';
 import 'package:virtual_restaurant/Pages/GuestVersion/MyBillPage.dart';
+import 'package:virtual_restaurant/Pages/ManagerVersion/ChangeOpeningClosingTime.dart';
 import 'package:virtual_restaurant/Pages/ManagerVersion/PickTablePage.dart';
 import 'package:virtual_restaurant/Pages/GuestVersion/RequestRefillPage.dart';
 import 'package:virtual_restaurant/Pages/GuestVersion/SettingsPage.dart';
@@ -88,6 +89,7 @@ class MyApp extends StatelessWidget {
         "/ItemsSoldPage": (context) => ItemsSoldPage(),
         "/AddMenuItemForm": (context) => AddMenuItemForm(),
         "/ConnectFour": (context) => ConnectFour(),
+        "/ChangeOpeningClosingTime": (context) => ChangeOpeningClosingTime(),
       },
     );
   }
