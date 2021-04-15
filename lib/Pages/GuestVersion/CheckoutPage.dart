@@ -233,11 +233,6 @@ class _CheckoutPageState extends State<CheckoutPage> {
                 new WhitelistingTextInputFormatter(RegExp("[0-9]")),
                 new LengthLimitingTextInputFormatter(16),
               ],
-              // onChanged: (String value) {
-              //   if (value.isNotEmpty) {
-              //     cardNumberFilled = true;
-              //   }
-              // },
               controller: _numberController,
               decoration: InputDecoration(
                 border: OutlineInputBorder(
