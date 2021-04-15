@@ -276,6 +276,12 @@ DatabaseReference sendData() {
   return id;
 }
 
+DatabaseReference deleteOrder(String table) {
+  var id = databaseReference.child('kitchen-orders/${table}');
+  id.remove();
+  return id;
+}
+
 //    Gets Info for ItemsSold.dart UI
 void getItemsSoldInfo() async {
   var id = databaseReference.child('reports/items/').once().then((DataSnapshot snapshot) {
