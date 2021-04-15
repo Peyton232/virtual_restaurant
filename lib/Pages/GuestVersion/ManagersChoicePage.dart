@@ -13,7 +13,6 @@ class ManagersChoicePage extends StatefulWidget {
 }
 
 class _ManagersChoicePageState extends State<ManagersChoicePage> {
-
   @override
   Widget build(BuildContext context) {
     print(globals.mealOFTheDay.getImageStr);
@@ -30,9 +29,9 @@ class _ManagersChoicePageState extends State<ManagersChoicePage> {
               child: Container(
                 height: 400,
                 width: 800,
-                color: Colors.grey,
+                color: kOffWhite,
                 child: Center(
-                  child: Image.network(globals.mealOFTheDay.getImageStr), //TODO
+                  child: Image.network(globals.mealOFTheDay.getImageStr),
                 ),
               ),
             ),
