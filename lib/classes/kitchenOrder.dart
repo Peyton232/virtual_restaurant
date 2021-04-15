@@ -34,9 +34,7 @@ class KitchenOrder extends Order with JsonConversion{
       orderNumber : json.containsKey("orderNumber") ? json["orderNumber"] : -1,
       isReady : json.containsKey("isReady"),
       orderContents : json.containsKey("contents") ? json["contents"] : -1
-
     );
-
   }
 
   @override

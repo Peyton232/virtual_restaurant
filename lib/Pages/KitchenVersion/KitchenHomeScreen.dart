@@ -57,7 +57,6 @@ class _KitchenHomeScreenState extends State<KitchenHomeScreen> {
       {List order, int index, bool checkbox, Color colorChanger}) {
     return Container(
       color: Colors.white54,
-      height: 150,
       child: Container(
         color: Colors.green,
         margin: EdgeInsets.all(10.0),
@@ -67,46 +66,72 @@ class _KitchenHomeScreenState extends State<KitchenHomeScreen> {
           children: [
             Dismissible(
               key: UniqueKey(),
-              child: Card(
-                elevation: 3,
-                child: Text(
-                  globals.itemsToOrder[index].table.toString(),
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Theme.of(context).primaryColor,
-                    fontWeight: FontWeight.w600,
+              background: Card(
+                color: Colors.green,
+                child: Padding(
+                  padding: const EdgeInsets.only(right: 15),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Icon(Icons.check_box_rounded),
+                    ],
                   ),
                 ),
               ),
-            ),
-            Expanded(
-              child: Container(
-                color: Colors.grey[200],
-                child: ListView.builder(
-                    shrinkWrap: true,
-                    itemCount: globals.itemsToOrder[index].items.values
-                        .toList()
-                        .first
-                        .length,
-                    itemBuilder: (BuildContext context, int i) {
-                      return Dismissible(
-                        key: UniqueKey(),
-                        child: Container(
-                          color: Colors.white54,
-                          child: Text(
-                            globals.itemsToOrder[index].items.values
-                                .toList()
-                                .first[i]['name']
-                                .toString(),
-                            style: TextStyle(
-                              fontSize: 20,
-                              color: colorChanger,
-                              fontWeight: FontWeight.w600,
+              child: Column(
+                children: [
+                  Card(
+                    elevation: 3,
+                    child: Text(
+                      globals.itemsToOrder[index].table.toString(),
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Theme.of(context).primaryColor,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ),
+                  Container(
+                    color: Colors.grey[200],
+                    child: ListView.builder(
+                        shrinkWrap: true,
+                        itemCount: globals.itemsToOrder[index].items.values
+                            .toList()
+                            .first
+                            .length,
+                        itemBuilder: (BuildContext context, int i) {
+                          return Dismissible(
+                            key: UniqueKey(),
+                            background: Card(
+                              color: Colors.red,
+                              child: Padding(
+                                padding: const EdgeInsets.only(right: 15),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [
+                                    Icon(Icons.delete),
+                                  ],
+                                ),
+                              ),
                             ),
-                          ),
-                        ),
-                      );
-                    }),
+                            child: Container(
+                              color: Colors.white54,
+                              child: Text(
+                                globals.itemsToOrder[index].items.values
+                                    .toList()
+                                    .first[i]['name']
+                                    .toString(),
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  color: colorChanger,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                            ),
+                          );
+                        }),
+                  ),
+                ],
               ),
             ),
           ],
