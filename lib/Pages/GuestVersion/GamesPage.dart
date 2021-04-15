@@ -3,6 +3,10 @@ import 'package:virtual_restaurant/Pages/GuestVersion/games/ticTacToe.dart';
 import 'package:virtual_restaurant/Pages/GuestVersion/games/snake.dart';
 import 'package:virtual_restaurant/Data/constants.dart';
 
+/*
+This file is used to display all the games available in the program
+ */
+
 class GamesPage extends StatefulWidget {
   @override
   _GamesPageState createState() => _GamesPageState();
@@ -45,7 +49,7 @@ class _GamesPageState extends State<GamesPage> {
                       flex: 3,
                       child: Container(
                         decoration: BoxDecoration(
-                          color: Colors.grey,
+                          color: Colors.white,
                           borderRadius: BorderRadius.only(
                             topRight: Radius.circular(8),
                             topLeft: Radius.circular(8),
@@ -53,7 +57,7 @@ class _GamesPageState extends State<GamesPage> {
                         ),
                         height: 250,
                         child: Center(
-                            child: Image.asset('images/ticcytaccy.png'),
+                          child: Image.asset('images/ticcytaccy.png'),
                         ),
                       ),
                     ),
@@ -82,24 +86,25 @@ class _GamesPageState extends State<GamesPage> {
                       flex: 1,
                       child: Center(
                         child: Container(
-                            child: ElevatedButton(
-                                style: ElevatedButton.styleFrom(
-                                  primary: Colors.green,
-                                  minimumSize: Size(180, 60),
-                                ),
-                                onPressed: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => ticTacToe()),
-                                  );
-                                },
-                                child: Text(
-                                  "Play",
-                                  style: TextStyle(
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.bold),
-                                ))),
+                          child: ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              primary: Colors.green,
+                              minimumSize: Size(180, 60),
+                            ),
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => ticTacToe()),
+                              );
+                            },
+                            child: Text(
+                              "Play",
+                              style: TextStyle(
+                                  fontSize: 20, fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                        ),
                       ),
                     ),
                   ],
@@ -135,7 +140,16 @@ class _GamesPageState extends State<GamesPage> {
                           ),
                         ),
                         height: 250,
-                        child: Image.asset('images/snaky.png'),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.only(
+                            topRight: Radius.circular(8),
+                            topLeft: Radius.circular(8),
+                          ),
+                          child: Image.asset(
+                            'images/snaky.png',
+                            fit: BoxFit.fitHeight,
+                          ),
+                        ),
                       ),
                     ),
                     Expanded(
@@ -209,90 +223,15 @@ class _GamesPageState extends State<GamesPage> {
                       flex: 3,
                       child: Container(
                         decoration: BoxDecoration(
-                          color: Colors.grey,
+                          color: Colors.white,
                           borderRadius: BorderRadius.only(
                             topRight: Radius.circular(8),
                             topLeft: Radius.circular(8),
                           ),
                         ),
                         height: 250,
-                        child: Center(child: Image.asset('images/MineSweeperImage.png'),),
-                      ),
-                    ),
-                          Expanded(
-                            flex: 1,
-                            child: Container(
-                              padding: EdgeInsets.all(12),
-                              child: Text("Mine Sweeper" ,style: TextStyle(fontWeight: FontWeight.bold, fontSize: 40),
-                              ),
-                            ),
-                           ),
-                          Expanded(
-                            flex: 1,
-                            child: Container(
-                              padding: EdgeInsets.all(12),
-                              child: Text("Click every square except the ones with a bomb!",
-                                style: TextStyle(fontSize: 20),
-                              ),
-                            ),
-                          ),
-                          Expanded(
-                            flex: 1,
-                            child: Center(
-                              child: Container(
-                                  child: ElevatedButton(
-                                      style: ElevatedButton.styleFrom(
-                                        primary: Colors.green,
-                                        minimumSize: Size(180,60),
-                                      ),
-                                      onPressed: (){
-                                        Navigator.pushNamed(context, "/MineSweeperPage");
-                                      }, child: Text("Play", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),))
-                              ),
-                            ),
-                          ),
-
-                        ],
-                      ),
-                    ),
-                    ),
-            Expanded(
-              child: Container(
-                margin: EdgeInsets.all(12),
-                decoration: BoxDecoration(
-                  color: kOffWhite,
-                  borderRadius: BorderRadius.circular(8.0),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey,
-                      blurRadius: 4.0,
-                      offset:
-                      Offset(2.0, 2.0), // shadow direction: bottom right
-                    ),
-                  ],
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Expanded(
-                      flex: 3,
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: Colors.grey,
-                          borderRadius: BorderRadius.only(
-                            topRight: Radius.circular(8),
-                            topLeft: Radius.circular(8),
-                          ),
-                        ),
-                        height: 250,
-                        child: Center(child: Image.asset('images/Connect4.png'),),
-                      ),
-                    ),
-                    Expanded(
-                      flex: 1,
-                      child: Container(
-                        padding: EdgeInsets.all(12),
-                        child: Text("Connect 4" ,style: TextStyle(fontWeight: FontWeight.bold, fontSize: 40),
+                        child: Center(
+                          child: Image.asset('images/MineSweeperImage.png'),
                         ),
                       ),
                     ),
@@ -300,7 +239,19 @@ class _GamesPageState extends State<GamesPage> {
                       flex: 1,
                       child: Container(
                         padding: EdgeInsets.all(12),
-                        child: Text("Connect 4 of your color, while keeping your opponents from connecting 4!",
+                        child: Text(
+                          "Mine Sweeper",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 35),
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      flex: 1,
+                      child: Container(
+                        padding: EdgeInsets.all(12),
+                        child: Text(
+                          "Click every square except the ones with a bomb!",
                           style: TextStyle(fontSize: 20),
                         ),
                       ),
@@ -312,22 +263,112 @@ class _GamesPageState extends State<GamesPage> {
                             child: ElevatedButton(
                                 style: ElevatedButton.styleFrom(
                                   primary: Colors.green,
-                                  minimumSize: Size(180,60),
+                                  minimumSize: Size(180, 60),
                                 ),
-                                onPressed: (){
-                                  Navigator.pushNamed(context, "/ConnectFour");
-                                }, child: Text("Play", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),))
-                        ),
+                                onPressed: () {
+                                  Navigator.pushNamed(
+                                      context, "/MineSweeperPage");
+                                },
+                                child: Text(
+                                  "Play",
+                                  style: TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold),
+                                ))),
                       ),
                     ),
-
                   ],
                 ),
               ),
             ),
+            Expanded(
+              child: Container(
+                margin: EdgeInsets.all(12),
+                decoration: BoxDecoration(
+                  color: kOffWhite,
+                  borderRadius: BorderRadius.circular(8.0),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey,
+                      blurRadius: 4.0,
+                      offset:
+                          Offset(2.0, 2.0), // shadow direction: bottom right
+                    ),
+                  ],
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Expanded(
+                      flex: 3,
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.only(
+                            topRight: Radius.circular(8),
+                            topLeft: Radius.circular(8),
+                          ),
+                        ),
+                        height: 250,
+                        child: Center(
+                          child: ClipRRect(
+                            child: Image.asset(
+                              'images/Connect4.png',
+                              fit: BoxFit.fill,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      flex: 1,
+                      child: Container(
+                        padding: EdgeInsets.all(12),
+                        child: Text(
+                          "Connect 4",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 40),
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      flex: 1,
+                      child: Container(
+                        padding: EdgeInsets.only(left: 12, right: 12),
+                        child: Text(
+                          "Connect 4 of your color, while keeping your opponents from connecting 4!",
+                          style: TextStyle(fontSize: 20),
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      flex: 1,
+                      child: Center(
+                        child: Container(
+                          child: ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              primary: Colors.green,
+                              minimumSize: Size(180, 60),
+                            ),
+                            onPressed: () {
+                              Navigator.pushNamed(context, "/ConnectFour");
+                            },
+                            child: Text(
+                              "Play",
+                              style: TextStyle(
+                                  fontSize: 20, fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
                   ],
                 ),
               ),
-            );
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }

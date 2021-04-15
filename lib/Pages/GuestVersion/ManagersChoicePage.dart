@@ -3,6 +3,10 @@ import 'package:virtual_restaurant/Data/constants.dart';
 import 'package:virtual_restaurant/classes/menuItem.dart';
 import 'package:virtual_restaurant/Data/globals.dart' as globals;
 
+/*
+This file displays the manager's choice of menu item. THe customer can order this if they are interested
+ */
+
 class ManagersChoicePage extends StatefulWidget {
   @override
   _ManagersChoicePageState createState() => _ManagersChoicePageState();
@@ -11,6 +15,7 @@ class ManagersChoicePage extends StatefulWidget {
 class _ManagersChoicePageState extends State<ManagersChoicePage> {
   @override
   Widget build(BuildContext context) {
+    print(globals.mealOFTheDay.getImageStr);
     return Scaffold(
       appBar: AppBar(
         title: Text("Manager's Choice"),
@@ -24,9 +29,9 @@ class _ManagersChoicePageState extends State<ManagersChoicePage> {
               child: Container(
                 height: 400,
                 width: 800,
-                color: Colors.grey,
+                color: kOffWhite,
                 child: Center(
-                  child: Text("Manager's Choice Image"), //TODO
+                  child: Image.network(globals.mealOFTheDay.getImageStr),
                 ),
               ),
             ),

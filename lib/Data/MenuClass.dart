@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class Menu {
   bool available;//button to add item to menu should change based on this boolean's value
-  Image image;
+  String image;
   String name;
   double price;
   int calories;

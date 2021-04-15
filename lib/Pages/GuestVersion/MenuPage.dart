@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:virtual_restaurant/Data/constants.dart';
 import 'package:virtual_restaurant/CustomWidgets/CustomButton.dart';
 import 'package:virtual_restaurant/Pages/GuestVersion/MenuSubpageTemplate.dart';
 import 'package:virtual_restaurant/Data/globals.dart' as globals;
+
+/*
+This file is used to display the different menu categories
+ */
 
 class MenuScreen extends StatefulWidget {
   @override
@@ -13,7 +16,6 @@ class _MenuScreenState extends State<MenuScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //TODO: Add "View Order" Button
       appBar: AppBar(
         title: Text("Menu"),
       ),

@@ -4,7 +4,12 @@ import 'package:virtual_restaurant/Data/globals.dart' as globals;
 import 'package:virtual_restaurant/Database/database.dart';
 import 'package:virtual_restaurant/CustomWidgets/CustomButton.dart';
 
-class ManagerHomeScreen extends StatelessWidget {
+class ManagerHomeScreen extends StatefulWidget {
+  @override
+  _ManagerHomeScreenState createState() => _ManagerHomeScreenState();
+}
+
+class _ManagerHomeScreenState extends State<ManagerHomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,13 +26,17 @@ class ManagerHomeScreen extends StatelessWidget {
           actions: [
             /// Waitlist add and subtract                   //TODO: Fix add and sub
             IconButton(icon: Icon(Icons.add), onPressed: (){
-              addTable();
+              setState(() {
+                addTable();
+              });
             }),
             Center(child:
             Text("${globals.waitList}", style: TextStyle(fontSize: 20),),
             ),
             IconButton(icon: Icon(Icons.remove), onPressed: (){
-              subTable();
+              setState(() {
+                subTable();
+              });
             }),
             SizedBox(width: 20,),
           ],
@@ -82,6 +91,13 @@ class ManagerHomeScreen extends StatelessWidget {
                   label: "Pick Table for Tablet",
                   buttonTapped: () {
                     Navigator.pushNamed(context, "/PickTablePage");
+                  },
+                ),
+                CustomButton(
+                  icon: Icons.timer,
+                  label: "Set Opening and Closing Time",
+                  buttonTapped: () {
+                    Navigator.pushNamed(context, "/ChangeOpeningClosingTime");
                   },
                 ),
               ],

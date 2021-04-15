@@ -5,6 +5,10 @@ import 'package:virtual_restaurant/CustomWidgets/MenuItem.dart';
 import 'package:virtual_restaurant/Database/database.dart';
 import 'package:virtual_restaurant/Data/globals.dart' as globals;
 
+/*
+This file is used to get the payment from the user either by cash or card
+ */
+
 class CheckoutPage extends StatefulWidget {
   @override
   _CheckoutPageState createState() => _CheckoutPageState();
@@ -14,10 +18,10 @@ class _CheckoutPageState extends State<CheckoutPage> {
   bool cardSelected = false;
 
   //Fake Card information
-  bool cardNameFilled = false;
-  bool cardNumberFilled = false;
-  bool cardExpFilled = false;
-  bool cardSecurityFilled = false;
+  // bool cardNameFilled = false;
+  // bool cardNumberFilled = false;
+  // bool cardExpFilled = false;
+  // bool cardSecurityFilled = false;
 
   //Text Field stuff
   TextEditingController _nameController;
@@ -29,9 +33,16 @@ class _CheckoutPageState extends State<CheckoutPage> {
   void initState() {
     super.initState();
     _nameController = TextEditingController();
+    _nameController.text = "Greg Smith";
+
     _numberController = TextEditingController();
+    _numberController.text = "1111222233334444";
+
     _expirationController = TextEditingController();
+    _expirationController.text = "02/26";
+
     _securityController = TextEditingController();
+    _securityController.text = "123";
   }
 
   @override
@@ -182,11 +193,11 @@ class _CheckoutPageState extends State<CheckoutPage> {
               height: 10.0,
             ),
             TextField(
-              onChanged: (String value) {
-                if (value != "") {
-                  cardNameFilled = true;
-                }
-              },
+              // onChanged: (String value) {
+              //   if (value.isNotEmpty) {
+              //     cardNameFilled = true;
+              //   }
+              // },
               inputFormatters: [
                 // ignore: deprecated_member_use
                 new WhitelistingTextInputFormatter(RegExp("[\ a-zA-Z]")),
@@ -222,11 +233,11 @@ class _CheckoutPageState extends State<CheckoutPage> {
                 new WhitelistingTextInputFormatter(RegExp("[0-9]")),
                 new LengthLimitingTextInputFormatter(16),
               ],
-              onChanged: (String value) {
-                if (value != "") {
-                  cardNumberFilled = true;
-                }
-              },
+              // onChanged: (String value) {
+              //   if (value.isNotEmpty) {
+              //     cardNumberFilled = true;
+              //   }
+              // },
               controller: _numberController,
               decoration: InputDecoration(
                 border: OutlineInputBorder(
@@ -257,11 +268,11 @@ class _CheckoutPageState extends State<CheckoutPage> {
                 Container(
                   width: 100,
                   child: TextField(
-                    onChanged: (String value) {
-                      if (value != "") {
-                        cardExpFilled = true;
-                      }
-                    },
+                    // onChanged: (String value) {
+                    //   if (value.isNotEmpty) {
+                    //     cardExpFilled = true;
+                    //   }
+                    // },
                     inputFormatters: [
                       // ignore: deprecated_member_use
                       new WhitelistingTextInputFormatter(RegExp("[\/0-9]")),
@@ -296,11 +307,11 @@ class _CheckoutPageState extends State<CheckoutPage> {
                 Container(
                   width: 120,
                   child: TextField(
-                    onChanged: (String value) {
-                      if (value != "") {
-                        cardSecurityFilled = true;
-                      }
-                    },
+                    // onChanged: (String value) {
+                    //   if (value.isNotEmpty) {
+                    //     cardSecurityFilled = true;
+                    //   }
+                    // },
                     inputFormatters: [
                       // ignore: deprecated_member_use
                       new WhitelistingTextInputFormatter(RegExp("[0-9]")),
@@ -338,41 +349,11 @@ class _CheckoutPageState extends State<CheckoutPage> {
           primary: kGreen,
         ),
         onPressed: () {
-          if (cardNameFilled &&
-              cardExpFilled &&
-              cardNumberFilled &&
-              cardSecurityFilled) {
-            //TODO send info for data collection
-            sendReports();
-            setState(() {
-              globals.order.clear();
-            });
-            Navigator.pushNamed(context, "/GoodbyePage");
-          } else {
-            return showDialog(
-              context: context,
-              builder: (context) {
-                return AlertDialog(
-                  title: Text("Some fields are empty"),
-                  actions: <Widget>[
-                    MaterialButton(
-                      elevation: 5.0,
-                      child: Text(
-                        'OK',
-                        style: TextStyle(
-                          fontSize: 18.0,
-                          color: kSemiDarkGreen,
-                        ),
-                      ),
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                    ),
-                  ],
-                );
-              },
-            );
-          }
+          sendReports();
+          setState(() {
+            globals.order.clear();
+          });
+          Navigator.pushNamed(context, "/GoodbyePage");
         },
         child: Container(
           height: 60.0,

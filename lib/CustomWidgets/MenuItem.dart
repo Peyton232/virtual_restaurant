@@ -5,7 +5,7 @@ import 'package:virtual_restaurant/Data/globals.dart' as globals;
 
 //This MenuItem is the Widget that is displayed to the UI
 class MenuItemUI extends StatelessWidget {
-  final Image image;
+  final String image;
   final String name;
   final String price;
   final int calories;
@@ -25,6 +25,13 @@ class MenuItemUI extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool imageFound = true;
+    if (image != null) {
+    } else {
+      imageFound = false;
+    }
+
+    print("${image}");
     return Container(
       decoration: BoxDecoration(
         border: Border(
@@ -40,10 +47,8 @@ class MenuItemUI extends StatelessWidget {
             child: Container(
               margin: EdgeInsets.only(right: 10.0),
               width: 250,
-              color: Colors.grey,
-              child: Center(
-                child: Text("Image"), //TODO: Replace text with image
-              ),
+              color: kOffWhite,
+              child: Image.network(image),
             ),
           ),
           Expanded(
@@ -86,6 +91,7 @@ class MenuItemUI extends StatelessWidget {
                 padding: EdgeInsets.only(right: 15.0),
                 child: ElevatedButton(
                   onPressed: () {
+                    print(image);
                     if (available == true) {
                       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                         duration: Duration(seconds: 1),

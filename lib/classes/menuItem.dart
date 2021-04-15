@@ -13,12 +13,14 @@ class MenuItem extends Item with JsonConversion {
   String price; //float price
   bool finished;
   String specialInstructs;
+  String image;
 
 
 
   // AssetImage image;
 
   MenuItem({
+    this.image,
     this.category,
     this.name,
     this.allergens,
@@ -37,6 +39,8 @@ class MenuItem extends Item with JsonConversion {
 
   @override
   String get getItemName => this.name;
+
+  String get getImageStr => this.image;
 
   @override
   FoodCategory get getItemCategory => this.category;

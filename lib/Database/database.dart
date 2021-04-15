@@ -37,6 +37,7 @@ Map<String, dynamic> toJsonMenu(MenuItem item) {
   return {
     'name': item.name,
     'description': item.description,
+    'image': item.getImageStr,
     'price': item.price,
     'allergens': item.allergens,
     'finished': item.finished,
@@ -72,6 +73,15 @@ void getMealOfDay() async {
           .child("mealOfDay/price")
           .once())
       .value;
+  globals.mealOFTheDay.image = (await FirebaseDatabase.instance
+      .reference()
+      .child("mealOfDay/image")
+      .once())
+      .value;
+  print((await FirebaseDatabase.instance
+      .reference()
+      .child("mealOfDay/image")
+      .once()));
   globals.mealOFTheDay.price = result;
   result = (await FirebaseDatabase.instance
           .reference()
@@ -91,6 +101,7 @@ void getMealOfDay() async {
           .once())
       .value;
   globals.mealOFTheDay.allergens = allergies;
+
 }
 
 /*
@@ -172,6 +183,7 @@ Future<List<MenuItem>> getMenuSection(String sectionName) async {
     //snapshot.value
     (Map<dynamic, dynamic>.from(snapshot.value)).forEach((key, values) {
       Map<dynamic, dynamic> json = values;
+      print(json["image"]);
       //TODO: Clean up this mess. This was originally supposed to work with the fromJson function, however I haven't tried (new MenuItem()).fromJson(json);
       menuList.add(MenuItem(
           category: toFoodCategoryFromString(sectionName),
@@ -179,6 +191,7 @@ Future<List<MenuItem>> getMenuSection(String sectionName) async {
           allergens: List<String>.from(json["allergens"]),
           available: json["available"],
           calories: json["calories"],
+          image: json["image"],
           contents: json["contents"],
           description: json["description"],
           price: json["price"].toString()));
@@ -230,17 +243,25 @@ void requestRefill() {
       'Request': "Drink Refills Needed",
     };
   }
+
   id.push().set(request(globals.tableID));
 }
 
 Map<String, dynamic> orderItemToJson(MenuItem order) {
+
+  String spec = order.specialInstructs;
+  // cat = cat.substring(cat.indexOf('.') + 1, cat.length);
+  // cat += 's';
+  spec = spec.substring(0, spec.indexOf('.')) + ":  "  + spec.substring(spec.indexOf('.') + 1, spec.length);
+
+
   return {
     'name': order.name,
     'price': order.price,
     'category': order.category,
     'available': order.available,
     'finished': order.finished,
-    'modification from order': order.specialInstructs,
+    'modification from order': spec,
   };
 }
 
@@ -406,7 +427,8 @@ Map<String, dynamic> toJsonReports(int itemsSold, int comped, double tips, doubl
 
 //add an available table to waitlist
 Future<int> addTable() async {
-  int result = (await FirebaseDatabase.instance.reference().child("waitlist").once()).value;
+  var temp = (await FirebaseDatabase.instance.reference().child("waitlist").once()).value;
+  int result = temp["tables available"];
   result++;
 
   globals.waitList = result;
@@ -417,7 +439,8 @@ Future<int> addTable() async {
 
 //remove an available table to waitlist
 Future<int> subTable() async {
-  int result = (await FirebaseDatabase.instance.reference().child("waitlist").once()).value;
+  var temp = (await FirebaseDatabase.instance.reference().child("waitlist").once()).value;
+  int result = temp["tables available"];
   result--;
 
   globals.waitList = result;
@@ -438,6 +461,22 @@ void changeAvailability(String itemName, bool available, String cat){
   var id = databaseReference.child('menu/$cat/$itemName');
   id.child("available").set(available);
 
+}
+
+addItem(itemCat, itemAllergens, itemName, itemDescription, itemPrice, itemCal){
+  var id = databaseReference.child('menu/${itemCat}/${itemName}');
+
+  Map<String, dynamic> newItem = {
+    'allergens': itemAllergens,
+    'available': true,
+    'calories': itemCal,
+    'description': itemDescription,
+    'image': "here is where I would put an image",
+    'price': itemPrice
+  };
+
+  id.set(newItem);
+  return id;
 }
 
 // var id = databaseReference.child('waiterOrders/${globals.tableID}/');

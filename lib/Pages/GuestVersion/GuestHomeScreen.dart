@@ -7,6 +7,11 @@ import 'package:virtual_restaurant/Pages/GuestVersion/MyOrderPage.dart';
 import 'package:virtual_restaurant/Database/database.dart';
 import 'package:virtual_restaurant/Data/globals.dart' as globals;
 
+/*
+This file is used to display the home screen for the guest. It displays major options such as manager's choice,
+menu, call waiter, free dessert, games, requests drink refill, order details, and more.
+ */
+
 class GuestHomeScreen extends StatefulWidget {
   @override
   _GuestHomeScreenState createState() => _GuestHomeScreenState();

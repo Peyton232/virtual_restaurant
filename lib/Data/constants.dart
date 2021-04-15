@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+/*
+This file is used to store many customizations for the UI and for database.dart
+ */
+
 //Colors used throughout the application
 const kDarkGreen = Color(0xff054a29);
 const kSemiDarkGreen = Color(0xff137547);
@@ -25,7 +29,6 @@ const kOrderHeaderTextStyle =
     TextStyle(fontSize: 30.0, fontWeight: FontWeight.bold);
 
 //The different categories that food menu items belong to
-
 enum FoodCategory { Appetizer, Dessert, Drink, Entree, KidsMeal, Side }
 
 String toStringFoodCategory(FoodCategory cat) {
