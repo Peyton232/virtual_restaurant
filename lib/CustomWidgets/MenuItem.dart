@@ -26,13 +26,10 @@ class MenuItemUI extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     bool imageFound = true;
-    if(image != null)
-      {
-
-      }else
-        {
-          imageFound = false;
-        }
+    if (image != null) {
+    } else {
+      imageFound = false;
+    }
 
     print("${image}");
     return Container(
@@ -50,7 +47,7 @@ class MenuItemUI extends StatelessWidget {
             child: Container(
               margin: EdgeInsets.only(right: 10.0),
               width: 250,
-              color: Colors.grey,
+              color: kOffWhite,
               child: Image.network(image),
             ),
           ),
