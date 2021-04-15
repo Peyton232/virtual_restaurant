@@ -49,7 +49,7 @@ class _GamesPageState extends State<GamesPage> {
                       flex: 3,
                       child: Container(
                         decoration: BoxDecoration(
-                          color: Colors.grey,
+                          color: Colors.white,
                           borderRadius: BorderRadius.only(
                             topRight: Radius.circular(8),
                             topLeft: Radius.circular(8),
@@ -86,24 +86,25 @@ class _GamesPageState extends State<GamesPage> {
                       flex: 1,
                       child: Center(
                         child: Container(
-                            child: ElevatedButton(
-                                style: ElevatedButton.styleFrom(
-                                  primary: Colors.green,
-                                  minimumSize: Size(180, 60),
-                                ),
-                                onPressed: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => ticTacToe()),
-                                  );
-                                },
-                                child: Text(
-                                  "Play",
-                                  style: TextStyle(
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.bold),
-                                ))),
+                          child: ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              primary: Colors.green,
+                              minimumSize: Size(180, 60),
+                            ),
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => ticTacToe()),
+                              );
+                            },
+                            child: Text(
+                              "Play",
+                              style: TextStyle(
+                                  fontSize: 20, fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                        ),
                       ),
                     ),
                   ],
@@ -139,7 +140,16 @@ class _GamesPageState extends State<GamesPage> {
                           ),
                         ),
                         height: 250,
-                        child: Image.asset('images/snaky.png'),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.only(
+                            topRight: Radius.circular(8),
+                            topLeft: Radius.circular(8),
+                          ),
+                          child: Image.asset(
+                            'images/snaky.png',
+                            fit: BoxFit.fitHeight,
+                          ),
+                        ),
                       ),
                     ),
                     Expanded(
@@ -213,7 +223,7 @@ class _GamesPageState extends State<GamesPage> {
                       flex: 3,
                       child: Container(
                         decoration: BoxDecoration(
-                          color: Colors.grey,
+                          color: Colors.white,
                           borderRadius: BorderRadius.only(
                             topRight: Radius.circular(8),
                             topLeft: Radius.circular(8),
@@ -232,7 +242,7 @@ class _GamesPageState extends State<GamesPage> {
                         child: Text(
                           "Mine Sweeper",
                           style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 40),
+                              fontWeight: FontWeight.bold, fontSize: 35),
                         ),
                       ),
                     ),
@@ -293,7 +303,7 @@ class _GamesPageState extends State<GamesPage> {
                       flex: 3,
                       child: Container(
                         decoration: BoxDecoration(
-                          color: Colors.grey,
+                          color: Colors.white,
                           borderRadius: BorderRadius.only(
                             topRight: Radius.circular(8),
                             topLeft: Radius.circular(8),
@@ -301,7 +311,12 @@ class _GamesPageState extends State<GamesPage> {
                         ),
                         height: 250,
                         child: Center(
-                          child: Image.asset('images/Connect4.png'),
+                          child: ClipRRect(
+                            child: Image.asset(
+                              'images/Connect4.png',
+                              fit: BoxFit.fill,
+                            ),
+                          ),
                         ),
                       ),
                     ),
@@ -319,7 +334,7 @@ class _GamesPageState extends State<GamesPage> {
                     Expanded(
                       flex: 1,
                       child: Container(
-                        padding: EdgeInsets.all(12),
+                        padding: EdgeInsets.only(left: 12, right: 12),
                         child: Text(
                           "Connect 4 of your color, while keeping your opponents from connecting 4!",
                           style: TextStyle(fontSize: 20),
@@ -330,20 +345,21 @@ class _GamesPageState extends State<GamesPage> {
                       flex: 1,
                       child: Center(
                         child: Container(
-                            child: ElevatedButton(
-                                style: ElevatedButton.styleFrom(
-                                  primary: Colors.green,
-                                  minimumSize: Size(180, 60),
-                                ),
-                                onPressed: () {
-                                  Navigator.pushNamed(context, "/ConnectFour");
-                                },
-                                child: Text(
-                                  "Play",
-                                  style: TextStyle(
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.bold),
-                                ))),
+                          child: ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              primary: Colors.green,
+                              minimumSize: Size(180, 60),
+                            ),
+                            onPressed: () {
+                              Navigator.pushNamed(context, "/ConnectFour");
+                            },
+                            child: Text(
+                              "Play",
+                              style: TextStyle(
+                                  fontSize: 20, fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                        ),
                       ),
                     ),
                   ],
