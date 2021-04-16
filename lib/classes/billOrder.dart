@@ -29,8 +29,6 @@ class BillOrder extends Order with JsonConversion{
   }
 
 
-
-
   @override
   int get getOrderNumber => this.orderNumber;
   @override

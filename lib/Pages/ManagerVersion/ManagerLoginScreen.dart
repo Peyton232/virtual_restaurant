@@ -96,9 +96,13 @@ class ManagerLoginScreen extends StatelessWidget {
               onPressed: () {
                 print(["username = ", username]);
                 print(["password = ", password]);
-                getReportsInfo();
-                getItemsSoldInfo();
-                Navigator.pushReplacementNamed(context, "/ManagerHomeScreen");
+                if(username == "admin" && password == "admin")
+                  {
+                    getReportsInfo();
+                    getItemsSoldInfo();
+                    Navigator.pushReplacementNamed(context, "/ManagerHomeScreen");
+                  }
+
               },
               child: Text(
                 "Login",

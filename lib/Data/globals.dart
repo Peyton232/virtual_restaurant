@@ -18,7 +18,7 @@ int waitList = 0;
 bool kidsMode = false;
 String kidsModePassword = '';
 String modification = '';
-String tableID = 'T3'; //To be set by manager
+String tableID = 'T15'; //To be set by manager
 
 CustomerTable thisDevicesTable = CustomerTable(tableNum: 1);
 List<MenuItem> order = []; //order, initially empty
@@ -45,6 +45,7 @@ var totalSold;
 var itemsComped;
 var tipsGained;
 var totalRevenue;
+var orderFinished;
 
 //waiter variables
 //move this class later
@@ -55,6 +56,7 @@ class orderItems {
   orderItems({
     this.table,
     this.items,
+
   });
 }
 

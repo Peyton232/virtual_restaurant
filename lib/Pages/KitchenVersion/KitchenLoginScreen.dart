@@ -101,8 +101,13 @@ class KitchenLoginScreen extends StatelessWidget {
               onPressed: () {
                 print(["username = ", username]);
                 print(["password = ", password]);
-                getWaiterInfo(); // grabbing data from database for orders
-                Navigator.pushReplacementNamed(context, "/KitchenHomeScreen");
+
+                if(username == "admin" && password == "admin")
+                  {
+                    getWaiterInfo(); // grabbing data from database for orders
+                    Navigator.pushReplacementNamed(context, "/KitchenHomeScreen");
+                  }
+
               },
               child: Text(
                 "Login",

@@ -105,10 +105,14 @@ class _WaiterLoginScreenState extends State<WaiterLoginScreen> {
                   print(["username = ", username]);
                   print(["password = ", password]);
 
-                  //call get orders to initialize
-                  getWaiterInfo();
+                  if(username == "admin" && password == "admin")
+                    {
+                      //call get orders to initialize
+                      getWaiterInfo();
 
-                  Navigator.pushNamed(context, "/WaiterHomeScreen");
+                      Navigator.pushNamed(context, "/WaiterHomeScreen");
+                    }
+
                 },
                 child: Text(
                   "Login",
