@@ -9,9 +9,30 @@ This is where the manager can input their credentials to access
 ManagerHomeScreen.dart
  */
 
-class KitchenLoginScreen extends StatelessWidget {
-  String password = "";
-  String username = "";
+class KitchenLoginScreen extends StatefulWidget {
+  @override
+  _KitchenLoginScreenState createState() => _KitchenLoginScreenState();
+}
+
+class _KitchenLoginScreenState extends State<KitchenLoginScreen> {
+  TextEditingController _usernameController;
+
+  TextEditingController _passwordController;
+
+  void initState(){
+    _usernameController = TextEditingController();
+    _usernameController.text = "admin";
+
+    _passwordController = TextEditingController();
+    _passwordController.text = "admin";
+  }
+
+  @override
+  void dispose(){
+    _usernameController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -51,13 +72,12 @@ class KitchenLoginScreen extends StatelessWidget {
                     padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
                   ),
                   TextField(
+                    controller: _usernameController,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(),
                       hintText: 'Enter Your Name',
                     ),
-                    onChanged: (text) {
-                      username = text;
-                    },
+
                   ),
                 ],
               ),
@@ -78,14 +98,13 @@ class KitchenLoginScreen extends StatelessWidget {
                     padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
                   ),
                   TextField(
+                    controller: _passwordController,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(),
                       hintText: 'Enter Your Password',
                     ),
                     obscureText: true,
-                    onChanged: (text) {
-                      password = text;
-                    },
+
                   ),
                 ],
               ),
@@ -99,10 +118,12 @@ class KitchenLoginScreen extends StatelessWidget {
                 minimumSize: Size(150, 50),
               ),
               onPressed: () {
-                print(["username = ", username]);
-                print(["password = ", password]);
-                getWaiterInfo(); // grabbing data from database for orders
-                Navigator.pushReplacementNamed(context, "/KitchenHomeScreen");
+                if(_usernameController.text == "admin" && _passwordController.text == "admin")
+                  {
+                    getWaiterInfo(); // grabbing data from database for orders
+                    Navigator.pushReplacementNamed(context, "/KitchenHomeScreen");
+                  }
+
               },
               child: Text(
                 "Login",

@@ -29,13 +29,11 @@ class _CustomerRequestsState extends State<CustomerRequests> {
   @override
   void initState() {
     super.initState();
-    _ref = FirebaseDatabase.instance.reference()
-        .child('waiterOrders');
+    _ref = FirebaseDatabase.instance.reference().child('waiterOrders');
   }
 
-  Widget _buildOrderItem({Map order}){
+  Widget _buildOrderItem({Map order}) {
     return Dismissible(
-
       background: Card(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(16),
@@ -43,54 +41,57 @@ class _CustomerRequestsState extends State<CustomerRequests> {
         color: Colors.red,
       ),
       key: UniqueKey(),
-      child:  Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.start,
-
-        children: [
-          Row(
-            children: [
-              Icon(
-                Icons.timer_outlined,
-                color: Colors.red,
-                size: 20,
-              ),
-              SizedBox(width: 10,),
-              Text(
-                "Table Number : ",
-                style: TextStyle(
-                    fontSize: 20,
-                    color: Theme.of(context).primaryColor,
-                    fontWeight: FontWeight.w600
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 30.0, vertical: 10),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              children: [
+                Icon(
+                  Icons.timer_outlined,
+                  color: Colors.red,
+                  size: 20,
                 ),
-              ),
-              Text(
-                order['Table'].toString(),
-                style:
-                TextStyle(
-                    fontSize: 20,
-                    color: Theme.of(context).primaryColor,
-                    fontWeight: FontWeight.w600
+                SizedBox(
+                  width: 10,
                 ),
-              ),
-            ],
-          ),
-          SizedBox(height: 10,),
-          Row(
-            children: [
-              SizedBox(width: 30,),
-              Text(
-                order['Request'].toString(),
-                style:
-                TextStyle(
-                    fontSize: 16,
-                    color: Theme.of(context).primaryColor,
-                    fontWeight: FontWeight.w600
+                Text(
+                  "Table Number : ",
+                  style: TextStyle(
+                      fontSize: 20,
+                      color: Theme.of(context).primaryColor,
+                      fontWeight: FontWeight.w600),
                 ),
-              ),
-            ],
-          ),
-        ],
+                Text(
+                  order['Table'].toString(),
+                  style: TextStyle(
+                      fontSize: 20,
+                      color: Theme.of(context).primaryColor,
+                      fontWeight: FontWeight.w600),
+                ),
+              ],
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Row(
+              children: [
+                SizedBox(
+                  width: 30,
+                ),
+                Text(
+                  order['Request'].toString(),
+                  style: TextStyle(
+                      fontSize: 16,
+                      color: Theme.of(context).primaryColor,
+                      fontWeight: FontWeight.w600),
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -98,19 +99,19 @@ class _CustomerRequestsState extends State<CustomerRequests> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Customer Requests"),
-      ),
+        appBar: AppBar(
+          title: Text("Customer Requests"),
+        ),
         body: Container(
           height: double.infinity,
           child: FirebaseAnimatedList(
             query: _ref,
-            itemBuilder:(BuildContext context, DataSnapshot snapshot, Animation<double> animation, int index){
+            itemBuilder: (BuildContext context, DataSnapshot snapshot,
+                Animation<double> animation, int index) {
               Map order = snapshot.value;
               return _buildOrderItem(order: order);
             },
           ),
-        )
-    );
+        ));
   }
 }

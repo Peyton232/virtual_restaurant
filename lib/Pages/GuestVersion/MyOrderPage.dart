@@ -408,7 +408,6 @@ class _MyOrderPageState extends State<MyOrderPage> {
                               }
                             }
                             globals.modification = _commentsController.text;
-                            //TODO
                             globals.modification += isSelected.toString();
                             //print(globals.modification);
                             //apply modification to order
@@ -416,6 +415,32 @@ class _MyOrderPageState extends State<MyOrderPage> {
                             sendData();
                             //send to database cause why not
                             //sendData(globals.order);
+
+                            showDialog(
+                              context: context,
+                              builder: (context) {
+                                return AlertDialog(
+                                  title: Text("Order has been placed!"),
+                                  content:
+                                      Text("Your food should be arriving soon"),
+                                  actions: <Widget>[
+                                    MaterialButton(
+                                      elevation: 5.0,
+                                      child: Text(
+                                        'OK',
+                                        style: TextStyle(
+                                          fontSize: 18.0,
+                                          color: kSemiDarkGreen,
+                                        ),
+                                      ),
+                                      onPressed: () {
+                                        Navigator.pop(context);
+                                      },
+                                    ),
+                                  ],
+                                );
+                              },
+                            );
                           },
                           child: Container(
                             height: 90.0,

@@ -4,9 +4,30 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:virtual_restaurant/Data/constants.dart';
 
-class ManagerLoginScreen extends StatelessWidget {
-  String password = "";
-  String username = "";
+class ManagerLoginScreen extends StatefulWidget {
+  @override
+  _ManagerLoginScreenState createState() => _ManagerLoginScreenState();
+}
+
+class _ManagerLoginScreenState extends State<ManagerLoginScreen> {
+  TextEditingController _usernameController;
+
+  TextEditingController _passwordController;
+
+  void initState(){
+    _usernameController = TextEditingController();
+    _usernameController.text = "admin";
+
+    _passwordController = TextEditingController();
+    _passwordController.text = "admin";
+  }
+
+  @override
+  void dispose(){
+    _usernameController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -50,9 +71,7 @@ class ManagerLoginScreen extends StatelessWidget {
                       border: OutlineInputBorder(),
                       hintText: 'Enter Your Name',
                     ),
-                    onChanged: (text) {
-                      username = text;
-                    },
+                    controller: _usernameController,
                   ),
                 ],
               ),
@@ -78,9 +97,7 @@ class ManagerLoginScreen extends StatelessWidget {
                       border: OutlineInputBorder(),
                       hintText: 'Enter Your Password',
                     ),
-                    onChanged: (text) {
-                      password = text;
-                    },
+                    controller: _passwordController,
                   ),
                 ],
               ),
@@ -94,11 +111,13 @@ class ManagerLoginScreen extends StatelessWidget {
                 minimumSize: Size(150, 50),
               ),
               onPressed: () {
-                print(["username = ", username]);
-                print(["password = ", password]);
-                getReportsInfo();
-                getItemsSoldInfo();
-                Navigator.pushReplacementNamed(context, "/ManagerHomeScreen");
+                if(_usernameController.text == "admin" && _passwordController.text == "admin")
+                  {
+                    getReportsInfo();
+                    getItemsSoldInfo();
+                    Navigator.pushReplacementNamed(context, "/ManagerHomeScreen");
+                  }
+
               },
               child: Text(
                 "Login",
