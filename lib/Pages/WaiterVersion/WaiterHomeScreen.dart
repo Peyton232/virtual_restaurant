@@ -88,7 +88,7 @@ class _WaiterHomeScreenState extends State<WaiterHomeScreen> {
             query: _ref,
             itemBuilder: (BuildContext context, DataSnapshot snapshot,
                 Animation<double> animation, int index) {
-              getFinishOrder(index);
+              //getFinishOrder(index);
               return
                   buildOrder(
                       order: globals.itemsToOrder,
@@ -102,10 +102,11 @@ class _WaiterHomeScreenState extends State<WaiterHomeScreen> {
 
   Widget buildOrder(
       {List order, int index, bool checkbox, Color colorChanger}) {
-    print(globals.orderFinished);
+
     return Container(
       margin: EdgeInsets.all(10),
-      child: Container(
+      child:
+      Container(
         color: Colors.grey[300],
         margin: EdgeInsets.all(10.0),
         child: Column(
@@ -113,8 +114,8 @@ class _WaiterHomeScreenState extends State<WaiterHomeScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
 
           children: [
-            if(orderFinished == null)
-            Dismissible(
+            if(globals.itemsToOrder[index].items.values.toList().last == 'true')
+              Dismissible(
               onDismissed:(DismissDirection direction){
                 deleteOrder(globals.itemsToOrder[index].table.toString());
               },
@@ -130,6 +131,7 @@ class _WaiterHomeScreenState extends State<WaiterHomeScreen> {
                   ),
                 ),
               ),
+
               key: UniqueKey(),
               child: Column(
                 children: [
@@ -148,8 +150,10 @@ class _WaiterHomeScreenState extends State<WaiterHomeScreen> {
                           ),
                         ),
                       ),
+
                       Row(
                         children: [
+
                           ElevatedButton(
                             style: ElevatedButton.styleFrom(
                               primary: kLightGreen,
@@ -190,6 +194,7 @@ class _WaiterHomeScreenState extends State<WaiterHomeScreen> {
                           SizedBox(
                             width: 10,
                           ),
+
                         ],
                       )
                     ],
