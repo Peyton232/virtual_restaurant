@@ -114,7 +114,6 @@ class _WaiterHomeScreenState extends State<WaiterHomeScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
 
           children: [
-            if(globals.itemsToOrder[index].items.values.toList().last == 'true')
               Dismissible(
               onDismissed:(DismissDirection direction){
                 deleteOrder(globals.itemsToOrder[index].table.toString());

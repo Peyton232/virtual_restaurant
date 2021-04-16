@@ -38,23 +38,19 @@ class _KitchenHomeScreenState extends State<KitchenHomeScreen> {
         appBar: AppBar(
           title: Text("Orders Todo"),
         ),
-        body: Column(
-          children: [
-            Container(
-              height: double.infinity,
-              child: FirebaseAnimatedList(
-                query: _ref,
-                itemBuilder: (BuildContext context, DataSnapshot snapshot,
-                    Animation<double> animation, int index) {
-                  return buildOrder(
-                      order: globals.itemsToOrder,
-                      index: index,
-                      checkbox: checkbox,
-                      colorChanger: colorChanger);
-                },
-              ),
-            ),
-          ],
+        body: Container(
+          height: double.infinity,
+          child: FirebaseAnimatedList(
+            query: _ref,
+            itemBuilder: (BuildContext context, DataSnapshot snapshot,
+                Animation<double> animation, int index) {
+              return buildOrder(
+                  order: globals.itemsToOrder,
+                  index: index,
+                  checkbox: checkbox,
+                  colorChanger: colorChanger);
+            },
+          ),
         ),
 
     );
@@ -71,13 +67,8 @@ class _KitchenHomeScreenState extends State<KitchenHomeScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            if(globals.itemsToOrder[index].items.values.toList().last == 'false')
+
             Dismissible(
-              onDismissed: (direction){
-                setState(() {
-                  finishedData();
-                });
-              },
               key: UniqueKey(),
               background: Card(
                 color: Colors.green,
