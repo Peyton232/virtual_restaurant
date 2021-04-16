@@ -48,7 +48,7 @@ class MenuItemUI extends StatelessWidget {
               margin: EdgeInsets.only(right: 10.0),
               width: 250,
               color: kOffWhite,
-              child: Image.network(image),
+              child: image == "here is where I would put an image" ? Image.asset("images/scrappyLogo1.png") : Image.network(image),
             ),
           ),
           Expanded(
