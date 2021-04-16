@@ -279,26 +279,29 @@ DatabaseReference sendData() {
   return id;
 }
 
+DatabaseReference finishedData() {
+  var id = databaseReference.child('kitchen-orders/${globals.tableID}/');
+  var idF = databaseReference.child('kitchen-orders/${globals.tableID}/isFinished/');
+  List<Map<String, dynamic>> completeOrder = List<Map<String, dynamic>>.filled(
+      globals.order.length, new Map<String, dynamic>());
+  for (int i = 0; i < globals.order.length; i++) {
+    completeOrder[i] = orderItemToJson(globals.order[i]);
+  }
+  id.set(completeOrder);
+  idF.set("true");
+  return id;
+}
+
+
+
+
+
 // Deletes an order from the database
 DatabaseReference deleteOrder(String table) {
   var id = databaseReference.child('kitchen-orders/${table}');
   id.remove();
   return id;
 }
-
-// Show order is done
-void getFinishOrder(int index) async {
-  var id = databaseReference.child('kitchen-orders/${index}/isFinished/').once().then((DataSnapshot snapshot) {
-    globals.orderFinished = snapshot.value;
-  });
-  await new Future.delayed(const Duration(seconds: 5));
-  await new Future.delayed(const Duration(seconds: 1));
-  print(globals.orderFinished);
-  print(index);
-
-}
-
-
 
 //    Gets Info for ItemsSold.dart UI
 void getItemsSoldInfo() async {
