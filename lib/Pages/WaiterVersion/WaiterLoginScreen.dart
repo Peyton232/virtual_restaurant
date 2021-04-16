@@ -13,8 +13,26 @@ class WaiterLoginScreen extends StatefulWidget {
 }
 
 class _WaiterLoginScreenState extends State<WaiterLoginScreen> {
-  String password = "";
-  String username = "";
+
+  TextEditingController _usernameController;
+
+  TextEditingController _passwordController;
+
+  void initState(){
+    _usernameController = TextEditingController();
+    _usernameController.text = "admin";
+
+    _passwordController = TextEditingController();
+    _passwordController.text = "admin";
+  }
+
+  @override
+  void dispose(){
+    _usernameController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -58,9 +76,7 @@ class _WaiterLoginScreenState extends State<WaiterLoginScreen> {
                       border: OutlineInputBorder(),
                       hintText: 'Enter Your Name',
                     ),
-                    onChanged: (text) {
-                      username = text;
-                    },
+                    controller: _usernameController,
                   ),
                 ],
               ),
@@ -86,9 +102,7 @@ class _WaiterLoginScreenState extends State<WaiterLoginScreen> {
                       border: OutlineInputBorder(),
                       hintText: 'Enter Your Password',
                     ),
-                    onChanged: (text) {
-                      password = text;
-                    },
+                    controller: _passwordController,
                   ),
                 ],
               ),
@@ -102,10 +116,8 @@ class _WaiterLoginScreenState extends State<WaiterLoginScreen> {
                   minimumSize: Size(150, 50),
                 ),
                 onPressed: () {
-                  print(["username = ", username]);
-                  print(["password = ", password]);
 
-                  if(username == "admin" && password == "admin")
+                  if(_usernameController.text == "admin" && _passwordController.text == "admin")
                     {
                       //call get orders to initialize
                       getWaiterInfo();
